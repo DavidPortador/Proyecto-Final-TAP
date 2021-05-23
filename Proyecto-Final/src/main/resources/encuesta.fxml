@@ -1,43 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             prefHeight="550.0" prefWidth="700.0">
     <center>
-        <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="10" alignment="CENTER">
 
-            <Label fx:id="txtPersonal"  text="xd"/>
+        <ScrollPane>
+            <VBox spacing="10" alignment="CENTER">
 
-            <Label style="-fx-font-size:15; -fx-font-color:black;" text="Encuesta:"/>
+                <Label fx:id="txtPersonal" style="-fx-font-size:25;"/>
 
-            <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                <Label fx:id="txtH1"/>
-            </HBox>
+                <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="5">
 
-            <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                <Label fx:id="txtP1"/>
-                <HBox alignment="CENTER" spacing="10">
-                    <RadioButton fx:id="rdp1si" text="Si"/>
-                    <RadioButton fx:id="rdp1no" text="No"/>
-                </HBox>
-            </HBox>
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER">
+                        <Label fx:id="txtH1"/>
+                    </HBox>
 
-            <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                <Label fx:id="txtP2"/>
-                <HBox alignment="CENTER" spacing="10">
-                    <RadioButton fx:id="rdp2si" text="Si"/>
-                    <RadioButton fx:id="rdp2no" text="No"/>
-                </HBox>
-            </HBox>
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP1"/>
+                        <HBox alignment="CENTER" spacing="10">
+                            <RadioButton fx:id="rdp1si" text="Si"/>
+                            <RadioButton fx:id="rdp1no" text="No"/>
+                        </HBox>
+                    </HBox>
 
-        </VBox>
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP2"/>
+                        <HBox alignment="CENTER" spacing="10">
+                            <RadioButton fx:id="rdp2si" text="Si"/>
+                            <RadioButton fx:id="rdp2no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP3"/>
+                        <HBox alignment="CENTER" spacing="10">
+                            <RadioButton fx:id="rdp3si" text="Si"/>
+                            <RadioButton fx:id="rdp3no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP4"/>
+                        <HBox alignment="TOP_RIGHT" spacing="10">
+                            <RadioButton fx:id="rdp4si" text="Si"/>
+                            <RadioButton fx:id="rdp4no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP5"/>
+                        <HBox alignment="CENTER" spacing="10">
+                            <RadioButton fx:id="rdp5si" text="Si"/>
+                            <RadioButton fx:id="rdp5no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP6"/>
+                        <HBox alignment="CENTER" spacing="10">
+                            <RadioButton fx:id="rdp6si" text="Si"/>
+                            <RadioButton fx:id="rdp6no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                </VBox>
+
+                <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="5">
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
+                        <Label fx:id="txtH2"/>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP7"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp7si" text="Si" />
+                            <RadioButton fx:id="rdp7no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP8"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp8si" text="Si" />
+                            <RadioButton fx:id="rdp8no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP9"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp9si" text="Si" />
+                            <RadioButton fx:id="rdp9no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP10"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp10si" text="Si" />
+                            <RadioButton fx:id="rdp10no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP11"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp11si" text="Si" />
+                            <RadioButton fx:id="rdp11no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP12"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp12si" text="Si" />
+                            <RadioButton fx:id="rdp12no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP13"/>
+                        <HBox spacing="10">
+                            <RadioButton fx:id="rdp13si" text="Si" />
+                            <RadioButton fx:id="rdp13no" text="No"/>
+                        </HBox>
+                    </HBox>
+
+                </VBox>
+
+                <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="5">
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
+                        <Label fx:id="txtH3"/>
+                    </HBox>
+
+                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
+                        <Label fx:id="txtP14"/>
+                        <HBox spacing="10">
+                            <TextField fx:id="tfAbierta" prefWidth="300"/>
+                        </HBox>
+                    </HBox>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+
 
     </center>
 </BorderPane>

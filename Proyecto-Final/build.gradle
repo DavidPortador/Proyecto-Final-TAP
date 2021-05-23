@@ -20,6 +20,15 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    compile 'de.jensd:fontawesomefx-commons:9.0.0'
+    compile 'de.jensd:fontawesomefx-controls:9.0.0'
+    compile 'de.jensd:fontawesomefx-emojione:3.1.1-9'
+    compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-9'
+    compile 'de.jensd:fontawesomefx-icons525:4.2.0-9'
+    compile 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9'
+    compile 'de.jensd:fontawesomefx-materialicons:2.2.0-9'
+    compile 'de.jensd:fontawesomefx-octicons:4.3.0-9'
+    compile 'de.jensd:fontawesomefx-weathericons:2.0.10-9'
 }
 
 test {

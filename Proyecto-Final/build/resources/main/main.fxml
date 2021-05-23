@@ -2,15 +2,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import org.kordamp.bootstrapfx.scene.layout.Panel?>
-<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.Main"
-            prefHeight="400.0" prefWidth="600.0"
+            prefHeight="550.0" prefWidth="700.0"
             style="-fx-background:#2E3436;">
     <center>
-        <VBox alignment="CENTER" spacing="20">
+        <VBox alignment="CENTER" spacing="10">
             <Label prefWidth="300" styleClass="lbl,lbl-primary" style="-fx-font-size:15;" text="Sistema de Información">
                 <graphic>
                     <FontAwesomeIconView glyphName="BOOK" fill="white"/>
@@ -27,20 +25,8 @@
                 </graphic>
             </Label>
             <ComboBox fx:id="cbxPersonal" value="Personal"/>
-            <Label style="-fx-font-size:15; -fx-font-color:white;" text="Encuesta:">
-                <graphic>
-                    <FontAwesomeIconView glyphName="USER" fill="white"/>
-                </graphic>
-            </Label>
-            <Panel>
-                <HBox>
-                    <TextArea>
-                        Contenido de la pregunta...
-                    </TextArea>
-                    <RadioButton fx:id="rdp1si">Si</RadioButton>
-                    <RadioButton fx:id="rdp1no"/>
-                </HBox>
-            </Panel>
+
+            <Button fx:id="btnAcceder" text="Acceder"/>
         </VBox>
     </center>
 </BorderPane>

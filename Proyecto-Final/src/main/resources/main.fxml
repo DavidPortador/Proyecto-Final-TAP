@@ -2,8 +2,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import org.kordamp.bootstrapfx.scene.layout.Panel?>
-<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.Main"
@@ -27,33 +25,7 @@
                 </graphic>
             </Label>
             <ComboBox fx:id="cbxPersonal" value="Personal"/>
-            <Label style="-fx-font-size:15; -fx-font-color:white;" text="Encuesta:">
-                <graphic>
-                    <FontAwesomeIconView glyphName="USER" fill="white"/>
-                </graphic>
-            </Label>
-            <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="10" alignment="CENTER">
-                <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                    <Label fx:id="txtH1"/>
-                </HBox>
 
-                <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                    <Label fx:id="txtP1"/>
-                    <HBox alignment="CENTER" spacing="10">
-                        <RadioButton fx:id="rdp1si" text="Si"/>
-                        <RadioButton fx:id="rdp1no" text="No"/>
-                    </HBox>
-                </HBox>
-
-                <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                    <Label fx:id="txtP2"/>
-                    <HBox alignment="CENTER" spacing="10">
-                        <RadioButton fx:id="rdp2si" text="Si"/>
-                        <RadioButton fx:id="rdp2no" text="No"/>
-                    </HBox>
-                </HBox>
-
-            </VBox>
             <Button fx:id="btnAcceder" text="Acceder"/>
         </VBox>
     </center>

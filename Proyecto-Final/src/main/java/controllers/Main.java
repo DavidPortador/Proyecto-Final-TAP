@@ -1,35 +1,77 @@
 package controllers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
+    ObservableList<String> personal;
     @FXML
-    RadioButton rdp1si, rdp1no, rdp2si, rdp2no;
+    Button btnAcceder;
     @FXML
-    Label txtH1,txtP1, txtP2;
+    ComboBox cbxPersonal;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        crearEncuesta();
+        initGUI();
+        initData();
     }
-    void crearEncuesta(){
-        ToggleGroup gp1 = new ToggleGroup();
-        ToggleGroup gp2 = new ToggleGroup();
 
-        txtH1.setText("Tener uno o más de los siguientes síntomas justifica la ausencia o retiro inmediato de la institución.");
+    void initGUI() {
+        btnAcceder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showEncuesta();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
-        txtP1.setText("¿Siente fiebre, escalofríos como los de una gripe, o una fiebre\n" +
-                "con una temperatura tomada por la boca de 38,1°C (100,6°F)\n" +
-                "o más?");
-        rdp1si.setToggleGroup(gp1);
-        rdp1no.setToggleGroup(gp1);
+    void showEncuesta() throws IOException {
+        String v_personal;
+        v_personal = cbxPersonal.getSelectionModel().getSelectedItem().toString();
+        System.out.println(v_personal);
+        if(v_personal.equals("Personal")){
+            sendMessage("No se selecciono un Personal","Por favor seleccione el tipo de personal");
+        }else{
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Proyecto Final Papus");
+            Parent v_root = FXMLLoader.load(getClass().getResource("/encuesta.fxml"));
+            Scene v_sc = new Scene(v_root);
+            v_sc.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+            primaryStage.setResizable(false);
+            primaryStage.setScene(v_sc);
+            primaryStage.show();
+        }
+    }
 
-        txtP2.setText("¿Ha tenido una pérdida repentina del olfato sin congestión\n" +
-                "nasal (nariz tapada), con o sin pérdida del gusto?");
-        rdp2si.setToggleGroup(gp2);
-        rdp2no.setToggleGroup(gp2);
+    void initData(){
+        personal = FXCollections.observableArrayList();
+        personal.add("xdxdxdxd");
+        personal.add(":000");
+        cbxPersonal.setItems(personal);
+    }
+
+    void sendMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.show();
     }
 }

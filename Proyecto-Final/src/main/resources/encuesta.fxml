@@ -9,17 +9,13 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.Encuesta"
             prefHeight="550.0" prefWidth="700.0">
     <center>
-
-        <Label style="-fx-font-size:15; -fx-font-color:white;" text="Encuesta:">
-            <graphic>
-                <FontAwesomeIconView glyphName="USER" fill="white"/>
-            </graphic>
-        </Label>
-
         <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="10" alignment="CENTER">
+
+            <Label fx:id="txtPersonal"  text="xd"/>
+
+            <Label style="-fx-font-size:15; -fx-font-color:black;" text="Encuesta:"/>
 
             <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
                 <Label fx:id="txtH1"/>

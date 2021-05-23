@@ -11,7 +11,7 @@ public class Encuesta implements Initializable {
     @FXML
     RadioButton rdp1si, rdp1no, rdp2si, rdp2no;
     @FXML
-    Label txtH1,txtP1, txtP2;
+    Label txtPersonal,txtH1,txtP1, txtP2;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         crearEncuesta();
@@ -19,6 +19,8 @@ public class Encuesta implements Initializable {
     void crearEncuesta(){
         ToggleGroup gp1 = new ToggleGroup();
         ToggleGroup gp2 = new ToggleGroup();
+        txtPersonal.setText("Personal: "+a_personal);
+        System.out.println("Personal: "+a_personal);
         // Seccion 1
         txtH1.setText("Tener uno o más de los siguientes síntomas justifica la ausencia o retiro inmediato de la institución.");
         // Pregunta 1

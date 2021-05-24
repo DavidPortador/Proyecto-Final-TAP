@@ -20,6 +20,6 @@ public class MainApp extends Application {
         primaryStage.show();
 
         //THE MADAFUCKING MRCAGUAMA
-
+        //Hola wapas Otaker estuvo aqui uwu
     }
 }

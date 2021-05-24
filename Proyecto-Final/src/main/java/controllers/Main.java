@@ -19,11 +19,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
     String a_modalidad;
-    ObservableList<String> personal;
+    //ObservableList<String> personal;
     @FXML
     Button btnIniciar, btnCrear;
-    @FXML
-    ComboBox cbxPersonal;
+   /* @FXML
+    ComboBox cbxPersonal;*/
     @FXML
     Label txtMod;
     @Override
@@ -35,13 +35,13 @@ public class Main implements Initializable {
     void initData(){
         int v_aux;
 
-        personal = FXCollections.observableArrayList();
+        /*personal = FXCollections.observableArrayList();
         personal.add("Estudiantes");
         personal.add("Medicos");
         personal.add("Monitoreo");
         personal.add("Directivo");
         personal.add("Administrador");
-        cbxPersonal.setItems(personal);
+        cbxPersonal.setItems(personal);*/
 
         v_aux = getRandom();
         if(v_aux == 1){
@@ -75,24 +75,21 @@ public class Main implements Initializable {
 
     void showEncuesta() throws IOException {
         String v_personal;
-        v_personal = cbxPersonal.getSelectionModel().getSelectedItem().toString();
+        v_personal = "personal";
+        //v_personal = cbxPersonal.getSelectionModel().getSelectedItem().toString();
         System.out.println("-> "+v_personal);
-        if(v_personal.equals("Personal")){
-            sendMessage("No se selecciono un Personal","Por favor seleccione el tipo de personal");
-        }else{
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Encuesta "+v_personal);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
-            Encuesta encuesta = new Encuesta() ;
-            encuesta.setPersonal(v_personal);
-            loader.setController(encuesta);
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-            primaryStage.setResizable(false);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Encuesta "+v_personal);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
+        Encuesta encuesta = new Encuesta() ;
+        encuesta.setPersonal(v_personal);
+        loader.setController(encuesta);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     void sendMessage(String title, String message) {

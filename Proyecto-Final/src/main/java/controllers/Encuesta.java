@@ -16,8 +16,8 @@ public class Encuesta implements Initializable {
             rdp6si, rdp6no, rdp7si, rdp7no, rdp8si, rdp8no, rdp9si, rdp9no, rdp10si, rdp10no,
             rdp11si, rdp11no, rdp12si, rdp12no, rdp13si, rdp13no;
     @FXML
-    Label txtPersonal, txtH1, txtH2, txtH3,  txtP1, txtP2, txtP3, txtP4, txtP5, txtP6, txtP7, txtP8, txtP9, txtP10,
-            txtP11, txtP12, txtP13, txtP14;
+    Label txtPersonal, txtH1, txtH2, txtH3,  txtP1, txtP2, txtP3, txtP4, txtP5, txtP6, txtP7, txtP8,
+            txtP9, txtP10, txtP11, txtP12, txtP13, txtP14;
     @FXML
     TextField tfAbierta;
     @Override

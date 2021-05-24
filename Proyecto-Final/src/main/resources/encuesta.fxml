@@ -140,7 +140,7 @@
                     <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
                         <Label fx:id="txtP14"/>
                         <HBox spacing="10">
-                            <TextField fx:id="tfAbierta" prefWidth="300"/>
+                            <TextField fx:id="tfAbierta" prefWidth="360"/>
                         </HBox>
                     </HBox>
 

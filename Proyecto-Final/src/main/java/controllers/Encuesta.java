@@ -1,4 +1,6 @@
 package controllers;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -21,6 +23,19 @@ public class Encuesta implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         crearEncuesta();
+        // Limita los caracteres del textfield a 40
+        tfAbierta.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    // Check if the new character is greater than LIMIT
+                    if (tfAbierta.getText().length() >= 40) {
+                        // if it's 11th character then just setText to previous one
+                        tfAbierta.setText(tfAbierta.getText().substring(0, 40));
+                    }
+                }
+            }
+        });
     }
     void crearEncuesta(){
         ToggleGroup gp1 = new ToggleGroup();

@@ -3,5 +3,7 @@ MainApp.java
 controllers/Main.java
  controllers.Main
  controllers.Main$1
+ controllers.Main$2
 controllers/Encuesta.java
  controllers.Encuesta
+ controllers.Encuesta$1

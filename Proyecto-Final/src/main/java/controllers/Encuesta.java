@@ -37,7 +37,7 @@ public class Encuesta implements Initializable {
         ToggleGroup gp12 = new ToggleGroup();
         ToggleGroup gp13 = new ToggleGroup();
 
-        txtPersonal.setText("Encuesta para: "+a_personal);
+        txtPersonal.setText("Encuesta a "+a_personal);
         // Seccion 1
         txtH1.setText(
                 "Tener uno o más de los siguientes síntomas justifica la ausencia o retiro " +

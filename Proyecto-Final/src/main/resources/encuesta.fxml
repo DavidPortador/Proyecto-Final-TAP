@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="550.0" prefWidth="700.0">
+            prefHeight="600.0" prefWidth="720.0"
+            style="-fx-background:#2E3436;">
+    <padding>
+        <Insets topRightBottomLeft="10"/>
+    </padding>
     <center>
 
-        <ScrollPane>
+        <ScrollPane style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 12px; -fx-border-color: white;">
+
             <VBox spacing="10" alignment="CENTER">
 
-                <Label fx:id="txtPersonal" style="-fx-font-size:25;"/>
+                <Label fx:id="txtPersonal" style="-fx-font-size:25;" styleClass="text-default, italic, strong"/>
 
-                <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="5">
+                <VBox style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 5px; -fx-border-color: white;" spacing="5" alignment="CENTER">
 
-                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER">
-                        <Label fx:id="txtH1"/>
-                    </HBox>
+                    <Label fx:id="txtH1" styleClass="lbl, lbl-default" style="-fx-font-size:11;"/>
 
                     <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
                         <Label fx:id="txtP1"/>
@@ -67,11 +71,9 @@
 
                 </VBox>
 
-                <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="5">
+                <VBox style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 5px; -fx-border-color: white;" spacing="5" alignment="CENTER">
 
-                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                        <Label fx:id="txtH2"/>
-                    </HBox>
+                    <Label fx:id="txtH2" styleClass="lbl, lbl-default" style="-fx-font-size:11;"/>
 
                     <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
                         <Label fx:id="txtP7"/>
@@ -131,11 +133,9 @@
 
                 </VBox>
 
-                <VBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="5">
+                <VBox style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 5px; -fx-border-color: white;" spacing="5" alignment="CENTER">
 
-                    <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" alignment="CENTER" spacing="40">
-                        <Label fx:id="txtH3"/>
-                    </HBox>
+                    <Label fx:id="txtH3" styleClass="lbl, lbl-default" style="-fx-font-size:11;"/>
 
                     <HBox style="-fx-border-width: 1; -fx-border-style: solid; -fx-padding: 5px;" spacing="40" alignment="CENTER_RIGHT">
                         <Label fx:id="txtP14"/>
@@ -145,6 +145,10 @@
                     </HBox>
 
                 </VBox>
+
+                <Button styleClass="btn, btn-default">
+                    Registrar
+                </Button>
 
             </VBox>
         </ScrollPane>

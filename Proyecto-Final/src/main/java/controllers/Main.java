@@ -12,13 +12,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
     ObservableList<String> personal;
     @FXML
-    Button btnAcceder;
+    Button btnIniciar, btnCrear;
     @FXML
     ComboBox cbxPersonal;
     @Override
@@ -28,7 +29,7 @@ public class Main implements Initializable {
     }
 
     void initGUI() {
-        btnAcceder.setOnAction(new EventHandler<ActionEvent>() {
+        btnIniciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -48,13 +49,14 @@ public class Main implements Initializable {
             sendMessage("No se selecciono un Personal","Por favor seleccione el tipo de personal");
         }else{
             Stage primaryStage = new Stage();
-            primaryStage.setTitle("Product Details");
+            primaryStage.setTitle("Encuesta "+v_personal);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
             Encuesta encuesta = new Encuesta() ;
             encuesta.setPersonal(v_personal);
             loader.setController(encuesta);
             Parent root = loader.load();
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -63,8 +65,11 @@ public class Main implements Initializable {
 
     void initData(){
         personal = FXCollections.observableArrayList();
-        personal.add("Estudiantes/Personal");
+        personal.add("Estudiantes");
         personal.add("Medicos");
+        personal.add("Monitoreo");
+        personal.add("Directivo");
+        personal.add("Administrador");
         cbxPersonal.setItems(personal);
     }
 

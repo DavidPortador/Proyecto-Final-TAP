@@ -18,5 +18,8 @@ public class MainApp extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(v_sc);
         primaryStage.show();
+
+        //THE MADAFUCKING MRCAGUAMA
+
     }
 }

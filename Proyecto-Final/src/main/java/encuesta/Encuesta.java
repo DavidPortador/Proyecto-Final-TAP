@@ -1,4 +1,4 @@
-package controllers;
+package encuesta;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -37,7 +37,7 @@ public class Encuesta implements Initializable {
             }
         });
     }
-    void crearEncuesta(){
+    private void crearEncuesta(){
         ToggleGroup gp1 = new ToggleGroup();
         ToggleGroup gp2 = new ToggleGroup();
         ToggleGroup gp3 = new ToggleGroup();
@@ -139,7 +139,7 @@ public class Encuesta implements Initializable {
                 "Describa si tiene otros síntomas: ");
 
     }
-    void setPersonal(String p_personal){
+    public void setPersonal(String p_personal){
         a_personal = p_personal;
     }
 }

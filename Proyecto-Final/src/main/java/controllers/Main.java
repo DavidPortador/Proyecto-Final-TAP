@@ -1,6 +1,5 @@
 package controllers;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import encuesta.Encuesta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
@@ -69,6 +67,11 @@ public class Main implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println(getRandom());
+                try {
+                    showRegistro();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -81,15 +84,45 @@ public class Main implements Initializable {
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Encuesta "+v_personal);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
-        Encuesta encuesta = new Encuesta() ;
+        Encuesta encuesta = new Encuesta();
         encuesta.setPersonal(v_personal);
         loader.setController(encuesta);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        /*Stage open = (Stage) btnIniciar.getScene().getWindow();
+        open.setOnShowing(a -> {
+            open.close();
+        });
+        open.setOnCloseRequest(a -> {
+            primaryStage.show();
+        });*/
+    }
+
+    void showRegistro() throws IOException {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Registro");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/registro.fxml"));
+        Register register = new Register();
+        loader.setController(register);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        //primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        /*Stage open = (Stage) btnIniciar.getScene().getWindow();
+        open.setOnShowing(a -> {
+            open.close();
+        });
+        open.setOnCloseRequest(a -> {
+            primaryStage.show();
+        });*/
     }
 
     void sendMessage(String title, String message) {

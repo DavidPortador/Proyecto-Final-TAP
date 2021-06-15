@@ -12,13 +12,12 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Proyecto Final Papus");
-        Parent v_root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        Scene v_sc = new Scene(v_root);
-        v_sc.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setResizable(false);
-        primaryStage.setScene(v_sc);
+        primaryStage.setScene(scene);
         primaryStage.show();
-
         //THE MADAFUCKING MRCAGUAMA
         //Hola wapas Otaker estuvo aqui uwu
         //Hola xdxdxdxdxdxdxd

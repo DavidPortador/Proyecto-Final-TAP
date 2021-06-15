@@ -13,7 +13,7 @@
 
         <ScrollPane style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 12px; -fx-border-color: white;">
 
-            <VBox spacing="10" alignment="CENTER">
+            <VBox alignment="CENTER" spacing="10">
 
                 <Label fx:id="txtPersonal" style="-fx-font-size:25;" styleClass="text-default, italic, strong"/>
 

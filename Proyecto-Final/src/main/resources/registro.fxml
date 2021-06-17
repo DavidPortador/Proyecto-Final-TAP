@@ -8,7 +8,7 @@
             style="-fx-background:#2E3436;">
     <top>
         <VBox alignment="TOP_CENTER" spacing="13" style="-fx-padding: 12px;">
-            <ImageView fitHeight="150" fitWidth="700">
+            <ImageView fitHeight="150" fitWidth="600">
                 <image>
                     <Image url="/img/tec-logo2.png" />
                 </image>
@@ -17,7 +17,7 @@
     </top>
     <center>
         <VBox alignment="TOP_CENTER" spacing="13" style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 12px; -fx-border-color: white;">
-            <Label text="contenido"/>
+            <Label text="solo se pueden registrar estudientes y personal"/>
         </VBox>
     </center>
 </BorderPane>

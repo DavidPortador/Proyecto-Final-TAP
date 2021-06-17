@@ -1,39 +1,41 @@
 package encuesta;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Encuesta implements Initializable {
+    Stage anterior;
     String a_personal;
-    @FXML
-    RadioButton rdp1si, rdp1no, rdp2si, rdp2no, rdp3si, rdp3no, rdp4si, rdp4no, rdp5si, rdp5no,
+    @FXML RadioButton rdp1si, rdp1no, rdp2si, rdp2no, rdp3si, rdp3no, rdp4si, rdp4no, rdp5si, rdp5no,
             rdp6si, rdp6no, rdp7si, rdp7no, rdp8si, rdp8no, rdp9si, rdp9no, rdp10si, rdp10no,
             rdp11si, rdp11no, rdp12si, rdp12no, rdp13si, rdp13no;
-    @FXML
-    Label txtPersonal, txtH1, txtH2, txtH3,  txtP1, txtP2, txtP3, txtP4, txtP5, txtP6, txtP7, txtP8,
+    @FXML Label txtPersonal, txtH1, txtH2, txtH3,  txtP1, txtP2, txtP3, txtP4, txtP5, txtP6, txtP7, txtP8,
             txtP9, txtP10, txtP11, txtP12, txtP13, txtP14;
+    @FXML TextField tfAbierta;
     @FXML
-    TextField tfAbierta;
+    Button btnCancelar, btnRegistrar;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         crearEncuesta();
-        // Limita los caracteres del textfield a 40
-        tfAbierta.lengthProperty().addListener(new ChangeListener<Number>() {
+        initData();
+    }
+    void initData(){
+        btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.intValue() > oldValue.intValue()) {
-                    // Check if the new character is greater than LIMIT
-                    if (tfAbierta.getText().length() >= 40) {
-                        // if it's 11th character then just setText to previous one
-                        tfAbierta.setText(tfAbierta.getText().substring(0, 40));
-                    }
-                }
+            public void handle(ActionEvent event) {
+                Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                actual.close();
+                anterior.show();
+            }
+        });
+        btnRegistrar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
             }
         });
     }
@@ -141,5 +143,8 @@ public class Encuesta implements Initializable {
     }
     public void setPersonal(String p_personal){
         a_personal = p_personal;
+    }
+    public void setStageAnterior(Stage stage){
+        anterior = stage;
     }
 }

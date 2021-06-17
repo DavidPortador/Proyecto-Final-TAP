@@ -11,53 +11,33 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
     String a_modalidad;
-    //ObservableList<String> personal;
     @FXML
     Button btnIniciar, btnCrear;
-   /* @FXML
-    ComboBox cbxPersonal;*/
-    @FXML
-    Label txtMod;
+    /*
+    Cada que entre aun estudiante/personal revisar si tiene alertas
+
+    */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initData();
         initGUI();
     }
-
     void initData(){
-        int v_aux;
 
-        /*personal = FXCollections.observableArrayList();
-        personal.add("Estudiantes");
-        personal.add("Medicos");
-        personal.add("Monitoreo");
-        personal.add("Directivo");
-        personal.add("Administrador");
-        cbxPersonal.setItems(personal);*/
-
-        v_aux = getRandom();
-        if(v_aux == 1){
-            a_modalidad = "Obligatoria";
-        }else if(v_aux == 2){
-            a_modalidad = "Voluntaria";
-        }else if(v_aux == 3){
-            a_modalidad = "Aleatoria";
-        }
     }
-
     void initGUI() {
-        txtMod.setText("Moalidad de la encuesta: "+a_modalidad);
         btnIniciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    showEncuesta();
+                    showEncuesta(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -68,15 +48,15 @@ public class Main implements Initializable {
             public void handle(ActionEvent event) {
                 System.out.println(getRandom());
                 try {
-                    showRegistro();
+                    showRegistro(event);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
-
-    void showEncuesta() throws IOException {
+    void showEncuesta(ActionEvent event) throws IOException {
         String v_personal;
         v_personal = "personal";
         //v_personal = cbxPersonal.getSelectionModel().getSelectedItem().toString();
@@ -90,20 +70,16 @@ public class Main implements Initializable {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        //primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
+        // Le pasa como parametro el stage actual
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        encuesta.setStageAnterior(actual);
+        actual.close();
+        // Muestra el nuevo stage
         primaryStage.setScene(scene);
         primaryStage.show();
-
-        /*Stage open = (Stage) btnIniciar.getScene().getWindow();
-        open.setOnShowing(a -> {
-            open.close();
-        });
-        open.setOnCloseRequest(a -> {
-            primaryStage.show();
-        });*/
     }
-
-    void showRegistro() throws IOException {
+    void showRegistro(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Registro");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/registro.fxml"));
@@ -115,6 +91,10 @@ public class Main implements Initializable {
         //primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        stage.close();
+
 
         /*Stage open = (Stage) btnIniciar.getScene().getWindow();
         open.setOnShowing(a -> {

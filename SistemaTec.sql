@@ -9,7 +9,7 @@ use SistemaTec;
 
 # Creacion de las tablas Independientes
 
-create table Usuario(cveUsuario varchar(5) not null,
+create table Usuario(noUsuario int not null auto_increment,
 			usuario varchar(30) not null,
 			contraseña varchar(30) not null,
 			nombres varchar(50),
@@ -18,7 +18,7 @@ create table Usuario(cveUsuario varchar(5) not null,
 			correo varchar(50),
 			fechaNac date,
 			fotoPerfil longblob,
-			constraint UsuarioPK primary key (cveUsuario),
+			constraint UsuarioPK primary key (noUsuario),
 			constraint UsuarioCK check (genero = 'F' or genero = 'M')
 			);
 
@@ -49,69 +49,69 @@ create table Encuesta(noEncuesta int not null auto_increment,
 			respuesta12 int(1),
 			respuesta13 int(1),
 			otrosSintomas varchar(100),
-			cveUsuario varchar(5) not null,
+			noUsuario varchar(5) not null,
 			constraint EncuestaPK primary key (noEncuesta),
-			constraint EncuestaFK foreign key (cveUsuario) references Usuario (cveUsuario)
+			constraint EncuestaFK foreign key (noUsuario) references Usuario (noUsuario)
 			);
 
 # Las 'cveAsignacion' tendran el formato (In###) {ej: ES001, PE001, ME001, AD001, MO001, DI001}
 
 create table Asignacion(cveAsignacion varchar(5) not null,
-			cveUsuario varchar(5) not null,
+			noUsuario varchar(5) not null,
 			nombre varchar(50),
-			constraint AsignacionPK primary key (cveAsignacion, cveUsuario),
-			constraint AsignacionFK (cveUsuario) references Usuario (cveUsuario)
+			constraint AsignacionPK primary key (cveAsignacion, noUsuario),
+			constraint AsignacionFK (noUsuario) references Usuario (noUsuario)
 			);
 
 create table Estudiante(noCont varchar(5) not null,
 			cveAsignacion varchar(5) not null,
-			cveUsuario  varchar(5) not null,
+			noUsuario  varchar(5) not null,
 			cveCarrera varchar(5) not null,
-			constraint EstudiantePK primary key (noCont, cveAsignacion, cveUsuario)
-			constraint EstudianteFK1 (cveAsignacion, cveUsuario) 
-						references Asignacion (cveAsignacion, cveUsuario),
+			constraint EstudiantePK primary key (noCont, cveAsignacion, noUsuario)
+			constraint EstudianteFK1 (cveAsignacion, noUsuario) 
+						references Asignacion (cveAsignacion, noUsuario),
 			constraint EstudianteFK2 (cveCarrera) references Carrera (cveCarrera)
 			);
 
 create table Personal(noPersonal varchar(5) not null,
 			cveAsignacion varchar(5) not null,
-			cveUsuario  varchar(5) not null,
+			noUsuario  varchar(5) not null,
 			cveDepartamento varchar(5) not null,
-			constraint PersonalPK primary key (noPersonal, cveAsignacion, cveUsuario),
-			constraint PersonalFK1 (cveAsignacion, cveUsuario)
-						references Asignacion (cveAsignacion, cveUsuario),
+			constraint PersonalPK primary key (noPersonal, cveAsignacion, noUsuario),
+			constraint PersonalFK1 (cveAsignacion, noUsuario)
+						references Asignacion (cveAsignacion, noUsuario),
 			constraint PersonalFK2 (cveDepartamento) references Departamento (cveDepartamento)
 			);
 
 create table Medico(noCedula varchar(5) not null,
 			cveAsignacion varchar(5) not null,
 			cveUsuario  varchar(5) not null,
-			constraint MedicoPK primary key (noCedula, cveAsignacion, cveUsuario),
-			constraint MedicoFK(cveAsignacion, cveUsuario) 
+			constraint MedicoPK primary key (noCedula),
+			constraint MedicoFK (cveAsignacion, cveUsuario) 
 						references Asignacion (cveAsignacion, cveUsuario)
 			);
 
 create table Administrador(noAdmin varchar(5) not null,
 			cveAsignacion varchar(5) not null,
 			cveUsuario  varchar(5) not null,
-			constraint AdministradorPK primary key (noAdmin, cveAsignacion, cveUsuario),
-			constraint AdministradorFK(cveAsignacion, cveUsuario) 
+			constraint AdministradorPK primary key (noAdmin),
+			constraint AdministradorFK (cveAsignacion, cveUsuario) 
 						references Asignacion (cveAsignacion, cveUsuario)
 			);
 
 create table Monitoreo(noMonitoreo varchar(5) not null,
 			cveAsignacion varchar(5) not null,
 			cveUsuario  varchar(5) not null,
-			constraint MonitoreoPK primary key (noMonitoreo, cveAsignacion, cveUsuario),
-			constraint MonitoreoFK(cveAsignacion, cveUsuario) 
+			constraint MonitoreoPK primary key (noMonitoreo),
+			constraint MonitoreoFK (cveAsignacion, cveUsuario) 
 						references Asignacion (cveAsignacion, cveUsuario)
 			);
 
 create table Directivo(noDirectivo varchar(5) not null,
 			cveAsignacion varchar(5) not null,
 			cveUsuario  varchar(5) not null,
-			constraint DirectivoPK primary key (noDirectivo, cveAsignacion, cveUsuario),
-			constraint DirectivoFK(cveAsignacion, cveUsuario) 
+			constraint DirectivoPK primary key (noDirectivo),
+			constraint DirectivoFK (cveAsignacion, cveUsuario) 
 						references Asignacion (cveAsignacion, cveUsuario)
 			);
 
@@ -120,6 +120,36 @@ create table Directivo(noDirectivo varchar(5) not null,
 create table Solicitud(noSolicitud int not null auto_increment,
 			cveAsignacion varchar(5) not null,
 			cveUsuario varchar(5) not null,
-			estado varchar(),
-			
+			noCedula varchar(5) not null,
+			estado varchar(30),
+			tipo varchar(30),
+			constraint SolicitudPK primary key (noSolicitud),
+			constraint SolicitudFK1(cveAsignacion, cveUsuario) 
+						references Asignacion (cveAsignacion, cveUsuario),
+			constraint SolicitudFK2 (noCedula) references Medico (noCedula),
+			constraint SolicitudCK check (tipo = 'Virtual' or tipo = 'Presencial')
 			);
+
+create table Archivos(cveArchivos varchar(5) not null,
+			noSolicitud int not null,
+			foto longblob,
+			video longblob,
+			constraint ArchivosPK primary key (cveArchivos),
+			constraint ArchivosFK (noSolicitud) references Solicitud (noSolicitud)
+			);
+
+create table Consulta(noConsulta
+			);
+
+
+
+
+
+
+
+
+
+
+# Se usara una vista para generar reportes (pendiente...)
+
+create view Reportes();

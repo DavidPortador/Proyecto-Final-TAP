@@ -4,20 +4,16 @@ encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
-MainApp.java
- MainApp
 usuarios/Personal.java
  usuarios.Personal
+MainApp.java
+ MainApp
 modelos/Estudiante.java
  modelos.Estudiante
-controllers/Stages.java
- controllers.Stages
 medicos/medicos.java
  medicos.medicos
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
+controllers/Stages.java
+ controllers.Stages
 usuarios/CrearCuenta.java
  usuarios.CrearCuenta
 controllers/Register.java
@@ -26,3 +22,7 @@ Database/UserDAO.java
  Database.UserDAO
 medicos/solicitudes.java
  medicos.solicitudes
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2

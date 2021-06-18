@@ -6,7 +6,7 @@
 <?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-
+            fx:controller="controllers.Main"
             prefHeight="500.0" prefWidth="350.0"
             style="-fx-background:#2E3436;">
     <center>

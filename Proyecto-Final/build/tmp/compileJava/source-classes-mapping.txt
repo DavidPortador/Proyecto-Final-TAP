@@ -1,8 +1,7 @@
 usuarios/Estudiantes.java
  usuarios.Estudiantes
-encuesta/Encuesta.java
- encuesta.Encuesta
- encuesta.Encuesta$1
+Database/UserDAO.java
+ Database.UserDAO
 MainApp.java
  MainApp
 modelos/Estudiante.java
@@ -11,8 +10,9 @@ controllers/Stages.java
  controllers.Stages
 controllers/Register.java
  controllers.Register
-Database/UserDAO.java
- Database.UserDAO
+encuesta/Encuesta.java
+ encuesta.Encuesta
+ encuesta.Encuesta$1
 controllers/Main.java
  controllers.Main
  controllers.Main$1

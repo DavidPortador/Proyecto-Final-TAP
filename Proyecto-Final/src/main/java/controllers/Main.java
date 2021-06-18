@@ -24,6 +24,8 @@ public class Main implements Initializable {
     ComboBox cbxPersonal;*/
     @FXML
     Label txtMod;
+
+    Button butcss=new Button();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initData();
@@ -32,7 +34,6 @@ public class Main implements Initializable {
 
     void initData(){
         int v_aux;
-
         /*personal = FXCollections.observableArrayList();
         personal.add("Estudiantes");
         personal.add("Medicos");

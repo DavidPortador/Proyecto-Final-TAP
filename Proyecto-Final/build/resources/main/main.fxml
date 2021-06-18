@@ -21,11 +21,6 @@
                     <Image url="/img/tec-logo1.png" />
                 </image>
             </ImageView>
-            <Label fx:id="txtMod" alignment="CENTER_RIGHT" style="-fx-font-size:12;">
-                <graphic>
-                    <FontAwesomeIconView glyphName="LIST" fill="white"/>
-                </graphic>
-            </Label>
             <Label style="-fx-font-size:18; -fx-font-color:white;" text="Iniciar Sesion">
                 <graphic>
                     <FontAwesomeIconView glyphName="VCARD" fill="white"/>

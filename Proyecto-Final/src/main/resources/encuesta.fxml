@@ -146,13 +146,17 @@
 
                 </VBox>
 
-                <Button styleClass="btn, btn-default">
-                    Registrar
-                </Button>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button fx:id="btnCancelar" styleClass="btn, btn-danger" text="Cancelar">
+
+                    </Button>
+                    <Button fx:id="btnRegistrar" styleClass="btn, btn-default" text="Registrar">
+
+                    </Button>
+                </HBox>
 
             </VBox>
         </ScrollPane>
-
-
     </center>
+
 </BorderPane>

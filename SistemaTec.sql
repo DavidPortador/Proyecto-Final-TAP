@@ -272,8 +272,6 @@ insert into Prueba values
 			('PR002', 'Prueba rapida de antigeno'),
 			('PR003', 'Prueba PCR (Reaccion en cadena de la polimerasa)');
 
-
-
 # Creacion de los usuarios 'admins' (No se pueden registrar)
 
 #insert into Usuario () values ();

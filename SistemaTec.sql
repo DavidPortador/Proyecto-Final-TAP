@@ -27,9 +27,9 @@ create table Carrera(cveCarrera varchar(5) not null,
 			constraint CarreraPK primary key (cveCarrera)
 			);
 
-create table Departamento(cveDepartamento varchar(5) not null,
+create table Departamento(cveDepa varchar(5) not null,
 			nombre varchar(100),
-			constraint DepartamentoPK primary key (cveDepartamento)
+			constraint DepartamentoPK primary key (cveDepa)
 			);
 
 create table Prueba(cvePrueba varchar(5) not null,
@@ -81,11 +81,11 @@ create table Estudiante(noCont varchar(5) not null,
 create table Personal(noPersonal varchar(5) not null,
 			cveAsignacion varchar(5) not null,
 			noUsuario int not null,
-			cveDepartamento varchar(5) not null,
+			cveDepa varchar(5) not null,
 			constraint PersonalPK primary key (noPersonal, cveAsignacion, noUsuario),
 			constraint PersonalFK1 foreign key (cveAsignacion, noUsuario)
 						references Asignacion (cveAsignacion, noUsuario),
-			constraint PersonalFK2 foreign key (cveDepartamento) references Departamento (cveDepartamento)
+			constraint PersonalFK2 foreign key (cveDepa) references Departamento (cveDepa)
 			);
 
 create table Medico(noCedula varchar(5) not null,
@@ -220,17 +220,69 @@ create table AlertaMonitoreada(noAlertaMonitoreo int not null auto_increment,
 
 grant all privileges on SistemaTec.* to topicos_progra;
 
-# Se usara una vista para generar reportes (pendiente...)
-
-#create view Reportes();
-
 # Creacion de los registros de la tablas independientes
 
-#insert into Carrera values ();
+insert into Carrera values 
+			('CA001', 'Lic. Administracion'),
+			('CA002', 'Ing. Ambiental'),
+			('CA003', 'Ing. Bioquimica'),
+			('CA004', 'Ing. En Electronica'),
+			('CA005', 'Ing. Gestion Empresarial'),
+			('CA006', 'Ing. Industrial'),
+			('CA007', 'Ing. Mecanica'),
+			('CA008', 'Ing. Mecatronica'),
+			('CA009', 'Ing. Quimica'),
+			('CA010', 'Ing. Sistemas computacionales');
+
+insert into Departamento values 
+			('DE001', 'Actividades Extraescolares'),
+			('DE002', 'Calidad'),
+			('DE003', 'Centro de computo'),
+			('DE004', 'Centro de informacion'),
+			('DE005', 'Ciencias basicas'),
+			('DE006', 'Comunicacion y Difusion'),
+			('DE007', 'Departamento de Ciencias Economico Administrativas'),
+			('DE009', 'Departamento de Ingenieria Bioquimica'),
+			('DE010', 'Departamento de Ingenieria Electronica'),
+			('DE011', 'Departamento de Ingenieria en Mecatronica'),
+			('DE012', 'Departamento de Ingenieria en Sistemas Computacionales e Informatica'),
+			('DE013', 'Departamento de Ingenieria Industrial'),
+			('DE014', 'Departamento de Ingenieria Mecanica'),
+			('DE015', 'Departamento de Ingenieria Quimica'),
+			('DE016', 'Desarrollo Academico'),
+			('DE017', 'Direccion'),
+			('DE018', 'Division de Estudios de Posgrado e Investigacion'),
+			('DE019', 'Division de Estudios Profesionales'),
+			('DE020', 'Division de Estudios Profesionales / Propedeutico'),
+			('DE021', 'Gestion Tecnologica y Vinculacion'),
+			('DE022', 'Ingenieria Ambiental'),
+			('DE023', 'Mantenimiento de Equipo'),
+			('DE024', 'Planeacion, Programacion y Presupuestacion'),
+			('DE025', 'Recursos Financieros'),
+			('DE026', 'Recursos Humanos'),
+			('DE027', 'Recursos Materiales y Servicios'),
+			('DE028', 'Servicios Escolares'),
+			('DE029', 'Sindicato'),
+			('DE030', 'Subdireccion Academica'),
+			('DE031', 'Subdireccion de Planeacion y Vinculacion'),
+			('DE032', 'Subdireccion de Servicios Administrativos');
+
+insert into Prueba values 
+			('PR001', 'Prueba rapida de sangre'),
+			('PR002', 'Prueba rapida de antigeno'),
+			('PR003', 'Prueba PCR (Reaccion en cadena de la polimerasa)');
+
+
 
 # Creacion de los usuarios 'admins' (No se pueden registrar)
 
 #insert into Usuario () values ();
+
+
+
+# Se usara una vista para generar reportes (pendiente...)
+
+#create view Reportes();
 
 
 

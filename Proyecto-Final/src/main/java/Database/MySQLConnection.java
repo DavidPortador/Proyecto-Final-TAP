@@ -15,7 +15,7 @@ public class MySQLConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://"+ hostname +":"+ dbport +"/" + dbname + "?serverTimezone=UTC", dbuser, dbpass);
-                System.out.println("Successful database connection.");
+                System.out.println("Successful database connection");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MySQLConnection.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

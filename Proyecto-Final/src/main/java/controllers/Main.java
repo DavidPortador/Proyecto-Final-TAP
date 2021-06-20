@@ -1,4 +1,6 @@
 package controllers;
+import Database.MySQLConnection;
+import Database.UserDAO;
 import encuesta.Encuesta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,20 +11,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
     String a_modalidad;
-    @FXML
-    Button btnIniciar, btnCrear;
+    @FXML TextField txtUser;
+    @FXML PasswordField txtPass;
+    @FXML Button btnIniciar, btnCrear;
     /*
     Cada que entre aun estudiante/personal revisar si tiene alertas
     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
+    @Override public void initialize(URL location, ResourceBundle resources) {
         initData();
         initGUI();
     }
@@ -31,12 +37,16 @@ public class Main implements Initializable {
     }
     void initGUI() {
         btnIniciar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
+            @Override public void handle(ActionEvent event) {
+                /*try {
                     showEncuesta(event);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }*/
+                try {
+                    valiLogin();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
             }
         });
@@ -46,7 +56,6 @@ public class Main implements Initializable {
                 System.out.println(getRandom());
                 try {
                     showRegistro(event);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -90,11 +99,23 @@ public class Main implements Initializable {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    void sendMessage(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    void valiLogin() throws SQLException {
+        String user, pass;
+        user = txtUser.getText();
+        pass = txtPass.getText();
+        if(user.isEmpty() || pass.isEmpty()){
+            alertMessage("Campos vacios",null,
+                    "Revise que todos los campos esten llenos", Alert.AlertType.ERROR);
+        }else{
+            userDAO.getUsuario(user, pass);
+        }
+    }
+    private void alertMessage(String title, String Header, String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
         alert.setTitle(title);
+        alert.setHeaderText(Header);
         alert.setContentText(message);
-        alert.show();
+        alert.showAndWait();
     }
     int getRandom(){
         int v_random;

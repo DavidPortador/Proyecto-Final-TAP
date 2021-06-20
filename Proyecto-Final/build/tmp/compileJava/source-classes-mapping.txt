@@ -16,13 +16,15 @@ controllers/Stages.java
  controllers.Stages
 usuarios/CrearCuenta.java
  usuarios.CrearCuenta
+medicos/solicitudes.java
+ medicos.solicitudes
+Database/UserDAO.java
+ Database.UserDAO
+Database/MySQLConnection.java
+ Database.MySQLConnection
+controllers/Register.java
+ controllers.Register
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
-Database/UserDAO.java
- Database.UserDAO
-medicos/solicitudes.java
- medicos.solicitudes
-controllers/Register.java
- controllers.Register

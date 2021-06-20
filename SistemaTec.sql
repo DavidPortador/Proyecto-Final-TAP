@@ -68,6 +68,8 @@ create table Asignacion(cveAsignacion varchar(5) not null,
 			constraint AsignacionFK foreign key (noUsuario) references Usuario (noUsuario)
 			);
 
+# Las (cve's) de los Usuarios tendran el formato (NIn##) {ej: NES01, NPE01, NME01, NAD01, NMO01, NAD01}
+
 create table Estudiante(noCont varchar(5) not null,
 			cveAsignacion varchar(5) not null,
 			noUsuario int not null,
@@ -216,10 +218,6 @@ create table AlertaMonitoreada(noAlertaMonitoreo int not null auto_increment,
 			constraint AlertaMonitoreadaFK2 foreign key (noMonitoreo) references Monitoreo (noMonitoreo)
 			);
 
-# Crear conexion con el usuario de DataGrip
-
-grant all privileges on SistemaTec.* to topicos_progra;
-
 # Creacion de los registros de la tablas independientes
 
 insert into Carrera values 
@@ -272,19 +270,64 @@ insert into Prueba values
 			('PR002', 'Prueba rapida de antigeno'),
 			('PR003', 'Prueba PCR (Reaccion en cadena de la polimerasa)');
 
+# Creacion de los usuarios que no se pueden registar (tres de cada uno)
 
+insert into Usuario (usuario, contraseña, nombres, apellidos, genero, correo, fechaNac) values 
+	('medico1', 'contraseñaME1', 'Jose', 'Perez', 'M', 'exampleME1@example.com', '1999-08-02'),
+	('medico2', 'contraseñaME2', 'Maria', 'Sanchez', 'F', 'exampleME2@example.com', '1988-09-20'),
+	('medico3', 'contraseñaME3', 'Juan', 'Cruz', 'M', 'exampleME3@example.com', '1997-05-16'),
+	('admin1', 'contraseñaAD1', 'Carlos', 'Perez', 'M', 'exampleAD1@example.com', '1999-08-02'),
+	('admin2', 'contraseñaAD2', 'Sofia', 'Sanchez', 'F', 'exampleAD2@example.com', '1988-09-20'),
+	('admin3', 'contraseñaAD3', 'Juan', 'Cruz', 'M', 'exampleAD3@example.com', '1997-05-16'),
+	('monitoreo1', 'contraseñaMO1', 'Carlos', 'Perez', 'M', 'exampleMO1@example.com', '1999-08-02'),
+	('monitoreo2', 'contraseñaMO2', 'Sofia', 'Sanchez', 'F', 'exampleMO2@example.com', '1988-09-20'),
+	('monitoreo3', 'contraseñaMO3', 'Juan', 'Cruz', 'M', 'exampleMO3@example.com', '1997-05-16'),
+	('directivo1', 'contraseñaDI1', 'Carlos', 'Perez', 'M', 'exampleDI1@example.com', '1999-08-02'),
+	('directivo2', 'contraseñaDI2', 'Sofia', 'Sanchez', 'F', 'exampleDI2@example.com', '1988-09-20'),
+	('directivo3', 'contraseñaDI3', 'Juan', 'Cruz', 'M', 'exampleDI3@example.com', '1997-05-16');
 
-# Creacion de los usuarios 'admins' (No se pueden registrar)
+insert into Asignacion values 
+	('ME001', 1, 'Medico'),
+	('ME002', 2, 'Medico'),
+	('ME003', 3, 'Medico'),
+	('AD001', 4, 'Administrador'),
+	('AD002', 5, 'Administrador'),
+	('AD003', 6, 'Administrador'),
+	('MO001', 7, 'Monitoreo'),
+	('MO002', 8, 'Monitoreo'),
+	('MO003', 9, 'Monitoreo'),
+	('DI001', 10, 'Directivo'),
+	('DI002', 11, 'Directivo'),
+	('DI003', 12, 'Directivo');
 
-#insert into Usuario () values ();
+insert into Medico values
+	('NME01', 'ME001', 1),
+	('NME02', 'ME002', 2),
+	('NME03', 'ME003', 3);
 
+insert into Administrador values 
+	('NAD01', 'AD001', 4),
+	('NAD02', 'AD002', 5),
+	('NAD03', 'AD003', 6);
 
+insert into Monitoreo values
+	('NMO01', 'MO001', 7),
+	('NMO02', 'MO002', 8),
+	('NMO03', 'MO003', 9);
+
+insert into Directivo values
+	('NDI01', 'DI001', 10),
+	('NDI02', 'DI002', 11),
+	('NDI03', 'DI003', 12);
 
 # Se usara una vista para generar reportes (pendiente...)
 
 #create view Reportes();
 
 
+# Crear conexion con el usuario de DataGrip
+
+grant all privileges on SistemaTec.* to topicos_progra;
 
 # Exportar
 -- mysqldump -u root -p SistemaTec > SistemaTec.sql

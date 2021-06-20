@@ -55,8 +55,7 @@ public class Main implements Initializable {
     }
     void showEncuesta(ActionEvent event) throws IOException {
         String v_personal;
-        v_personal = "personal";
-        System.out.println("-> "+v_personal);
+        v_personal = "'aqui va el personal'";
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Encuesta "+v_personal);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
@@ -91,7 +90,6 @@ public class Main implements Initializable {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
     void sendMessage(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -104,7 +102,6 @@ public class Main implements Initializable {
         return  v_random;
     }
 }
-
 /*Stage open = (Stage) btnIniciar.getScene().getWindow();
 open.setOnShowing(a -> {
     open.close();

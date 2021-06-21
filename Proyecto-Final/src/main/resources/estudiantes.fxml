@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="811.0" prefWidth="1316.0" styleClass="background" stylesheets="@../java/Styles/Estilos.css" xmlns="http://javafx.com/javafx/15.0.1">
+<AnchorPane prefHeight="811.0" prefWidth="1316.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/15.0.1">
    <children>
-      <Label layoutX="1014.0" layoutY="14.0" prefHeight="67.0" prefWidth="288.0" styleClass="label-header" stylesheets="@../java/Styles/Estilos.css" text="Mi cuenta" />
+      <Label layoutX="1014.0" layoutY="14.0" prefHeight="67.0" prefWidth="288.0" styleClass="label-header" stylesheets="@Styles/Estilos.css" text="Mi cuenta" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../java/Styles/user2.png" />
+            <Image url="@Styles/user2.png" />
          </image>
       </ImageView>
-      <Label layoutX="113.0" layoutY="221.0" styleClass="label-bright" stylesheets="@../java/Styles/Estilos.css" text="Mi nombre" />
+      <Label layoutX="113.0" layoutY="221.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Mi nombre" />
       <ListView layoutX="14.0" layoutY="378.0" prefHeight="420.0" prefWidth="604.0" />
-      <Label layoutX="273.0" layoutY="340.0" prefHeight="21.0" prefWidth="87.0" styleClass="label-bright" stylesheets="@../java/Styles/Estilos.css" text="Alertas" textAlignment="CENTER" />
+      <Label layoutX="273.0" layoutY="340.0" prefHeight="21.0" prefWidth="87.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Alertas" textAlignment="CENTER" />
       <Button contentDisplay="GRAPHIC_ONLY" layoutX="993.0" layoutY="729.0" mnemonicParsing="false" text="Button">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../java/Styles/settings.png" />
+                  <Image url="@Styles/settings.png" />
                </image>
             </ImageView>
          </graphic>
@@ -32,7 +32,7 @@
          <graphic>
             <ImageView fitHeight="106.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../java/Styles/exit.png" />
+                  <Image url="@Styles/exit.png" />
                </image>
             </ImageView>
          </graphic>
@@ -41,7 +41,7 @@
          <graphic>
             <ImageView fitHeight="122.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../java/Styles/consulta.png" />
+                  <Image url="@Styles/consulta.png" />
                </image>
             </ImageView>
          </graphic>
@@ -50,7 +50,7 @@
          <graphic>
             <ImageView fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../java/Styles/encuesta.png" />
+                  <Image url="@Styles/encuesta.png" />
                </image>
             </ImageView>
          </graphic>
@@ -59,13 +59,13 @@
          <graphic>
             <ImageView fitHeight="111.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../java/Styles/Ordenes.png" />
+                  <Image url="@Styles/Ordenes.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="1079.0" layoutY="242.0" styleClass="label-bright" stylesheets="@../java/Styles/Estilos.css" text="Consultas" />
-      <Label layoutX="1079.0" layoutY="385.0" styleClass="label-bright" stylesheets="@../java/Styles/Estilos.css" text="Encuestas" />
-      <Label layoutX="1083.0" layoutY="567.0" styleClass="label-bright" stylesheets="@../java/Styles/Estilos.css" text="Ordenes" />
+      <Label layoutX="1079.0" layoutY="242.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Consultas" />
+      <Label layoutX="1079.0" layoutY="385.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Encuestas" />
+      <Label layoutX="1083.0" layoutY="567.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Ordenes" />
    </children>
 </AnchorPane>

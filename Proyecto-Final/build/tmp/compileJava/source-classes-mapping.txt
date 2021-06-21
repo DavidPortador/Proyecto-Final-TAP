@@ -10,8 +10,8 @@ medicos/medicos.java
  medicos.medicos
 controllers/Register.java
  controllers.Register
-Database/UserDAO.java
- Database.UserDAO
+usuarios/CrearCuenta.java
+ usuarios.CrearCuenta
 medicos/solicitudes.java
  medicos.solicitudes
 modelos/Usuario.java
@@ -24,9 +24,9 @@ controllers/Stages.java
  controllers.Stages
 Database/MySQLConnection.java
  Database.MySQLConnection
-usuarios/CrearCuenta.java
- usuarios.CrearCuenta
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
+Database/UserDAO.java
+ Database.UserDAO

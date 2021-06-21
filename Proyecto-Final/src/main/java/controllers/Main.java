@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import usuarios.Medicos;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -53,8 +52,7 @@ public class Main implements Initializable {
             }
         });
         btnCrear.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 System.out.println(getRandom());
                 try {
                     showRegistro(event);
@@ -79,7 +77,7 @@ public class Main implements Initializable {
         primaryStage.setResizable(false);
         // Le pasa como parametro el stage actual
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
-        encuesta.setStageAnterior(actual);
+        //encuesta.setStageAnterior(actual);
         actual.close();
         // Muestra el nuevo stage
         primaryStage.setScene(scene);
@@ -141,7 +139,6 @@ public class Main implements Initializable {
         loader.setController(medico);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setResizable(false);
         // Le pasa como parametro el stage actual
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));

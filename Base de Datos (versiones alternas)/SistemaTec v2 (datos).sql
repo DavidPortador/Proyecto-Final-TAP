@@ -11,7 +11,7 @@ use SistemaTec;
 
 create table Usuario(noUsuario int not null auto_increment,
 			usuario varchar(30) not null,
-			contra varchar(30) not null,
+			contraseña varchar(30) not null,
 			nombres varchar(50),
 			apellidos varchar(50),
 			genero varchar(1),
@@ -272,19 +272,19 @@ insert into Prueba values
 
 # Creacion de los usuarios que no se pueden registar (tres de cada uno)
 
-insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
-	('medico1', 'contraME1', 'Jose', 'Perez', 'M', 'exampleME1@example.com', '1999-08-02'),
-	('medico2', 'contraME2', 'Maria', 'Sanchez', 'F', 'exampleME2@example.com', '1988-09-20'),
-	('medico3', 'contraME3', 'Juan', 'Cruz', 'M', 'exampleME3@example.com', '1997-05-16'),
-	('admin1', 'contraAD1', 'Carlos', 'Perez', 'M', 'exampleAD1@example.com', '1999-08-02'),
-	('admin2', 'contraAD2', 'Sofia', 'Sanchez', 'F', 'exampleAD2@example.com', '1988-09-20'),
-	('admin3', 'contraAD3', 'Juan', 'Cruz', 'M', 'exampleAD3@example.com', '1997-05-16'),
-	('monitoreo1', 'contraMO1', 'Carlos', 'Perez', 'M', 'exampleMO1@example.com', '1999-08-02'),
-	('monitoreo2', 'contraMO2', 'Sofia', 'Sanchez', 'F', 'exampleMO2@example.com', '1988-09-20'),
-	('monitoreo3', 'contraMO3', 'Juan', 'Cruz', 'M', 'exampleMO3@example.com', '1997-05-16'),
-	('directivo1', 'contraDI1', 'Carlos', 'Perez', 'M', 'exampleDI1@example.com', '1999-08-02'),
-	('directivo2', 'contraDI2', 'Sofia', 'Sanchez', 'F', 'exampleDI2@example.com', '1988-09-20'),
-	('directivo3', 'contraDI3', 'Juan', 'Cruz', 'M', 'exampleDI3@example.com', '1997-05-16');
+insert into Usuario (usuario, contraseña, nombres, apellidos, genero, correo, fechaNac) values 
+	('medico1', 'contraseñaME1', 'Jose', 'Perez', 'M', 'exampleME1@example.com', '1999-08-02'),
+	('medico2', 'contraseñaME2', 'Maria', 'Sanchez', 'F', 'exampleME2@example.com', '1988-09-20'),
+	('medico3', 'contraseñaME3', 'Juan', 'Cruz', 'M', 'exampleME3@example.com', '1997-05-16'),
+	('admin1', 'contraseñaAD1', 'Carlos', 'Perez', 'M', 'exampleAD1@example.com', '1999-08-02'),
+	('admin2', 'contraseñaAD2', 'Sofia', 'Sanchez', 'F', 'exampleAD2@example.com', '1988-09-20'),
+	('admin3', 'contraseñaAD3', 'Juan', 'Cruz', 'M', 'exampleAD3@example.com', '1997-05-16'),
+	('monitoreo1', 'contraseñaMO1', 'Carlos', 'Perez', 'M', 'exampleMO1@example.com', '1999-08-02'),
+	('monitoreo2', 'contraseñaMO2', 'Sofia', 'Sanchez', 'F', 'exampleMO2@example.com', '1988-09-20'),
+	('monitoreo3', 'contraseñaMO3', 'Juan', 'Cruz', 'M', 'exampleMO3@example.com', '1997-05-16'),
+	('directivo1', 'contraseñaDI1', 'Carlos', 'Perez', 'M', 'exampleDI1@example.com', '1999-08-02'),
+	('directivo2', 'contraseñaDI2', 'Sofia', 'Sanchez', 'F', 'exampleDI2@example.com', '1988-09-20'),
+	('directivo3', 'contraseñaDI3', 'Juan', 'Cruz', 'M', 'exampleDI3@example.com', '1997-05-16');
 
 insert into Asignacion values 
 	('ME001', 1, 'Medico'),

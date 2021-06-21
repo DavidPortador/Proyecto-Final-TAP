@@ -8,7 +8,8 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.Main"
             prefHeight="500.0" prefWidth="350.0"
-            style="-fx-background:#2E3436;">
+            style="-fx-background:#2E3436;"
+            styleClass="background" stylesheets="@Styles/Estilos.css" >
     <center>
         <VBox alignment="CENTER" spacing="13" style="-fx-border-width: 2; -fx-border-style: solid; -fx-padding: 12px; -fx-border-color: white;">
             <Label prefWidth="350" styleClass="lbl,lbl-success" style="-fx-font-size:15;" text="Sistema de Información">

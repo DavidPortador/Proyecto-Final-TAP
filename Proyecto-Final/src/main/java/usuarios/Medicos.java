@@ -1,8 +1,18 @@
 package usuarios;
+import javafx.fxml.Initializable;
 import javafx.stage.Stage;
-public class Medicos {
-    Stage anterior;
+import java.net.URL;
+import java.util.ResourceBundle;
+public class Medicos implements Initializable {
+    Stage anterior, actual;
+    @Override public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("llego");
+
+    }
     public void setStageAnterior(Stage stage){
         anterior = stage;
+    }
+    public void setStageActual(Stage stage){
+        actual = stage;
     }
 }

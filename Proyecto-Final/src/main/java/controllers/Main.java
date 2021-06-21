@@ -1,6 +1,6 @@
 package controllers;
-import Database.MySQLConnection;
-import Database.UserDAO;
+import database.MySQLConnection;
+import database.UserDAO;
 import encuesta.Encuesta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,11 +39,6 @@ public class Main implements Initializable {
     void initGUI() {
         btnIniciar.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event) {
-                /*try {
-                    showEncuesta(event);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
                 try {
                     valiLogin(event);
                 } catch (SQLException | IOException throwables) {
@@ -75,7 +70,7 @@ public class Main implements Initializable {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setResizable(false);
-        // Le pasa como parametro el stage actual
+        // Le pasa como parametro el stage actual y nueva
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         //encuesta.setStageAnterior(actual);
         actual.close();
@@ -86,13 +81,13 @@ public class Main implements Initializable {
     void showRegistro(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Registro");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/registro.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/crearCuenta.fxml"));
         Register register = new Register();
         loader.setController(register);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        // Le pasa como parametro el stage actual
+        // Le pasa como parametro el stage actual y nueva
         Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         stage.close();
         // Muestra el nuevo stage
@@ -114,7 +109,16 @@ public class Main implements Initializable {
                 txtPass.setText("");
             }else{
                 System.out.println(tipoUsuario);
-                if(tipoUsuario.equals("Medico")){
+
+                if(tipoUsuario.equals("Estudiante")){
+                    System.out.println("*Interfaz de estudiante*");
+                    vaciar();
+                    showMedico(event);
+                }else if(tipoUsuario.equals("Personal")){
+                    System.out.println("*Interfaz de personal*");
+                    vaciar();
+                    showMedico(event);
+                }else if(tipoUsuario.equals("Medico")){
                     System.out.println("*Interfaz de medico*");
                     vaciar();
                     showMedico(event);
@@ -132,23 +136,22 @@ public class Main implements Initializable {
         }
     }
     void showMedico(ActionEvent event) throws IOException {
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Medico");
+        Stage nueva = new Stage();
+        nueva.setTitle("Interfaz de Medicos");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/medicos.fxml"));
         Medicos medico = new Medicos();
         loader.setController(medico);
         Parent root = loader.load();
-        //root.getStylesheets().add(getClass().getResource("../Styles/Estilos.css").toExternalForm());
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(usuarios.Medicos.class.getResource("Styles/Estilos.css").toExternalForm());
-        primaryStage.setResizable(false);
-        // Le pasa como parametro el stage actual
+        nueva.setResizable(false);
+        nueva.setScene(scene);
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        // Le pasa como parametro el stage actual y nueva
         medico.setStageAnterior(actual);
-        actual.close();
+        medico.setStageActual(nueva);
         // Muestra el nuevo stage
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        actual.close();
+        nueva.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

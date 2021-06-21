@@ -1,11 +1,9 @@
 package Database;
 import javafx.scene.control.Alert;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 public class UserDAO {
     Connection conn;
     public UserDAO (Connection conn) {

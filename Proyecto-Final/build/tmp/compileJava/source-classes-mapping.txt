@@ -8,30 +8,25 @@ usuarios/Medicos.java
  usuarios.Medicos
 medicos/medicos.java
  medicos.medicos
-controllers/Register.java
- controllers.Register
-usuarios/CrearCuenta.java
- usuarios.CrearCuenta
-medicos/solicitudes.java
- medicos.solicitudes
-modelos/Usuario.java
- modelos.Usuario
-MainApp.java
- MainApp
-usuarios/Personal.java
- usuarios.Personal
-controllers/Stages.java
- controllers.Stages
-Database/MySQLConnection.java
- Database.MySQLConnection
-<<<<<<< HEAD
-=======
-Database/UserDAO.java
- Database.UserDAO
->>>>>>> main
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
 Database/UserDAO.java
  Database.UserDAO
+medicos/solicitudes.java
+ medicos.solicitudes
+modelos/Usuario.java
+ modelos.Usuario
+usuarios/Personal.java
+ usuarios.Personal
+MainApp.java
+ MainApp
+controllers/Stages.java
+ controllers.Stages
+Database/MySQLConnection.java
+ Database.MySQLConnection
+usuarios/CrearCuenta.java
+ usuarios.CrearCuenta
+controllers/Register.java
+ controllers.Register

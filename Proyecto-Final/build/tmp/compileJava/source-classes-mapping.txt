@@ -8,8 +8,8 @@ usuarios/Personal.java
  usuarios.Personal
 MainApp.java
  MainApp
-modelos/Estudiante.java
- modelos.Estudiante
+Database/MySQLConnection.java
+ Database.MySQLConnection
 medicos/medicos.java
  medicos.medicos
 controllers/Stages.java
@@ -18,12 +18,14 @@ usuarios/CrearCuenta.java
  usuarios.CrearCuenta
 medicos/solicitudes.java
  medicos.solicitudes
-Database/UserDAO.java
- Database.UserDAO
-Database/MySQLConnection.java
- Database.MySQLConnection
 controllers/Register.java
  controllers.Register
+Database/UserDAO.java
+ Database.UserDAO
+modelos/Usuario.java
+ modelos.Usuario
+usuarios/Medicos.java
+ usuarios.Medicos
 controllers/Main.java
  controllers.Main
  controllers.Main$1

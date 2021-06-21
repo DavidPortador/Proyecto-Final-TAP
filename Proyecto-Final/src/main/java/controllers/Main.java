@@ -138,7 +138,9 @@ public class Main implements Initializable {
         Medicos medico = new Medicos();
         loader.setController(medico);
         Parent root = loader.load();
+        //root.getStylesheets().add(getClass().getResource("../Styles/Estilos.css").toExternalForm());
         Scene scene = new Scene(root);
+        //scene.getStylesheets().add(usuarios.Medicos.class.getResource("Styles/Estilos.css").toExternalForm());
         primaryStage.setResizable(false);
         // Le pasa como parametro el stage actual
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));

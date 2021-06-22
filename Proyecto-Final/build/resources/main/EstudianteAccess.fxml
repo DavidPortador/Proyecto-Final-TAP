@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="785.0" prefWidth="1124.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageuser" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Styles/user2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="694.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/tecverde.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1056.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/tec-logo1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblNombre" layoutX="71.0" layoutY="206.0" styleClass="label-bright" text="Nombre" />
+      <Label layoutX="500.0" layoutY="36.0" styleClass="label-header" text="Mi cuenta" />
+      <Button fx:id="btnConsultas" contentDisplay="GRAPHIC_ONLY" layoutX="983.0" layoutY="206.0" mnemonicParsing="false" text="Button">
+         <graphic>
+            <ImageView fitHeight="111.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/consulta.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnEncuesta" contentDisplay="GRAPHIC_ONLY" layoutX="983.0" layoutY="368.0" mnemonicParsing="false" text="Button">
+         <graphic>
+            <ImageView fitHeight="120.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/encuesta.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnOrdenes" contentDisplay="GRAPHIC_ONLY" layoutX="982.0" layoutY="537.0" mnemonicParsing="false" text="Button">
+         <graphic>
+            <ImageView fitHeight="105.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/Ordenes.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="1053.0" layoutY="672.0" mnemonicParsing="false" text="Button">
+         <graphic>
+            <ImageView fitHeight="62.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnConfig" contentDisplay="GRAPHIC_ONLY" layoutX="936.0" layoutY="673.0" mnemonicParsing="false" text="Button">
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/settings.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tblAlertas" layoutX="28.0" layoutY="248.0" prefHeight="440.0" prefWidth="847.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="1009.0" layoutY="298.0" styleClass="label-bright" text="Consultas" />
+      <Label layoutX="1012.0" layoutY="458.0" styleClass="label-bright" text="Encuesta" />
+      <Label layoutX="1014.0" layoutY="629.0" styleClass="label-bright" text="Ordenes" />
+   </children>
+</AnchorPane>

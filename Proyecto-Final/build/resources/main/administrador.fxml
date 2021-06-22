@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="686.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" layoutX="36.0" layoutY="115.0" prefHeight="551.0" prefWidth="371.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Usuario" />
+                  <TextField fx:id="txtUsuario" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Contraseña" />
+                  <TextField fx:id="txtContraseña" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Nombres" />
+                  <TextField fx:id="txtNombres" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="83.0" prefWidth="345.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Apellidos" />
+                  <TextField fx:id="txtApellidos" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Genero" />
+                  <ComboBox fx:id="cboGenero" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Correo" />
+                  <TextField fx:id="txtCorreo" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Fecha Nacimiento" />
+                  <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+               <children>
+                  <Button fx:id="btnEditar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Styles/editar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="btnEliminar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Styles/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="tblFiltrar" layoutX="490.0" layoutY="115.0" prefHeight="441.0" prefWidth="738.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="883.0" layoutY="576.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/exit.png" />
+               </image></ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnReportes" contentDisplay="GRAPHIC_ONLY" layoutX="712.0" layoutY="575.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0" />
+      <ImageView fx:id="imgUsuario" fitHeight="92.0" fitWidth="117.0" layoutX="1126.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Styles/user2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="107.0" fitWidth="200.0" layoutX="1037.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/tecverde.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="122.0" fitWidth="124.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/tec-logo1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="753.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Styles/report.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="994.0" layoutY="46.0" prefHeight="27.0" prefWidth="56.0" styleClass="label-bright" text="Usuario" />
+      <Label layoutX="137.0" layoutY="33.0" styleClass="label-header" text="Interfaz de Administrador" />
+   </children>
+</AnchorPane>

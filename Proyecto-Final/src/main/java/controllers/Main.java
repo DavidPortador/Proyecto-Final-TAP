@@ -15,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
+import usuarios.Administradores;
 import usuarios.Medicos;
 import java.io.IOException;
 import java.net.URL;
@@ -79,20 +80,20 @@ public class Main implements Initializable {
         primaryStage.show();
     }
     void showRegistro(ActionEvent event) throws IOException {
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Registro");
+        Stage resgistro = new Stage();
+        resgistro.setTitle("Registro");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/crearCuenta.fxml"));
         Register register = new Register();
         loader.setController(register);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        resgistro.setMaximized(true);
         // Le pasa como parametro el stage actual y nueva
         Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         stage.close();
         // Muestra el nuevo stage
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        resgistro.setScene(scene);
+        resgistro.show();
     }
     void valiLogin(ActionEvent event) throws SQLException, IOException {
         String user, pass, tipoUsuario = null;
@@ -113,11 +114,11 @@ public class Main implements Initializable {
                 if(tipoUsuario.equals("Estudiante")){
                     System.out.println("*Interfaz de estudiante*");
                     vaciar();
-                    showMedico(event);
+                    //showMedico(event);
                 }else if(tipoUsuario.equals("Personal")){
                     System.out.println("*Interfaz de personal*");
                     vaciar();
-                    showMedico(event);
+                    //showMedico(event);
                 }else if(tipoUsuario.equals("Medico")){
                     System.out.println("*Interfaz de medico*");
                     vaciar();
@@ -125,6 +126,7 @@ public class Main implements Initializable {
                 }else if(tipoUsuario.equals("Administrador")){
                     System.out.println("*Interfaz de admin*");
                     vaciar();
+                    showAdministrador(event);
                 }else if(tipoUsuario.equals("Monitoreo")){
                     System.out.println("*Interfaz de monitoreo*");
                     vaciar();
@@ -143,12 +145,30 @@ public class Main implements Initializable {
         loader.setController(medico);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        nueva.setResizable(false);
+        nueva.setMaximized(true);
         nueva.setScene(scene);
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         // Le pasa como parametro el stage actual y nueva
         medico.setStageAnterior(actual);
         medico.setStageActual(nueva);
+        // Muestra el nuevo stage
+        actual.close();
+        nueva.show();
+    }
+    void showAdministrador(ActionEvent event) throws IOException {
+        Stage nueva = new Stage();
+        nueva.setTitle("Interfaz de Administrador");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/administrador.fxml"));
+        Administradores administrador = new Administradores();
+        loader.setController(administrador);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        nueva.setMaximized(true);
+        nueva.setScene(scene);
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        // Le pasa como parametro el stage actual y nueva
+        administrador.setStageAnterior(actual);
+        administrador.setStageActual(nueva);
         // Muestra el nuevo stage
         actual.close();
         nueva.show();

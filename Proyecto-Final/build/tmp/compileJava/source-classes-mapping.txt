@@ -1,5 +1,5 @@
-usuarios/Estudiantes.java
- usuarios.Estudiantes
+controllers/Register.java
+ controllers.Register
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
@@ -8,23 +8,25 @@ usuarios/Medicos.java
  usuarios.Medicos
 medicos/medicos.java
  medicos.medicos
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
 database/UserDAO.java
  database.UserDAO
+controllers/Stages.java
+ controllers.Stages
 medicos/solicitudes.java
  medicos.solicitudes
 modelos/Usuario.java
  modelos.Usuario
-MainApp.java
- MainApp
-usuarios/Personal.java
- usuarios.Personal
-controllers/Stages.java
- controllers.Stages
-controllers/Register.java
- controllers.Register
 database/MySQLConnection.java
  database.MySQLConnection
+MainApp.java
+ MainApp
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+usuarios/Personal.java
+ usuarios.Personal
+usuarios/Administradores.java
+ usuarios.Administradores
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2

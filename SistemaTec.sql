@@ -320,6 +320,11 @@ insert into Directivo values
 	('NDI02', 'DI002', 11),
 	('NDI03', 'DI003', 12);
 
+# Se crearan algunos pacientes iniciales a manera de prueba
+
+insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
+	();
+
 # Se usara una vista para generar reportes (pendiente...)
 
 #create view Reportes();

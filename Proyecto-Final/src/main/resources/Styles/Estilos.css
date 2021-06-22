@@ -81,10 +81,11 @@
 .table-view {
     -fx-base: #1d1d1d;
     -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: transparent;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
+    -fx-border-color: green;
 }
 .table-view .column-header-background {
     -fx-background-color: transparent;
@@ -177,6 +178,7 @@
 }
 .list-view{
     -fx-background-color: transparent ;
+    -fx-border-color: green;
 }
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
     -fx-background-color: linear-gradient(#33ef00 0%, #06c60f 25%, #32b337 75%, #234521 100%);

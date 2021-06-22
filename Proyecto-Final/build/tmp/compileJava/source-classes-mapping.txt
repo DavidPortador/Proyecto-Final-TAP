@@ -4,27 +4,27 @@ encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
-controllers/Register.java
- controllers.Register
+usuarios/Medicos.java
+ usuarios.Medicos
 medicos/medicos.java
  medicos.medicos
-controllers/Stages.java
- controllers.Stages
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
 database/UserDAO.java
  database.UserDAO
 medicos/solicitudes.java
  medicos.solicitudes
 modelos/Usuario.java
  modelos.Usuario
-usuarios/Personal.java
- usuarios.Personal
 MainApp.java
  MainApp
+usuarios/Personal.java
+ usuarios.Personal
+controllers/Stages.java
+ controllers.Stages
+controllers/Register.java
+ controllers.Register
 database/MySQLConnection.java
  database.MySQLConnection
-usuarios/Medicos.java
- usuarios.Medicos
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2

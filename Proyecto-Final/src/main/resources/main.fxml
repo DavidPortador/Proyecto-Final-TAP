@@ -22,13 +22,13 @@
                     <Image url="/img/tec-logo1.png" />
                 </image>
             </ImageView>
-            <Label style="-fx-font-size:18; -fx-font-color:white;" text="Iniciar Sesion">
+            <Label styleClass="label-bright" text="Iniciar Sesion">
                 <graphic>
                     <FontAwesomeIconView glyphName="VCARD" fill="white"/>
                 </graphic>
             </Label>
             <HBox alignment="CENTER" spacing="10">
-                <Label text="User">
+                <Label styleClass="label-bright" text="User">
                     <graphic>
                         <FontAwesomeIconView glyphName="USER" fill="white"/>
                     </graphic>
@@ -36,7 +36,7 @@
                 <TextField fx:id="txtUser" prefWidth="200" promptText="Usuario o Correo"/>
             </HBox>
             <HBox alignment="CENTER" spacing="10">
-                <Label text="Pass">
+                <Label styleClass="label-bright" text="Pass">
                     <graphic>
                         <FontAwesomeIconView glyphName="KEY" fill="white"/>
                     </graphic>

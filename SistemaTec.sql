@@ -320,12 +320,26 @@ insert into Directivo values
 	('NDI02', 'DI002', 11),
 	('NDI03', 'DI003', 12);
 
-# Se crearan algunos pacientes iniciales a manera de prueba
+# Se crearan algunos pacientes iniciales a manera de prueba en el sistema
 
 insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
-	();
+	# Estudiantes ###,##,###
+	('19010111', 'contraES1', 'Miguel', 'Martinez', 'M', 'exampleES1@example.com', '2000-10-10'),
+	# Personal ###,##,###
+	('29050111', 'contraES2', 'Diana', 'Hernandez', 'F', 'exampleES2@example.com', '2000-12-04');
+
+insert into Asignacion values 
+	# Estudiantes ###,##,###
+	('ES001', 13, 'Estudiante'),
+	# Personal ###,##,###
+	('PE001', 14, 'Personal');
+
+insert into Estudiante values ('10111', 'ES001', 13, 'CA001');
+
+insert into Personal values ('50111', 'PE001', 14, 'DE001');
 
 # Se usara una vista para generar reportes (pendiente...)
+
 
 #create view Reportes();
 

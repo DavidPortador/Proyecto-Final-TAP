@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="686.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="686.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="36.0" layoutY="115.0" prefHeight="551.0" prefWidth="371.0">
          <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="No Usuario" />
+                  <TextField fx:id="txtnoUsuario" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Usuario" />
@@ -73,12 +78,7 @@
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="tblFiltrar" layoutX="490.0" layoutY="115.0" prefHeight="441.0" prefWidth="738.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TableView fx:id="tblFiltrar" layoutX="441.0" layoutY="115.0" prefHeight="441.0" prefWidth="787.0" />
       <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="883.0" layoutY="576.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">

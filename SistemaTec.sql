@@ -149,6 +149,7 @@ create table Archivos(cveArchivos varchar(5) not null,
 create table Consulta(noConsulta int not null auto_increment,
 			sintomas varchar(100),
 			fecha date,
+			hora varchar(10),
 			tipo varchar(30),
 			cveAsignacion varchar(5) not null,
 			noUsuario int not null,
@@ -337,6 +338,27 @@ insert into Asignacion values
 insert into Estudiante values ('10111', 'ES001', 13, 'CA001');
 
 insert into Personal values ('50111', 'PE001', 14, 'DE001');
+
+# Se crearan casos de prueba iniciales en el sistema
+
+insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values 
+	('Aceptado', 'Virtual', 'ES001', 13, 'NME01'),
+	('Espera', 'Virtual', 'PE001', 14, 'NME02');
+
+insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula) values
+	('Dolor de Cabeza', '2021-10-01', '10:20', 'Virtual', 'ES001', 13, 'NME01');
+
+insert into Receta (indicaciones, noConsulta) values
+	('Una pastilla cada 8 hrs', 1);
+
+insert into Medicamento (cveMedicamento, nombre, cantidad, noReceta) values
+	('00001', 'Paracetamol', 24, 1);
+
+insert into Orden (resultado, noConsulta, noCedula,	cvePrueba) values 
+	('Contagiado', 1, 'NME01', 'PR001');
+
+insert into Alerta (descripcion, noOrden) values 
+	('Contagiado de Covid-19', 1);
 
 # Se usara una vista para generar reportes (pendiente...)
 

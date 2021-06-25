@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <AnchorPane prefHeight="692.0" prefWidth="1017.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="247.0" layoutY="28.0" styleClass="label-header" stylesheets="@Styles/Estilos.css" text="Crear cuenta Estudiante/Personal" />
@@ -23,8 +21,30 @@
       <Button layoutX="863.0" layoutY="627.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Crear" />
       <Button layoutX="696.0" layoutY="627.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Cancelar" />
       <Label layoutX="127.0" layoutY="328.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Foto de Perfil" />
-      <VBox layoutX="321.0" layoutY="126.0" prefHeight="475.0" prefWidth="645.0" spacing="40.0">
+      <VBox layoutX="321.0" layoutY="126.0" prefHeight="475.0" prefWidth="645.0" spacing="20.0">
          <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
+               <children>
+                  <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Tipo de Usuario" />
+                  <ComboBox prefHeight="23.0" prefWidth="400.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
+               <children>
+                  <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Carrera/Depa" />
+                  <ComboBox prefHeight="23.0" prefWidth="400.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
+               <children>
+                  <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="noCont/noPersonal" />
+                  <TextField prefHeight="31.0" prefWidth="400.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                <children>
                   <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Usuario" />

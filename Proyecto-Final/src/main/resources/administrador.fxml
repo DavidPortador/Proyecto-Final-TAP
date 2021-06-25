@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 <AnchorPane prefHeight="686.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="36.0" layoutY="115.0" prefHeight="551.0" prefWidth="371.0">
@@ -56,6 +54,12 @@
                   <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="200.0" />
                </children>
             </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <Label styleClass="label-bright" text="Auxiliar" />
+                  <ComboBox fx:id="cboAux" prefHeight="35.0" prefWidth="200.0" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
                <children>
                   <Button fx:id="btnEditar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0">
@@ -87,7 +91,15 @@
                </image></ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnReportes" contentDisplay="GRAPHIC_ONLY" layoutX="712.0" layoutY="575.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0" />
+      <Button fx:id="btnReportes" contentDisplay="GRAPHIC_ONLY" layoutX="712.0" layoutY="575.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0" >
+         <graphic>
+            <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="753.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/report.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <ImageView fx:id="imgUsuario" fitHeight="92.0" fitWidth="117.0" layoutX="1126.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Styles/user2.png" />
@@ -101,11 +113,6 @@
       <ImageView fitHeight="122.0" fitWidth="124.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/tec-logo1.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="753.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Styles/report.png" />
          </image>
       </ImageView>
       <Label layoutX="994.0" layoutY="46.0" prefHeight="27.0" prefWidth="56.0" styleClass="label-bright" text="Usuario" />

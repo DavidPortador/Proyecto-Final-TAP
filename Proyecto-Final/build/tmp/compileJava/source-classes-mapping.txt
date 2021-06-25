@@ -8,24 +8,27 @@ usuarios/Medicos.java
  usuarios.Medicos
 medicos/medicos.java
  medicos.medicos
-database/UserDAO.java
- database.UserDAO
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
 controllers/Stages.java
  controllers.Stages
 medicos/solicitudes.java
  medicos.solicitudes
-modelos/Usuario.java
- modelos.Usuario
+database/UserDAO.java
+ database.UserDAO
 database/MySQLConnection.java
  database.MySQLConnection
 MainApp.java
  MainApp
-usuarios/Estudiantes.java
- usuarios.Estudiantes
 usuarios/Personal.java
  usuarios.Personal
+modelos/modeloUsers.java
+ modelos.modeloUsers
+modelos/Usuario.java
+ modelos.Usuario
 usuarios/Administradores.java
  usuarios.Administradores
+ usuarios.Administradores$1
 controllers/Main.java
  controllers.Main
  controllers.Main$1

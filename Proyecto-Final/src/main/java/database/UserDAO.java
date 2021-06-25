@@ -3,6 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.Usuario;
+import modelos.modeloUsers;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,25 +38,31 @@ public class UserDAO {
         }
         return usuario;
     }
-    public ObservableList<Usuario> getTableDep(String p_employee) throws SQLException {
-        ObservableList <Usuario> listEmployees = FXCollections.observableArrayList();
+    public ObservableList <modeloUsers> getTableAdmin() throws SQLException {
+        ObservableList <modeloUsers> listUsuarios = FXCollections.observableArrayList();
         try {
-            String query = "select * from employees, dept_emp where dept_emp.dept_no like '" +
-                    v_condicion +"' and employees.emp_no = dept_emp.emp_no limit 50";
+            String query = "select U.noUsuario, A.nombre, U.usuario, U.contra, U.nombres, U.apellidos from Usuario U inner join Asignacion A on U.noUsuario = A.noUsuario where A.nombre = 'Estudiante' or A.nombre = 'Personal'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                listEmployees.add(new Employee(
-                        rs.getInt("emp_no"),
-                        rs.getDate("birth_date"),
-                        rs.getString("first_name"),
-                        rs.getString("last_name"),
-                        rs.getString("gender").toString().charAt(0),
-                        rs.getDate("hire_date")));
+                listUsuarios.add(new modeloUsers(
+                        rs.getInt("noUsuario"),
+                        rs.getString("nombre"),
+                        rs.getString("usuario"),
+                        rs.getString("contra"),
+                        rs.getString("nombres"),
+                        rs.getString("apellidos")
+                ));
             }
         } catch (SQLException e) {
             alertMessage("Error","getTableDep", e.getMessage(), Alert.AlertType.ERROR);
         }
-        return listEmployees;
+        return listUsuarios;
+    }
+    public void llenarEstudiantes(ObservableList <modeloUsers> listUsuarios){
+
+    }
+    public void llenarPersonal(){
+
     }
 }

@@ -1,60 +1,106 @@
 package usuarios;
+import database.MySQLConnection;
+import database.UserDAO;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import modelos.Usuario;
-
+import modelos.modeloUsers;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Administradores implements Initializable {
+    UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior, actual;
     @FXML TextField txtnoUsuario, txtUsuario, txtContraseña, txtNombres, txtApellidos, txtCorreo;
-    @FXML
-    TableView tblFiltrar;
+    @FXML Button btnSalir;
+    @FXML TableView tblFiltrar;
     @FXML ComboBox cboGenero;
     @FXML DatePicker dpNacimiento;
     @Override public void initialize(URL location, ResourceBundle resources) {
         initData();
+        initButtons();
     }
     void initData(){
-
+        createTable();
+    }
+    private void initButtons() {
+        btnSalir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                stage.close();
+                anterior.show();
+            }
+        });
     }
     private void createTable() {
-        ObservableList <Usuario> usuarios;
+        ObservableList <modeloUsers> usuarios;
         tblFiltrar.getItems().clear();
         tblFiltrar.getColumns().clear();
         TableColumn noUsuario = new TableColumn("No");
-        TableColumn cveUsuario = new TableColumn("Clave");
+        TableColumn asignacion = new TableColumn("Asignacion");
+        asignacion.setMinWidth(100);
         TableColumn usuario = new TableColumn("Usuario");
-        TableColumn contra = new TableColumn("Contrasenia");
-        TableColumn nombre = new TableColumn("Nombres");
-        TableColumn apellido = new TableColumn("Apellidos");
-        TableColumn genero = new TableColumn("Genero");
-        TableColumn correo = new TableColumn("Correo");
-        TableColumn fecha = new TableColumn("Fecha");
-
-        noUsuario.setCellValueFactory(new PropertyValueFactory<>("No"));
-        cveUsuario.setCellValueFactory(new PropertyValueFactory<>("Clave"));
-        usuario.setCellValueFactory(new PropertyValueFactory<>("Usuario"));
-        contra.setCellValueFactory(new PropertyValueFactory<>("Contrasenia"));
-        nombre.setCellValueFactory(new PropertyValueFactory<>("Nombres"));
-        apellido.setCellValueFactory(new PropertyValueFactory<>("Apellidos"));
-        genero.setCellValueFactory(new PropertyValueFactory<>("Genero"));
-        correo.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-        fecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
-
+        usuario.setMinWidth(100);
+        TableColumn contra = new TableColumn("Contra");
+        contra.setMinWidth(100);
+        TableColumn nombres = new TableColumn("Nombres");
+        nombres.setMinWidth(100);
+        TableColumn apellidos = new TableColumn("Apellidos");
+        apellidos.setMinWidth(100);
+        noUsuario.setCellValueFactory(new PropertyValueFactory<>("noUsuario"));
+        asignacion.setCellValueFactory(new PropertyValueFactory<>("asignacion"));
+        usuario.setCellValueFactory(new PropertyValueFactory<>("usuario"));
+        contra.setCellValueFactory(new PropertyValueFactory<>("contra"));
+        nombres.setCellValueFactory(new PropertyValueFactory<>("nombres"));
+        apellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
         tblFiltrar.getColumns()
-                .addAll(noUsuario, cveUsuario, usuario, contra, nombre, apellido, genero, correo, fecha);
+                .addAll(noUsuario, asignacion, usuario, contra, nombres, apellidos);
         try {
-            usuarios = employeeDAO.getTableDep(employee);
-            lblEmployees.setText(employee);
-            tblEmployees.setItems(employees);
+            usuarios = userDAO.getTableAdmin();
+            tblFiltrar.setItems(usuarios);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+    private void valiVacio(){
+        if(txtnoUsuario.getText().isEmpty()){
+            alertMessage("noUsuario",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(txtUsuario.getText().isEmpty()){
+            alertMessage("Usuario",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(txtContraseña.getText().isEmpty()){
+            alertMessage("Contraseña",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(txtNombres.getText().isEmpty()){
+            alertMessage("Nombres",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(txtApellidos.getText().isEmpty()){
+            alertMessage("Apellidos",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(txtCorreo.getText().isEmpty()){
+            alertMessage("Correo",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(cboGenero.getSelectionModel().getSelectedItem().equals("")){
+            alertMessage("Genero",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }else if(dpNacimiento.getEditor().getText().isEmpty()){
+            alertMessage("Nacimiento",null,
+                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
+        }
+    }
+    private void alertMessage(String title, String Header, String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(Header);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;

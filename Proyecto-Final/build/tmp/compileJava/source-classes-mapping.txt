@@ -27,10 +27,10 @@ usuarios/Administradores.java
  usuarios.Administradores$3
 database/UserDAO.java
  database.UserDAO
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
-controllers/Register.java
- controllers.Register
- controllers.Register$1

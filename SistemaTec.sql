@@ -325,25 +325,53 @@ insert into Directivo values
 
 insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
 	# Estudiantes ###,##,###
-	('19010111', 'contraES1', 'Miguel', 'Martinez', 'M', 'exampleES1@example.com', '2000-10-10'),
+	# 13 - 17
+	('19010111', 'contraES1', 'Miguel', 'Vazquez', 'M', 'exampleES1@example.com', '2000-10-10'),
+	('19010112', 'contraES2', 'Jose', 'Garcia', 'M', 'exampleES2@example.com', '2000-03-08'),
+	('19010113', 'contraES3', 'Ana', 'Castillo', 'F', 'exampleES3@example.com', '2000-04-03'),
+	('19010114', 'contraES4', 'Maria', 'Zavala', 'F', 'exampleES4@example.com', '2000-10-06'),
+	('19010115', 'contraES5', 'Jaime', 'Cardenas', 'M', 'exampleES5@example.com', '2000-02-01'),
 	# Personal ###,##,###
-	('29050111', 'contraES2', 'Diana', 'Hernandez', 'F', 'exampleES2@example.com', '2000-12-04');
+	# 18 - 22
+	('29050111', 'contraPE1', 'Diana', 'Hernandez', 'F', 'examplePE1@example.com', '2000-12-04'),
+	('29050112', 'contraPE2', 'Pablo', 'Hernandez', 'M', 'examplePE2@example.com', '2000-03-03'),
+	('29050113', 'contraPE3', 'Camila', 'Hernandez', 'F', 'examplePE3@example.com', '2000-12-02'),
+	('29050114', 'contraPE4', 'Arturo', 'Hernandez', 'M', 'examplePE4@example.com', '2000-04-01'),
+	('29050115', 'contraPE5', 'Monica', 'Hernandez', 'F', 'examplePE5@example.com', '2000-12-04');
 
 insert into Asignacion values 
 	# Estudiantes ###,##,###
 	('ES001', 13, 'Estudiante'),
+	('ES002', 14, 'Estudiante'),
+	('ES003', 15, 'Estudiante'),
+	('ES004', 16, 'Estudiante'),
+	('ES005', 17, 'Estudiante'),
 	# Personal ###,##,###
-	('PE001', 14, 'Personal');
+	('PE001', 18, 'Personal'),
+	('PE002', 19, 'Personal'),
+	('PE003', 20, 'Personal'),
+	('PE004', 21, 'Personal'),
+	('PE005', 22, 'Personal');
 
-insert into Estudiante values ('10111', 'ES001', 13, 'CA001');
+insert into Estudiante values 
+	('10111', 'ES001', 13, 'CA001'),
+	('10112', 'ES002', 14, 'CA002'),
+	('10113', 'ES003', 15, 'CA003'),
+	('10114', 'ES004', 16, 'CA004'),
+	('10115', 'ES005', 17, 'CA004');
 
-insert into Personal values ('50111', 'PE001', 14, 'DE001');
+insert into Personal values 
+	('50111', 'PE001', 18, 'DE001'),
+	('50112', 'PE002', 19, 'DE002'),
+	('50113', 'PE003', 20, 'DE003'),
+	('50114', 'PE004', 21, 'DE004'),
+	('50115', 'PE005', 22, 'DE005');
 
 # Se crearan casos de prueba iniciales en el sistema
 
 insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values 
 	('Aceptado', 'Virtual', 'ES001', 13, 'NME01'),
-	('Espera', 'Virtual', 'PE001', 14, 'NME02');
+	('Espera', 'Virtual', 'PE001', 18, 'NME02');
 
 insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula) values
 	('Dolor de Cabeza', '2021-10-01', '10:20', 'Virtual', 'ES001', 13, 'NME01');

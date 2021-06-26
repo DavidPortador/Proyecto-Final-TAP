@@ -14,7 +14,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import usuarios.Administradores;
+import usuarios.Estudiantes;
 import usuarios.Medicos;
+import usuarios.Personal;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,7 +36,7 @@ public class Main implements Initializable {
                 try {
                     valiLogin(event);
                 } catch (SQLException | IOException e) {
-                    alertMessage("Error","Error de Inicio", e.getMessage(), Alert.AlertType.ERROR);
+                    alertMessage("Error","valiLogin", e.getMessage(), Alert.AlertType.ERROR);
                 }
             }
         });
@@ -42,26 +45,10 @@ public class Main implements Initializable {
                 try {
                     showRegistro(event);
                 } catch (IOException e) {
-                    alertMessage("Error","Error de de Creacion", e.getMessage(), Alert.AlertType.ERROR);
+                    alertMessage("Error","crear cuenta", e.getMessage(), Alert.AlertType.ERROR);
                 }
             }
         });
-    }
-    void showRegistro(ActionEvent event) throws IOException {
-        Stage resgistro = new Stage();
-        resgistro.setTitle("Registro");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/crearCuenta.fxml"));
-        Register register = new Register();
-        loader.setController(register);
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        resgistro.setMaximized(true);
-        // Le pasa como parametro el stage actual y nueva
-        Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
-        stage.close();
-        // Muestra el nuevo stage
-        resgistro.setScene(scene);
-        resgistro.show();
     }
     void valiLogin(ActionEvent event) throws SQLException, IOException {
         String user, pass, tipoUsuario = null;
@@ -82,11 +69,11 @@ public class Main implements Initializable {
                 if(tipoUsuario.equals("Estudiante")){
                     System.out.println("*Interfaz de estudiante*");
                     vaciar();
-                    //showEstudiantes(event);
+                    showEstudiantes(event);
                 }else if(tipoUsuario.equals("Personal")){
                     System.out.println("*Interfaz de personal*");
                     vaciar();
-                    //showPersonal(event);
+                    showPersonal(event);
                 }else if(tipoUsuario.equals("Medico")){
                     System.out.println("*Interfaz de medico*");
                     vaciar();
@@ -107,22 +94,55 @@ public class Main implements Initializable {
             }
         }
     }
-    void showAdministrador(ActionEvent event) throws IOException {
-        Stage admin = new Stage();
-        admin.setTitle("Interfaz de Administrador");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/administrador.fxml"));
-        Administradores administrador = new Administradores();
-        loader.setController(administrador);
+    void showRegistro(ActionEvent event) throws IOException {
+        Stage resgistro = new Stage();
+        resgistro.setTitle("Registro");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/crearCuenta.fxml"));
+        Register register = new Register();
+        loader.setController(register);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        admin.setMaximized(true);
-        admin.setScene(scene);
-        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        resgistro.setMaximized(true);
         // Le pasa como parametro el stage actual y nueva
-        administrador.setStageAnterior(actual);
+        Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        stage.close();
+        // Muestra el nuevo stage
+        resgistro.setScene(scene);
+        resgistro.show();
+    }
+    void showEstudiantes(ActionEvent event) throws IOException {
+        Stage estudiantes = new Stage();
+        estudiantes.setTitle("Interfaz de Estudiante");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/estudiantes.fxml"));
+        Estudiantes estudiante = new Estudiantes();
+        loader.setController(estudiante);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        estudiantes.setMaximized(true);
+        estudiantes.setScene(scene);
+        // Le pasa como parametro el stage actual y nueva
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        estudiante.setStageAnterior(actual);
         // Muestra el nuevo stage
         actual.close();
-        admin.show();
+        estudiantes.show();
+    }
+    void showPersonal(ActionEvent event) throws IOException {
+        Stage SPersonal = new Stage();
+        SPersonal.setTitle("Interfaz de Personal");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/personal.fxml"));
+        Personal personal = new Personal();
+        loader.setController(personal);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        SPersonal.setMaximized(true);
+        SPersonal.setScene(scene);
+        // Le pasa como parametro el stage actual y nueva
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        personal.setStageAnterior(actual);
+        // Muestra el nuevo stage
+        actual.close();
+        SPersonal.show();
     }
     void showMedico(ActionEvent event) throws IOException {
         Stage medicos = new Stage();
@@ -140,6 +160,23 @@ public class Main implements Initializable {
         // Muestra el nuevo stage
         actual.close();
         medicos.show();
+    }
+    void showAdministrador(ActionEvent event) throws IOException {
+        Stage admin = new Stage();
+        admin.setTitle("Interfaz de Administrador");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/administrador.fxml"));
+        Administradores administrador = new Administradores();
+        loader.setController(administrador);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        admin.setMaximized(true);
+        admin.setScene(scene);
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        // Le pasa como parametro el stage actual y nueva
+        administrador.setStageAnterior(actual);
+        // Muestra el nuevo stage
+        actual.close();
+        admin.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

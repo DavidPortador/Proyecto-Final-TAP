@@ -2,6 +2,9 @@
     -fx-background-image:url("preview.jpg");
     -fx-background-size: 100% 100%;
 }
+.date-picker{
+    -fx-background-color: green;
+}
 .combo-box{
     -fx-background-color: black;
     -fx-border-width: 1px;
@@ -14,9 +17,6 @@
 }
 .combo-box:hover{
     -fx-text-fill: white;
-}
-.date-picker{
-    -fx-background-color: green;
 }
 .combo-box-base:hover{
     -fx-border-color: green;

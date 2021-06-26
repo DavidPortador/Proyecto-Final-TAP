@@ -21,7 +21,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Contraseña" />
-                  <TextField fx:id="txtContraseña" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtContra" prefHeight="35.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
@@ -39,7 +39,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Genero" />
-                  <ComboBox fx:id="cboGenero" prefHeight="35.0" prefWidth="200.0" />
+                  <ComboBox fx:id="cbGenero" prefHeight="35.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
@@ -56,8 +56,9 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <Label styleClass="label-bright" text="Auxiliar" />
-                  <ComboBox fx:id="cboAux" prefHeight="35.0" prefWidth="200.0" />
+                  <Label fx:id="lblAux" styleClass="label-bright" text="Asignacion" />
+                  <ComboBox fx:id="cbAux" prefHeight="35.0" prefWidth="200.0" >
+                  </ComboBox>
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
@@ -83,14 +84,6 @@
          </children>
       </VBox>
       <TableView fx:id="tblFiltrar" layoutX="441.0" layoutY="115.0" prefHeight="441.0" prefWidth="787.0" />
-      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="883.0" layoutY="576.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0">
-         <graphic>
-            <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Styles/exit.png" />
-               </image></ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="btnReportes" contentDisplay="GRAPHIC_ONLY" layoutX="712.0" layoutY="575.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0" >
          <graphic>
             <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="753.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
@@ -98,6 +91,14 @@
                   <Image url="@Styles/report.png" />
                </image>
             </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="883.0" layoutY="576.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Styles/exit.png" />
+               </image></ImageView>
          </graphic>
       </Button>
       <ImageView fx:id="imgUsuario" fitHeight="92.0" fitWidth="117.0" layoutX="1126.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -115,7 +116,6 @@
             <Image url="@img/tec-logo1.png" />
          </image>
       </ImageView>
-
       <Label layoutX="994.0" layoutY="46.0" prefHeight="27.0" prefWidth="56.0" styleClass="label-bright" text="Usuario" />
       <Label layoutX="137.0" layoutY="33.0" styleClass="label-header" text="Interfaz de Administrador" />
    </children>

@@ -12,7 +12,4 @@ public class Medicos implements Initializable {
     public void setStageAnterior(Stage stage){
         anterior = stage;
     }
-    public void setStageActual(Stage stage){
-        actual = stage;
-    }
 }

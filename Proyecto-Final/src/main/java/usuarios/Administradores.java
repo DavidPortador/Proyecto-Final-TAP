@@ -1,6 +1,7 @@
 package usuarios;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import modelos.Usuario;
 import modelos.modeloUsers;
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,19 +19,67 @@ import java.util.ResourceBundle;
 public class Administradores implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior, actual;
-    @FXML TextField txtnoUsuario, txtUsuario, txtContraseña, txtNombres, txtApellidos, txtCorreo;
-    @FXML Button btnSalir;
-    @FXML TableView tblFiltrar;
-    @FXML ComboBox cboGenero;
+    @FXML TextField txtnoUsuario, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo;
+    @FXML Button btnEditar, btnEliminar, btnSalir;
+    @FXML ComboBox cbGenero, cbAux;
     @FXML DatePicker dpNacimiento;
+    @FXML TableView tblFiltrar;
+    @FXML Label lblAux;
     @Override public void initialize(URL location, ResourceBundle resources) {
+        defaultMode();
         initData();
         initButtons();
     }
     void initData(){
         createTable();
+        llenarGenero();
+        tblFiltrar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent event) {
+                if(event.getClickCount() == 1){
+                    modeloUsers modeloUsers = (modeloUsers) tblFiltrar.getSelectionModel().getSelectedItem();
+                    if (modeloUsers == null) {
+                        alertMessage("Error", "Error al cargar usuario",
+                                "No se selecciono ningun Usuario", Alert.AlertType.ERROR);
+                    }else {
+                        String asignacion;
+                        try {
+                            editMode();
+                            Usuario usuario = userDAO.getUsuario(modeloUsers);
+                            System.out.println(usuario.getNoUsuario() + " " + usuario.getUsuario() + " " + usuario.getContra());
+                            txtnoUsuario.setText(usuario.getNoUsuario() + "");
+                            txtUsuario.setText(usuario.getUsuario());
+                            txtContra.setText(usuario.getContra());
+                            txtNombres.setText(usuario.getNombres());
+                            txtApellidos.setText(usuario.getApellidos());
+                            cbGenero.setValue(usuario.getGenero());
+                            txtCorreo.setText(usuario.getCorreo());
+                            dpNacimiento.setValue(usuario.getFechaNac().toLocalDate());
+                            asignacion = userDAO.getAsignacion(usuario.getUsuario(), usuario.getContra());
+                            if (asignacion.equals("Estudiante")) {
+                                lblAux.setText("Carrera");
+                                llenarSelecCarrera(usuario.getNoUsuario());
+                            } else if (asignacion.equals("Personal")) {
+                                lblAux.setText("Departamento");
+                                llenarSelecDepartamento(usuario.getNoUsuario());
+                            }
+                        } catch (SQLException e) {
+                            alertMessage("Error", "Error al cargar usuario",
+                                    e.getMessage(), Alert.AlertType.ERROR);
+                        }
+                    }
+                }
+            }
+        });
     }
     private void initButtons() {
+        btnEditar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if(valiVacio()){
+                    System.out.println("lleno");
+                }
+            }
+        });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -37,6 +88,14 @@ public class Administradores implements Initializable {
                 anterior.show();
             }
         });
+    }
+    private void llenarSelecCarrera(int noUsuario) throws SQLException {
+        cbAux.getItems().clear();
+        cbAux.setItems(userDAO.getCarreras());
+        cbAux.setValue(userDAO.getCarrera(noUsuario));
+    }
+    private void llenarSelecDepartamento(int noUsuario){
+        cbAux.getItems().clear();
     }
     private void createTable() {
         ObservableList <modeloUsers> usuarios;
@@ -68,32 +127,57 @@ public class Administradores implements Initializable {
             throwables.printStackTrace();
         }
     }
-    private void valiVacio(){
-        if(txtnoUsuario.getText().isEmpty()){
+    private void llenarGenero() {
+        ObservableList <String> generos = FXCollections.observableArrayList();
+        generos.add("M");
+        generos.add("F");
+        cbGenero.setItems(generos);
+    }
+    private boolean valiVacio(){
+        boolean bandera = false;
+        if(txtnoUsuario.getText().isEmpty())
             alertMessage("noUsuario",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(txtUsuario.getText().isEmpty()){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(txtUsuario.getText().isEmpty())
             alertMessage("Usuario",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(txtContraseña.getText().isEmpty()){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(txtContra.getText().isEmpty())
             alertMessage("Contraseña",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(txtNombres.getText().isEmpty()){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(txtNombres.getText().isEmpty())
             alertMessage("Nombres",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(txtApellidos.getText().isEmpty()){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(txtApellidos.getText().isEmpty())
             alertMessage("Apellidos",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(txtCorreo.getText().isEmpty()){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(txtCorreo.getText().isEmpty())
             alertMessage("Correo",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(cboGenero.getSelectionModel().getSelectedItem().equals("")){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(cbGenero.getSelectionModel().getSelectedItem() == null)
             alertMessage("Genero",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }else if(dpNacimiento.getEditor().getText().isEmpty()){
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else if(dpNacimiento.getEditor().getText().isEmpty())
             alertMessage("Nacimiento",null,
-                    "Revise que los datos sean correctos", Alert.AlertType.ERROR);
-        }
+                    "Campos vacios", Alert.AlertType.ERROR);
+        else
+            bandera = true;
+        return bandera;
+    }
+    private void defaultMode(){
+        txtnoUsuario.setEditable(false);
+        txtUsuario.setEditable(false);
+        txtContra.setEditable(false);
+        txtNombres.setEditable(false);
+        txtApellidos.setEditable(false);
+        cbGenero.getItems().clear();
+        txtCorreo.setEditable(false);
+        dpNacimiento.setEditable(false);
+        lblAux.setText("Asignacion");
+        cbAux.getItems().clear();
+        createTable();
+    }
+    private void editMode(){
+
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

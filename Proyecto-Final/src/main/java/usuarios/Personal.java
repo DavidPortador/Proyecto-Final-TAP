@@ -1,20 +1,20 @@
 package usuarios;
 import encuesta.Encuesta;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Personal implements Initializable {
+    /*
+    Cada que entre aun estudiante/personal revisar si tiene alertas
+    */
     Stage anterior, actual;
     @Override
     public void initialize(URL location, ResourceBundle resources) {

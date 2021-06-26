@@ -35,13 +35,13 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
-                              <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Carrera/Depa" />
+                              <Label fx:id="lblCD" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="aux1" />
                               <ComboBox fx:id="cbAsignacion" prefHeight="23.0" prefWidth="200.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
-                              <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="noCont/noPersonal" />
+                              <Label fx:id="lblNCP" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="aux1" />
                               <TextField fx:id="txtNo_PE" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />

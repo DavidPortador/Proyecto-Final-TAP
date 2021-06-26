@@ -20,9 +20,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
-    /*
-    Cada que entre aun estudiante/personal revisar si tiene alertas
-    */
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     @FXML TextField txtUser;
     @FXML PasswordField txtPass;

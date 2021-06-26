@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Estudiantes implements Initializable {
+    /*
+    Cada que entre aun estudiante/personal revisar si tiene alertas
+    */
     Stage anterior, actual;
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -112,4 +112,18 @@ public class UserDAO {
         }
         return listCarreras;
     }
+    public ObservableList <String> getDepas() throws SQLException {
+        ObservableList <String> listDepas = FXCollections.observableArrayList();
+        try {
+            String query = "select nombre from Departamento";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listDepas.add(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getDepas", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listDepas;
+    }
 }

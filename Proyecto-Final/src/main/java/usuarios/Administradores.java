@@ -20,7 +20,7 @@ public class Administradores implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior, actual;
     @FXML TextField txtnoUsuario, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo;
-    @FXML Button btnEditar, btnEliminar, btnSalir;
+    @FXML Button btnEditar, btnEliminar, btnReportes, btnSalir;
     @FXML ComboBox cbGenero, cbAux;
     @FXML DatePicker dpNacimiento;
     @FXML TableView tblFiltrar;
@@ -58,9 +58,11 @@ public class Administradores implements Initializable {
                             if (asignacion.equals("Estudiante")) {
                                 lblAux.setText("Carrera");
                                 llenarSelecCarrera(usuario.getNoUsuario());
+                                editMode();
                             } else if (asignacion.equals("Personal")) {
                                 lblAux.setText("Departamento");
                                 llenarSelecDepartamento(usuario.getNoUsuario());
+                                editMode();
                             }
                         } catch (SQLException e) {
                             alertMessage("Error", "Error al cargar usuario",
@@ -94,8 +96,10 @@ public class Administradores implements Initializable {
         cbAux.setItems(userDAO.getCarreras());
         cbAux.setValue(userDAO.getCarrera(noUsuario));
     }
-    private void llenarSelecDepartamento(int noUsuario){
+    private void llenarSelecDepartamento(int noUsuario) throws SQLException {
         cbAux.getItems().clear();
+        cbAux.setItems(userDAO.getDepas());
+        cbAux.setValue(userDAO.getDepa(noUsuario));
     }
     private void createTable() {
         ObservableList <modeloUsers> usuarios;
@@ -164,20 +168,33 @@ public class Administradores implements Initializable {
         return bandera;
     }
     private void defaultMode(){
-        txtnoUsuario.setEditable(false);
-        txtUsuario.setEditable(false);
-        txtContra.setEditable(false);
-        txtNombres.setEditable(false);
-        txtApellidos.setEditable(false);
-        cbGenero.getItems().clear();
-        txtCorreo.setEditable(false);
-        dpNacimiento.setEditable(false);
+        txtnoUsuario.setDisable(true);
+        txtUsuario.setDisable(true);
+        txtContra.setDisable(true);
+        txtNombres.setDisable(true);
+        txtApellidos.setDisable(true);
+        cbGenero.setDisable(true);
+        txtCorreo.setDisable(true);
+        dpNacimiento.setDisable(true);
+        cbAux.setDisable(true);
+        btnEditar.setDisable(true);
+        btnEliminar.setDisable(true);
         lblAux.setText("Asignacion");
         cbAux.getItems().clear();
         createTable();
     }
     private void editMode(){
-
+        txtnoUsuario.setDisable(false);
+        txtUsuario.setDisable(false);
+        txtContra.setDisable(false);
+        txtNombres.setDisable(false);
+        txtApellidos.setDisable(false);
+        cbGenero.setDisable(false);
+        txtCorreo.setDisable(false);
+        dpNacimiento.setDisable(false);
+        cbAux.setDisable(false);
+        btnEditar.setDisable(false);
+        btnEliminar.setDisable(false);
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

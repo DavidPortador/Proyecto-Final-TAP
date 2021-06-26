@@ -20,16 +20,16 @@ modelos/Usuario.java
  modelos.Usuario
 usuarios/Estudiantes.java
  usuarios.Estudiantes
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+database/UserDAO.java
+ database.UserDAO
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
  usuarios.Administradores$2
  usuarios.Administradores$3
-database/UserDAO.java
- database.UserDAO
-controllers/Register.java
- controllers.Register
- controllers.Register$1
 controllers/Main.java
  controllers.Main
  controllers.Main$1

@@ -28,7 +28,7 @@ public class UserDAO {
                 while (rs.next())
                     asignacion = rs.getString("nombre");
             } catch (Exception e) {
-                alertMessage("Error","Error de validacion", e.getMessage(), Alert.AlertType.ERROR);
+                alertMessage("Error","getAsignacion", e.getMessage(), Alert.AlertType.ERROR);
             }
         }
         return asignacion;
@@ -44,10 +44,26 @@ public class UserDAO {
                 while (rs.next())
                     carrera = rs.getString("nombre");
             } catch (Exception e) {
-                alertMessage("Error","Error de validacion", e.getMessage(), Alert.AlertType.ERROR);
+                alertMessage("Error","getDCarrera", e.getMessage(), Alert.AlertType.ERROR);
             }
         }
         return carrera;
+    }
+    public String getDepa(int noUsuario) throws SQLException {
+        String consulta, depa = null;
+        consulta = "select D.nombre from Personal P inner join Departamento D on P.cveDepa = D.cveDepa " +
+                "where P.noUsuario = " + noUsuario;
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    depa = rs.getString("nombre");
+            } catch (Exception e) {
+                alertMessage("Error","getDepa", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return depa;
     }
     public Usuario getUsuario(modeloUsers modeloUser) throws SQLException {
         String consulta;
@@ -70,7 +86,7 @@ public class UserDAO {
                         rs.getString("correo"),
                         rs.getDate("fechaNac"));
             } catch (Exception e) {
-                alertMessage("Error","Error de validacion", e.getMessage(), Alert.AlertType.ERROR);
+                alertMessage("Error","getUsuario", e.getMessage(), Alert.AlertType.ERROR);
             }
         }
         return user;
@@ -94,7 +110,7 @@ public class UserDAO {
                 ));
             }
         } catch (SQLException e) {
-            alertMessage("Error","getTableDep", e.getMessage(), Alert.AlertType.ERROR);
+            alertMessage("Error","getTableAdmin", e.getMessage(), Alert.AlertType.ERROR);
         }
         return listUsuarios;
     }
@@ -108,7 +124,7 @@ public class UserDAO {
                 listCarreras.add(rs.getString("nombre"));
             }
         } catch (SQLException e) {
-            alertMessage("Error","getTableDep", e.getMessage(), Alert.AlertType.ERROR);
+            alertMessage("Error","getCarreras", e.getMessage(), Alert.AlertType.ERROR);
         }
         return listCarreras;
     }

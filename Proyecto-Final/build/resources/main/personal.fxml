@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 <AnchorPane prefHeight="722.0" prefWidth="1148.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fx:id="imageuser" fitHeight="126.0" fitWidth="119.0" layoutX="756.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imageuser" fitHeight="119.0" fitWidth="119.0" layoutX="647.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@Styles/user2.png" />
             </image>
@@ -21,9 +19,9 @@
                 <Image url="@img/tec-logo1.png" />
             </image>
         </ImageView>
-        <Label fx:id="lblNombre" layoutX="599.0" layoutY="99.0" styleClass="label-bright" text="Nombre" />
-        <Label layoutX="174.0" layoutY="55.0" styleClass="label-header" text="Mi cuenta" />
-        <Button fx:id="btnConsultas" contentDisplay="GRAPHIC_ONLY" layoutX="924.0" layoutY="127.0" mnemonicParsing="false" text="Button">
+        <Label fx:id="lblNombre" layoutX="475.0" layoutY="72.0" styleClass="label-bright" text="Nombre" />
+        <Label layoutX="174.0" layoutY="55.0" styleClass="label-header" text="Personal" />
+        <Button fx:id="btnConsultas" contentDisplay="GRAPHIC_ONLY" layoutX="835.0" layoutY="127.0" mnemonicParsing="false" text="Button">
             <graphic>
                 <ImageView fitHeight="111.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -32,7 +30,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="btnEncuesta" contentDisplay="GRAPHIC_ONLY" layoutX="925.0" layoutY="272.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="117.0" text="Button">
+        <Button fx:id="btnEncuesta" contentDisplay="GRAPHIC_ONLY" layoutX="835.0" layoutY="270.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="117.0" text="Button">
             <graphic>
                 <ImageView fitHeight="120.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                     <image>

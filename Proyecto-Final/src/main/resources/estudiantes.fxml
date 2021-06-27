@@ -4,23 +4,23 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="683.0" prefWidth="1210.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="607.0" prefWidth="1205.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/tec-logo1.png" />
          </image>
       </ImageView>
-      <Label layoutX="155.0" layoutY="65.0" prefHeight="67.0" prefWidth="288.0" styleClass="label-header" stylesheets="@Styles/Estilos.css" text="Estudiante" />
+      <Label layoutX="156.0" layoutY="58.0" prefHeight="67.0" prefWidth="288.0" styleClass="label-header" stylesheets="@Styles/Estilos.css" text="Estudiante" />
       <ImageView fitHeight="117.0" fitWidth="117.0" layoutX="842.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Styles/user2.png" />
          </image>
       </ImageView>
       <Label layoutX="645.0" layoutY="72.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Mi nombre" />
-      <ListView layoutX="76.0" layoutY="166.0" prefHeight="420.0" prefWidth="883.0" />
-      <Label layoutX="76.0" layoutY="169.0" prefHeight="21.0" prefWidth="87.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Alertas" textAlignment="CENTER" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="988.0" layoutY="616.0" mnemonicParsing="false" text="Button">
+      <ListView layoutX="76.0" layoutY="199.0" prefHeight="387.0" prefWidth="820.0" />
+      <Label layoutX="76.0" layoutY="158.0" prefHeight="21.0" prefWidth="87.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Alertas" textAlignment="CENTER" />
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="933.0" layoutY="531.0" mnemonicParsing="false" text="Button">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,7 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1117.0" layoutY="616.0" mnemonicParsing="false" text="Button">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1086.0" layoutY="530.0" mnemonicParsing="false" text="Button">
          <graphic>
             <ImageView fitHeight="106.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -38,7 +38,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1057.0" layoutY="166.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="105.0" text="Button">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1002.0" layoutY="97.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="105.0" text="Button">
          <graphic>
             <ImageView fitHeight="122.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1054.0" layoutY="305.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="97.0" text="Button">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1002.0" layoutY="254.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="91.0" text="Button">
          <graphic>
             <ImageView fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1058.0" layoutY="487.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="105.0" text="Button">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="1002.0" layoutY="403.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="105.0" text="Button">
          <graphic>
             <ImageView fitHeight="111.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,8 +65,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="1079.0" layoutY="242.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Consultas" />
-      <Label layoutX="1079.0" layoutY="385.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Encuestas" />
-      <Label layoutX="1083.0" layoutY="567.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Ordenes" />
+      <Label layoutX="1019.0" layoutY="176.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Consultas" />
+      <Label layoutX="1017.0" layoutY="334.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Encuestas" />
+      <Label layoutX="1024.0" layoutY="474.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Ordenes" />
    </children>
 </AnchorPane>

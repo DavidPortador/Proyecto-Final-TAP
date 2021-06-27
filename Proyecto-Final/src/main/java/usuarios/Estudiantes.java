@@ -13,9 +13,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 public class Estudiantes implements Initializable {
     /*
-    Cada que entre aun estudiante/personal revisar si tiene alertas
+    Estudiante y Personal son los mimo casi casi xd
+
+    Cada que entre aun estudiante revisar si tiene alertas
+    crear de manera aleatoria la encuesta para el usuario
+        Los botones son (En ese orden)
+        Alertas
+        Ordenes
+        Consultas -> solicitar o imprimir recestas
     */
-    Stage anterior, actual;
+    Stage anterior;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

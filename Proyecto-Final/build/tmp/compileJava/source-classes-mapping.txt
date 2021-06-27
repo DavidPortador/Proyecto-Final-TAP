@@ -6,8 +6,8 @@ encuesta/Encuesta.java
  encuesta.Encuesta$2
 database/MySQLConnection.java
  database.MySQLConnection
-usuarios/Personal.java
- usuarios.Personal
+database/UserDAO.java
+ database.UserDAO
 medicos/medicos.java
  medicos.medicos
 usuarios/Medicos.java
@@ -18,18 +18,22 @@ medicos/solicitudes.java
  medicos.solicitudes
 modelos/Usuario.java
  modelos.Usuario
-usuarios/Estudiantes.java
- usuarios.Estudiantes
 controllers/Register.java
  controllers.Register
  controllers.Register$1
-database/UserDAO.java
- database.UserDAO
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+usuarios/Personal.java
+ usuarios.Personal
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
  usuarios.Administradores$2
  usuarios.Administradores$3
+usuarios/Directivos.java
+ usuarios.Directivos
 controllers/Main.java
  controllers.Main
  controllers.Main$1

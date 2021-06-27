@@ -17,8 +17,12 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Administradores implements Initializable {
+    /*
+    Agregar un boton de cancelar a la izquierda de reportes
+
+     */
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
-    Stage anterior, actual;
+    Stage anterior;
     @FXML TextField txtnoUsuario, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo;
     @FXML Button btnEditar, btnEliminar, btnReportes, btnSalir;
     @FXML ComboBox cbGenero, cbAux;

@@ -13,10 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import usuarios.Administradores;
-import usuarios.Estudiantes;
-import usuarios.Medicos;
-import usuarios.Personal;
+import usuarios.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,7 +66,7 @@ public class Main implements Initializable {
                 if(tipoUsuario.equals("Estudiante")){
                     System.out.println("*Interfaz de estudiante*");
                     vaciar();
-                    showEstudiantes(event);
+                    showEstudiante(event);
                 }else if(tipoUsuario.equals("Personal")){
                     System.out.println("*Interfaz de personal*");
                     vaciar();
@@ -85,11 +82,11 @@ public class Main implements Initializable {
                 }else if(tipoUsuario.equals("Monitoreo")){
                     System.out.println("*Interfaz de monitoreo*");
                     vaciar();
-                    //showMonitoreo(event);
+                    showMonitoreo(event);
                 }else if(tipoUsuario.equals("Directivo")){
                     System.out.println("*Interfaz de directivo*");
                     vaciar();
-                    //showDirectivo(event);
+                    showDirectivo(event);
                 }
             }
         }
@@ -110,7 +107,7 @@ public class Main implements Initializable {
         resgistro.setScene(scene);
         resgistro.show();
     }
-    void showEstudiantes(ActionEvent event) throws IOException {
+    void showEstudiante(ActionEvent event) throws IOException {
         Stage estudiantes = new Stage();
         estudiantes.setTitle("Interfaz de Estudiante");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/estudiantes.fxml"));
@@ -177,6 +174,40 @@ public class Main implements Initializable {
         // Muestra el nuevo stage
         actual.close();
         admin.show();
+    }
+    void showMonitoreo(ActionEvent event) throws IOException {
+        Stage monitoreo = new Stage();
+        monitoreo.setTitle("Interfaz de Monitoreo");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/monitoreo.fxml"));
+        Monitoreadores monitoreadores = new Monitoreadores();
+        loader.setController(monitoreadores);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        monitoreo.setMaximized(true);
+        monitoreo.setScene(scene);
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        // Le pasa como parametro el stage actual y nueva
+        monitoreadores.setStageAnterior(actual);
+        // Muestra el nuevo stage
+        actual.close();
+        monitoreo.show();
+    }
+    void showDirectivo(ActionEvent event) throws IOException {
+        Stage directivo = new Stage();
+        directivo.setTitle("Interfaz de Monitoreo");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/monitoreo.fxml"));
+        Directivos directivos = new Directivos();
+        loader.setController(directivos);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        directivo.setMaximized(true);
+        directivo.setScene(scene);
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        // Le pasa como parametro el stage actual y nueva
+        directivos.setStageAnterior(actual);
+        // Muestra el nuevo stage
+        actual.close();
+        directivo.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

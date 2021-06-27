@@ -10,8 +10,8 @@ database/UserDAO.java
  database.UserDAO
 medicos/medicos.java
  medicos.medicos
-usuarios/Medicos.java
- usuarios.Medicos
+usuarios/Directivos.java
+ usuarios.Directivos
 MainApp.java
  MainApp
 medicos/solicitudes.java
@@ -21,19 +21,19 @@ modelos/Usuario.java
 controllers/Register.java
  controllers.Register
  controllers.Register$1
-usuarios/Estudiantes.java
- usuarios.Estudiantes
-usuarios/Personal.java
- usuarios.Personal
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
  usuarios.Administradores$2
  usuarios.Administradores$3
-usuarios/Directivos.java
- usuarios.Directivos
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+usuarios/Personal.java
+ usuarios.Personal
+usuarios/Medicos.java
+ usuarios.Medicos
 controllers/Main.java
  controllers.Main
  controllers.Main$1

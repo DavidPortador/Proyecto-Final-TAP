@@ -371,16 +371,26 @@ insert into Personal values
 
 insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values 
 	('Aceptado', 'Virtual', 'ES001', 13, 'NME01'),
-	('Espera', 'Virtual', 'PE001', 18, 'NME02');
+	('Aceptado', 'Virtual', 'ES002', 14, 'NME02'),
+	('Rechazado', 'Presencial', 'PE001', 18, 'NME02'),
+	('Espera', 'Virtual', 'PE002', 19, 'NME03');
 
 insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula) values
-	('Dolor de Cabeza', '2021-10-01', '10:20', 'Virtual', 'ES001', 13, 'NME01');
+	('Dolor de Cabeza', '2021-10-01', '10:20', 'Virtual', 'ES001', 13, 'NME01'),
+	('Fiebre y dolor', '2021-12-05', '12:20', 'Virtual', 'ES002', 14, 'NME02'),
+	('Nauseas', '2021-02-09', '16:00', 'Virtual', 'PE001', 18, 'NME02');
 
 insert into Receta (indicaciones, noConsulta) values
-	('Una pastilla cada 8 hrs', 1);
+	('Una pastilla cada 8 hrs', 1),
+	('Tomar cuando siga el dolor', 1),
+	('No tomar lacteos', 2),
+	('Tomar en ayunas', 3);
 
 insert into Medicamento (cveMedicamento, nombre, cantidad, noReceta) values
-	('00001', 'Paracetamol', 24, 1);
+	('00001', 'Paracetamol', 24, 1),
+	('00002', 'Paracetamol', 24, 2),
+	('00003', 'Paracetamol', 24, 3),
+	('00004', 'Paracetamol', 24, 4);
 
 insert into Orden (resultado, noConsulta, noCedula,	cvePrueba) values 
 	('Contagiado', 1, 'NME01', 'PR001');

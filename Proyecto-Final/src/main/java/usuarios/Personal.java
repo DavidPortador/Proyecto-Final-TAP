@@ -13,9 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 public class Personal implements Initializable {
     /*
-    Cada que entre un personal revisar si tiene alertas
-    Crear de manera aleatoria la encuesta para el usuario
-
+    Cuando se acabe la interfaz de Estudiante se adapa con Personal
     */
     Stage anterior;
     @Override

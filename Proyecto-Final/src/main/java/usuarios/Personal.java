@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 public class Personal implements Initializable {
     /*
-    Cada que entre au personal revisar si tiene alertas
+    Cada que entre un personal revisar si tiene alertas
     Crear de manera aleatoria la encuesta para el usuario
 
     */

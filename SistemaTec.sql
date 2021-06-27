@@ -388,6 +388,9 @@ insert into Orden (resultado, noConsulta, noCedula,	cvePrueba) values
 insert into Alerta (descripcion, noOrden) values 
 	('Contagiado de Covid-19', 1);
 
+insert into AlertaMonitoreada (descripcion, noOrden, noMonitoreo) values
+	('Fuera de Peligro', 1, 'NMO01');
+
 # Se usara una vista para generar reportes (pendiente...)
 
 

@@ -14,18 +14,17 @@ import java.util.ResourceBundle;
 public class Estudiantes implements Initializable {
     /*
     Estudiante y Personal son los mimo casi casi xd
-
-    Cada que entre aun estudiante revisar si tiene alertas
-    crear de manera aleatoria la encuesta para el usuario
+    Cada que entre un estudiante revisar si tiene alertas
+    Crear de manera aleatoria la encuesta para el usuario
         Los botones son (En ese orden)
-        Alertas
-        Ordenes
-        Consultas -> solicitar o imprimir recestas
+            Alertas
+            Ordenes
+            Consultas -> solicitar o imprimir recestas
     */
     Stage anterior;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        
     }
     int getRandom(){
         int v_random;

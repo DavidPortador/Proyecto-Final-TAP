@@ -14,7 +14,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import usuarios.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -51,40 +50,39 @@ public class Main implements Initializable {
         String user, pass, tipoUsuario = null;
         user = txtUser.getText();
         pass = txtPass.getText();
-        if(user.isEmpty() || pass.isEmpty()){
+        if(user.isEmpty() || pass.isEmpty())
             alertMessage("Campos vacios",null,
                     "Revise que todos los campos esten llenos", Alert.AlertType.ERROR);
-        }else{
+        else{
             tipoUsuario = userDAO.getAsignacion(user, pass);
             if(tipoUsuario == null){
                 alertMessage("Usuario Incorrecto",null,
                         "Revise que los datos sean correctos", Alert.AlertType.ERROR);
                 txtPass.setText("");
             }else{
-                System.out.println(tipoUsuario);
-
+                // System.out.println(tipoUsuario);
                 if(tipoUsuario.equals("Estudiante")){
-                    System.out.println("*Interfaz de estudiante*");
+                    // System.out.println("*Interfaz de estudiante*");
                     vaciar();
                     showEstudiante(event);
                 }else if(tipoUsuario.equals("Personal")){
-                    System.out.println("*Interfaz de personal*");
+                    // System.out.println("*Interfaz de personal*");
                     vaciar();
                     showPersonal(event);
                 }else if(tipoUsuario.equals("Medico")){
-                    System.out.println("*Interfaz de medico*");
+                    // System.out.println("*Interfaz de medico*");
                     vaciar();
                     showMedico(event);
                 }else if(tipoUsuario.equals("Administrador")){
-                    System.out.println("*Interfaz de admin*");
+                    // System.out.println("*Interfaz de admin*");
                     vaciar();
                     showAdministrador(event);
                 }else if(tipoUsuario.equals("Monitoreo")){
-                    System.out.println("*Interfaz de monitoreo*");
+                    // System.out.println("*Interfaz de monitoreo*");
                     vaciar();
                     showMonitoreo(event);
                 }else if(tipoUsuario.equals("Directivo")){
-                    System.out.println("*Interfaz de directivo*");
+                    // System.out.println("*Interfaz de directivo*");
                     vaciar();
                     showDirectivo(event);
                 }

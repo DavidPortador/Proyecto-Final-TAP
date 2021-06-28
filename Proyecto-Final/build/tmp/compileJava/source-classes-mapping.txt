@@ -55,12 +55,12 @@ usuarios/Directivos.java
  usuarios.Directivos
 database/UserDAO.java
  database.UserDAO
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2

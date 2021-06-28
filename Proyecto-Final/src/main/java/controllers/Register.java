@@ -80,6 +80,7 @@ public class Register implements Initializable {
         cbTipoUsuario.setValue("Estudiante");
         cbAsignacion.getItems().clear();
         lblCD.setText("Carrera");
+        lblNCP.setText("noCont");
         cbAsignacion.setItems(userDAO.getCarreras());
         editMode();
     }
@@ -87,6 +88,7 @@ public class Register implements Initializable {
         cbTipoUsuario.setValue("Personal");
         cbAsignacion.getItems().clear();
         lblCD.setText("Departamento");
+        lblNCP.setText("noPersonal");
         cbAsignacion.setItems(userDAO.getDepas());
         editMode();
     }
@@ -119,8 +121,38 @@ public class Register implements Initializable {
     }
     private boolean valiVacio(){
         boolean bandera = false;
-        if(txtNo_PE.getText().isEmpty()){
+        if(cbTipoUsuario.getSelectionModel().getSelectedItem() == null){
+            alertMessage("cbTipoUsuario",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(txtcveAsignacion.getText().isEmpty()){
+            alertMessage("cveAsignacion",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(cbAsignacion.getSelectionModel().getSelectedItem() == null){
+            alertMessage("cbAsignacion",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(txtNo_PE.getText().isEmpty()){
             alertMessage("noPE",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(txtUsuario.getText().isEmpty()) {
+            alertMessage("usuario",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(psfContra.getText().isEmpty()) {
+            alertMessage("contra",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(txtNombres.getText().isEmpty()) {
+            alertMessage("nombres",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(txtApellidos.getText().isEmpty()) {
+            alertMessage("apellidos",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(cbGenero.getSelectionModel().getSelectedItem() == null){
+            alertMessage("cbGenero",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(txtCorreo.getText().isEmpty()) {
+            alertMessage("correo",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else if(dpFecha.getEditor().getText().isEmpty()) {
+            alertMessage("fecha",null,
                     "Campos vacios", Alert.AlertType.ERROR);
         }else{
             bandera = true;

@@ -18,9 +18,6 @@ public class MainApp extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
-        //THE MADAFUCKING MRCAGUAMA
-        //Hola wapas Otaker estuvo aqui uwu
-        //Hola xdxdxdxdxdxdxd
-        //Siiiiiiiiuuuuuuuuuu
+
     }
 }

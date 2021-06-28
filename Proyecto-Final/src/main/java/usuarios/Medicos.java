@@ -10,7 +10,6 @@ public class Medicos implements Initializable {
     Stage anterior, actual;
     @Override public void initialize(URL location, ResourceBundle resources) {
         System.out.println("llego");
-
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;

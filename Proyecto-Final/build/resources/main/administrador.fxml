@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+
 <AnchorPane prefHeight="790.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="CENTER" layoutX="36.0" layoutY="115.0" prefHeight="551.0" prefWidth="371.0">
+      <VBox alignment="CENTER" layoutX="23.0" layoutY="115.0" prefHeight="551.0" prefWidth="419.0">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label fx:id="lblNoPE" styleClass="label-bright" text="no" />
-                  <TextField fx:id="txtNoPE" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtNoPE" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Usuario" />
-                  <TextField fx:id="txtUsuario" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtUsuario" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Contraseña" />
-                  <TextField fx:id="txtContra" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtContra" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Nombres" />
-                  <TextField fx:id="txtNombres" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtNombres" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="83.0" prefWidth="345.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Apellidos" />
-                  <TextField fx:id="txtApellidos" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtApellidos" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Genero" />
-                  <ComboBox fx:id="cbGenero" prefHeight="35.0" prefWidth="200.0" />
+                  <ComboBox fx:id="cbGenero" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Correo" />
-                  <TextField fx:id="txtCorreo" prefHeight="35.0" prefWidth="200.0" />
+                  <TextField fx:id="txtCorreo" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label styleClass="label-bright" text="Fecha Nacimiento" />
-                  <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="200.0" />
+                  <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
-                  <Label contentDisplay="CENTER" styleClass="label-bright" text="Cve Asignacion" />
-                  <TextField fx:id="cveAsignacion" prefHeight="35.0" prefWidth="206.0" />
+                  <Label contentDisplay="CENTER" styleClass="label-bright" text="cveAsignacion" />
+                  <TextField fx:id="cveAsignacion" prefHeight="35.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="250.0" spacing="30.0">
                <children>
                   <Label fx:id="lblAux" styleClass="label-bright" text="Asignacion" />
-                  <ComboBox fx:id="cbAux" prefHeight="35.0" prefWidth="200.0" styleClass="combo-box">
+                  <ComboBox fx:id="cbAux" prefHeight="35.0" prefWidth="250.0" styleClass="combo-box">
                   </ComboBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="250.0" spacing="20.0">
                <children>
                   <Button fx:id="btnEditar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0">
                      <graphic>
@@ -85,11 +88,20 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
+                  <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Styles/CancelReport.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="tblFiltrar" layoutX="441.0" layoutY="115.0" prefHeight="441.0" prefWidth="787.0" />
+      <TableView fx:id="tblFiltrar" layoutX="463.0" layoutY="115.0" prefHeight="441.0" prefWidth="765.0" />
       <Button fx:id="btnReportes" contentDisplay="GRAPHIC_ONLY" layoutX="712.0" layoutY="575.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0">
          <graphic>
             <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="753.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">
@@ -112,7 +124,7 @@
             <Image url="@Styles/user2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="107.0" fitWidth="200.0" layoutX="1037.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="107.0" fitWidth="250.0" layoutX="1037.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/tecverde.png" />
          </image>
@@ -124,14 +136,5 @@
       </ImageView>
       <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="891.0" layoutY="46.0" prefHeight="27.0" prefWidth="216.0" styleClass="label-bright" text="Usuario" />
       <Label layoutX="137.0" layoutY="33.0" styleClass="label-header" text="Interfaz de Administrador" />
-      <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
-         <graphic>
-            <ImageView fitHeight="50.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Styles/CancelReport.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
    </children>
 </AnchorPane>

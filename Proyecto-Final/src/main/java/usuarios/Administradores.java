@@ -120,16 +120,17 @@ public class Administradores implements Initializable {
         tblFiltrar.getItems().clear();
         tblFiltrar.getColumns().clear();
         TableColumn noUsuario = new TableColumn("No");
+        noUsuario.setMinWidth(50);
         TableColumn asignacion = new TableColumn("Asignacion");
-        asignacion.setMinWidth(100);
+        asignacion.setMinWidth(130);
         TableColumn usuario = new TableColumn("Usuario");
-        usuario.setMinWidth(100);
+        usuario.setMinWidth(130);
         TableColumn contra = new TableColumn("Contra");
-        contra.setMinWidth(100);
+        contra.setMinWidth(130);
         TableColumn nombres = new TableColumn("Nombres");
-        nombres.setMinWidth(100);
+        nombres.setMinWidth(150);
         TableColumn apellidos = new TableColumn("Apellidos");
-        apellidos.setMinWidth(100);
+        apellidos.setMinWidth(150);
         noUsuario.setCellValueFactory(new PropertyValueFactory<>("noUsuario"));
         asignacion.setCellValueFactory(new PropertyValueFactory<>("asignacion"));
         usuario.setCellValueFactory(new PropertyValueFactory<>("usuario"));
@@ -194,8 +195,18 @@ public class Administradores implements Initializable {
         cbAux.setDisable(true);
         btnEditar.setDisable(true);
         btnEliminar.setDisable(true);
+        btnCancelar.setDisable(true);
         lblAux.setText("Asignacion");
+        cbGenero.getItems().clear();
         cbAux.getItems().clear();
+        txtNoPE.setText("");
+        txtUsuario.setText("");
+        txtContra.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtCorreo.setText("");
+        cveAsignacion.setText("");
+        dpNacimiento.getEditor().setText("");
         createTable();
     }
     private void editMode(){
@@ -211,6 +222,7 @@ public class Administradores implements Initializable {
         cbAux.setDisable(false);
         btnEditar.setDisable(false);
         btnEliminar.setDisable(false);
+        btnCancelar.setDisable(false);
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

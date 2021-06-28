@@ -45,18 +45,18 @@ modelos/modeloAsignacion.java
  modelos.modeloAsignacion
 usuarios/Medicos.java
  usuarios.Medicos
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+usuarios/Directivos.java
+ usuarios.Directivos
+usuarios/Personal.java
+ usuarios.Personal
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
  usuarios.Administradores$2
  usuarios.Administradores$3
  usuarios.Administradores$4
-usuarios/Directivos.java
- usuarios.Directivos
-usuarios/Personal.java
- usuarios.Personal
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
 controllers/Main.java
  controllers.Main
  controllers.Main$1

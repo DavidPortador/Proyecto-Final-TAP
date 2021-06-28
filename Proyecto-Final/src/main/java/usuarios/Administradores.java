@@ -6,13 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelos.Usuario;
 import modelos.modeloUsers;
+import reports.PDFreports;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -24,12 +30,12 @@ public class Administradores implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario administrador;
     Stage anterior;
-    @FXML TextField txtNoPE, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo, cveAsignacion;
+    @FXML TextField txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo;
     @FXML Button btnEditar, btnEliminar, btnCancelar, btnReportes, btnSalir;
     @FXML ComboBox cbGenero, cbAux;
     @FXML DatePicker dpNacimiento;
     @FXML TableView tblFiltrar;
-    @FXML Label lblUsuario, lblAux, lblNoPE;
+    @FXML Label lblUsuario, lblAux;
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(administrador.getNombres()+" "+administrador.getApellidos());
         defaultMode();
@@ -62,12 +68,10 @@ public class Administradores implements Initializable {
                             dpNacimiento.setValue(usuario.getFechaNac().toLocalDate());
                             asignacion = userDAO.getAsignacion(usuario.getUsuario(), usuario.getContra());
                             if (asignacion.equals("Estudiante")) {
-                                lblNoPE.setText("No Control");
                                 lblAux.setText("Carrera");
                                 llenarSelecCarrera(usuario.getNoUsuario());
                                 editMode();
                             } else if (asignacion.equals("Personal")) {
-                                lblNoPE.setText("No Personal");
                                 lblAux.setText("Departamento");
                                 llenarSelecDepartamento(usuario.getNoUsuario());
                                 editMode();
@@ -96,6 +100,16 @@ public class Administradores implements Initializable {
                 defaultMode();
             }
         });
+        btnReportes.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showReportes(event, administrador);
+                } catch (IOException e) {
+                    alertMessage("Error","showReports", e.getMessage(), Alert.AlertType.ERROR);
+                }
+            }
+        });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -104,6 +118,24 @@ public class Administradores implements Initializable {
                 anterior.show();
             }
         });
+    }
+    void showReportes(ActionEvent event, Usuario administrador) throws IOException {
+        Stage directivo = new Stage();
+        directivo.setTitle("Interfaz de Reportes");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/reportes.fxml"));
+        PDFreports pdFreports = new PDFreports();
+        //pdFreports.setUsuario(administrador);
+        loader.setController(pdFreports);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        directivo.setMaximized(true);
+        directivo.setScene(scene);
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        // Le pasa como parametro el stage actual y nueva
+        pdFreports.setStageAnterior(actual);
+        // Muestra el nuevo stage
+        actual.close();
+        directivo.show();
     }
     private void llenarSelecCarrera(int noUsuario) throws SQLException {
         cbAux.getItems().clear();
@@ -154,10 +186,7 @@ public class Administradores implements Initializable {
     }
     private boolean valiVacio(){
         boolean bandera = false;
-        if(txtNoPE.getText().isEmpty())
-            alertMessage("noUsuario",null,
-                    "Campos vacios", Alert.AlertType.ERROR);
-        else if(txtUsuario.getText().isEmpty())
+        if(txtUsuario.getText().isEmpty())
             alertMessage("Usuario",null,
                     "Campos vacios", Alert.AlertType.ERROR);
         else if(txtContra.getText().isEmpty())
@@ -183,7 +212,6 @@ public class Administradores implements Initializable {
         return bandera;
     }
     private void defaultMode(){
-        txtNoPE.setDisable(true);
         txtUsuario.setDisable(true);
         txtContra.setDisable(true);
         txtNombres.setDisable(true);
@@ -191,7 +219,6 @@ public class Administradores implements Initializable {
         cbGenero.setDisable(true);
         txtCorreo.setDisable(true);
         dpNacimiento.setDisable(true);
-        cveAsignacion.setDisable(true);
         cbAux.setDisable(true);
         btnEditar.setDisable(true);
         btnEliminar.setDisable(true);
@@ -199,18 +226,15 @@ public class Administradores implements Initializable {
         lblAux.setText("Asignacion");
         cbGenero.getItems().clear();
         cbAux.getItems().clear();
-        txtNoPE.setText("");
         txtUsuario.setText("");
         txtContra.setText("");
         txtNombres.setText("");
         txtApellidos.setText("");
         txtCorreo.setText("");
-        cveAsignacion.setText("");
         dpNacimiento.getEditor().setText("");
         createTable();
     }
     private void editMode(){
-        txtNoPE.setDisable(false);
         txtUsuario.setDisable(false);
         txtContra.setDisable(false);
         txtNombres.setDisable(false);
@@ -218,7 +242,6 @@ public class Administradores implements Initializable {
         cbGenero.setDisable(false);
         txtCorreo.setDisable(false);
         dpNacimiento.setDisable(false);
-        cveAsignacion.setDisable(false);
         cbAux.setDisable(false);
         btnEditar.setDisable(false);
         btnEliminar.setDisable(false);

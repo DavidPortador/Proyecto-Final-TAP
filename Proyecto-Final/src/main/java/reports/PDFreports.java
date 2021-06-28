@@ -14,9 +14,12 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 public class PDFreports {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
+    Stage anterior;
     Color v_backG = new DeviceRgb(0, 142, 0);
     Color v_font = new DeviceRgb(0, 0, 0);
     Color v_backG2= new DeviceRgb(251,113,112);
@@ -48,6 +51,9 @@ public class PDFreports {
             // table.addCell(new Cell().add(new Paragraph(emp.getEmp_no() + "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
             // table.addCell(new Cell().add(new Paragraph(emp.getFirst_name() + " " + emp.getLast_name()).setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
         }
+    }
+    public void setStageAnterior(Stage stage){
+        anterior = stage;
     }
 }
 

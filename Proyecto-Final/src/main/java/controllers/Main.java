@@ -71,15 +71,15 @@ public class Main implements Initializable {
                 if(tipoUsuario.equals("Estudiante")){
                     // System.out.println("*Interfaz de estudiante*");
                     vaciar();
-                    showEstudiante(event);
+                    showEstudiante(event, usuario);
                 }else if(tipoUsuario.equals("Personal")){
                     // System.out.println("*Interfaz de personal*");
                     vaciar();
-                    showPersonal(event);
+                    showPersonal(event, usuario);
                 }else if(tipoUsuario.equals("Medico")){
                     // System.out.println("*Interfaz de medico*");
                     vaciar();
-                    showMedico(event);
+                    showMedico(event, usuario);
                 }else if(tipoUsuario.equals("Administrador")){
                     // System.out.println("*Interfaz de admin*");
                     vaciar();
@@ -87,11 +87,11 @@ public class Main implements Initializable {
                 }else if(tipoUsuario.equals("Monitoreo")){
                     // System.out.println("*Interfaz de monitoreo*");
                     vaciar();
-                    showMonitoreo(event);
+                    showMonitoreo(event, usuario);
                 }else if(tipoUsuario.equals("Directivo")){
                     // System.out.println("*Interfaz de directivo*");
                     vaciar();
-                    showDirectivo(event);
+                    showDirectivo(event, usuario);
                 }
             }
         }
@@ -112,11 +112,12 @@ public class Main implements Initializable {
         resgistro.setScene(scene);
         resgistro.show();
     }
-    void showEstudiante(ActionEvent event) throws IOException {
+    void showEstudiante(ActionEvent event, Usuario usuario) throws IOException {
         Stage estudiantes = new Stage();
         estudiantes.setTitle("Interfaz de Estudiante");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/estudiantes.fxml"));
         Estudiantes estudiante = new Estudiantes();
+        estudiante.setUsuario(usuario);
         loader.setController(estudiante);
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -129,11 +130,12 @@ public class Main implements Initializable {
         actual.close();
         estudiantes.show();
     }
-    void showPersonal(ActionEvent event) throws IOException {
+    void showPersonal(ActionEvent event, Usuario usuario) throws IOException {
         Stage SPersonal = new Stage();
         SPersonal.setTitle("Interfaz de Personal");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/personal.fxml"));
         Personal personal = new Personal();
+        personal.setUsuario(usuario);
         loader.setController(personal);
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -146,11 +148,12 @@ public class Main implements Initializable {
         actual.close();
         SPersonal.show();
     }
-    void showMedico(ActionEvent event) throws IOException {
+    void showMedico(ActionEvent event, Usuario usuario) throws IOException {
         Stage medicos = new Stage();
         medicos.setTitle("Interfaz de Medicos");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/medicos.fxml"));
         Medicos medico = new Medicos();
+        medico.setUsuario(usuario);
         loader.setController(medico);
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -182,11 +185,12 @@ public class Main implements Initializable {
         actual.close();
         admin.show();
     }
-    void showMonitoreo(ActionEvent event) throws IOException {
+    void showMonitoreo(ActionEvent event, Usuario usuario) throws IOException {
         Stage monitoreo = new Stage();
         monitoreo.setTitle("Interfaz de Monitoreo");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/monitoreo.fxml"));
         Monitoreadores monitoreadores = new Monitoreadores();
+        monitoreadores.setUsuario(usuario);
         loader.setController(monitoreadores);
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -199,11 +203,12 @@ public class Main implements Initializable {
         actual.close();
         monitoreo.show();
     }
-    void showDirectivo(ActionEvent event) throws IOException {
+    void showDirectivo(ActionEvent event, Usuario usuario) throws IOException {
         Stage directivo = new Stage();
-        directivo.setTitle("Interfaz de Monitoreo");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/monitoreo.fxml"));
+        directivo.setTitle("Interfaz de Directivo");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/directivo.fxml"));
         Directivos directivos = new Directivos();
+        directivos.setUsuario(usuario);
         loader.setController(directivos);
         Parent root = loader.load();
         Scene scene = new Scene(root);

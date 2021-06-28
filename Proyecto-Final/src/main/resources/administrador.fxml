@@ -8,8 +8,8 @@
          <children>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <Label styleClass="label-bright" text="Cve Usuario" />
-                  <TextField fx:id="txtnoUsuario" prefHeight="35.0" prefWidth="200.0" />
+                  <Label fx:id="lblNoPE" styleClass="label-bright" text="no" />
+                  <TextField fx:id="txtNoPE" prefHeight="35.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
@@ -124,7 +124,7 @@
       </ImageView>
       <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="891.0" layoutY="46.0" prefHeight="27.0" prefWidth="216.0" styleClass="label-bright" text="Usuario" />
       <Label layoutX="137.0" layoutY="33.0" styleClass="label-header" text="Interfaz de Administrador" />
-      <Button fx:id="btnCancelReport" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
+      <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
          <graphic>
             <ImageView fitHeight="50.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                <image>

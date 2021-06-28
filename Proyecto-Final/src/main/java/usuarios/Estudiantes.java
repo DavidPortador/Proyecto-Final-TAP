@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,12 +35,14 @@ public class Estudiantes implements Initializable {
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
     */
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
+    Usuario estudiante;
     Stage anterior;
     Usuario usuario;
-    Estudiantes estudiante;
     @FXML Button btnConfig, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
     @FXML TableView tblAlertas;
+    @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
+        lblUsuario.setText(estudiante.getNombres()+" "+estudiante.getApellidos());
         createTable();
     }
     private void createTable() {
@@ -94,5 +97,8 @@ public class Estudiantes implements Initializable {
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;
+    }
+    public void setUsuario(Usuario usuario){
+        estudiante = usuario;
     }
 }

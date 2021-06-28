@@ -21,16 +21,17 @@ public class Administradores implements Initializable {
     Agregar un boton de cancelar a la izquierda de reportes
     Agregar la opcion de cveAsignacion y cambiar noUsuario por cveUsuario (noCont, noPersonal)
      */
-    Usuario administrador;
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
+    Usuario administrador;
     Stage anterior;
-    @FXML TextField txtnoUsuario, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo, cveAsignacion;
-    @FXML Button btnEditar, btnEliminar, btnReportes, btnSalir;
+    @FXML TextField txtNoPE, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo, cveAsignacion;
+    @FXML Button btnEditar, btnEliminar, btnCancelar, btnReportes, btnSalir;
     @FXML ComboBox cbGenero, cbAux;
     @FXML DatePicker dpNacimiento;
     @FXML TableView tblFiltrar;
-    @FXML Label lblUsuario, lblAux;
+    @FXML Label lblUsuario, lblAux, lblNoPE;
     @Override public void initialize(URL location, ResourceBundle resources) {
+        lblUsuario.setText(administrador.getNombres()+" "+administrador.getApellidos());
         defaultMode();
         initData();
         initButtons();
@@ -38,7 +39,6 @@ public class Administradores implements Initializable {
     void initData(){
         createTable();
         llenarGenero();
-        lblUsuario.setText(administrador.getNombres()+" "+administrador.getApellidos());
         tblFiltrar.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event) {
                 if(event.getClickCount() == 1){
@@ -52,7 +52,7 @@ public class Administradores implements Initializable {
                             editMode();
                             Usuario usuario = userDAO.getUsuarioAD(modeloUsers);
                             System.out.println(usuario.getNoUsuario() + " " + usuario.getUsuario() + " " + usuario.getContra());
-                            txtnoUsuario.setText(usuario.getNoUsuario() + "");
+                            //txtNoPE.setText(usuario.getNoUsuario() + "");
                             txtUsuario.setText(usuario.getUsuario());
                             txtContra.setText(usuario.getContra());
                             txtNombres.setText(usuario.getNombres());
@@ -62,10 +62,12 @@ public class Administradores implements Initializable {
                             dpNacimiento.setValue(usuario.getFechaNac().toLocalDate());
                             asignacion = userDAO.getAsignacion(usuario.getUsuario(), usuario.getContra());
                             if (asignacion.equals("Estudiante")) {
+                                lblNoPE.setText("No Control");
                                 lblAux.setText("Carrera");
                                 llenarSelecCarrera(usuario.getNoUsuario());
                                 editMode();
                             } else if (asignacion.equals("Personal")) {
+                                lblNoPE.setText("No Personal");
                                 lblAux.setText("Departamento");
                                 llenarSelecDepartamento(usuario.getNoUsuario());
                                 editMode();
@@ -86,6 +88,12 @@ public class Administradores implements Initializable {
                 if(valiVacio()){
                     System.out.println("lleno");
                 }
+            }
+        });
+        btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                defaultMode();
             }
         });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
@@ -145,7 +153,7 @@ public class Administradores implements Initializable {
     }
     private boolean valiVacio(){
         boolean bandera = false;
-        if(txtnoUsuario.getText().isEmpty())
+        if(txtNoPE.getText().isEmpty())
             alertMessage("noUsuario",null,
                     "Campos vacios", Alert.AlertType.ERROR);
         else if(txtUsuario.getText().isEmpty())
@@ -174,7 +182,7 @@ public class Administradores implements Initializable {
         return bandera;
     }
     private void defaultMode(){
-        txtnoUsuario.setDisable(true);
+        txtNoPE.setDisable(true);
         txtUsuario.setDisable(true);
         txtContra.setDisable(true);
         txtNombres.setDisable(true);
@@ -191,7 +199,7 @@ public class Administradores implements Initializable {
         createTable();
     }
     private void editMode(){
-        txtnoUsuario.setDisable(false);
+        txtNoPE.setDisable(false);
         txtUsuario.setDisable(false);
         txtContra.setDisable(false);
         txtNombres.setDisable(false);

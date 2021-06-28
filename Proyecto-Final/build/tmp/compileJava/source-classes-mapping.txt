@@ -1,5 +1,5 @@
-usuarios/Estudiantes.java
- usuarios.Estudiantes
+reports/PDFreports.java
+ reports.PDFreports
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
@@ -9,8 +9,8 @@ controllers/Register.java
  controllers.Register$1
 modelos/Alerta.java
  modelos.Alerta
-usuarios/Directivos.java
- usuarios.Directivos
+modelos/Usuario.java
+ modelos.Usuario
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
 modelosReportes/listTotalEncuentasDepartamento.java
@@ -29,8 +29,8 @@ modelosReportes/listCasosDepartamento.java
  modelosReportes.listCasosDepartamento
 modelosReportes/listCasosCarrera.java
  modelosReportes.listCasosCarrera
-usuarios/Medicos.java
- usuarios.Medicos
+modelosReportes/listCasosPersonal.java
+ modelosReportes.listCasosPersonal
 medicos/medicos.java
  medicos.medicos
 database/UserDAO.java
@@ -39,21 +39,24 @@ database/MySQLConnection.java
  database.MySQLConnection
 database/ConsultaDAO.java
  database.ConsultaDAO
-reports/PDFreports.java
- reports.PDFreports
-modelos/Usuario.java
- modelos.Usuario
-usuarios/Personal.java
- usuarios.Personal
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
-modelosReportes/listCasosPersonal.java
- modelosReportes.listCasosPersonal
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+usuarios/Medicos.java
+ usuarios.Medicos
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
  usuarios.Administradores$2
  usuarios.Administradores$3
+ usuarios.Administradores$4
+usuarios/Directivos.java
+ usuarios.Directivos
+usuarios/Personal.java
+ usuarios.Personal
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
 controllers/Main.java
  controllers.Main
  controllers.Main$1

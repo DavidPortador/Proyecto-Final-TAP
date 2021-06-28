@@ -8,13 +8,16 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Register implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
+    Stage anterior;
     @FXML ComboBox cbTipoUsuario, cbAsignacion, cbGenero;
-    @FXML TextField txtNo_PE, txtUsuario, txtNombres, txtApellidos, txtCorreo;
+    @FXML TextField txtNo_PE, txtcveAsignacion, txtUsuario, txtNombres, txtApellidos, txtCorreo;
+    @FXML Button btnCrear, btnCancelar;
     @FXML Label lblCD, lblNCP;
     @FXML PasswordField psfContra;
     @FXML DatePicker dpFecha;
@@ -23,7 +26,24 @@ public class Register implements Initializable {
         llenarGenero();
         defaultMode();
         initCombo();
+        initButtons();
         //cbTipoUsuario.setOnAction(e -> System.out.println("Action Nueva Selección: " + cbTipoUsuario.getValue()));
+    }
+    private void initButtons() {
+        btnCrear.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                valiVacio();
+            }
+        });
+        btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                stage.close();
+                anterior.show();
+            }
+        });
     }
     private void initCombo() {
         cbTipoUsuario.setOnAction(new EventHandler<ActionEvent>() {
@@ -74,6 +94,7 @@ public class Register implements Initializable {
         cbTipoUsuario.setDisable(false);
         cbAsignacion.setDisable(true);
         txtNo_PE.setDisable(true);
+        txtcveAsignacion.setDisable(true);
         txtUsuario.setDisable(true);
         psfContra.setDisable(true);
         txtNombres.setDisable(true);
@@ -86,6 +107,7 @@ public class Register implements Initializable {
         cbTipoUsuario.setDisable(false);
         cbAsignacion.setDisable(false);
         txtNo_PE.setDisable(false);
+        txtcveAsignacion.setDisable(false);
         txtUsuario.setDisable(false);
         psfContra.setDisable(false);
         txtNombres.setDisable(false);
@@ -95,11 +117,24 @@ public class Register implements Initializable {
         dpFecha.setDisable(false);
 
     }
+    private boolean valiVacio(){
+        boolean bandera = false;
+        if(txtNo_PE.getText().isEmpty()){
+            alertMessage("noPE",null,
+                    "Campos vacios", Alert.AlertType.ERROR);
+        }else{
+            bandera = true;
+        }
+        return bandera;
+    }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(Header);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    public void setStageAnterior(Stage stage){
+        anterior = stage;
     }
 }

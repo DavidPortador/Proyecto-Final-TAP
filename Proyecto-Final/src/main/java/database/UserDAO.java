@@ -86,7 +86,7 @@ public class UserDAO {
                         rs.getString("correo"),
                         rs.getDate("fechaNac"));
             } catch (Exception e) {
-                alertMessage("Error","getUsuario", e.getMessage(), Alert.AlertType.ERROR);
+                alertMessage("Error","getUsuarioAD", e.getMessage(), Alert.AlertType.ERROR);
             }
         }
         return user;
@@ -167,5 +167,4 @@ public class UserDAO {
         }
         return listDepas;
     }
-
 }

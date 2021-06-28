@@ -26,7 +26,7 @@
          </image>
       </ImageView>
       <Button layoutX="102.0" layoutY="389.0" mnemonicParsing="false" text="Upload Image" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="905.0" layoutY="644.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Crear">
+      <Button fx:id="btnCrear" contentDisplay="GRAPHIC_ONLY" layoutX="905.0" layoutY="644.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Crear">
          <graphic>
             <ImageView fitHeight="78.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,7 +34,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="688.0" layoutY="644.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Cancelar">
+      <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="688.0" layoutY="644.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="124.0" text="Cancelar">
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,26 +45,37 @@
       <Label layoutX="127.0" layoutY="328.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Foto de Perfil" />
       <VBox layoutX="264.0" layoutY="126.0" prefHeight="448.0" prefWidth="898.0" spacing="20.0">
          <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30">
+               <children>
+                  <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Tipo de Usuario" />
+                  <ComboBox fx:id="cbTipoUsuario" prefHeight="30.0" prefWidth="200.0" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="448.0" prefWidth="880.0" spacing="30">
+
                <children>
                   <VBox alignment="CENTER" prefHeight="408.0" prefWidth="382.0" spacing="30">
                      <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
-                              <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Tipo de Usuario" />
-                              <ComboBox fx:id="cbTipoUsuario" prefHeight="23.0" prefWidth="200.0" />
+                              <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="cveAsignacion" />
+                              <TextField fx:id="txtcveAsignacion" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label fx:id="lblCD" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="aux1" />
-                              <ComboBox fx:id="cbAsignacion" prefHeight="23.0" prefWidth="200.0" />
+                              <ComboBox fx:id="cbAsignacion" prefHeight="30.0" prefWidth="200.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label fx:id="lblNCP" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="aux1" />
-                              <TextField fx:id="txtNo_PE" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                              <TextField fx:id="txtNo_PE" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -74,7 +85,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Usuario" />
-                              <TextField fx:id="txtUsuario" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                              <TextField fx:id="txtUsuario" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -84,7 +95,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Contraseña" />
-                              <PasswordField fx:id="psfContra" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                              <PasswordField fx:id="psfContra" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -98,7 +109,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="568.0" spacing="30">
                            <children>
                               <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Nombres" />
-                              <TextField fx:id="txtNombres" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                              <TextField fx:id="txtNombres" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -108,7 +119,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Apellidos" />
-                              <TextField fx:id="txtApellidos" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                              <TextField fx:id="txtApellidos" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -124,7 +135,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Correo" />
-                              <TextField fx:id="txtCorreo" prefHeight="31.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
+                              <TextField fx:id="txtCorreo" prefHeight="30.0" prefWidth="200.0" styleClass="text-field" stylesheets="@Styles/Estilos.css">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -134,7 +145,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30">
                            <children>
                               <Label styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Fecha Nacimiento" />
-                              <DatePicker fx:id="dpFecha" prefHeight="31.0" prefWidth="200.0" />
+                              <DatePicker fx:id="dpFecha" prefHeight="30.0" prefWidth="200.0" />
                            </children>
                         </HBox>
                      </children>

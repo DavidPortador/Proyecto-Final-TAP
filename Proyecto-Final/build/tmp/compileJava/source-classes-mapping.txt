@@ -40,17 +40,10 @@ database/ConsultaDAO.java
  database.ConsultaDAO
 usuarios/Estudiantes.java
  usuarios.Estudiantes
-controllers/Register.java
- controllers.Register
- controllers.Register$1
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
-database/UserDAO.java
- database.UserDAO
-usuarios/Directivos.java
- usuarios.Directivos
 reports/PDFreports.java
  reports.PDFreports
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
@@ -58,6 +51,15 @@ usuarios/Administradores.java
  usuarios.Administradores$3
  usuarios.Administradores$4
  usuarios.Administradores$5
+usuarios/Directivos.java
+ usuarios.Directivos
+database/UserDAO.java
+ database.UserDAO
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+ controllers.Register$2
+ controllers.Register$3
 controllers/Main.java
  controllers.Main
  controllers.Main$1

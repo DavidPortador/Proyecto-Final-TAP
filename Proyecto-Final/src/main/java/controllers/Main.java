@@ -106,8 +106,9 @@ public class Main implements Initializable {
         Scene scene = new Scene(root);
         resgistro.setMaximized(true);
         // Le pasa como parametro el stage actual y nueva
-        Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
-        stage.close();
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        register.setStageAnterior(actual);
+        actual.close();
         // Muestra el nuevo stage
         resgistro.setScene(scene);
         resgistro.show();

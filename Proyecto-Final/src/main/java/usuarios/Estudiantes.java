@@ -1,15 +1,27 @@
 package usuarios;
+import database.ConsultaDAO;
+import database.MySQLConnection;
+import database.UserDAO;
 import encuesta.Encuesta;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import modelos.Alerta;
+import modelos.Usuario;
+import modelos.modeloUsers;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Estudiantes implements Initializable {
     /*
@@ -21,10 +33,40 @@ public class Estudiantes implements Initializable {
             Ordenes
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
     */
+    ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Stage anterior;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    Usuario usuario;
+    Estudiantes estudiante;
+    @FXML Button btnConfig, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
+    @FXML TableView tblAlertas;
+    @Override public void initialize(URL location, ResourceBundle resources) {
+        createTable();
+    }
+    private void createTable() {
+        ObservableList<Alerta> alertas;
+        tblAlertas.getItems().clear();
+        tblAlertas.getColumns().clear();
 
+        TableColumn noAlerta = new TableColumn("No Alerta");
+        TableColumn TipoAlerta = new TableColumn("Tipo Alerta");
+        TipoAlerta.setMinWidth(100);
+        TableColumn usuario = new TableColumn("Descripcion");
+        usuario.setMinWidth(100);
+        TableColumn contra = new TableColumn("no Orden");
+        contra.setMinWidth(100);
+        noAlerta.setCellValueFactory(new PropertyValueFactory<>("noAlerta"));
+        TipoAlerta.setCellValueFactory(new PropertyValueFactory<>("tipoAlerta"));
+        usuario.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        contra.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
+
+        tblAlertas.getColumns()
+                .addAll(noAlerta, TipoAlerta, usuario, contra);
+        try {
+            alertas = consultaDAO.getAlertasGenerales();
+            tblAlertas.setItems(alertas);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
     int getRandom(){
         int v_random;

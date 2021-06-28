@@ -21,14 +21,15 @@ public class Administradores implements Initializable {
     Agregar un boton de cancelar a la izquierda de reportes
     Agregar la opcion de cveAsignacion y cambiar noUsuario por cveUsuario (noCont, noPersonal)
      */
+    Usuario administrador;
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior;
-    @FXML TextField txtnoUsuario, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo;
+    @FXML TextField txtnoUsuario, txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo, cveAsignacion;
     @FXML Button btnEditar, btnEliminar, btnReportes, btnSalir;
     @FXML ComboBox cbGenero, cbAux;
     @FXML DatePicker dpNacimiento;
     @FXML TableView tblFiltrar;
-    @FXML Label lblAux;
+    @FXML Label lblUsuario, lblAux;
     @Override public void initialize(URL location, ResourceBundle resources) {
         defaultMode();
         initData();
@@ -37,6 +38,7 @@ public class Administradores implements Initializable {
     void initData(){
         createTable();
         llenarGenero();
+        lblUsuario.setText(administrador.getNombres()+" "+administrador.getApellidos());
         tblFiltrar.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event) {
                 if(event.getClickCount() == 1){
@@ -48,7 +50,7 @@ public class Administradores implements Initializable {
                         String asignacion;
                         try {
                             editMode();
-                            Usuario usuario = userDAO.getUsuario(modeloUsers);
+                            Usuario usuario = userDAO.getUsuarioAD(modeloUsers);
                             System.out.println(usuario.getNoUsuario() + " " + usuario.getUsuario() + " " + usuario.getContra());
                             txtnoUsuario.setText(usuario.getNoUsuario() + "");
                             txtUsuario.setText(usuario.getUsuario());
@@ -180,6 +182,7 @@ public class Administradores implements Initializable {
         cbGenero.setDisable(true);
         txtCorreo.setDisable(true);
         dpNacimiento.setDisable(true);
+        cveAsignacion.setDisable(true);
         cbAux.setDisable(true);
         btnEditar.setDisable(true);
         btnEliminar.setDisable(true);
@@ -196,6 +199,7 @@ public class Administradores implements Initializable {
         cbGenero.setDisable(false);
         txtCorreo.setDisable(false);
         dpNacimiento.setDisable(false);
+        cveAsignacion.setDisable(false);
         cbAux.setDisable(false);
         btnEditar.setDisable(false);
         btnEliminar.setDisable(false);
@@ -209,5 +213,8 @@ public class Administradores implements Initializable {
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;
+    }
+    public void setUsuario(Usuario usuario){
+        administrador = usuario;
     }
 }

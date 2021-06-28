@@ -46,7 +46,6 @@ public class Estudiantes implements Initializable {
         ObservableList<Alerta> alertas;
         tblAlertas.getItems().clear();
         tblAlertas.getColumns().clear();
-
         TableColumn noAlerta = new TableColumn("No Alerta");
         TableColumn TipoAlerta = new TableColumn("Tipo Alerta");
         TipoAlerta.setMinWidth(100);
@@ -58,7 +57,6 @@ public class Estudiantes implements Initializable {
         TipoAlerta.setCellValueFactory(new PropertyValueFactory<>("tipoAlerta"));
         usuario.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         contra.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
-
         tblAlertas.getColumns()
                 .addAll(noAlerta, TipoAlerta, usuario, contra);
         try {

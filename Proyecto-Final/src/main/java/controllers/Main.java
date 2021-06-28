@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modelos.Usuario;
 import usuarios.*;
 import java.io.IOException;
 import java.net.URL;
@@ -52,6 +53,7 @@ public class Main implements Initializable {
     }
     void valiLogin(ActionEvent event) throws SQLException, IOException {
         String user, pass, tipoUsuario = null;
+        Usuario usuario;
         user = txtUser.getText();
         pass = txtPass.getText();
         if(user.isEmpty() || pass.isEmpty())
@@ -59,6 +61,7 @@ public class Main implements Initializable {
                     "Revise que todos los campos esten llenos", Alert.AlertType.ERROR);
         else{
             tipoUsuario = userDAO.getAsignacion(user, pass);
+            usuario = userDAO.getUsuarioLogin(user, pass);
             if(tipoUsuario == null){
                 alertMessage("Usuario Incorrecto",null,
                         "Revise que los datos sean correctos", Alert.AlertType.ERROR);
@@ -80,7 +83,7 @@ public class Main implements Initializable {
                 }else if(tipoUsuario.equals("Administrador")){
                     // System.out.println("*Interfaz de admin*");
                     vaciar();
-                    showAdministrador(event);
+                    showAdministrador(event, usuario);
                 }else if(tipoUsuario.equals("Monitoreo")){
                     // System.out.println("*Interfaz de monitoreo*");
                     vaciar();
@@ -160,11 +163,13 @@ public class Main implements Initializable {
         actual.close();
         medicos.show();
     }
-    void showAdministrador(ActionEvent event) throws IOException {
+    void showAdministrador(ActionEvent event, Usuario usuario) throws IOException {
         Stage admin = new Stage();
         admin.setTitle("Interfaz de Administrador");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/administrador.fxml"));
+        // Controlador de la interfaz y usuario
         Administradores administrador = new Administradores();
+        administrador.setUsuario(usuario);
         loader.setController(administrador);
         Parent root = loader.load();
         Scene scene = new Scene(root);

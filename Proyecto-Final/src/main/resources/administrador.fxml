@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<AnchorPane prefHeight="790.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="790.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="36.0" layoutY="115.0" prefHeight="551.0" prefWidth="371.0">
          <children>
@@ -62,7 +54,7 @@
                   <DatePicker fx:id="dpNacimiento" prefHeight="35.0" prefWidth="200.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
                   <Label contentDisplay="CENTER" styleClass="label-bright" text="Cve Asignacion" />
                   <TextField fx:id="cveAsignacion" prefHeight="35.0" prefWidth="206.0" />
@@ -130,7 +122,7 @@
             <Image url="@img/tec-logo1.png" />
          </image>
       </ImageView>
-      <Label layoutX="994.0" layoutY="46.0" prefHeight="27.0" prefWidth="56.0" styleClass="label-bright" text="Usuario" />
+      <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="891.0" layoutY="46.0" prefHeight="27.0" prefWidth="216.0" styleClass="label-bright" text="Usuario" />
       <Label layoutX="137.0" layoutY="33.0" styleClass="label-header" text="Interfaz de Administrador" />
       <Button fx:id="btnCancelReport" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
          <graphic>

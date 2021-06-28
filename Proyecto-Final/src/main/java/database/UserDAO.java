@@ -65,7 +65,7 @@ public class UserDAO {
         }
         return depa;
     }
-    public Usuario getUsuario(modeloUsers modeloUser) throws SQLException {
+    public Usuario getUsuarioAD(modeloUsers modeloUser) throws SQLException {
         String consulta;
         Usuario user = null;
         consulta = "select * from Usuario where noUsuario = '" + modeloUser.getNoUsuario() +
@@ -90,6 +90,31 @@ public class UserDAO {
             }
         }
         return user;
+    }
+    public Usuario getUsuarioLogin(String user, String pass) throws SQLException {
+        String consulta;
+        Usuario usuario = null;
+        consulta = "select * from Usuario where usuario = '"+user+"' and contra = '"+pass+"'";
+        System.out.println(consulta);
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    usuario = new Usuario(
+                            rs.getInt("noUsuario"),
+                            rs.getString("usuario"),
+                            rs.getString("contra"),
+                            rs.getString("nombres"),
+                            rs.getString("apellidos"),
+                            rs.getString("genero"),
+                            rs.getString("correo"),
+                            rs.getDate("fechaNac"));
+            } catch (Exception e) {
+                alertMessage("Error","getUsuarioLogin", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return usuario;
     }
     public ObservableList <modeloUsers> getTableAdmin() throws SQLException {
         ObservableList <modeloUsers> listUsuarios = FXCollections.observableArrayList();
@@ -142,4 +167,5 @@ public class UserDAO {
         }
         return listDepas;
     }
+
 }

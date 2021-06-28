@@ -9,32 +9,32 @@ usuarios/Administradores.java
  usuarios.Administradores$1
  usuarios.Administradores$2
  usuarios.Administradores$3
-database/MySQLConnection.java
- database.MySQLConnection
+usuarios/Medicos.java
+ usuarios.Medicos
 usuarios/Directivos.java
  usuarios.Directivos
 medicos/medicos.java
  medicos.medicos
-controllers/Register.java
- controllers.Register
- controllers.Register$1
 database/UserDAO.java
  database.UserDAO
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
 medicos/solicitudes.java
  medicos.solicitudes
 modelos/Usuario.java
  modelos.Usuario
 modelos/modeloUsers.java
  modelos.modeloUsers
-MainApp.java
- MainApp
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
 usuarios/Personal.java
  usuarios.Personal
-usuarios/Medicos.java
- usuarios.Medicos
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+MainApp.java
+ MainApp
+database/MySQLConnection.java
+ database.MySQLConnection
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1

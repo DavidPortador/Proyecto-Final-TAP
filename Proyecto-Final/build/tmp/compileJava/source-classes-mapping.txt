@@ -9,8 +9,8 @@ database/MySQLConnection.java
  database.MySQLConnection
 modelos/Alerta.java
  modelos.Alerta
-modelos/modeloEncuesta.java
- modelos.modeloEncuesta
+usuarios/Personal.java
+ usuarios.Personal
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
 medicos/solicitudes.java
@@ -19,18 +19,20 @@ modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
 modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
 modelos/modeloUsers.java
  modelos.modeloUsers
 MainApp.java
  MainApp
-usuarios/Personal.java
- usuarios.Personal
-database/ConsultaDAO.java
- database.ConsultaDAO
+modelosReportes/listCasosDepartamento.java
+ modelosReportes.listCasosDepartamento
+modelosReportes/listCasosDelPersonal.java
+ modelosReportes.listCasosDelPersonal
+modelosReportes/listCasosCarrera.java
+ modelosReportes.listCasosCarrera
 database/EncuestaDAO.java
  database.EncuestaDAO
+modelosReportes/listCasosEstudiantes.java
+ modelosReportes.listCasosEstudiantes
 usuarios/Medicos.java
  usuarios.Medicos
  usuarios.Medicos$1
@@ -38,12 +40,16 @@ medicos/medicos.java
  medicos.medicos
 modelos/Usuario.java
  modelos.Usuario
+modelos/modeloEncuesta.java
+ modelos.modeloEncuesta
+database/ConsultaDAO.java
+ database.ConsultaDAO
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
 reports/PDFreports.java
  reports.PDFreports
  reports.PDFreports$1
  reports.PDFreports$2
-modelosReportes/listCasosEstudiantes.java
- modelosReportes.listCasosEstudiantes
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
@@ -53,10 +59,6 @@ usuarios/Administradores.java
  usuarios.Administradores$5
 usuarios/Monitoreadores.java
  usuarios.Monitoreadores
-modelosReportes/listCasosDelPersonal.java
- modelosReportes.listCasosDelPersonal
-modelosReportes/listCasosDepartamento.java
- modelosReportes.listCasosDepartamento
 usuarios/Directivos.java
  usuarios.Directivos
 controllers/Main.java
@@ -65,8 +67,6 @@ controllers/Main.java
  controllers.Main$2
 database/UserDAO.java
  database.UserDAO
-modelosReportes/listCasosCarrera.java
- modelosReportes.listCasosCarrera
 controllers/Register.java
  controllers.Register
  controllers.Register$1

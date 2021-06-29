@@ -1,21 +1,25 @@
 package modelosReportes;
 public class listCasosDepartamento {
-    String departamento;
-    int totalCasos;
-    public listCasosDepartamento(String departamento, int totalCasos){
-        this.departamento= departamento;
-        this.totalCasos= totalCasos;
+    String departamentos;
+    int contagiados;
+    public listCasosDepartamento(String departamentos, int contagiados){
+        this.departamentos= departamentos;
+        this.contagiados= contagiados;
     }
-    public String getDepartamento() {
-        return departamento;
+
+    public String getDepartamentos() {
+        return departamentos;
     }
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
+
+    public void setDepartamentos(String departamentos) {
+        this.departamentos = departamentos;
     }
-    public int getTotalCasos() {
-        return totalCasos;
+
+    public int getContagiados() {
+        return contagiados;
     }
-    public void setTotalCasos(int totalCasos) {
-        this.totalCasos = totalCasos;
+
+    public void setContagiados(int contagiados) {
+        this.contagiados = contagiados;
     }
 }

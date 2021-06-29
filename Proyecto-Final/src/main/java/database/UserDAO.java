@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import modelos.Usuario;
 import modelos.modeloUsers;
 import modelosReportes.listCasosCarrera;
+import modelosReportes.listCasosDepartamento;
 
 import java.sql.*;
 import java.util.List;
@@ -193,6 +194,24 @@ public class UserDAO {
         }
         return listCarrera;
     }
-
+    public List<listCasosDepartamento> getListContagiadosDepartamento()
+    {
+        List<listCasosDepartamento> listDepartamento = FXCollections.observableArrayList();
+        try {
+            String query = "select D.nombre, count(P.cveDepa) as contagiados from Departamento D inner join Personal P on D.cveDepa = P.cveDepa inner join Asignacion A on P.cveAsignacion = A.cveAsignacion and P.noUsuario = A.noUsuario inner join Consulta C on A.cveAsignacion = C.cveAsignacion and A.noUsuario = C.noUsuario inner join Orden O on C.noConsulta = O.noConsulta where O.resultado = 'Contagiado' group by D.nombre";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                listDepartamento.add(new listCasosDepartamento(
+                        rs.getString("nombre"),
+                        rs.getInt("contagiados")));
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return listDepartamento;
+    }
 
 }

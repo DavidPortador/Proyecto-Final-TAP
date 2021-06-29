@@ -5,9 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import modelos.Usuario;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Encuesta implements Initializable {
+    Usuario usuario;
     Stage anterior;
     String a_personal;
     @FXML RadioButton rdp1si, rdp1no, rdp2si, rdp2no, rdp3si, rdp3no, rdp4si, rdp4no, rdp5si, rdp5no,
@@ -141,8 +144,8 @@ public class Encuesta implements Initializable {
                 "Describa si tiene otros síntomas: ");
 
     }
-    public void setPersonal(String p_personal){
-        a_personal = p_personal;
+    public void setUsuario(Usuario usuario){
+        this.usuario = usuario;
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;

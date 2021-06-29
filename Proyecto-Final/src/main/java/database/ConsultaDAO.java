@@ -19,21 +19,43 @@ public class ConsultaDAO {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    public ObservableList<Alerta> getAlertasGenerales() throws SQLException {
+    public ObservableList<Alerta> getAlertasGenerales(int noUsuario) throws SQLException {
         ObservableList <Alerta> alertas = FXCollections.observableArrayList();
         try {
-            String query = "select A.noAlerta, A.descripcion, A.noOrden " +
+            String query = "select A.noAlerta, A.noOrden, A.descripcion " +
                     "from Consulta C inner join Orden O on C.noConsulta = O.noConsulta " +
                     "inner join Alerta A on O.noOrden = A.noOrden " +
-                    "where noUsuario = 13";
+                    "where noUsuario = " + noUsuario;
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 alertas.add(new Alerta(
                         rs.getInt("noAlerta"),
-                        rs.getString("descripcion"),
+                        rs.getInt("noOrden"),
                         "Alerta Medica",
-                        rs.getString("noOrden")
+                        rs.getString("descripcion")
+                ));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getTableAdmin", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return alertas;
+    }
+    public ObservableList<Alerta> getAlertasMonitoreadas(int noUsuario) throws SQLException {
+        ObservableList <Alerta> alertas = FXCollections.observableArrayList();
+        try {
+            String query = "select AM.noAlertaMonitoreo, AM.noOrden, AM.descripcion " +
+                    "from Consulta C inner join Orden O on C.noConsulta = O.noConsulta " +
+                    "inner join AlertaMonitoreada AM on O.noOrden = AM.noOrden " +
+                    "where noUsuario = " + noUsuario;
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                alertas.add(new Alerta(
+                        rs.getInt("noAlertaMonitoreo"),
+                        rs.getInt("noOrden"),
+                        "Alerta Monitoreada",
+                        rs.getString("descripcion")
                 ));
             }
         } catch (SQLException e) {

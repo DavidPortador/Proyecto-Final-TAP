@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="722.0" prefWidth="1188.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="722.0" prefWidth="1221.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="247.0" layoutY="28.0" styleClass="label-header" stylesheets="@Styles/Estilos.css" text="Crear cuenta Estudiante/Personal" />
       <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="97.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +37,7 @@
             </ImageView>
          </graphic></Button>
       <Label layoutX="127.0" layoutY="328.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Foto de Perfil" />
-      <VBox layoutX="264.0" layoutY="126.0" prefHeight="448.0" prefWidth="898.0" spacing="20.0">
+      <VBox layoutX="264.0" layoutY="126.0" prefHeight="448.0" prefWidth="961.0" spacing="20.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="250.0" spacing="30">
                <children>
@@ -43,7 +45,7 @@
                   <ComboBox fx:id="cbTipoUsuario" prefHeight="30.0" prefWidth="250.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="448.0" prefWidth="880.0" spacing="30">
+            <HBox alignment="CENTER" prefHeight="336.0" prefWidth="910.0" spacing="30">
                <children>
                   <VBox alignment="CENTER" prefHeight="408.0" prefWidth="382.0" spacing="30">
                      <children>
@@ -95,7 +97,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="448.0" prefWidth="371.0" spacing="30">
+                  <VBox alignment="CENTER" prefHeight="388.0" prefWidth="419.0" spacing="30">
                      <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="568.0" spacing="30">
                            <children>

@@ -23,7 +23,7 @@ public class Main implements Initializable {
     /*
     Hay comentarios en el package de usuarios donde dice que les falta a cada tipo de usuario
     Agregar iconos a los botones de TODAS las interfaces (si es necesario)
-     */
+    */
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     @FXML TextField txtUser;
     @FXML PasswordField txtPass;

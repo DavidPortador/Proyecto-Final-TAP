@@ -1,20 +1,26 @@
 package modelos;
 public class Alerta {
     int noAlerta;
+    int noOrden;
     String tipoAlerta;
     String descripcion;
-    String noOrden;
-    public Alerta(int noAlerta, String tipoAlerta, String descripcion, String noOrden) {
+    public Alerta(int noAlerta, int noOrden, String tipoAlerta, String descripcion) {
         this.noAlerta = noAlerta;
+        this.noOrden = noOrden;
         this.tipoAlerta = tipoAlerta;
         this.descripcion = descripcion;
-        this.noOrden = noOrden;
     }
     public int getNoAlerta() {
         return noAlerta;
     }
     public void setNoAlerta(int noAlerta) {
         this.noAlerta = noAlerta;
+    }
+    public int getNoOrden() {
+        return noOrden;
+    }
+    public void setNoOrden(int noOrden) {
+        this.noOrden = noOrden;
     }
     public String getTipoAlerta() {
         return tipoAlerta;
@@ -27,11 +33,5 @@ public class Alerta {
     }
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-    public String getNoOrden() {
-        return noOrden;
-    }
-    public void setNoOrden(String noOrden) {
-        this.noOrden = noOrden;
     }
 }

@@ -425,15 +425,24 @@ insert into Orden (resultado, noConsulta, noCedula,	cvePrueba) values
 
 insert into Alerta (descripcion, noOrden) values 
 	('Contagiado de Covid-19', 1),
-	('Contagiado de Covid-19', 2),
+	('Tiene todos los sintomas', 2),
 	('Contagiado de Covid-19', 3),
 	('Contagiado de Covid-19', 4),
-	('Contagiado de Covid-19', 5),
+	('Tiene todos los sintomas', 5),
 	('Contagiado de Covid-19', 6);
 
 insert into AlertaMonitoreada (descripcion, noOrden, noMonitoreo) values
 	('Estado de salud delicado', 1, 'NMO01'),
 	('Sintomas contagiosos', 1, 'NMO01');
+
+insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5, 
+			respuesta6, respuesta7, respuesta8, respuesta9, respuesta10, respuesta11,
+			respuesta12, respuesta13, otrosSintomas, noUsuario) values
+	(0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 13),
+	(0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 'Fiebre y dolor', 14),
+	(0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 15),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, null, 16),
+	(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, null, 17);
 
 # Se usara una vista para generar reportes (pendiente...)
 

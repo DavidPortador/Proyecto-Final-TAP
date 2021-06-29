@@ -2,17 +2,16 @@ package usuarios;
 import database.ConsultaDAO;
 import database.MySQLConnection;
 import encuesta.Encuesta;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import modelos.Alerta;
@@ -41,29 +40,47 @@ public class Estudiantes implements Initializable {
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(estudiante.getNombres()+" "+estudiante.getApellidos());
         createTable();
+        initButtons();
+    }
+    private void initButtons() {
+        btnSalir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                stage.close();
+                anterior.show();
+            }
+        });
     }
     private void createTable() {
-        ObservableList<Alerta> alertas;
+        ObservableList <Alerta> alertas = FXCollections.observableArrayList();
+        ObservableList<Alerta> generales, monitoreadas;
         tblAlertas.getItems().clear();
         tblAlertas.getColumns().clear();
-        TableColumn noAlerta = new TableColumn("No Alerta");
+        TableColumn noAlerta = new TableColumn("noAlerta");
+        noAlerta.setMinWidth(130);
+        TableColumn noOrden = new TableColumn("noOrden");
+        noOrden.setMinWidth(130);
         TableColumn TipoAlerta = new TableColumn("Tipo Alerta");
-        TipoAlerta.setMinWidth(100);
-        TableColumn usuario = new TableColumn("Descripcion");
-        usuario.setMinWidth(100);
-        TableColumn contra = new TableColumn("no Orden");
-        contra.setMinWidth(100);
+        TipoAlerta.setMinWidth(150);
+        TableColumn descripcion = new TableColumn("Descripcion");
+        descripcion.setMinWidth(250);
         noAlerta.setCellValueFactory(new PropertyValueFactory<>("noAlerta"));
+        noOrden.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
         TipoAlerta.setCellValueFactory(new PropertyValueFactory<>("tipoAlerta"));
-        usuario.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        contra.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
+        descripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tblAlertas.getColumns()
-                .addAll(noAlerta, TipoAlerta, usuario, contra);
+                .addAll(noAlerta, noOrden, TipoAlerta, descripcion);
         try {
-            alertas = consultaDAO.getAlertasGenerales();
+            generales = consultaDAO.getAlertasGenerales(estudiante.getNoUsuario());
+            monitoreadas = consultaDAO.getAlertasMonitoreadas(estudiante.getNoUsuario());
+            for (int i = 0; i < generales.size(); i++)
+                alertas.add(generales.get(i));
+            for (int i = 0; i < monitoreadas.size(); i++)
+                alertas.add(monitoreadas.get(i));
             tblAlertas.setItems(alertas);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            alertMessage("Error","createTable", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
     int getRandom(){
@@ -72,13 +89,11 @@ public class Estudiantes implements Initializable {
         return  v_random;
     }
     void showEncuesta(ActionEvent event) throws IOException {
-        String v_personal;
-        v_personal = "'aqui va el personal'";
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Encuesta "+v_personal);
+        primaryStage.setTitle("Encuesta");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
         Encuesta encuesta = new Encuesta();
-        encuesta.setPersonal(v_personal);
+        encuesta.setUsuario(estudiante);
         loader.setController(encuesta);
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -91,6 +106,13 @@ public class Estudiantes implements Initializable {
         // Muestra el nuevo stage
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    private void alertMessage(String title, String Header, String message, Alert.AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(Header);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;

@@ -31,13 +31,11 @@ public class Personal implements Initializable {
         return  v_random;
     }
     void showEncuesta(ActionEvent event) throws IOException {
-        String v_personal;
-        v_personal = "'aqui va el personal'";
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Encuesta "+v_personal);
+        primaryStage.setTitle("Encuesta");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
         Encuesta encuesta = new Encuesta();
-        encuesta.setPersonal(v_personal);
+        encuesta.setUsuario(personal);
         loader.setController(encuesta);
         Parent root = loader.load();
         Scene scene = new Scene(root);

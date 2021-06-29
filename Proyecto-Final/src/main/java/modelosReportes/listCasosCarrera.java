@@ -1,36 +1,26 @@
 package modelosReportes;
-import java.sql.Date;
 public class listCasosCarrera {
-    String nombre, resultadoPrueba, carrera;
-    Date fechaDetencion;
-    public listCasosCarrera(String nombre, String resultadoPrueba, String carrera, Date fechaDetencion){
-        this.nombre= nombre;
-        this.resultadoPrueba= resultadoPrueba;
+    String carrera;
+    int contagiados;
+    public listCasosCarrera(String carrera, int contagiados){
         this.carrera= carrera;
-        this.fechaDetencion= fechaDetencion;
+        this.contagiados= contagiados;
+
     }
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getResultadoPrueba() {
-        return resultadoPrueba;
-    }
-    public void setResultadoPrueba(String resultadoPrueba) {
-        this.resultadoPrueba = resultadoPrueba;
-    }
+
     public String getCarrera() {
         return carrera;
     }
+
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
-    public Date getFechaDetencion() {
-        return fechaDetencion;
+
+    public int getContagiados() {
+        return contagiados;
     }
-    public void setFechaDetencion(Date fechaDetencion) {
-        this.fechaDetencion = fechaDetencion;
+
+    public void setContagiados(int contagiados) {
+        this.contagiados = contagiados;
     }
 }

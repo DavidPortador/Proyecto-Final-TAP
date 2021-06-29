@@ -5,6 +5,45 @@ encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
+database/MySQLConnection.java
+ database.MySQLConnection
+modelos/Alerta.java
+ modelos.Alerta
+modelos/modeloEncuesta.java
+ modelos.modeloEncuesta
+modelosReportes/listTotalEncuentasCarrera.java
+ modelosReportes.listTotalEncuentasCarrera
+medicos/solicitudes.java
+ medicos.solicitudes
+modelosReportes/listConsultasTotalMedicos.java
+ modelosReportes.listConsultasTotalMedicos
+modelosReportes/listTotalEncuentasDepartamento.java
+ modelosReportes.listTotalEncuentasDepartamento
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+modelos/modeloUsers.java
+ modelos.modeloUsers
+MainApp.java
+ MainApp
+usuarios/Personal.java
+ usuarios.Personal
+database/ConsultaDAO.java
+ database.ConsultaDAO
+database/EncuestaDAO.java
+ database.EncuestaDAO
+usuarios/Medicos.java
+ usuarios.Medicos
+ usuarios.Medicos$1
+medicos/medicos.java
+ medicos.medicos
+modelos/Usuario.java
+ modelos.Usuario
+reports/PDFreports.java
+ reports.PDFreports
+ reports.PDFreports$1
+ reports.PDFreports$2
+modelosReportes/listCasosEstudiantes.java
+ modelosReportes.listCasosEstudiantes
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
@@ -12,61 +51,24 @@ usuarios/Administradores.java
  usuarios.Administradores$3
  usuarios.Administradores$4
  usuarios.Administradores$5
-modelos/Alerta.java
- modelos.Alerta
-usuarios/Directivos.java
- usuarios.Directivos
-modelosReportes/listTotalEncuentasCarrera.java
- modelosReportes.listTotalEncuentasCarrera
-modelosReportes/listTotalEncuentasDepartamento.java
- modelosReportes.listTotalEncuentasDepartamento
-modelosReportes/listConsultasTotalMedicos.java
- modelosReportes.listConsultasTotalMedicos
-medicos/solicitudes.java
- medicos.solicitudes
-modelosReportes/listCasosEstudiante.java
- modelosReportes.listCasosEstudiante
-modelos/modeloUsers.java
- modelos.modeloUsers
-MainApp.java
- MainApp
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+modelosReportes/listCasosDelPersonal.java
+ modelosReportes.listCasosDelPersonal
 modelosReportes/listCasosDepartamento.java
  modelosReportes.listCasosDepartamento
-modelosReportes/listCasosCarrera.java
- modelosReportes.listCasosCarrera
-modelosReportes/listCasosPersonal.java
- modelosReportes.listCasosPersonal
-database/MySQLConnection.java
- database.MySQLConnection
-medicos/medicos.java
- medicos.medicos
+usuarios/Directivos.java
+ usuarios.Directivos
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
 database/UserDAO.java
  database.UserDAO
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
-database/ConsultaDAO.java
- database.ConsultaDAO
-reports/PDFreports.java
- reports.PDFreports
-modelos/Usuario.java
- modelos.Usuario
+modelosReportes/listCasosCarrera.java
+ modelosReportes.listCasosCarrera
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
-usuarios/Personal.java
- usuarios.Personal
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
-modelos/modeloEncuesta.java
- modelos.modeloEncuesta
-database/EncuestaDAO.java
- database.EncuestaDAO
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2

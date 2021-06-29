@@ -4,7 +4,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.Usuario;
 import modelos.modeloUsers;
+import modelosReportes.listCasosCarrera;
+
 import java.sql.*;
+import java.util.List;
+
 public class UserDAO {
     Connection conn;
     public UserDAO (Connection conn) {
@@ -77,14 +81,14 @@ public class UserDAO {
             try {
                 while (rs.next())
                     user = new Usuario(
-                        rs.getInt("noUsuario"),
-                        rs.getString("usuario"),
-                        rs.getString("contra"),
-                        rs.getString("nombres"),
-                        rs.getString("apellidos"),
-                        rs.getString("genero"),
-                        rs.getString("correo"),
-                        rs.getDate("fechaNac"));
+                            rs.getInt("noUsuario"),
+                            rs.getString("usuario"),
+                            rs.getString("contra"),
+                            rs.getString("nombres"),
+                            rs.getString("apellidos"),
+                            rs.getString("genero"),
+                            rs.getString("correo"),
+                            rs.getDate("fechaNac"));
             } catch (Exception e) {
                 alertMessage("Error","getUsuarioAD", e.getMessage(), Alert.AlertType.ERROR);
             }
@@ -167,4 +171,28 @@ public class UserDAO {
         }
         return listDepas;
     }
+
+    public List<listCasosCarrera> getListContagiadosCarrera()
+
+    {
+        List<listCasosCarrera> listCarrera = FXCollections.observableArrayList();
+        try {
+            String query = "select C.nombre, count(E.cveCarrera) as contagiados from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario inner join Consulta C2 on A.cveAsignacion = C2.cveAsignacion and A.noUsuario = C2.noUsuario inner join Orden O on C2.noConsulta = O.noConsulta where O.resultado = 'Contagiado' group by C.nombre";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                listCarrera.add(new listCasosCarrera(
+                        rs.getString("nombre"),
+                        rs.getInt("contagiados")));
+            }
+        } catch (SQLException ex)
+        {
+            ex.printStackTrace();
+
+        }
+        return listCarrera;
+    }
+
+
 }

@@ -14,16 +14,61 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import modelosReportes.listCasosCarrera;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
-public class PDFreports {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PDFreports implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior;
     Color v_backG = new DeviceRgb(0, 142, 0);
     Color v_font = new DeviceRgb(0, 0, 0);
     Color v_backG2= new DeviceRgb(251,113,112);
-    public void createPdfCasosCarrera(String dest, String p_indicador) throws IOException {
+    @FXML
+    Button btnReporte,btnSalir;
+    public static final String DEST1 = "contagios/carrera/carrera_report.pdf";
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        initButtons();
+    }
+
+    private void initButtons() {
+        btnReporte.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                File file = new File(DEST1);
+                file.getParentFile().mkdirs();
+                try {
+                    new PDFreports().createPdfCasosCarrera(DEST1);
+                    sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
+                    openPdfFile(DEST1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        btnSalir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                stage.close();
+                anterior.show();
+            }
+        });
+    }
+
+    public void createPdfCasosCarrera(String dest) throws IOException {
         //Initialize PDF writer
         PdfWriter writer = new PdfWriter(dest);
         //Initialize PDF document
@@ -33,27 +78,41 @@ public class PDFreports {
         document.setMargins(20, 20, 20, 20);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 4}))
                 .useAllAvailableWidth();
         processPdfCarrera(table, null, bold, true);
-        /*for(UserDAO e : userDAO.getList(p_indicador)) {
-            process(table, e, bold, false);
-        }*/
+        for(listCasosCarrera e : userDAO.getListContagiadosCarrera()) {
+            processPdfCarrera(table, e, bold, false);
+        }
         document.add(table);
         //Close document
         document.close();
     }
-    public void processPdfCarrera(Table table, UserDAO emp, PdfFont font, boolean isHeader) {
+    public void processPdfCarrera(Table table, listCasosCarrera user, PdfFont font, boolean isHeader) {
         if (isHeader) {
-            table.addHeaderCell(new Cell().add(new Paragraph("EMP. NO.").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("NAME").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("TOTAL CASOS").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
         } else {
-            // table.addCell(new Cell().add(new Paragraph(emp.getEmp_no() + "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            // table.addCell(new Cell().add(new Paragraph(emp.getFirst_name() + " " + emp.getLast_name()).setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getCarrera() + "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getContagiados()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
         }
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;
     }
+    private void openPdfFile(String filename) {
+        if (Desktop.isDesktopSupported()) {
+            try { File myFile = new File(filename);
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) { } } }
+    private void sendMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.show();
+    }
+
+
 }
 

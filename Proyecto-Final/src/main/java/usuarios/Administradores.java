@@ -26,7 +26,7 @@ public class Administradores implements Initializable {
     /*
     Agregar un boton de cancelar a la izquierda de reportes
     Agregar la opcion de cveAsignacion y cambiar noUsuario por cveUsuario (noCont, noPersonal)
-     */
+    */
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario administrador;
     Stage anterior;

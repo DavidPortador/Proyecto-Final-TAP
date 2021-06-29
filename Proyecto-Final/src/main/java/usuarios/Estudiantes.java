@@ -1,7 +1,6 @@
 package usuarios;
 import database.ConsultaDAO;
 import database.MySQLConnection;
-import database.UserDAO;
 import encuesta.Encuesta;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +17,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import modelos.Alerta;
 import modelos.Usuario;
-import modelos.modeloUsers;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +35,6 @@ public class Estudiantes implements Initializable {
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;
-    Usuario usuario;
     @FXML Button btnConfig, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
     @FXML TableView tblAlertas;
     @FXML Label lblUsuario;

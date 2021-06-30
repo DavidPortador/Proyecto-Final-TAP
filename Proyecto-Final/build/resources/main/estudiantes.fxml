@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+
 <AnchorPane prefHeight="680.0" prefWidth="1348.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -16,9 +19,9 @@
          </image>
       </ImageView>
       <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="601.0" layoutY="72.0" prefHeight="19.0" prefWidth="218.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="usuario" />
-      <TableView fx:id="tblAlertas" layoutX="76.0" layoutY="199.0" prefHeight="387.0" prefWidth="820.0" />
+      <TableView fx:id="tblEstudiante" layoutX="27.0" layoutY="199.0" prefHeight="387.0" prefWidth="1010.0" />
       <Label layoutX="460.0" layoutY="158.0" prefHeight="21.0" prefWidth="52.0" styleClass="label-bright" stylesheets="@Styles/Estilos.css" text="Alertas" textAlignment="CENTER" />
-      <Button fx:id="btnEncuestas" contentDisplay="GRAPHIC_ONLY" layoutX="984.0" layoutY="158.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="117.0" text="Encuestas">
+      <Button fx:id="btnEncuestas" contentDisplay="GRAPHIC_ONLY" layoutX="1066.0" layoutY="134.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="117.0" text="Encuestas">
          <graphic>
             <ImageView fitHeight="115.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +39,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="982.0" layoutY="299.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="117.0" text="Button">
+      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="1064.0" layoutY="264.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="117.0" text="Button">
          <graphic>
             <ImageView fitHeight="122.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,7 +48,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnConsulta" contentDisplay="GRAPHIC_ONLY" layoutX="982.0" layoutY="569.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="117.0" text="Button">
+      <Button fx:id="btnConsulta" contentDisplay="GRAPHIC_ONLY" layoutX="1065.0" layoutY="514.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="117.0" text="Button">
          <graphic>
             <ImageView fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +57,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnOrdenes" contentDisplay="GRAPHIC_ONLY" layoutX="982.0" layoutY="433.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="117.0" text="Button">
+      <Button fx:id="btnOrdenes" contentDisplay="GRAPHIC_ONLY" layoutX="1064.0" layoutY="393.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="117.0" text="Button">
          <graphic>
             <ImageView fitHeight="111.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -63,10 +66,10 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="1015.0" layoutY="268.0" styleClass="label-bright" text="Alertas" />
-      <Label layoutX="1013.0" layoutY="405.0" styleClass="label-bright" text="Ordenes" />
-      <Label layoutX="1007.0" layoutY="541.0" styleClass="label-bright" text="Consultas" />
+      <Label layoutX="1097.0" layoutY="231.0" styleClass="label-bright" text="Alertas" />
+      <Label layoutX="1094.0" layoutY="364.0" styleClass="label-bright" text="Ordenes" />
+      <Label layoutX="1088.0" layoutY="487.0" styleClass="label-bright" text="Consultas" />
       <Label layoutX="1223.0" layoutY="577.0" styleClass="label-bright" text="Salir" />
-      <Label layoutX="1007.0" layoutY="125.0" styleClass="label-bright" text="Encuestas" />
+      <Label layoutX="1087.0" layoutY="106.0" styleClass="label-bright" text="Encuestas" />
    </children>
 </AnchorPane>

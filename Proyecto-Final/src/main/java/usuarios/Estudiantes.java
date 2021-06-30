@@ -15,8 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelos.Alerta;
-import modelos.Usuario;
+import modelos.*;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +34,7 @@ public class Estudiantes implements Initializable {
     Usuario estudiante;
     Stage anterior;
     @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
-    @FXML TableView tblAlertas;
+    @FXML TableView tblEstudiante;
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(estudiante.getNombres()+" "+estudiante.getApellidos());
@@ -44,8 +43,7 @@ public class Estudiantes implements Initializable {
     }
     private void initButtons() {
         btnEncuestas.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     showEncuesta(event);
                 } catch (IOException e) {
@@ -53,39 +51,47 @@ public class Estudiantes implements Initializable {
                 }
             }
         });
+        btnAlerta.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event) {
+                createTableAlertas();
+            }
+        });
+        btnConsulta.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event) {
+                createTableConsultas();
+            }
+        });
+        btnOrdenes.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event) {
+                createTableOrdenes();
+            }
+        });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                 stage.close();
                 anterior.show();
-            }
-        });
-        btnAlerta.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                createTableAlertas();
             }
         });
     }
     private void createTableAlertas() {
         ObservableList <Alerta> alertas = FXCollections.observableArrayList();
         ObservableList<Alerta> generales, monitoreadas;
-        tblAlertas.getItems().clear();
-        tblAlertas.getColumns().clear();
+        tblEstudiante.getItems().clear();
+        tblEstudiante.getColumns().clear();
         TableColumn noAlerta = new TableColumn("noAlerta");
         noAlerta.setMinWidth(130);
         TableColumn noOrden = new TableColumn("noOrden");
         noOrden.setMinWidth(130);
         TableColumn TipoAlerta = new TableColumn("Tipo Alerta");
-        TipoAlerta.setMinWidth(150);
+        TipoAlerta.setMinWidth(250);
         TableColumn descripcion = new TableColumn("Descripcion");
-        descripcion.setMinWidth(250);
+        descripcion.setMinWidth(350);
         noAlerta.setCellValueFactory(new PropertyValueFactory<>("noAlerta"));
         noOrden.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
         TipoAlerta.setCellValueFactory(new PropertyValueFactory<>("tipoAlerta"));
         descripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        tblAlertas.getColumns()
+        tblEstudiante.getColumns()
                 .addAll(noAlerta, noOrden, TipoAlerta, descripcion);
         try {
             generales = consultaDAO.getAlertasGenerales(estudiante.getNoUsuario());
@@ -94,9 +100,76 @@ public class Estudiantes implements Initializable {
                 alertas.add(generales.get(i));
             for (int i = 0; i < monitoreadas.size(); i++)
                 alertas.add(monitoreadas.get(i));
-            tblAlertas.setItems(alertas);
+            tblEstudiante.setItems(alertas);
         } catch (SQLException e) {
             alertMessage("Error","createTable", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    private void createTableConsultas() {
+        ObservableList <modeloConsulta> consultas;
+        tblEstudiante.getItems().clear();
+        tblEstudiante.getColumns().clear();
+        TableColumn noConsulta = new TableColumn("noCon");
+        noConsulta.setMinWidth(80);
+        TableColumn sintomas = new TableColumn("sintomas");
+        sintomas.setMinWidth(150);
+        TableColumn fecha = new TableColumn("Fecha");
+        fecha.setMinWidth(120);
+        TableColumn hora = new TableColumn("Hora");
+        hora.setMinWidth(120);
+        TableColumn tipo = new TableColumn("Tipo");
+        tipo.setMinWidth(120);
+        TableColumn cveAsignacion = new TableColumn("cveAsig");
+        cveAsignacion.setMinWidth(120);
+        TableColumn noUsuario = new TableColumn("noUsua");
+        noUsuario.setMinWidth(120);
+        TableColumn noCedula = new TableColumn("noCedu");
+        noCedula.setMinWidth(120);
+        noConsulta.setCellValueFactory(new PropertyValueFactory<>("noConsulta"));
+        sintomas.setCellValueFactory(new PropertyValueFactory<>("sintomas"));
+        fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        hora.setCellValueFactory(new PropertyValueFactory<>("hora"));
+        tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        cveAsignacion.setCellValueFactory(new PropertyValueFactory<>("cveAsignacion"));
+        noUsuario.setCellValueFactory(new PropertyValueFactory<>("noUsuario"));
+        noCedula.setCellValueFactory(new PropertyValueFactory<>("noCedula"));
+        tblEstudiante.getColumns()
+                .addAll(noConsulta, sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula);
+        try {
+            consultas = consultaDAO.getConsultaUsuario(estudiante.getNoUsuario());
+            tblEstudiante.setItems(consultas);
+        } catch (SQLException e) {
+            alertMessage("Error", "createTableConsultas", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    private void createTableOrdenes() {
+        ObservableList <modeloOrden> ordenes;
+        tblEstudiante.getItems().clear();
+        tblEstudiante.getColumns().clear();
+
+        TableColumn noOrden = new TableColumn("noOrd");
+        noOrden.setMinWidth(80);
+        TableColumn resultado = new TableColumn("resultado");
+        resultado.setMinWidth(150);
+        TableColumn noConsulta = new TableColumn("noConsulta");
+        noConsulta.setMinWidth(120);
+        TableColumn noCedula = new TableColumn("noCedula");
+        noCedula.setMinWidth(120);
+        TableColumn cvePrueba = new TableColumn("cvePrueba");
+        cvePrueba.setMinWidth(120);
+
+        noOrden.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
+        resultado.setCellValueFactory(new PropertyValueFactory<>("resultado"));
+        noConsulta.setCellValueFactory(new PropertyValueFactory<>("noConsulta"));
+        noCedula.setCellValueFactory(new PropertyValueFactory<>("noCedula"));
+        cvePrueba.setCellValueFactory(new PropertyValueFactory<>("cvePrueba"));
+        tblEstudiante.getColumns()
+                .addAll(noOrden, resultado, noConsulta, noCedula, cvePrueba);
+        try {
+            ordenes = consultaDAO.getOrdenUsuario(estudiante.getNoUsuario());
+            tblEstudiante.setItems(ordenes);
+        } catch (SQLException e) {
+            alertMessage("Error", "createTableConsultas", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
     private void showEncuesta(ActionEvent event) throws IOException {

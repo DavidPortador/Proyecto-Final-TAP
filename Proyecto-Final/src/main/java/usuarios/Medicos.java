@@ -1,4 +1,5 @@
 package usuarios;
+import database.ConsultaDAO;
 import database.EncuestaDAO;
 import database.MySQLConnection;
 import database.UserDAO;
@@ -10,21 +11,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import modelos.Usuario;
-import modelos.modeloEncuesta;
-import modelos.modeloUsers;
+import modelos.*;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Medicos implements Initializable {
-    /*
-    Agregar iconos a los botones
-     */
+    ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     EncuestaDAO encuestaDAO = new EncuestaDAO(MySQLConnection.getConnection());
     Usuario medico;
     Stage anterior;
-    @FXML Button btnFiltrar, btnPrueba, btnEncuestas, btnOrden, btnConsultas, btnSalir;
+    @FXML Button btnFiltrar, btnPrueba, btnEncuestas, btnSolicitudes, btnConsultas, btnSalir;
     @FXML ComboBox cbFiltrar, cbPrueba;
     @FXML TableView tblMedicos;
     @FXML Label lblUsuario;
@@ -32,16 +29,41 @@ public class Medicos implements Initializable {
         lblUsuario.setText(medico.getNombres()+" "+medico.getApellidos());
         initButtons();
         createTableEncuestas();
+        try {
+            llenarPruebas();
+        } catch (SQLException e) {
+            alertMessage("Error", "llenarPruebas", e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
     private void initButtons() {
-        btnSalir.setOnAction(new EventHandler<ActionEvent>() {
+        btnEncuestas.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                createTableEncuestas();
+            }
+        });
+        btnSolicitudes.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                createTableSolicitudes();
+            }
+        });
+        btnConsultas.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                createTableConsultas();
+            }
+        });
+        btnSalir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event) {
                 Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                 stage.close();
                 anterior.show();
             }
         });
+    }
+    private void llenarPruebas() throws SQLException {
+            cbPrueba.setItems(consultaDAO.getPruebas());
     }
     private void createTableEncuestas() {
         ObservableList <modeloEncuesta> encuestas;
@@ -103,6 +125,74 @@ public class Medicos implements Initializable {
             tblMedicos.setItems(encuestas);
         } catch (SQLException e) {
             alertMessage("Error", "createTableEncuestas", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    private void createTableSolicitudes() {
+        ObservableList <modeloSolicitud> solicitudes;
+        tblMedicos.getItems().clear();
+        tblMedicos.getColumns().clear();
+        TableColumn noSolicitud = new TableColumn("noSoli");
+        noSolicitud.setMinWidth(80);
+        TableColumn estado = new TableColumn("Estado");
+        estado.setMinWidth(150);
+        TableColumn tipo = new TableColumn("Tipo");
+        tipo.setMinWidth(150);
+        TableColumn cveAsignacion = new TableColumn("cveAsignacion");
+        cveAsignacion.setMinWidth(150);
+        TableColumn noUsuario = new TableColumn("noUsuario");
+        noUsuario.setMinWidth(150);
+        TableColumn noCedula = new TableColumn("noCedula");
+        noCedula.setMinWidth(150);
+        noSolicitud.setCellValueFactory(new PropertyValueFactory<>("noSolicitud"));
+        estado.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        cveAsignacion.setCellValueFactory(new PropertyValueFactory<>("cveAsignacion"));
+        noUsuario.setCellValueFactory(new PropertyValueFactory<>("noUsuario"));
+        noCedula.setCellValueFactory(new PropertyValueFactory<>("noCedula"));
+        tblMedicos.getColumns()
+                .addAll(noSolicitud, estado, tipo, cveAsignacion, noUsuario, noCedula);
+        try {
+            solicitudes = consultaDAO.getSolicitudes();
+            tblMedicos.setItems(solicitudes);
+        } catch (SQLException e) {
+            alertMessage("Error", "createTableSolicitudes", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    private void createTableConsultas() {
+        ObservableList <modeloConsulta> consultas;
+        tblMedicos.getItems().clear();
+        tblMedicos.getColumns().clear();
+        TableColumn noConsulta = new TableColumn("noCon");
+        noConsulta.setMinWidth(80);
+        TableColumn sintomas = new TableColumn("sintomas");
+        sintomas.setMinWidth(150);
+        TableColumn fecha = new TableColumn("Fecha");
+        fecha.setMinWidth(120);
+        TableColumn hora = new TableColumn("Hora");
+        hora.setMinWidth(120);
+        TableColumn tipo = new TableColumn("Tipo");
+        tipo.setMinWidth(120);
+        TableColumn cveAsignacion = new TableColumn("cveAsig");
+        cveAsignacion.setMinWidth(120);
+        TableColumn noUsuario = new TableColumn("noUsua");
+        noUsuario.setMinWidth(120);
+        TableColumn noCedula = new TableColumn("noCedu");
+        noCedula.setMinWidth(120);
+        noConsulta.setCellValueFactory(new PropertyValueFactory<>("noConsulta"));
+        sintomas.setCellValueFactory(new PropertyValueFactory<>("sintomas"));
+        fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        hora.setCellValueFactory(new PropertyValueFactory<>("hora"));
+        tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        cveAsignacion.setCellValueFactory(new PropertyValueFactory<>("cveAsignacion"));
+        noUsuario.setCellValueFactory(new PropertyValueFactory<>("noUsuario"));
+        noCedula.setCellValueFactory(new PropertyValueFactory<>("noCedula"));
+        tblMedicos.getColumns()
+                .addAll(noConsulta, sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula);
+        try {
+            consultas = consultaDAO.getConsultas();
+            tblMedicos.setItems(consultas);
+        } catch (SQLException e) {
+            alertMessage("Error", "createTableConsultas", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){

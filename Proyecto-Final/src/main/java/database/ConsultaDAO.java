@@ -2,8 +2,7 @@ package database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import modelos.Alerta;
-import modelos.modeloMonitoreo;
+import modelos.*;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDelPersonal;
 import modelosReportes.listCasosDepartamento;
@@ -69,6 +68,111 @@ public class ConsultaDAO {
         }
         return alertas;
     }
+    public ObservableList<String> getPruebas() throws SQLException {
+        ObservableList <String> pruebas = FXCollections.observableArrayList();
+        try {
+            String query = "select tipo from Prueba";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                pruebas.add(
+                        rs.getString("tipo")
+                );
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getPruebas", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return pruebas;
+    }
+    public ObservableList<modeloSolicitud> getSolicitudes() throws SQLException {
+        ObservableList <modeloSolicitud> solicitudes = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Solicitud";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                solicitudes.add(new modeloSolicitud(
+                        rs.getInt("noSolicitud"),
+                        rs.getString("estado"),
+                        rs.getString("tipo"),
+                        rs.getString("cveAsignacion"),
+                        rs.getInt("noUsuario"),
+                        rs.getString("noCedula")
+                ));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getSolicitudes", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return solicitudes;
+    }
+    public ObservableList<modeloConsulta> getConsultas() throws SQLException {
+        ObservableList <modeloConsulta> consultas = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Consulta";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                consultas.add(new modeloConsulta(
+                        rs.getInt("noConsulta"),
+                        rs.getString("sintomas"),
+                        rs.getDate("fecha"),
+                        rs.getString("hora"),
+                        rs.getString("tipo"),
+                        rs.getString("cveAsignacion"),
+                        rs.getInt("noUsuario"),
+                        rs.getString("noCedula")
+                ));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getConsultas", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return consultas;
+    }
+
+    public ObservableList<modeloConsulta> getConsultaUsuario(int noUsuario) throws SQLException {
+        ObservableList <modeloConsulta> consultas = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Consulta where noUsuario = " + noUsuario;
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                consultas.add(new modeloConsulta(
+                        rs.getInt("noConsulta"),
+                        rs.getString("sintomas"),
+                        rs.getDate("fecha"),
+                        rs.getString("hora"),
+                        rs.getString("tipo"),
+                        rs.getString("cveAsignacion"),
+                        rs.getInt("noUsuario"),
+                        rs.getString("noCedula")
+                ));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getConsultaUsuario", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return consultas;
+    }
+    public ObservableList<modeloOrden> getOrdenUsuario(int noUsuario) throws SQLException {
+        ObservableList <modeloOrden> ordenes = FXCollections.observableArrayList();
+        try {
+            String query = "select O.noOrden, O.resultado, O.noConsulta, O.noCedula, O.cvePrueba from Orden O inner join Consulta C on O.noConsulta = C.noConsulta where C.noUsuario = " + noUsuario;
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                ordenes.add(new modeloOrden(
+                        rs.getInt("noOrden"),
+                        rs.getString("resultado"),
+                        rs.getInt("noConsulta"),
+                        rs.getString("noCedula"),
+                        rs.getString("cvePrueba")
+                ));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getConsultaUsuario", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return ordenes;
+    }
+
     // Reportes
     public List<listCasosCarrera> getListContagiadosCarrera() {
         List <listCasosCarrera> listCarrera = FXCollections.observableArrayList();

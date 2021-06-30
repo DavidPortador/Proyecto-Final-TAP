@@ -5,22 +5,26 @@ encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
-database/MySQLConnection.java
- database.MySQLConnection
+modelos/modeloPersonal.java
+ modelos.modeloPersonal
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
 modelos/Alerta.java
  modelos.Alerta
 usuarios/Personal.java
  usuarios.Personal
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-medicos/solicitudes.java
- medicos.solicitudes
-modelosReportes/listConsultasTotalMedicos.java
- modelosReportes.listConsultasTotalMedicos
 modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
+modelosReportes/listConsultasTotalMedicos.java
+ modelosReportes.listConsultasTotalMedicos
+medicos/solicitudes.java
+ medicos.solicitudes
 modelos/modeloUsers.java
  modelos.modeloUsers
+modelos/Usuario.java
+ modelos.Usuario
 MainApp.java
  MainApp
 modelosReportes/listCasosDepartamento.java
@@ -38,18 +42,20 @@ usuarios/Medicos.java
  usuarios.Medicos$1
 medicos/medicos.java
  medicos.medicos
-modelos/Usuario.java
- modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
+database/MySQLConnection.java
+ database.MySQLConnection
 database/ConsultaDAO.java
  database.ConsultaDAO
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
 reports/PDFreports.java
  reports.PDFreports
  reports.PDFreports$1
  reports.PDFreports$2
+modelos/modeloEstudiante.java
+ modelos.modeloEstudiante
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
@@ -57,16 +63,14 @@ usuarios/Administradores.java
  usuarios.Administradores$3
  usuarios.Administradores$4
  usuarios.Administradores$5
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
 usuarios/Directivos.java
  usuarios.Directivos
+database/UserDAO.java
+ database.UserDAO
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
-database/UserDAO.java
- database.UserDAO
 controllers/Register.java
  controllers.Register
  controllers.Register$1

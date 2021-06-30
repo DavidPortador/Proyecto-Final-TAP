@@ -2,14 +2,11 @@ package database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import modelos.Usuario;
-import modelos.modeloUsers;
+import modelos.*;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDepartamento;
-
 import java.sql.*;
 import java.util.List;
-
 public class UserDAO {
     Connection conn;
     public UserDAO (Connection conn) {
@@ -54,6 +51,21 @@ public class UserDAO {
         }
         return carrera;
     }
+    public String getcveCarrera(String carrera) throws SQLException {
+        String consulta, cveCarrera = null;
+        consulta = "select cveCarrera from Carrera where nombre = '" + carrera + "'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    cveCarrera = rs.getString("cveCarrera");
+            } catch (Exception e) {
+                alertMessage("Error","getcveCarrera", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return cveCarrera;
+    }
     public String getDepa(int noUsuario) throws SQLException {
         String consulta, depa = null;
         consulta = "select D.nombre from Personal P inner join Departamento D on P.cveDepa = D.cveDepa " +
@@ -69,6 +81,22 @@ public class UserDAO {
             }
         }
         return depa;
+    }
+    public String getcveDepa(String departamento) throws SQLException {
+        String consulta, cvedepa = null;
+        consulta = "select cveDepa from Departamento " +
+                "where nombre = '" + departamento + "'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    cvedepa = rs.getString("cveDepa");
+            } catch (Exception e) {
+                alertMessage("Error","getcveDepa", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return cvedepa;
     }
     public Usuario getUsuarioAD(modeloUsers modeloUser) throws SQLException {
         String consulta;
@@ -172,46 +200,113 @@ public class UserDAO {
         }
         return listDepas;
     }
-
-    public List<listCasosCarrera> getListContagiadosCarrera()
-
-    {
-        List<listCasosCarrera> listCarrera = FXCollections.observableArrayList();
+    // Operaciones del CRUD
+    public boolean insertNewUsuario(Usuario usuario) {
+        // Primero se agrega el usuario y luego se hace la relacion con asignacion y carrera
         try {
-            String query = "select C.nombre, count(E.cveCarrera) as contagiados from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario inner join Consulta C2 on A.cveAsignacion = C2.cveAsignacion and A.noUsuario = C2.noUsuario inner join Orden O on C2.noConsulta = O.noConsulta where O.resultado = 'Contagiado' group by C.nombre";
+            String query = "insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) " +
+                    "values (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, usuario.getUsuario());
+            ps.setString(2, usuario.getContra());
+            ps.setString(3, usuario.getNombres());
+            ps.setString(4, usuario.getApellidos());
+            ps.setString(5, usuario.getGenero());
+            ps.setString(6, usuario.getCorreo());
+            ps.setDate(7, usuario.getFechaNac());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewUsuario", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    public boolean insertNewAsignacion(Usuario usuario, modeloAsignacion asignacion) {
+        // Se hace la relacion entre usuario y asignacion
+        try {
+            String query = "insert into Asignacion " +
+                    "values (?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, asignacion.getNo());
+            ps.setInt(2, usuario.getNoUsuario());
+            ps.setString(3, asignacion.getCveAsignacion());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewAsignacion", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    public boolean insertNewEstudiante(modeloEstudiante estudiante) {
+        // Se le asignan sus datos al estudiante
+        try {
+            String query = "insert into Estudiante " +
+                    "values (?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, estudiante.getNoCont());
+            ps.setString(2, estudiante.getCveAsignacion());
+            ps.setInt(3, estudiante.getNoUsuario());
+            ps.setString(4, estudiante.getCveCarrera());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewEstudiante", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    public boolean insertNewPersonal(modeloPersonal personal) {
+        // Se le asignan sus datos al personal
+        try {
+            String query = "insert into Personal " +
+                    "values (?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, personal.getNoPersonal());
+            ps.setString(2, personal.getCveAsignacion());
+            ps.setInt(3, personal.getNoUsuario());
+            ps.setString(4, personal.getCveDepa());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewPersonal", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    // Reportes
+    public List <listCasosCarrera> getListContagiadosCarrera() {
+        List <listCasosCarrera> listCarrera = FXCollections.observableArrayList();
+        try {
+            String query = "select C.nombre, count(E.cveCarrera) as contagiados " +
+                    "from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera " +
+                    "inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario " +
+                    "inner join Consulta C2 on A.cveAsignacion = C2.cveAsignacion and A.noUsuario = C2.noUsuario " +
+                    "inner join Orden O on C2.noConsulta = O.noConsulta " +
+                    "where O.resultado = 'Contagiado' group by C.nombre";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while (rs.next())
-            {
+            while (rs.next()) {
                 listCarrera.add(new listCasosCarrera(
                         rs.getString("nombre"),
                         rs.getInt("contagiados")));
             }
-        } catch (SQLException ex)
-        {
-            ex.printStackTrace();
-
+        } catch (SQLException e) {
+            alertMessage("Error","listCarrera", e.getMessage(), Alert.AlertType.ERROR);
         }
         return listCarrera;
     }
-    public List<listCasosDepartamento> getListContagiadosDepartamento()
-    {
-        List<listCasosDepartamento> listDepartamento = FXCollections.observableArrayList();
+    public List <listCasosDepartamento> getListContagiadosDepartamento() {
+        List <listCasosDepartamento> listDepartamento = FXCollections.observableArrayList();
         try {
             String query = "select D.nombre, count(P.cveDepa) as contagiados from Departamento D inner join Personal P on D.cveDepa = P.cveDepa inner join Asignacion A on P.cveAsignacion = A.cveAsignacion and P.noUsuario = A.noUsuario inner join Consulta C on A.cveAsignacion = C.cveAsignacion and A.noUsuario = C.noUsuario inner join Orden O on C.noConsulta = O.noConsulta where O.resultado = 'Contagiado' group by D.nombre";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while (rs.next())
-            {
+            while (rs.next()) {
                 listDepartamento.add(new listCasosDepartamento(
                         rs.getString("nombre"),
                         rs.getInt("contagiados")));
             }
-        } catch (SQLException ex)
-        {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            alertMessage("Error","listDepartamento", e.getMessage(), Alert.AlertType.ERROR);
         }
         return listDepartamento;
     }
-
 }

@@ -59,8 +59,9 @@ public class ConsultaDAO {
                 ));
             }
         } catch (SQLException e) {
-            alertMessage("Error","getTableAdmin", e.getMessage(), Alert.AlertType.ERROR);
+            alertMessage("Error","getAlertasMonitoreadas", e.getMessage(), Alert.AlertType.ERROR);
         }
         return alertas;
     }
+
 }

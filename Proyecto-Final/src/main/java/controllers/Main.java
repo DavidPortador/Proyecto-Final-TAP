@@ -20,10 +20,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Main implements Initializable {
-    /*
-    Hay comentarios en el package de usuarios donde dice que les falta a cada tipo de usuario
-    Agregar iconos a los botones de TODAS las interfaces (si es necesario)
-    */
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     @FXML TextField txtUser;
     @FXML PasswordField txtPass;
@@ -67,29 +63,22 @@ public class Main implements Initializable {
                         "Revise que los datos sean correctos", Alert.AlertType.ERROR);
                 txtPass.setText("");
             }else{
-                // System.out.println(tipoUsuario);
                 if(tipoUsuario.equals("Estudiante")){
-                    // System.out.println("*Interfaz de estudiante*");
                     vaciar();
                     showEstudiante(event, usuario);
                 }else if(tipoUsuario.equals("Personal")){
-                    // System.out.println("*Interfaz de personal*");
                     vaciar();
                     showPersonal(event, usuario);
                 }else if(tipoUsuario.equals("Medico")){
-                    // System.out.println("*Interfaz de medico*");
                     vaciar();
                     showMedico(event, usuario);
                 }else if(tipoUsuario.equals("Administrador")){
-                    // System.out.println("*Interfaz de admin*");
                     vaciar();
                     showAdministrador(event, usuario);
                 }else if(tipoUsuario.equals("Monitoreo")){
-                    // System.out.println("*Interfaz de monitoreo*");
                     vaciar();
                     showMonitoreo(event, usuario);
                 }else if(tipoUsuario.equals("Directivo")){
-                    // System.out.println("*Interfaz de directivo*");
                     vaciar();
                     showDirectivo(event, usuario);
                 }

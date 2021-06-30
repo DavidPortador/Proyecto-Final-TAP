@@ -33,7 +33,6 @@ public class Medicos implements Initializable {
         initButtons();
         createTableEncuestas();
     }
-
     private void initButtons() {
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -23,28 +23,24 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDepartamento;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class PDFreports implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior;
     Color v_backG = new DeviceRgb(0, 142, 0);
     Color v_font = new DeviceRgb(0, 0, 0);
     Color v_backG2= new DeviceRgb(251,113,112);
-    @FXML
-    Button btnReporte,btnSalir;
     public static final String DEST1 = "contagios/carrera/carrera_report.pdf";
     public static final String DEST2 = "contagios/departamentos/departamentos_report.pdf";
+    @FXML Button btnReporte,btnSalir;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initButtons();
     }
-
     private void initButtons() {
         btnReporte.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -69,8 +65,6 @@ public class PDFreports implements Initializable {
                 }
             }
         });
-
-
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -80,7 +74,6 @@ public class PDFreports implements Initializable {
             }
         });
     }
-
     public void createPdfCasosCarrera(String dest) throws IOException {
         //Initialize PDF writer
         PdfWriter writer = new PdfWriter(dest);
@@ -91,7 +84,6 @@ public class PDFreports implements Initializable {
         document.setMargins(20, 20, 20, 20);
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
-
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 4}))
                 .useAllAvailableWidth();
         processPdfCarrera(table, null, bold, true);
@@ -149,14 +141,11 @@ public class PDFreports implements Initializable {
             try { File myFile = new File(filename);
                 Desktop.getDesktop().open(myFile);
             } catch (IOException ex) { } } }
-
     private void sendMessage(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(message);
         alert.show();
     }
-
-
 }
 

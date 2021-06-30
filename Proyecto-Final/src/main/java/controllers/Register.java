@@ -9,10 +9,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import modelos.Usuario;
+import modelos.modeloAsignacion;
+import modelos.modeloEstudiante;
+import modelos.modeloPersonal;
+
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 public class Register implements Initializable {
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Stage anterior;
     @FXML ComboBox cbTipoUsuario, cbAsignacion, cbGenero;
@@ -33,7 +41,110 @@ public class Register implements Initializable {
         btnCrear.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                valiVacio();
+                /*if(valiVacio()){
+                    try {
+                        if(userDAO.getUsuarioLogin(txtUsuario.getText(),psfContra.getText()).getUsuario() != null){
+                            alertMessage("Error","El Usuario ya exite", null,Alert.AlertType.ERROR);
+                        }
+                        try{
+                            Usuario newUsuario = new Usuario(0,
+                                    txtUsuario.getText(),
+                                    psfContra.getText(),
+                                    txtNombres.getText(),
+                                    txtApellidos.getText(),
+                                    cbGenero.getSelectionModel().getSelectedItem().toString(),
+                                    txtCorreo.getText(),
+                                    Date.valueOf(dateFormatter.format(dpFecha.getValue()))
+                            );
+                            modeloAsignacion newAsignacion = new modeloAsignacion(
+                                    txtcveAsignacion.getText(),
+                                    cbAsignacion.getSelectionModel().getSelectedItem().toString()
+                            );
+                            modeloEstudiante newEstudiante = new modeloEstudiante(
+                                    txtNo_PE.getText(),
+                                    txtcveAsignacion.getText(),
+                                    newUsuario.getNoUsuario(),
+                                    cbAsignacion.getSelectionModel().getSelectedItem().toString()
+                            );
+                            System.out.println(newUsuario.getUsuario());
+                            System.out.println(newAsignacion.getCveAsignacion());
+                            System.out.println(newEstudiante.getCveCarrera());
+                        }catch (NullPointerException e){
+                            alertMessage("Error Dialog","Error in the consult", "Revisar fechas, error "+e.getMessage(),Alert.AlertType.ERROR);
+                        }
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                }*/
+                try{
+                    Usuario valiUser = userDAO.getUsuarioLogin(txtUsuario.getText(),psfContra.getText());
+                    if(valiVacio()){
+                        if(valiUser != null){
+                            alertMessage("Error","El Usuario ya exite", null,Alert.AlertType.ERROR);
+                        }else{
+                            Usuario newUsuario = new Usuario(0,
+                                    txtUsuario.getText(),
+                                    psfContra.getText(),
+                                    txtNombres.getText(),
+                                    txtApellidos.getText(),
+                                    cbGenero.getSelectionModel().getSelectedItem().toString(),
+                                    txtCorreo.getText(),
+                                    Date.valueOf(dateFormatter.format(dpFecha.getValue()))
+                            );
+                            // Se crea el usuario
+                            if(userDAO.insertNewUsuario(newUsuario)){
+                                // Se reemplaza el modelo por el usuario creado
+                                newUsuario = userDAO.getUsuarioLogin(txtUsuario.getText(), psfContra.getText());
+                                System.out.println("-> "+newUsuario.getNoUsuario());
+                                // Se crea la asignacion
+                                modeloAsignacion newAsignacion = new modeloAsignacion(
+                                        txtcveAsignacion.getText(),
+                                        cbTipoUsuario.getSelectionModel().getSelectedItem().toString()
+                                );
+                                System.out.println(newAsignacion.getNo() + ", " + newUsuario.getNoUsuario() + ", " + newAsignacion.getCveAsignacion());
+                                if(userDAO.insertNewAsignacion(newUsuario, newAsignacion)){
+
+
+
+
+                                    if(cbTipoUsuario.getSelectionModel().getSelectedItem().toString().equals("Estudiante")){
+                                        modeloEstudiante newEstudiante = new modeloEstudiante(
+                                                txtNo_PE.getText(),
+                                                txtcveAsignacion.getText(),
+                                                newUsuario.getNoUsuario(),
+                                                userDAO.getcveCarrera(cbAsignacion.getSelectionModel().getSelectedItem().toString())
+                                        );
+                                        if(userDAO.insertNewEstudiante(newEstudiante)){
+                                            alertMessage("Operacion Exitosa","Estudiante agregado",
+                                                    "Se agrego al estudiante " + newUsuario.getNombres(), Alert.AlertType.INFORMATION);
+                                        }
+                                    }else if(cbTipoUsuario.getSelectionModel().getSelectedItem().toString().equals("Personal")){
+                                        modeloPersonal newPersonal = new modeloPersonal(
+                                                txtNo_PE.getText(),
+                                                txtcveAsignacion.getText(),
+                                                newUsuario.getNoUsuario(),
+                                                userDAO.getcveDepa(cbAsignacion.getSelectionModel().getSelectedItem().toString())
+                                        );
+                                        if(userDAO.insertNewPersonal(newPersonal)){
+                                            alertMessage("Operacion Exitosa","Personal agregado",
+                                                    "Se agrego al personal " + newUsuario.getNombres(), Alert.AlertType.INFORMATION);
+                                        }
+                                    }
+
+
+
+
+
+
+
+                                }
+                            }
+                        }
+                    }
+                }catch (NullPointerException | SQLException e){
+                    alertMessage("Error","createUsuario", e.getMessage(), Alert.AlertType.ERROR);
+                }
             }
         });
         btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
@@ -104,6 +215,7 @@ public class Register implements Initializable {
         cbGenero.setDisable(true);
         txtCorreo.setDisable(true);
         dpFecha.setDisable(true);
+        btnCrear.setDisable(true);
     }
     private void editMode(){
         cbTipoUsuario.setDisable(false);
@@ -117,7 +229,7 @@ public class Register implements Initializable {
         cbGenero.setDisable(false);
         txtCorreo.setDisable(false);
         dpFecha.setDisable(false);
-
+        btnCrear.setDisable(false);
     }
     private boolean valiVacio(){
         boolean bandera = false;

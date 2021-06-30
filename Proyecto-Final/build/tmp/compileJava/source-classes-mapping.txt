@@ -1,10 +1,30 @@
+<<<<<<< HEAD
 usuarios/Medicos.java
  usuarios.Medicos
  usuarios.Medicos$1
+=======
+<<<<<<< Updated upstream
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
+>>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
 usuarios/Directivos.java
  usuarios.Directivos
 modelos/modeloPersonal.java
  modelos.modeloPersonal
+=======
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
+ usuarios.Estudiantes$2
+modelos/modeloPersonal.java
+ modelos.modeloPersonal
+encuesta/Encuesta.java
+ encuesta.Encuesta
+ encuesta.Encuesta$1
+ encuesta.Encuesta$2
+>>>>>>> Stashed changes
 usuarios/Administradores.java
  usuarios.Administradores
  usuarios.Administradores$1
@@ -14,18 +34,23 @@ usuarios/Administradores.java
  usuarios.Administradores$5
 modelos/Alerta.java
  modelos.Alerta
+<<<<<<< HEAD
 database/EncuestaDAO.java
  database.EncuestaDAO
+=======
+usuarios/Directivos.java
+ usuarios.Directivos
+>>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-modelosReportes/listTotalEncuentasDepartamento.java
- modelosReportes.listTotalEncuentasDepartamento
-modelosReportes/listConsultasTotalMedicos.java
- modelosReportes.listConsultasTotalMedicos
 graphics/Graphics.java
  graphics.Graphics
 medicos/solicitudes.java
  medicos.solicitudes
+modelosReportes/listConsultasTotalMedicos.java
+ modelosReportes.listConsultasTotalMedicos
+modelosReportes/listTotalEncuentasDepartamento.java
+ modelosReportes.listTotalEncuentasDepartamento
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -46,10 +71,12 @@ usuarios/Monitoreadores.java
  usuarios.Monitoreadores
 medicos/medicos.java
  medicos.medicos
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
 database/UserDAO.java
  database.UserDAO
-database/MySQLConnection.java
- database.MySQLConnection
 database/ConsultaDAO.java
  database.ConsultaDAO
 reports/PDFreports.java
@@ -60,12 +87,21 @@ modelos/Usuario.java
  modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
+<<<<<<< HEAD
 usuarios/Personal.java
  usuarios.Personal
+=======
+<<<<<<< Updated upstream
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
+ usuarios.Estudiantes$2
+>>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
+<<<<<<< HEAD
 usuarios/Estudiantes.java
  usuarios.Estudiantes
  usuarios.Estudiantes$1
@@ -74,9 +110,31 @@ controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
+=======
+usuarios/Personal.java
+ usuarios.Personal
+usuarios/Medicos.java
+ usuarios.Medicos
+ usuarios.Medicos$1
+database/EncuestaDAO.java
+ database.EncuestaDAO
+=======
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+usuarios/Personal.java
+ usuarios.Personal
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+>>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
+<<<<<<< HEAD
+=======
+database/MySQLConnection.java
+ database.MySQLConnection
+>>>>>>> Stashed changes
+>>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f

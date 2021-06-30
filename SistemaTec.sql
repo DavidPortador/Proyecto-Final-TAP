@@ -446,14 +446,7 @@ insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5
 
 # Se usara una vista para generar reportes 
 
-create view Reporte1Contagiados(Contagiados) as 
-	select count(U.noUsuario) as Contagios 
-		from Usuario U inner join Asignacion A on U.noUsuario = A.noUsuario 
-			inner join Consulta C on A.cveAsignacion = C.cveAsignacion and A.noUsuario = C.noUsuario 
-			inner join Orden O on C.noConsulta = O.noConsulta 
-			where O.resultado = 'Contagiado';
-
-create view Reporte2Estudiantes(Nombres, Apellidos, Fecha, Resultado, Carrera) as 
+create view Reporte1Estudiantes(Nombres, Apellidos, Fecha, Resultado, Carrera) as 
 	select U.nombres, U.apellidos, C.fecha, O.resultado, C2.nombre 
 		from Estudiante 
 			inner join Asignacion A on Estudiante.cveAsignacion = A.cveAsignacion 
@@ -465,7 +458,7 @@ create view Reporte2Estudiantes(Nombres, Apellidos, Fecha, Resultado, Carrera) a
 			inner join Carrera C2 on Estudiante.cveCarrera = C2.cveCarrera 
 			where O.resultado = 'Contagiado';
 
-create view Reporte3Personal(Nombres, Apellidos, Fecha, Resultado, Departamento) as 
+create view Reporte2Personal(Nombres, Apellidos, Fecha, Resultado, Departamento) as 
 	select U.nombres, U.apellidos, C.fecha, O.resultado, D.nombre 
 		from Personal P inner join Asignacion A on P.cveAsignacion = A.cveAsignacion 
 			and P.noUsuario = A.noUsuario 
@@ -475,7 +468,7 @@ create view Reporte3Personal(Nombres, Apellidos, Fecha, Resultado, Departamento)
 		inner join Departamento D on P.cveDepa = D.cveDepa 
 		where O.resultado = 'Contagiado';
 
-create view Reporte4Carreras(Carrera, Contagiados) as 
+create view Reporte3Carreras(Carrera, Contagiados) as 
 	select C.nombre, count(E.cveCarrera) as contagiados 
 		from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera 
 			inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario 
@@ -484,7 +477,7 @@ create view Reporte4Carreras(Carrera, Contagiados) as
 			where O.resultado = 'Contagiado' 
 			group by C.nombre;
 
-create view Reporte5Departamentos(Departamento, Contagiados) as
+create view Reporte4Departamentos(Departamento, Contagiados) as
 	select D.nombre, count(P.cveDepa) as contagiados 
 		from Departamento D inner join Personal P on D.cveDepa = P.cveDepa 
 			inner join Asignacion A on P.cveAsignacion = A.cveAsignacion and P.noUsuario = A.noUsuario 

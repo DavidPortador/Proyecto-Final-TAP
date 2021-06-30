@@ -4,7 +4,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.*;
 import modelosReportes.listCasosCarrera;
+import modelosReportes.listCasosDelPersonal;
 import modelosReportes.listCasosDepartamento;
+import modelosReportes.listCasosEstudiantes;
+
 import java.sql.*;
 import java.util.List;
 public class UserDAO {
@@ -275,18 +278,13 @@ public class UserDAO {
     public List <listCasosCarrera> getListContagiadosCarrera() {
         List <listCasosCarrera> listCarrera = FXCollections.observableArrayList();
         try {
-            String query = "select C.nombre, count(E.cveCarrera) as contagiados " +
-                    "from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera " +
-                    "inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario " +
-                    "inner join Consulta C2 on A.cveAsignacion = C2.cveAsignacion and A.noUsuario = C2.noUsuario " +
-                    "inner join Orden O on C2.noConsulta = O.noConsulta " +
-                    "where O.resultado = 'Contagiado' group by C.nombre";
+            String query = "select * from Reporte3Carreras";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 listCarrera.add(new listCasosCarrera(
-                        rs.getString("nombre"),
-                        rs.getInt("contagiados")));
+                        rs.getString("Carrera"),
+                        rs.getInt("Contagiados")));
             }
         } catch (SQLException e) {
             alertMessage("Error","listCarrera", e.getMessage(), Alert.AlertType.ERROR);
@@ -296,17 +294,57 @@ public class UserDAO {
     public List <listCasosDepartamento> getListContagiadosDepartamento() {
         List <listCasosDepartamento> listDepartamento = FXCollections.observableArrayList();
         try {
-            String query = "select D.nombre, count(P.cveDepa) as contagiados from Departamento D inner join Personal P on D.cveDepa = P.cveDepa inner join Asignacion A on P.cveAsignacion = A.cveAsignacion and P.noUsuario = A.noUsuario inner join Consulta C on A.cveAsignacion = C.cveAsignacion and A.noUsuario = C.noUsuario inner join Orden O on C.noConsulta = O.noConsulta where O.resultado = 'Contagiado' group by D.nombre";
+            String query = "select * from Reporte4Departamentos";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 listDepartamento.add(new listCasosDepartamento(
-                        rs.getString("nombre"),
-                        rs.getInt("contagiados")));
+                        rs.getString("Departamento"),
+                        rs.getInt("Contagiados")));
             }
         } catch (SQLException e) {
             alertMessage("Error","listDepartamento", e.getMessage(), Alert.AlertType.ERROR);
         }
         return listDepartamento;
     }
+    public List <listCasosEstudiantes> getListContagiadosEstudiantes() {
+        List <listCasosEstudiantes> listEstudiantes = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Reporte1Estudiantes";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listEstudiantes.add(new listCasosEstudiantes(
+                        rs.getString("Nombres"),
+                        rs.getString("Apellidos"),
+                        rs.getDate("Fecha"),
+                        rs.getString("Resultado"),
+                        rs.getString("Carrera")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listEstudiantes", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listEstudiantes;
+    }
+    public List <listCasosDelPersonal> getListContagiadosPersonal() {
+        List <listCasosDelPersonal> listPersonal = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Reporte2Personal";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listPersonal.add(new listCasosDelPersonal(
+                        rs.getString("Nombres"),
+                        rs.getString("Apellidos"),
+                        rs.getDate("Fecha"),
+                        rs.getString("Resultado"),
+                        rs.getString("Departamento")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listPersonal", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listPersonal;
+    }
+
+
 }

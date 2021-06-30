@@ -3,10 +3,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.Alerta;
+import modelosReportes.listCasosCarrera;
+import modelosReportes.listCasosDelPersonal;
+import modelosReportes.listCasosDepartamento;
+import modelosReportes.listCasosEstudiantes;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+
 public class ConsultaDAO {
     Connection conn;
     public ConsultaDAO (Connection conn) {
@@ -63,5 +70,77 @@ public class ConsultaDAO {
         }
         return alertas;
     }
+    // Reportes
+    public List<listCasosCarrera> getListContagiadosCarrera() {
+        List <listCasosCarrera> listCarrera = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Reporte3Carreras";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listCarrera.add(new listCasosCarrera(
+                        rs.getString("Carrera"),
+                        rs.getInt("Contagiados")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listCarrera", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listCarrera;
+    }
+    public List <listCasosDepartamento> getListContagiadosDepartamento() {
+        List <listCasosDepartamento> listDepartamento = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Reporte4Departamentos";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listDepartamento.add(new listCasosDepartamento(
+                        rs.getString("Departamento"),
+                        rs.getInt("Contagiados")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listDepartamento", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listDepartamento;
+    }
+    public List <listCasosEstudiantes> getListContagiadosEstudiantes() {
+        List <listCasosEstudiantes> listEstudiantes = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Reporte1Estudiantes";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listEstudiantes.add(new listCasosEstudiantes(
+                        rs.getString("Nombres"),
+                        rs.getString("Apellidos"),
+                        rs.getDate("Fecha"),
+                        rs.getString("Resultado"),
+                        rs.getString("Carrera")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listEstudiantes", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listEstudiantes;
+    }
+    public List <listCasosDelPersonal> getListContagiadosPersonal() {
+        List <listCasosDelPersonal> listPersonal = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Reporte2Personal";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listPersonal.add(new listCasosDelPersonal(
+                        rs.getString("Nombres"),
+                        rs.getString("Apellidos"),
+                        rs.getDate("Fecha"),
+                        rs.getString("Resultado"),
+                        rs.getString("Departamento")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listPersonal", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listPersonal;
+    }
+
 
 }

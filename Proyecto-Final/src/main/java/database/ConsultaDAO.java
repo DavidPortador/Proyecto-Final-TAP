@@ -3,6 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.Alerta;
+import modelos.modeloMonitoreo;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDelPersonal;
 import modelosReportes.listCasosDepartamento;
@@ -138,5 +139,23 @@ public class ConsultaDAO {
             alertMessage("Error","listPersonal", e.getMessage(), Alert.AlertType.ERROR);
         }
         return listPersonal;
+    }
+    public ObservableList<modeloMonitoreo> getMonitoreo() throws SQLException{
+        ObservableList<modeloMonitoreo> monito= FXCollections.observableArrayList();
+        try{
+            String query = "select O.noOrden, resultado, U.nombres, cvePrueba from Orden O inner join Consulta C on O.noConsulta = C.noConsulta inner join Medico M on C.noCedula = M.noCedula inner join Usuario U on C.noUsuario = U.noUsuario;";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                monito.add(new modeloMonitoreo(
+                        rs.getString("noOrden"),
+                        rs.getString("resultado"),
+                        rs.getString("nombres"),
+                        rs.getString("cvePrueba")
+                ));
+            }
+        }catch (SQLException e){
+        }
+        return monito;
     }
 }

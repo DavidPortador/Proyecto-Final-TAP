@@ -59,13 +59,13 @@ public class Register implements Initializable {
                             if(userDAO.insertNewUsuario(newUsuario)){
                                 // Se reemplaza el modelo por el usuario creado
                                 newUsuario = userDAO.getUsuarioLogin(txtUsuario.getText(), psfContra.getText());
-                                System.out.println("-> "+newUsuario.getNoUsuario());
+                                //System.out.println("-> "+newUsuario.getNoUsuario());
                                 // Se crea la asignacion
                                 modeloAsignacion newAsignacion = new modeloAsignacion(
                                         txtcveAsignacion.getText(),
                                         cbTipoUsuario.getSelectionModel().getSelectedItem().toString()
                                 );
-                                System.out.println(newAsignacion.getNo() + ", " + newUsuario.getNoUsuario() + ", " + newAsignacion.getCveAsignacion());
+                                //System.out.println(newAsignacion.getNo() + ", " + newUsuario.getNoUsuario() + ", " + newAsignacion.getCveAsignacion());
                                 if(userDAO.insertNewAsignacion(newUsuario, newAsignacion)){
                                     // Momento en el que se decide si se registra un Estudiante o un personal
                                     if(cbTipoUsuario.getSelectionModel().getSelectedItem().toString().equals("Estudiante")){

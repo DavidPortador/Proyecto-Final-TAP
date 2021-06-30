@@ -463,6 +463,19 @@ create view Reporte2Departamentos(Departamento, Contagiados) as
 			inner join Orden O on C.noConsulta = O.noConsulta 
 			where O.resultado = 'Contagiado' 
 			group by D.nombre;
+
+create view Reporte3Estudiantes(Nombres, Apellidos, Fecha, Resultado, Carrera) as 
+	select U.nombres, U.apellidos, C.fecha, O.resultado, C2.nombre 
+		from Estudiante 
+			inner join Asignacion A on Estudiante.cveAsignacion = A.cveAsignacion 
+				and Estudiante.noUsuario = A.noUsuario 
+			inner join Consulta C on A.cveAsignacion = C.cveAsignacion 
+				and A.noUsuario = C.noUsuario 
+			inner join Orden O on C.noConsulta = O.noConsulta 
+			inner join Usuario U on A.noUsuario = U.noUsuario 
+			inner join Carrera C2 on Estudiante.cveCarrera = C2.cveCarrera 
+			where O.resultado = 'Contagiado';
+
 	
 # Crear conexion con el usuario de DataGrip
 

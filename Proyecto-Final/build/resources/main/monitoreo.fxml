@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane prefHeight="631.0" prefWidth="1082.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="631.0" prefWidth="1082.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -14,22 +17,22 @@
             <Image url="@img/tec-logo1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgUsuario" fitHeight="105.0" fitWidth="124.0" layoutX="929.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgUsuario" fitHeight="105.0" fitWidth="124.0" layoutX="828.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Styles/user2.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblEstudiantes" layoutX="136.0" layoutY="150.0" prefHeight="404.0" prefWidth="692.0" />
-      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="961.0" layoutY="540.0" mnemonicParsing="false" text="Button">
+      <TableView fx:id="tblMonitoreo" layoutX="82.0" layoutY="150.0" prefHeight="404.0" prefWidth="769.0" />
+      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="961.0" layoutY="540.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Button">
          <graphic>
-            <ImageView fitHeight="58.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Styles/exit.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="170.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Alerta">
+      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="150.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Alerta">
          <graphic>
             <ImageView fitHeight="92.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,15 +40,15 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="417.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="105.0" text="Historial">
+      <Button fx:id="btnConsulta" contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="282.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Historial">
          <graphic>
-            <ImageView fitHeight="112.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Styles/historial.png" />
+                  <Image url="@Styles/consulta.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="285.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="899.0" layoutY="417.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
          <graphic>
             <ImageView fitHeight="108.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,6 +56,6 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="739.0" layoutY="68.0" prefHeight="19.0" prefWidth="172.0" styleClass="label-bright" text="usuario" />
+      <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="635.0" layoutY="56.0" prefHeight="19.0" prefWidth="172.0" styleClass="label-bright" text="usuario" />
    </children>
 </AnchorPane>

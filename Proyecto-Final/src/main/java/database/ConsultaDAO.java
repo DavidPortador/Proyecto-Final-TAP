@@ -143,10 +143,11 @@ public class ConsultaDAO {
     public ObservableList<modeloMonitoreo> getMonitoreo() throws SQLException{
         ObservableList<modeloMonitoreo> monito= FXCollections.observableArrayList();
         try{
-            String query = "select O.noOrden, resultado, U.nombres, cvePrueba " +
+            String query = "select O.noOrden, O.resultado, U.nombres, P.tipo " +
                     "from Orden O inner join Consulta C on O.noConsulta = C.noConsulta " +
                     "inner join Medico M on C.noCedula = M.noCedula " +
-                    "inner join Usuario U on C.noUsuario = U.noUsuario;";
+                    "inner join Usuario U on C.noUsuario = U.noUsuario " +
+                    "inner join Prueba P on O.cvePrueba = P.cvePrueba";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
@@ -154,7 +155,7 @@ public class ConsultaDAO {
                         rs.getInt("noOrden"),
                         rs.getString("resultado"),
                         rs.getString("nombres"),
-                        rs.getString("cvePrueba")
+                        rs.getString("tipo")
                 ));
             }
         }catch (SQLException e){

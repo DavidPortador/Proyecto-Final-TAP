@@ -3,12 +3,12 @@ public class modeloMonitoreo {
     int noOrden;
     String resultado;
     String nombres;
-    String cvePrueba;
-    public modeloMonitoreo(int noOrden, String resultado, String nombres, String cvePrueba) {
+    String tipo;
+    public modeloMonitoreo(int noOrden, String resultado, String nombres, String tipo) {
         this.noOrden = noOrden;
         this.resultado = resultado;
         this.nombres = nombres;
-        this.cvePrueba = cvePrueba;
+        this.tipo = tipo;
     }
     public int getNoOrden() {
         return noOrden;
@@ -28,10 +28,10 @@ public class modeloMonitoreo {
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
-    public String getCvePrueba() {
-        return cvePrueba;
+    public String getTipo() {
+        return tipo;
     }
-    public void setCvePrueba(String cvePrueba) {
-        this.cvePrueba = cvePrueba;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

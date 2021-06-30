@@ -18,8 +18,13 @@ modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
 modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
-database/ConsultaDAO.java
- database.ConsultaDAO
+usuarios/Administradores.java
+ usuarios.Administradores
+ usuarios.Administradores$1
+ usuarios.Administradores$2
+ usuarios.Administradores$3
+ usuarios.Administradores$4
+ usuarios.Administradores$5
 medicos/solicitudes.java
  medicos.solicitudes
 modelos/modeloUsers.java
@@ -49,34 +54,33 @@ modelos/modeloEncuesta.java
  modelos.modeloEncuesta
 modelos/Usuario.java
  modelos.Usuario
-reports/PDFreports.java
- reports.PDFreports
- reports.PDFreports$1
- reports.PDFreports$2
-graphics/Graphics.java
- graphics.Graphics
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
-usuarios/Administradores.java
- usuarios.Administradores
- usuarios.Administradores$1
- usuarios.Administradores$2
- usuarios.Administradores$3
- usuarios.Administradores$4
- usuarios.Administradores$5
-usuarios/Directivos.java
- usuarios.Directivos
-usuarios/Estudiantes.java
- usuarios.Estudiantes
- usuarios.Estudiantes$1
- usuarios.Estudiantes$2
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
+reports/PDFreports.java
+ reports.PDFreports
+ reports.PDFreports$1
+ reports.PDFreports$2
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
+ usuarios.Estudiantes$2
+ usuarios.Estudiantes$3
+modelos/modeloMonitoreo.java
+ modelos.modeloMonitoreo
+usuarios/Directivos.java
+ usuarios.Directivos
+graphics/Graphics.java
+ graphics.Graphics
+database/ConsultaDAO.java
+ database.ConsultaDAO
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+ usuarios.Monitoreadores$1
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2

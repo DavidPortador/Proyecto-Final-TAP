@@ -274,4 +274,11 @@ public class UserDAO {
             return false;
         }
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> refs/remotes/origin/main
+>>>>>>> Stashed changes
 }

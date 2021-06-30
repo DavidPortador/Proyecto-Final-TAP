@@ -1,39 +1,28 @@
-package usuarios;
+package graphics;
+
 import database.ConsultaDAO;
 import database.MySQLConnection;
-import database.UserDAO;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import modelos.Usuario;
 import modelosReportes.listCasosCarrera;
+import javafx.scene.chart.*;
 import modelosReportes.listCasosDepartamento;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-public class Directivos implements Initializable {
-    /*
-    La interfaz esta vacia :'u
-    Puede ver los reportes
-    Puede ver la dashboard (graficas)
-     */
-    UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
-    Usuario directivo;
-    Stage anterior;
-    @FXML Label lblUsuario;
-    @FXML GridPane gpBarras;
-    @FXML ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
-    @Override public void initialize(URL location, ResourceBundle resources) {
 
-        lblUsuario.setText(directivo.getNombres()+" "+directivo.getApellidos());
-       initCharts();
+public class Graphics implements Initializable {
+    @FXML
+    GridPane gpBarras;
+    @FXML
+    ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    initCharts();
     }
     private void initCharts() {
         gpBarras.add(generateTotalCasosChart(),0,0);
@@ -51,7 +40,7 @@ public class Directivos implements Initializable {
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Carrera");
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Departamento");
+        series1.setName("Departamento");
 
         for (listCasosCarrera row : consultaDAO.getListContagiadosCarrera()) {
 
@@ -66,12 +55,5 @@ public class Directivos implements Initializable {
 
         bc.getData().addAll(series1,series2);
         return bc;
-    }
-
-    public void setStageAnterior(Stage stage){
-        anterior = stage;
-    }
-    public void setUsuario(Usuario usuario){
-        directivo = usuario;
     }
 }

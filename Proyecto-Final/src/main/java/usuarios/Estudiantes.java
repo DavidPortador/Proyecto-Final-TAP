@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelos.Alerta;
 import modelos.Usuario;
@@ -114,8 +115,7 @@ public class Estudiantes implements Initializable {
         //actual.close();
         // Muestra el nuevo stage
         primaryStage.setScene(scene);
-        primaryStage.showAndWait();
-        //primaryStage.show();
+        primaryStage.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

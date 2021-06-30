@@ -181,11 +181,13 @@ public class Encuesta implements Initializable {
         otros = tfAbierta.getText();
         for (int i = 0; i < respuestas.length; i++)
             System.out.println(respuestas[i]);
-        if(encuestaDAO.insertNewEncuesta(usuario, respuestas, otros)){
-            alertMessage("Operacion Exitosa","Encuesta registrada",
-                    "Se agrego la encuesta a " + usuario.getNombres(), Alert.AlertType.INFORMATION);
-            Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
-            actual.close();
+        if(bandera){
+            if(encuestaDAO.insertNewEncuesta(usuario, respuestas, otros)){
+                alertMessage("Operacion Exitosa","Encuesta registrada",
+                        "Se agrego la encuesta a " + usuario.getNombres(), Alert.AlertType.INFORMATION);
+                Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                actual.close();
+            }
         }
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){

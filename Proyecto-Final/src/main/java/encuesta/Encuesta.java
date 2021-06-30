@@ -22,8 +22,7 @@ public class Encuesta implements Initializable {
     @FXML TextField tfAbierta;
     @FXML
     Button btnCancelar, btnRegistrar;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @Override public void initialize(URL location, ResourceBundle resources) {
         crearEncuesta();
         initData();
     }
@@ -38,11 +37,11 @@ public class Encuesta implements Initializable {
         btnRegistrar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                getRespuestas(event);
+                agregarEncuesta(event);
             }
         });
     }
-    private void getRespuestas(ActionEvent event){
+    private void agregarEncuesta(ActionEvent event){
         int[] respuestas = new int[13];
         String otros;
         // Validaciones y llenado de respuestas
@@ -179,8 +178,8 @@ public class Encuesta implements Initializable {
                 bandera = false;
             }
         otros = tfAbierta.getText();
-        for (int i = 0; i < respuestas.length; i++)
-            System.out.println(respuestas[i]);
+        /*for (int i = 0; i < respuestas.length; i++)
+            System.out.println(respuestas[i]);*/
         if(bandera){
             if(encuestaDAO.insertNewEncuesta(usuario, respuestas, otros)){
                 alertMessage("Operacion Exitosa","Encuesta registrada",

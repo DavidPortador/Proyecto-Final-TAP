@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 public class Estudiantes implements Initializable {
     /*
     Estudiante y Personal son lo mismo casi casi xd
-    Crear de manera aleatoria la encuesta para el usuario
         Los botones son (En ese orden)
+            Encuestas
             Alertas
             Ordenes
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
@@ -93,14 +93,9 @@ public class Estudiantes implements Initializable {
             alertMessage("Error","createTable", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-    int getRandom(){
-        int v_random;
-        v_random = (int) (Math.floor(Math.random() * (3 - 1 + 1)) + 1);
-        return  v_random;
-    }
     private void showEncuesta(ActionEvent event) throws IOException {
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Encuesta");
+        Stage encuestas = new Stage();
+        encuestas.setTitle("Encuesta");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
         Encuesta encuesta = new Encuesta();
         encuesta.setUsuario(estudiante);
@@ -108,14 +103,17 @@ public class Estudiantes implements Initializable {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        primaryStage.setResizable(false);
+        encuestas.setResizable(false);
         // Le pasa como parametro el stage actual y nueva
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         //encuesta.setStageAnterior(actual);
         //actual.close();
         // Muestra el nuevo stage
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        encuestas.setScene(scene);
+        //primaryStage.show();
+        encuestas.initOwner(actual);
+        encuestas.initModality(Modality.WINDOW_MODAL);
+        encuestas.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

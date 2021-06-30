@@ -447,7 +447,14 @@ insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5
 # Se usara una vista para generar reportes (pendiente...)
 
 
-#create view Reportes();
+create view Reporte1Carreras(Carreras, Contagiados) as 
+	select C.nombre, count(E.cveCarrera) as contagiados 
+		from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera 
+			inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario 
+			inner join Consulta C2 on A.cveAsignacion = C2.cveAsignacion and A.noUsuario = C2.noUsuario 
+			inner join Orden O on C2.noConsulta = O.noConsulta 
+			where O.resultado = 'Contagiado' 
+			group by C.nombre;
 
 
 # Crear conexion con el usuario de DataGrip

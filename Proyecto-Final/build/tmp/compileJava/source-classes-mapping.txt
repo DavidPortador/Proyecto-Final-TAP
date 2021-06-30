@@ -1,6 +1,5 @@
-usuarios/Estudiantes.java
- usuarios.Estudiantes
- usuarios.Estudiantes$1
+database/UserDAO.java
+ database.UserDAO
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
@@ -65,8 +64,9 @@ usuarios/Administradores.java
  usuarios.Administradores$5
 usuarios/Directivos.java
  usuarios.Directivos
-database/UserDAO.java
- database.UserDAO
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
 controllers/Main.java
  controllers.Main
  controllers.Main$1

@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 public class Estudiantes implements Initializable {
     /*
     Estudiante y Personal son lo mismo casi casi xd
-    Cada que entre un estudiante revisar si tiene alertas
     Crear de manera aleatoria la encuesta para el usuario
         Los botones son (En ese orden)
             Alertas

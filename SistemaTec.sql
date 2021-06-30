@@ -444,10 +444,9 @@ insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5
 	(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, null, 16),
 	(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, null, 17);
 
-# Se usara una vista para generar reportes (pendiente...)
+# Se usara una vista para generar reportes 
 
-
-create view Reporte1Carreras(Carreras, Contagiados) as 
+create view Reporte1Carreras(Carrera, Contagiados) as 
 	select C.nombre, count(E.cveCarrera) as contagiados 
 		from Carrera C inner join Estudiante E on C.cveCarrera = E.cveCarrera 
 			inner join Asignacion A on E.cveAsignacion = A.cveAsignacion and E.noUsuario = A.noUsuario 
@@ -456,7 +455,15 @@ create view Reporte1Carreras(Carreras, Contagiados) as
 			where O.resultado = 'Contagiado' 
 			group by C.nombre;
 
-
+create view Reporte2Departamentos(Departamento, Contagiados) as
+	select D.nombre, count(P.cveDepa) as contagiados 
+		from Departamento D inner join Personal P on D.cveDepa = P.cveDepa 
+			inner join Asignacion A on P.cveAsignacion = A.cveAsignacion and P.noUsuario = A.noUsuario 
+			inner join Consulta C on A.cveAsignacion = C.cveAsignacion and A.noUsuario = C.noUsuario 
+			inner join Orden O on C.noConsulta = O.noConsulta 
+			where O.resultado = 'Contagiado' 
+			group by D.nombre;
+	
 # Crear conexion con el usuario de DataGrip
 
 grant all privileges on SistemaTec.* to topicos_progra;

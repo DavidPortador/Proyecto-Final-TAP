@@ -1,6 +1,8 @@
 package controllers;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +15,6 @@ import modelos.Usuario;
 import modelos.modeloAsignacion;
 import modelos.modeloEstudiante;
 import modelos.modeloPersonal;
-
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -35,54 +36,16 @@ public class Register implements Initializable {
         defaultMode();
         initCombo();
         initButtons();
-        //cbTipoUsuario.setOnAction(e -> System.out.println("Action Nueva Selección: " + cbTipoUsuario.getValue()));
     }
     private void initButtons() {
         btnCrear.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                /*if(valiVacio()){
-                    try {
-                        if(userDAO.getUsuarioLogin(txtUsuario.getText(),psfContra.getText()).getUsuario() != null){
-                            alertMessage("Error","El Usuario ya exite", null,Alert.AlertType.ERROR);
-                        }
-                        try{
-                            Usuario newUsuario = new Usuario(0,
-                                    txtUsuario.getText(),
-                                    psfContra.getText(),
-                                    txtNombres.getText(),
-                                    txtApellidos.getText(),
-                                    cbGenero.getSelectionModel().getSelectedItem().toString(),
-                                    txtCorreo.getText(),
-                                    Date.valueOf(dateFormatter.format(dpFecha.getValue()))
-                            );
-                            modeloAsignacion newAsignacion = new modeloAsignacion(
-                                    txtcveAsignacion.getText(),
-                                    cbAsignacion.getSelectionModel().getSelectedItem().toString()
-                            );
-                            modeloEstudiante newEstudiante = new modeloEstudiante(
-                                    txtNo_PE.getText(),
-                                    txtcveAsignacion.getText(),
-                                    newUsuario.getNoUsuario(),
-                                    cbAsignacion.getSelectionModel().getSelectedItem().toString()
-                            );
-                            System.out.println(newUsuario.getUsuario());
-                            System.out.println(newAsignacion.getCveAsignacion());
-                            System.out.println(newEstudiante.getCveCarrera());
-                        }catch (NullPointerException e){
-                            alertMessage("Error Dialog","Error in the consult", "Revisar fechas, error "+e.getMessage(),Alert.AlertType.ERROR);
-                        }
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
-
-                }*/
+            @Override public void handle(ActionEvent event) {
                 try{
                     Usuario valiUser = userDAO.getUsuarioLogin(txtUsuario.getText(),psfContra.getText());
                     if(valiVacio()){
-                        if(valiUser != null){
+                        if(valiUser != null)
                             alertMessage("Error","El Usuario ya exite", null,Alert.AlertType.ERROR);
-                        }else{
+                        else{
                             Usuario newUsuario = new Usuario(0,
                                     txtUsuario.getText(),
                                     psfContra.getText(),
@@ -104,10 +67,7 @@ public class Register implements Initializable {
                                 );
                                 System.out.println(newAsignacion.getNo() + ", " + newUsuario.getNoUsuario() + ", " + newAsignacion.getCveAsignacion());
                                 if(userDAO.insertNewAsignacion(newUsuario, newAsignacion)){
-
-
-
-
+                                    // Momento en el que se decide si se registra un Estudiante o un personal
                                     if(cbTipoUsuario.getSelectionModel().getSelectedItem().toString().equals("Estudiante")){
                                         modeloEstudiante newEstudiante = new modeloEstudiante(
                                                 txtNo_PE.getText(),
@@ -131,25 +91,17 @@ public class Register implements Initializable {
                                                     "Se agrego al personal " + newUsuario.getNombres(), Alert.AlertType.INFORMATION);
                                         }
                                     }
-
-
-
-
-
-
-
                                 }
                             }
                         }
                     }
-                }catch (NullPointerException | SQLException e){
+                } catch (NullPointerException | SQLException e){
                     alertMessage("Error","createUsuario", e.getMessage(), Alert.AlertType.ERROR);
                 }
             }
         });
         btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                 stage.close();
                 anterior.show();
@@ -204,6 +156,15 @@ public class Register implements Initializable {
         editMode();
     }
     private void defaultMode(){
+        // Se limita el tamaño de las cajas de texto para evitar errores de longitudes
+        fijarTamanoMaximo(txtcveAsignacion, 5);
+        fijarTamanoMaximo(txtNo_PE, 5);
+        fijarTamanoMaximo(txtUsuario, 30);
+        fijarTamanoMaximo(psfContra, 30);
+        fijarTamanoMaximo(txtNombres, 50);
+        fijarTamanoMaximo(txtApellidos, 50);
+        fijarTamanoMaximo(txtCorreo, 50);
+        // Deshabilita las opciones forzando al usuario elegir un tipo de usuario
         cbTipoUsuario.setDisable(false);
         cbAsignacion.setDisable(true);
         txtNo_PE.setDisable(true);
@@ -270,6 +231,16 @@ public class Register implements Initializable {
             bandera = true;
         }
         return bandera;
+    }
+    public void fijarTamanoMaximo(TextField campoTexto, int tamanoMaximo) {
+        campoTexto.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override public void changed(ObservableValue<? extends Number> observable, Number valorAnterior, Number valorActual) {
+                if (valorActual.intValue() > valorAnterior.intValue())
+                    // Revisa que la longitud del texto no sea mayor a la variable definida.
+                    if (campoTexto.getText().length() >= tamanoMaximo)
+                        campoTexto.setText(campoTexto.getText().substring(0, tamanoMaximo));
+            }
+        });
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

@@ -211,15 +211,15 @@ public class Main implements Initializable {
         actual.close();
         directivo.show();
     }
+    void vaciar(){
+        txtUser.setText("");
+        txtPass.setText("");
+    }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(Header);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-    void vaciar(){
-        txtUser.setText("");
-        txtPass.setText("");
     }
 }

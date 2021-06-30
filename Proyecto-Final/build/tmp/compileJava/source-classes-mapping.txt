@@ -76,3 +76,4 @@ controllers/Register.java
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
+ controllers.Register$4

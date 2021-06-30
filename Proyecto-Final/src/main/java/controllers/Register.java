@@ -8,13 +8,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import modelos.Usuario;
 import modelos.modeloAsignacion;
 import modelos.modeloEstudiante;
 import modelos.modeloPersonal;
+import usuarios.Estudiantes;
+import usuarios.Personal;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -107,6 +114,42 @@ public class Register implements Initializable {
                 anterior.show();
             }
         });
+    }
+    void showEstudiante(ActionEvent event, Usuario usuario) throws IOException {
+        Stage estudiantes = new Stage();
+        estudiantes.setTitle("Interfaz de Estudiante");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/estudiantes.fxml"));
+        Estudiantes estudiante = new Estudiantes();
+        estudiante.setUsuario(usuario);
+        loader.setController(estudiante);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        estudiantes.setMaximized(true);
+        estudiantes.setScene(scene);
+        // Le pasa como parametro el stage actual y nueva
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        estudiante.setStageAnterior(anterior);
+        // Muestra el nuevo stage
+        actual.close();
+        estudiantes.show();
+    }
+    void showPersonal(ActionEvent event, Usuario usuario) throws IOException {
+        Stage SPersonal = new Stage();
+        SPersonal.setTitle("Interfaz de Personal");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/personal.fxml"));
+        Personal personal = new Personal();
+        personal.setUsuario(usuario);
+        loader.setController(personal);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        SPersonal.setMaximized(true);
+        SPersonal.setScene(scene);
+        // Le pasa como parametro el stage actual y nueva
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        personal.setStageAnterior(actual);
+        // Muestra el nuevo stage
+        actual.close();
+        SPersonal.show();
     }
     private void initCombo() {
         cbTipoUsuario.setOnAction(new EventHandler<ActionEvent>() {

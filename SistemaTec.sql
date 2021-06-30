@@ -486,6 +486,8 @@ create view Reporte4Departamentos(Departamento, Contagiados) as
 			where O.resultado = 'Contagiado' 
 			group by D.nombre;
 
+
+
 # Crear conexion con el usuario de DataGrip
 
 grant all privileges on SistemaTec.* to topicos_progra;

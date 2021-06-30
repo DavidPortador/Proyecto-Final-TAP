@@ -27,7 +27,8 @@
                   <Image url="@Styles/encuesta.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+      </Button>
       <Button fx:id="btnOrden" contentDisplay="GRAPHIC_ONLY" layoutX="1119.0" layoutY="297.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="150.0" text="Solicitudes">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">

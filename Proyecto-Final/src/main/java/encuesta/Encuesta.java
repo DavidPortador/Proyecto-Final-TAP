@@ -1,4 +1,6 @@
 package encuesta;
+import database.EncuestaDAO;
+import database.MySQLConnection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -6,10 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import modelos.Usuario;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Encuesta implements Initializable {
+    EncuestaDAO encuestaDAO = new EncuestaDAO(MySQLConnection.getConnection());
     Usuario usuario;
     Stage anterior;
     @FXML RadioButton rdp1si, rdp1no, rdp2si, rdp2no, rdp3si, rdp3no, rdp4si, rdp4no, rdp5si, rdp5no,
@@ -36,60 +38,155 @@ public class Encuesta implements Initializable {
         btnRegistrar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                getRespuestas();
+                getRespuestas(event);
             }
         });
     }
-    private void getRespuestas(){
-
-        if(rdp1si.isSelected() == true){
-            alertMessage("si","Responder Respuesta 1", null, Alert.AlertType.ERROR);
-        }else if(rdp1no.isSelected() == true){
-            alertMessage("no","Responder Respuesta 1", null, Alert.AlertType.ERROR);
-        }else{
-            alertMessage("Error","Responder Respuesta 1", null, Alert.AlertType.ERROR);
-        }
-
-        if((rdp1si.isSelected() == true) || (rdp1no.isSelected() == true)){
-            if(rdp1si.isSelected() == true){
-                alertMessage("si","Responder Respuesta 1", null, Alert.AlertType.ERROR);
-            }else if(rdp1no.isSelected() == true){
-                alertMessage("no","Responder Respuesta 1", null, Alert.AlertType.ERROR);
+    private void getRespuestas(ActionEvent event){
+        int[] respuestas = new int[13];
+        String otros;
+        // Validaciones y llenado de respuestas
+        boolean bandera = true;
+        // La bandera valida que las rspuestas sean seleccionadas
+        // Respuesta 1
+        if(bandera)
+            if(rdp1si.isSelected() == true)
+                respuestas[0] = 1;
+            else if(rdp1no.isSelected() == true)
+                respuestas[0] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 1", Alert.AlertType.ERROR);
+                bandera = false;
             }
-        }else{
-            alertMessage("no","Responder Respuesta 1", null, Alert.AlertType.ERROR);
+        // Respuesta 2
+        if(bandera)
+            if(rdp2si.isSelected() == true)
+                respuestas[1] = 1;
+            else if(rdp2no.isSelected() == true)
+                respuestas[1] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 2", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 3
+        if(bandera)
+            if(rdp3si.isSelected() == true)
+                respuestas[2] = 1;
+            else if(rdp3no.isSelected() == true)
+                respuestas[2] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 3", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 4
+        if(bandera)
+            if(rdp4si.isSelected() == true)
+                respuestas[3] = 1;
+            else if(rdp4no.isSelected() == true)
+                respuestas[3] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 4", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 5
+        if(bandera)
+            if(rdp5si.isSelected() == true)
+                respuestas[4] = 1;
+            else if(rdp5no.isSelected() == true)
+                respuestas[4] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 5", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 6
+        if(bandera)
+            if(rdp6si.isSelected() == true)
+                respuestas[5] = 1;
+            else if(rdp6no.isSelected() == true)
+                respuestas[5] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 6", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 7
+        if(bandera)
+            if(rdp7si.isSelected() == true)
+                respuestas[6] = 1;
+            else if(rdp7no.isSelected() == true)
+                respuestas[6] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 7", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 8
+        if(bandera)
+            if(rdp8si.isSelected() == true)
+                respuestas[7] = 1;
+            else if(rdp8no.isSelected() == true)
+                respuestas[7] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 8", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 9
+        if(bandera)
+            if(rdp9si.isSelected() == true)
+                respuestas[8] = 1;
+            else if(rdp9no.isSelected() == true)
+                respuestas[8] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 9", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 10
+        if(bandera)
+            if(rdp10si.isSelected() == true)
+                respuestas[9] = 1;
+            else if(rdp10no.isSelected() == true)
+                respuestas[9] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 10", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 11
+        if(bandera)
+            if(rdp11si.isSelected() == true)
+                respuestas[10] = 1;
+            else if(rdp11no.isSelected() == true)
+                respuestas[10] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 11", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 12
+        if(bandera)
+            if(rdp12si.isSelected() == true)
+                respuestas[11] = 1;
+            else if(rdp12no.isSelected() == true)
+                respuestas[11] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 12", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        // Respuesta 13
+        if(bandera)
+            if(rdp13si.isSelected() == true)
+                respuestas[12] = 1;
+            else if(rdp13no.isSelected() == true)
+                respuestas[12] = 0;
+            else{
+                alertMessage("Error",null, "Responder Respuesta 13", Alert.AlertType.ERROR);
+                bandera = false;
+            }
+        otros = tfAbierta.getText();
+        for (int i = 0; i < respuestas.length; i++)
+            System.out.println(respuestas[i]);
+        if(encuestaDAO.insertNewEncuesta(usuario, respuestas, otros)){
+            alertMessage("Operacion Exitosa","Encuesta registrada",
+                    "Se agrego la encuesta a " + usuario.getNombres(), Alert.AlertType.INFORMATION);
+            Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+            actual.close();
         }
-
-
-        /*if(rdp1si.isSelected() != true || rdp1no.isSelected() != true){
-            alertMessage("Error","Responder Respuesta 1", null, Alert.AlertType.ERROR);
-        }else if(rdp2si.isSelected() == true || rdp2no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 2", null, Alert.AlertType.ERROR);
-        }else if(rdp3si.isSelected() == true || rdp3no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 3", null, Alert.AlertType.ERROR);
-        }else if(rdp4si.isSelected() == true || rdp4no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 4", null, Alert.AlertType.ERROR);
-        }else if(rdp5si.isSelected() == true || rdp5no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 5", null, Alert.AlertType.ERROR);
-        }else if(rdp6si.isSelected() == true || rdp6no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 6", null, Alert.AlertType.ERROR);
-        }else if(rdp7si.isSelected() == true || rdp7no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 7", null, Alert.AlertType.ERROR);
-        }else if(rdp8si.isSelected() == true || rdp8no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 8", null, Alert.AlertType.ERROR);
-        }else if(rdp9si.isSelected() == true || rdp9no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 9", null, Alert.AlertType.ERROR);
-        }else if(rdp10si.isSelected() == true || rdp10no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 10", null, Alert.AlertType.ERROR);
-        }else if(rdp11si.isSelected() == true || rdp11no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 11", null, Alert.AlertType.ERROR);
-        }else if(rdp12si.isSelected() == true || rdp12no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 12", null, Alert.AlertType.ERROR);
-        }else if(rdp13si.isSelected() == true || rdp13no.isSelected() == true){
-            alertMessage("Error","Responder Respuesta 13", null, Alert.AlertType.ERROR);
-        }else{
-
-        }*/
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);
@@ -112,7 +209,6 @@ public class Encuesta implements Initializable {
         ToggleGroup gp11 = new ToggleGroup();
         ToggleGroup gp12 = new ToggleGroup();
         ToggleGroup gp13 = new ToggleGroup();
-
         txtPersonal.setText("Encuesta a "+ usuario.getNombres()+" "+usuario.getApellidos());
         // Seccion 1
         txtH1.setText(
@@ -195,10 +291,9 @@ public class Encuesta implements Initializable {
         // Seccion 3
         txtH3.setText(
                 "Otros Síntomas");
-        // Pregunta 1
+        // Pregunta 14
         txtP14.setText(
                 "Describa si tiene otros síntomas: ");
-
     }
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;

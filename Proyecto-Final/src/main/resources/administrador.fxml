@@ -55,7 +55,7 @@
                   </ComboBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="250.0" spacing="20.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="578.0" prefHeight="100.0" prefWidth="250.0" spacing="20.0">
                <children>
                   <Button fx:id="btnEditar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0">
                      <graphic>
@@ -64,20 +64,13 @@
                               <Image url="@Styles/editar.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="btnEliminar" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0">
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Styles/delete.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="545.0" layoutY="580.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="120.0" text="Button">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Styles/CancelReport.png" />
                            </image>
                         </ImageView>
                      </graphic>

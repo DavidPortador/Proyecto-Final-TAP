@@ -39,7 +39,7 @@ public class Estudiantes implements Initializable {
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(estudiante.getNombres()+" "+estudiante.getApellidos());
-        createTable();
+        createTableAlertas();
         initButtons();
     }
     private void initButtons() {
@@ -61,8 +61,14 @@ public class Estudiantes implements Initializable {
                 anterior.show();
             }
         });
+        btnAlerta.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                createTableAlertas();
+            }
+        });
     }
-    private void createTable() {
+    private void createTableAlertas() {
         ObservableList <Alerta> alertas = FXCollections.observableArrayList();
         ObservableList<Alerta> generales, monitoreadas;
         tblAlertas.getItems().clear();

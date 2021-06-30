@@ -31,7 +31,7 @@ public class Administradores implements Initializable {
     Usuario administrador;
     Stage anterior;
     @FXML TextField txtUsuario, txtContra, txtNombres, txtApellidos, txtCorreo;
-    @FXML Button btnEditar, btnEliminar, btnCancelar, btnReportes, btnSalir;
+    @FXML Button btnEditar, btnCancelar, btnReportes, btnSalir;
     @FXML ComboBox cbGenero, cbAux;
     @FXML DatePicker dpNacimiento;
     @FXML TableView tblFiltrar;
@@ -221,7 +221,6 @@ public class Administradores implements Initializable {
         dpNacimiento.setDisable(true);
         cbAux.setDisable(true);
         btnEditar.setDisable(true);
-        btnEliminar.setDisable(true);
         btnCancelar.setDisable(true);
         lblAux.setText("Asignacion");
         cbGenero.getItems().clear();
@@ -244,7 +243,6 @@ public class Administradores implements Initializable {
         dpNacimiento.setDisable(false);
         cbAux.setDisable(false);
         btnEditar.setDisable(false);
-        btnEliminar.setDisable(false);
         btnCancelar.setDisable(false);
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){

@@ -1,58 +1,27 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
-=======
-<<<<<<< Updated upstream
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
->>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
-usuarios/Directivos.java
- usuarios.Directivos
-modelos/modeloPersonal.java
- modelos.modeloPersonal
-=======
-=======
->>>>>>> 45758ce6f4898b1acef72a79fb7d21a60df07e75
-usuarios/Estudiantes.java
- usuarios.Estudiantes
- usuarios.Estudiantes$1
- usuarios.Estudiantes$2
-modelos/modeloPersonal.java
- modelos.modeloPersonal
+database/MySQLConnection.java
+ database.MySQLConnection
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
-usuarios/Administradores.java
- usuarios.Administradores
- usuarios.Administradores$1
- usuarios.Administradores$2
- usuarios.Administradores$3
- usuarios.Administradores$4
- usuarios.Administradores$5
+modelos/modeloPersonal.java
+ modelos.modeloPersonal
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
 modelos/Alerta.java
  modelos.Alerta
-<<<<<<< HEAD
-database/EncuestaDAO.java
- database.EncuestaDAO
-=======
-usuarios/Directivos.java
- usuarios.Directivos
->>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
+usuarios/Personal.java
+ usuarios.Personal
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-graphics/Graphics.java
- graphics.Graphics
-medicos/solicitudes.java
- medicos.solicitudes
-modelosReportes/listConsultasTotalMedicos.java
- modelosReportes.listConsultasTotalMedicos
 modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
+modelosReportes/listConsultasTotalMedicos.java
+ modelosReportes.listConsultasTotalMedicos
+database/ConsultaDAO.java
+ database.ConsultaDAO
+medicos/solicitudes.java
+ medicos.solicitudes
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -74,38 +43,29 @@ usuarios/Medicos.java
  usuarios.Medicos$1
 medicos/medicos.java
  medicos.medicos
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
 database/UserDAO.java
  database.UserDAO
-database/ConsultaDAO.java
- database.ConsultaDAO
+modelos/modeloEncuesta.java
+ modelos.modeloEncuesta
+modelos/Usuario.java
+ modelos.Usuario
 reports/PDFreports.java
  reports.PDFreports
  reports.PDFreports$1
  reports.PDFreports$2
-modelos/Usuario.java
- modelos.Usuario
-modelos/modeloEncuesta.java
- modelos.modeloEncuesta
-<<<<<<< HEAD
-<<<<<<< HEAD
-usuarios/Personal.java
- usuarios.Personal
-=======
-<<<<<<< Updated upstream
-usuarios/Estudiantes.java
- usuarios.Estudiantes
- usuarios.Estudiantes$1
- usuarios.Estudiantes$2
->>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
-encuesta/Encuesta.java
- encuesta.Encuesta
- encuesta.Encuesta$1
- encuesta.Encuesta$2
-<<<<<<< HEAD
+graphics/Graphics.java
+ graphics.Graphics
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+usuarios/Administradores.java
+ usuarios.Administradores
+ usuarios.Administradores$1
+ usuarios.Administradores$2
+ usuarios.Administradores$3
+ usuarios.Administradores$4
+ usuarios.Administradores$5
+usuarios/Directivos.java
+ usuarios.Directivos
 usuarios/Estudiantes.java
  usuarios.Estudiantes
  usuarios.Estudiantes$1
@@ -114,36 +74,9 @@ controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
-=======
-usuarios/Personal.java
- usuarios.Personal
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
-database/EncuestaDAO.java
- database.EncuestaDAO
-=======
-=======
->>>>>>> 45758ce6f4898b1acef72a79fb7d21a60df07e75
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
-usuarios/Personal.java
- usuarios.Personal
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
->>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
-<<<<<<< HEAD
-=======
-database/MySQLConnection.java
- database.MySQLConnection
-<<<<<<< HEAD
->>>>>>> Stashed changes
->>>>>>> 046b94752ba7a0b6855a747a197d9a047b69261f
-=======
->>>>>>> 45758ce6f4898b1acef72a79fb7d21a60df07e75

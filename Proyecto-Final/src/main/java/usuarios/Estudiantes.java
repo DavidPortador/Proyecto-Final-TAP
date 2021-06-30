@@ -33,7 +33,7 @@ public class Estudiantes implements Initializable {
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;
-    @FXML Button btnConfig, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
+    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
     @FXML TableView tblAlertas;
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
@@ -42,6 +42,16 @@ public class Estudiantes implements Initializable {
         initButtons();
     }
     private void initButtons() {
+        btnEncuestas.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showEncuesta(event);
+                } catch (IOException e) {
+                    alertMessage("Error","btnEncuestas", e.getMessage(), Alert.AlertType.ERROR);
+                }
+            }
+        });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -87,7 +97,7 @@ public class Estudiantes implements Initializable {
         v_random = (int) (Math.floor(Math.random() * (3 - 1 + 1)) + 1);
         return  v_random;
     }
-    void showEncuesta(ActionEvent event) throws IOException {
+    private void showEncuesta(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         primaryStage.setTitle("Encuesta");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/encuesta.fxml"));
@@ -101,10 +111,11 @@ public class Estudiantes implements Initializable {
         // Le pasa como parametro el stage actual y nueva
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         //encuesta.setStageAnterior(actual);
-        actual.close();
+        //actual.close();
         // Muestra el nuevo stage
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.showAndWait();
+        //primaryStage.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

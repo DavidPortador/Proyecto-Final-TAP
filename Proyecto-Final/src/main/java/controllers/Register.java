@@ -20,7 +20,6 @@ import modelos.modeloEstudiante;
 import modelos.modeloPersonal;
 import usuarios.Estudiantes;
 import usuarios.Personal;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -85,6 +84,7 @@ public class Register implements Initializable {
                                         if(userDAO.insertNewEstudiante(newEstudiante)){
                                             alertMessage("Operacion Exitosa","Estudiante agregado",
                                                     "Se agrego al estudiante " + newUsuario.getNombres(), Alert.AlertType.INFORMATION);
+                                            showEstudiante(event, newUsuario);
                                         }
                                     }else if(cbTipoUsuario.getSelectionModel().getSelectedItem().toString().equals("Personal")){
                                         modeloPersonal newPersonal = new modeloPersonal(
@@ -96,13 +96,14 @@ public class Register implements Initializable {
                                         if(userDAO.insertNewPersonal(newPersonal)){
                                             alertMessage("Operacion Exitosa","Personal agregado",
                                                     "Se agrego al personal " + newUsuario.getNombres(), Alert.AlertType.INFORMATION);
+                                            showPersonal(event, newUsuario);
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                } catch (NullPointerException | SQLException e){
+                } catch (NullPointerException | SQLException | IOException e){
                     alertMessage("Error","createUsuario", e.getMessage(), Alert.AlertType.ERROR);
                 }
             }
@@ -146,7 +147,7 @@ public class Register implements Initializable {
         SPersonal.setScene(scene);
         // Le pasa como parametro el stage actual y nueva
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
-        personal.setStageAnterior(actual);
+        personal.setStageAnterior(anterior);
         // Muestra el nuevo stage
         actual.close();
         SPersonal.show();

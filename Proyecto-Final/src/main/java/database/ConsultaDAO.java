@@ -7,13 +7,11 @@ import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDelPersonal;
 import modelosReportes.listCasosDepartamento;
 import modelosReportes.listCasosEstudiantes;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
 public class ConsultaDAO {
     Connection conn;
     public ConsultaDAO (Connection conn) {
@@ -141,6 +139,4 @@ public class ConsultaDAO {
         }
         return listPersonal;
     }
-
-
 }

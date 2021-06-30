@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 public class Encuesta implements Initializable {
     Usuario usuario;
     Stage anterior;
-    String a_personal;
     @FXML RadioButton rdp1si, rdp1no, rdp2si, rdp2no, rdp3si, rdp3no, rdp4si, rdp4no, rdp5si, rdp5no,
             rdp6si, rdp6no, rdp7si, rdp7no, rdp8si, rdp8no, rdp9si, rdp9no, rdp10si, rdp10no,
             rdp11si, rdp11no, rdp12si, rdp12no, rdp13si, rdp13no;
@@ -32,7 +31,6 @@ public class Encuesta implements Initializable {
             public void handle(ActionEvent event) {
                 Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                 actual.close();
-                anterior.show();
             }
         });
         btnRegistrar.setOnAction(new EventHandler<ActionEvent>() {
@@ -41,6 +39,11 @@ public class Encuesta implements Initializable {
 
             }
         });
+    }
+    private void getRespuestas(){
+        if(rdp1si.isFocused()){
+            
+        }
     }
     private void crearEncuesta(){
         ToggleGroup gp1 = new ToggleGroup();
@@ -57,7 +60,7 @@ public class Encuesta implements Initializable {
         ToggleGroup gp12 = new ToggleGroup();
         ToggleGroup gp13 = new ToggleGroup();
 
-        txtPersonal.setText("Encuesta a "+a_personal);
+        txtPersonal.setText("Encuesta a "+ usuario.getNombres()+" "+usuario.getApellidos());
         // Seccion 1
         txtH1.setText(
                 "Tener uno o mas de los siguientes sintomas justifica la ausencia o retiro " +

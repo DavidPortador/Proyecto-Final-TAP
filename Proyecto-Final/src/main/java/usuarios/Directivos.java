@@ -2,7 +2,6 @@ package usuarios;
 import database.ConsultaDAO;
 import database.MySQLConnection;
 import database.UserDAO;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -15,7 +14,6 @@ import javafx.stage.Stage;
 import modelos.Usuario;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDepartamento;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Directivos implements Initializable {
@@ -31,20 +29,18 @@ public class Directivos implements Initializable {
     @FXML GridPane gpBarras;
     @FXML ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     @Override public void initialize(URL location, ResourceBundle resources) {
-
         lblUsuario.setText(directivo.getNombres()+" "+directivo.getApellidos());
        initCharts();
     }
     private void initCharts() {
         gpBarras.add(generateTotalCasosChart(),0,0);
     }
-
     private BarChart generateTotalCasosChart() {
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String, Number> bc =
                 new BarChart<String, Number>(xAxis, yAxis);
-        bc.setTitle("TOTAL CASOS");
+        bc.setTitle("Total Casos");
         xAxis.setLabel("Casos");
         yAxis.setLabel("Total");
 
@@ -52,22 +48,17 @@ public class Directivos implements Initializable {
         series1.setName("Carrera");
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Departamento");
-
         for (listCasosCarrera row : consultaDAO.getListContagiadosCarrera()) {
-
             XYChart.Data<String, Number> data = new XYChart.Data<>(row.getCarrera(), row.getContagiados());
             series1.getData().add(data);
         }
         for (listCasosDepartamento row2 : consultaDAO.getListContagiadosDepartamento()) {
-
             XYChart.Data<String, Number> data = new XYChart.Data<>(row2.getDepartamentos(), row2.getContagiados());
             series2.getData().add(data);
         }
-
         bc.getData().addAll(series1,series2);
         return bc;
     }
-
     public void setStageAnterior(Stage stage){
         anterior = stage;
     }

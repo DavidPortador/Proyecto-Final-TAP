@@ -1,9 +1,11 @@
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
+ usuarios.Estudiantes$2
+encuesta/Encuesta.java
+ encuesta.Encuesta
+ encuesta.Encuesta$1
+ encuesta.Encuesta$2
 modelos/modeloPersonal.java
  modelos.modeloPersonal
 usuarios/Administradores.java
@@ -15,26 +17,20 @@ usuarios/Administradores.java
  usuarios.Administradores$5
 modelos/Alerta.java
  modelos.Alerta
-graphics/Graphics.java
- graphics.Graphics
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+ controllers.Register$2
+ controllers.Register$3
+ controllers.Register$4
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-database/MySQLConnection.java
- database.MySQLConnection
-medicos/solicitudes.java
- medicos.solicitudes
-modelosReportes/listConsultasTotalMedicos.java
- modelosReportes.listConsultasTotalMedicos
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> Stashed changes
 modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
 modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
+graphics/Graphics.java
+ graphics.Graphics
 medicos/solicitudes.java
  medicos.solicitudes
 modelos/modeloUsers.java
@@ -58,18 +54,6 @@ usuarios/Medicos.java
  usuarios.Medicos$1
 medicos/medicos.java
  medicos.medicos
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-controllers/Register.java
- controllers.Register
- controllers.Register$1
- controllers.Register$2
- controllers.Register$3
- controllers.Register$4
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> Stashed changes
 database/UserDAO.java
  database.UserDAO
 database/MySQLConnection.java
@@ -84,13 +68,10 @@ modelos/Usuario.java
  modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
 usuarios/Personal.java
  usuarios.Personal
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
 modelos/modeloAsignacion.java
  modelos.modeloAsignacion
 usuarios/Directivos.java
@@ -99,27 +80,3 @@ controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
-=======
->>>>>>> Stashed changes
-controllers/Register.java
- controllers.Register
- controllers.Register$1
- controllers.Register$2
- controllers.Register$3
- controllers.Register$4
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
-usuarios/Estudiantes.java
- usuarios.Estudiantes
- usuarios.Estudiantes$1
- usuarios.Estudiantes$2
-encuesta/Encuesta.java
- encuesta.Encuesta
- encuesta.Encuesta$1
- encuesta.Encuesta$2
-usuarios/Personal.java
- usuarios.Personal
-<<<<<<< Updated upstream
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> Stashed changes

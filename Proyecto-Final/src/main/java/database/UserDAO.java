@@ -47,7 +47,6 @@ public class UserDAO {
         }
         return cveasignacion;
     }
-
     public String getnoCedula(int noUsuario) throws SQLException {
         String consulta, noCedula = null;
         consulta = "select noCedula from Medico where noUsuario = " + noUsuario;
@@ -63,8 +62,23 @@ public class UserDAO {
         }
         return noCedula;
     }
-
     public String getcvePrueba(String prueba) throws SQLException {
+        String consulta, cvePrueba = null;
+        consulta = "select cvePrueba from Prueba where tipo = '" + prueba + "'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    cvePrueba = rs.getString("cvePrueba");
+            } catch (Exception e) {
+                alertMessage("Error","getcvePrueba", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return cvePrueba;
+    }
+
+    public String getnoMonitoreo(String prueba) throws SQLException {
         String consulta, cvePrueba = null;
         consulta = "select cvePrueba from Prueba where tipo = '" + prueba + "'";
         Statement st = conn.createStatement();

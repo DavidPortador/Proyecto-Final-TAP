@@ -50,25 +50,6 @@ modelos/Usuario.java
  modelos.Usuario
 medicos/medicos.java
  medicos.medicos
-database/UserDAO.java
- database.UserDAO
-usuarios/Administradores.java
- usuarios.Administradores
- usuarios.Administradores$1
- usuarios.Administradores$2
- usuarios.Administradores$3
- usuarios.Administradores$4
- usuarios.Administradores$5
-controllers/Register.java
- controllers.Register
- controllers.Register$1
- controllers.Register$2
- controllers.Register$3
- controllers.Register$4
-reports/PDFreports.java
- reports.PDFreports
- reports.PDFreports$1
- reports.PDFreports$2
 usuarios/Estudiantes.java
  usuarios.Estudiantes
  usuarios.Estudiantes$1
@@ -78,6 +59,40 @@ usuarios/Estudiantes.java
  usuarios.Estudiantes$5
  usuarios.Estudiantes$6
  usuarios.Estudiantes$7
+usuarios/Administradores.java
+ usuarios.Administradores
+ usuarios.Administradores$1
+ usuarios.Administradores$2
+ usuarios.Administradores$3
+ usuarios.Administradores$4
+ usuarios.Administradores$5
+controllers/Consulta.java
+ controllers.Consulta
+ controllers.Consulta$1
+ controllers.Consulta$2
+usuarios/Medicos.java
+ usuarios.Medicos
+ usuarios.Medicos$1
+ usuarios.Medicos$2
+ usuarios.Medicos$3
+ usuarios.Medicos$4
+ usuarios.Medicos$5
+ usuarios.Medicos$6
+usuarios/Directivos.java
+ usuarios.Directivos
+ usuarios.Directivos$1
+database/UserDAO.java
+ database.UserDAO
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
+database/ConsultaDAO.java
+ database.ConsultaDAO
+reports/PDFreports.java
+ reports.PDFreports
+ reports.PDFreports$1
+ reports.PDFreports$2
 usuarios/Personal.java
  usuarios.Personal
  usuarios.Personal$1
@@ -90,28 +105,13 @@ usuarios/Personal.java
 usuarios/Monitoreadores.java
  usuarios.Monitoreadores
  usuarios.Monitoreadores$1
-controllers/Consulta.java
- controllers.Consulta
- controllers.Consulta$1
- controllers.Consulta$2
 controllers/Solicitud.java
  controllers.Solicitud
  controllers.Solicitud$1
  controllers.Solicitud$2
-usuarios/Directivos.java
- usuarios.Directivos
- usuarios.Directivos$1
-database/ConsultaDAO.java
- database.ConsultaDAO
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
- usuarios.Medicos$2
- usuarios.Medicos$3
- usuarios.Medicos$4
- usuarios.Medicos$5
- usuarios.Medicos$6
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+ controllers.Register$2
+ controllers.Register$3
+ controllers.Register$4

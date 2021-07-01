@@ -351,7 +351,6 @@ public class ConsultaDAO {
             return false;
         }
     }
-
     public boolean insertNewOrden(modeloOrden orden) {
         // Se le asignan sus datos al personal
         try {
@@ -369,7 +368,6 @@ public class ConsultaDAO {
             return false;
         }
     }
-
     // Update
     public boolean setEstadoSolicitud(int noSolicitud) {
         // Se le asignan sus datos al personal

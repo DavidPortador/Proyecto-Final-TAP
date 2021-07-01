@@ -1,4 +1,20 @@
 package usuarios;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import controllers.Solicitud;
 import database.ConsultaDAO;
 import database.MySQLConnection;
@@ -13,15 +29,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelos.*;
+import modelosReportes.listCasosCarrera;
 import org.kordamp.bootstrapfx.BootstrapFX;
+import reports.PDFreports;
+
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static reports.PDFreports.DEST1;
+
 public class Estudiantes implements Initializable {
     /*
     Estudiante y Personal son lo mismo casi casi xd
@@ -31,10 +57,14 @@ public class Estudiantes implements Initializable {
             Ordenes
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
     */
+    public static final String DEST5 = "contagios/personal/estudiante.pdf";
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;
-    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes, btnSolicitud;
+    Color v_font = new DeviceRgb(0, 0, 0);
+    Color v_header = new DeviceRgb(196, 49, 0);
+    Color v_background= new DeviceRgb(255, 125, 82);
+    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes, btnSolicitud,btnPDF;
     @FXML TableView tblEstudiante;
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
@@ -82,6 +112,17 @@ public class Estudiantes implements Initializable {
                 } catch (IOException e) {
                     alertMessage("Error","btnSolicitud", e.getMessage(), Alert.AlertType.ERROR);
                 }
+            }
+        });
+        btnPDF.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    madePDF();
+                } catch (Exception e) {
+                    alertMessage("Error","btnPDF", e.getMessage(), Alert.AlertType.ERROR);
+                }
+
             }
         });
     }
@@ -205,7 +246,62 @@ public class Estudiantes implements Initializable {
         encuestas.initModality(Modality.WINDOW_MODAL);
         encuestas.show();
     }
+    private void madePDF(){
 
+        File file = new File(DEST5);
+        file.getParentFile().mkdirs();
+        try {
+           createPdfOrdenes(DEST5);
+            sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
+            openPdfFile(DEST5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void createPdfOrdenes(String dest) throws IOException {
+        //Initialize PDF writer
+        PdfWriter writer = new PdfWriter(dest);
+        //Initialize PDF document
+        PdfDocument pdf = new PdfDocument(writer);
+        // Initialize document
+        Document document = new Document(pdf, PageSize.A4.rotate());
+        ImageData imageData = ImageDataFactory.create("src/main/resources/img/header.png");
+        com.itextpdf.layout.element.Image pdfImg= new com.itextpdf.layout.element.Image(imageData);
+        Paragraph paragraph=new Paragraph("Orden");
+        paragraph.setFontSize(25);
+        paragraph.setTextAlignment(TextAlignment.CENTER);
+        document.setMargins(20, 20, 20, 20);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        Table table1 = new Table(UnitValue.createPercentArray(new float[]{5, 4,4,4,4}))
+                .useAllAvailableWidth();
+        processPdfOrdenes(table1, null, bold, true);
+        for(modeloOrden e : consultaDAO.getListOrdenes(estudiante.getNoUsuario())) {
+            processPdfOrdenes(table1, e, bold, false);
+        }
+        document.add(pdfImg);
+        document.add(paragraph);
+        document.add(table1);
+
+        //Close document
+        document.close();
+    }
+    public void processPdfOrdenes(Table table, modeloOrden user, PdfFont font, boolean isHeader) {
+        if (isHeader) {
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("No.Orden").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("Resultado").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("No.Consulta").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("No.Cedula").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("Clave de Prueba").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+        } else {
+            table.addCell(new com.itextpdf.layout.element.Cell().add(new Paragraph(user.getNoOrden() + "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(user.getResultado()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(user.getNoConsulta()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(user.getNoCedula()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(user.getCvePrueba()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+        }
+    }
     private void showSolicitud(ActionEvent event) throws IOException {
         Stage solicitud = new Stage();
         solicitud.setTitle("Solicitud");
@@ -228,7 +324,6 @@ public class Estudiantes implements Initializable {
         solicitud.initModality(Modality.WINDOW_MODAL);
         solicitud.show();
     }
-
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -242,4 +337,15 @@ public class Estudiantes implements Initializable {
     public void setUsuario(Usuario usuario){
         estudiante = usuario;
     }
+    private void sendMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.show();
+    }
+    private void openPdfFile(String filename) {
+        if (Desktop.isDesktopSupported()) {
+            try { File myFile = new File(filename);
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) { } } }
 }

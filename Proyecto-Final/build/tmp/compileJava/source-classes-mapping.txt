@@ -43,12 +43,10 @@ modelosReportes/listCasosEstudiantes.java
  modelosReportes.listCasosEstudiantes
 modelos/modeloOrden.java
  modelos.modeloOrden
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
- usuarios.Medicos$2
- usuarios.Medicos$3
- usuarios.Medicos$4
+controllers/Solicitud.java
+ controllers.Solicitud
+ controllers.Solicitud$1
+ controllers.Solicitud$2
 medicos/medicos.java
  medicos.medicos
 modelos/modeloAsignacion.java
@@ -65,14 +63,12 @@ reports/PDFreports.java
  reports.PDFreports$2
 modelos/Usuario.java
  modelos.Usuario
-usuarios/Estudiantes.java
- usuarios.Estudiantes
- usuarios.Estudiantes$1
- usuarios.Estudiantes$2
- usuarios.Estudiantes$3
- usuarios.Estudiantes$4
- usuarios.Estudiantes$5
- usuarios.Estudiantes$6
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+ controllers.Register$2
+ controllers.Register$3
+ controllers.Register$4
 usuarios/Monitoreadores.java
  usuarios.Monitoreadores
  usuarios.Monitoreadores$1
@@ -85,17 +81,21 @@ usuarios/Administradores.java
  usuarios.Administradores$5
 database/UserDAO.java
  database.UserDAO
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
+ usuarios.Estudiantes$2
+ usuarios.Estudiantes$3
+ usuarios.Estudiantes$4
+ usuarios.Estudiantes$5
+ usuarios.Estudiantes$6
+usuarios/Medicos.java
+ usuarios.Medicos
+ usuarios.Medicos$1
+ usuarios.Medicos$2
+ usuarios.Medicos$3
+ usuarios.Medicos$4
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
-controllers/Solicitud.java
- controllers.Solicitud
- controllers.Solicitud$1
- controllers.Solicitud$2
-controllers/Register.java
- controllers.Register
- controllers.Register$1
- controllers.Register$2
- controllers.Register$3
- controllers.Register$4

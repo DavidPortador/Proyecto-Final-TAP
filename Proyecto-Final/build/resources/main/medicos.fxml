@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="691.0" prefWidth="1338.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="691.0" prefWidth="1338.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="tblMedicos" layoutX="24.0" layoutY="194.0" prefHeight="382.0" prefWidth="1051.0" styleClass="list-cell" stylesheets="Styles/Estilos.css" />
       <Label layoutX="392.0" layoutY="25.0" prefHeight="53.0" prefWidth="212.0" styleClass="label-header" stylesheets="Styles/Estilos.css" text="Medicos" textAlignment="CENTER" />
@@ -22,7 +21,7 @@
       <Button fx:id="btnFiltrar" layoutX="690.0" layoutY="114.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="150.0" stylesheets="Styles/Estilos.css" text="Filtrar" />
       <ComboBox fx:id="cbFiltrar" layoutX="472.0" layoutY="115.0" prefHeight="31.0" prefWidth="200.0" styleClass="combo-box" stylesheets="Styles/Estilos.css" />
       <Button fx:id="btnPrueba" layoutX="925.0" layoutY="592.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="150.0" text="Prueba Covid" />
-      <ComboBox fx:id="cbPrueba" layoutX="715.0" layoutY="593.0" prefHeight="31.0" prefWidth="200.0" styleClass="combo-box" stylesheets="@Styles/Estilos.css" />
+      <ComboBox fx:id="cbPrueba" layoutX="685.0" layoutY="593.0" prefHeight="31.0" prefWidth="230.0" styleClass="combo-box" stylesheets="@Styles/Estilos.css" />
       <Button fx:id="btnEncuestas" contentDisplay="GRAPHIC_ONLY" layoutX="1119.0" layoutY="182.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="150.0" text="Encuestas">
          <graphic>
             <ImageView fitHeight="115.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">

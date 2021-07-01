@@ -26,10 +26,14 @@ public class Medicos implements Initializable {
     @FXML TableView tblMedicos;
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
-        lblUsuario.setText(medico.getNombres()+" "+medico.getApellidos());
-        initButtons();
-        createTableEncuestas();
         try {
+            lblUsuario.setText(medico.getNombres()+" "+medico.getApellidos());
+            btnFiltrar.setDisable(false);
+            cbFiltrar.setDisable(false);
+            btnPrueba.setDisable(true);
+            cbPrueba.setDisable(true);
+            initButtons();
+            createTableEncuestas();
             llenarPruebas();
         } catch (SQLException e) {
             alertMessage("Error", "llenarPruebas", e.getMessage(), Alert.AlertType.ERROR);
@@ -37,21 +41,30 @@ public class Medicos implements Initializable {
     }
     private void initButtons() {
         btnEncuestas.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 createTableEncuestas();
+                btnFiltrar.setDisable(false);
+                cbFiltrar.setDisable(false);
+                btnPrueba.setDisable(true);
+                cbPrueba.setDisable(true);
             }
         });
         btnSolicitudes.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 createTableSolicitudes();
+                btnFiltrar.setDisable(true);
+                cbFiltrar.setDisable(true);
+                btnPrueba.setDisable(true);
+                cbPrueba.setDisable(true);
             }
         });
         btnConsultas.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 createTableConsultas();
+                btnFiltrar.setDisable(true);
+                cbFiltrar.setDisable(true);
+                btnPrueba.setDisable(false);
+                cbPrueba.setDisable(false);
             }
         });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
@@ -59,6 +72,18 @@ public class Medicos implements Initializable {
                 Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                 stage.close();
                 anterior.show();
+            }
+        });
+        btnPrueba.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String tipo;
+                tipo = cbPrueba.getSelectionModel().getSelectedItem().toString();
+                if(tipo != null){
+                    
+                }else{
+                    alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
+                }
             }
         });
     }
@@ -137,7 +162,7 @@ public class Medicos implements Initializable {
         estado.setMinWidth(150);
         TableColumn tipo = new TableColumn("Tipo");
         tipo.setMinWidth(150);
-        TableColumn cveAsignacion = new TableColumn("cveAsignacion");
+        TableColumn cveAsignacion = new TableColumn("cveAsig");
         cveAsignacion.setMinWidth(150);
         TableColumn noUsuario = new TableColumn("noUsuario");
         noUsuario.setMinWidth(150);

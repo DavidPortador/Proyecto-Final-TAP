@@ -82,9 +82,6 @@ public class Solicitud implements Initializable {
             alertMessage("Error", "Datos incompletos",
                     "No se selecciono el tipo de consulta", Alert.AlertType.ERROR);
         }
-
-
-
     }
     private void llenarTipos(){
         ObservableList <String> tipos = FXCollections.observableArrayList();

@@ -7,6 +7,12 @@ usuarios/Estudiantes.java
  usuarios.Estudiantes$5
  usuarios.Estudiantes$6
  usuarios.Estudiantes$7
+<<<<<<< HEAD
+=======
+ usuarios.Estudiantes$8
+modelos/modeloPersonal.java
+ modelos.modeloPersonal
+>>>>>>> refs/remotes/DavidPortador/main
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1

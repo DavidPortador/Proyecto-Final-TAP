@@ -1,4 +1,5 @@
 package usuarios;
+import controllers.Solicitud;
 import database.ConsultaDAO;
 import database.MySQLConnection;
 import encuesta.Encuesta;
@@ -33,7 +34,7 @@ public class Estudiantes implements Initializable {
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;
-    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes;
+    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes, btnSolicitud;
     @FXML TableView tblEstudiante;
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
@@ -194,6 +195,30 @@ public class Estudiantes implements Initializable {
         encuestas.initModality(Modality.WINDOW_MODAL);
         encuestas.show();
     }
+
+    private void showSolicitud(ActionEvent event) throws IOException {
+        Stage solicitud = new Stage();
+        solicitud.setTitle("Solicitud");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/solicitudes.fxml"));
+        Solicitud soli = new Solicitud();
+        soli.setUsuario(estudiante);
+        loader.setController(soli);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        solicitud.setResizable(false);
+        // Le pasa como parametro el stage actual y nueva
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        //encuesta.setStageAnterior(actual);
+        //actual.close();
+        // Muestra el nuevo stage
+        solicitud.setScene(scene);
+        //primaryStage.show();
+        solicitud.initOwner(actual);
+        solicitud.initModality(Modality.WINDOW_MODAL);
+        solicitud.show();
+    }
+
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);
         alert.setTitle(title);

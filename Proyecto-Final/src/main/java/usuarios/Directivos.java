@@ -2,12 +2,15 @@ package usuarios;
 import database.ConsultaDAO;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -26,10 +29,21 @@ public class Directivos implements Initializable {
     Stage anterior;
     @FXML Label lblUsuario;
     @FXML GridPane gpBarras;
+    @FXML Button btnSalir;
     @FXML ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(directivo.getNombres()+" "+directivo.getApellidos());
        initCharts();
+       initButtons();
+    }
+    private void initButtons() {
+        btnSalir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event) {
+                Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                stage.close();
+                anterior.show();
+            }
+        });
     }
     private void initCharts() {
         gpBarras.add(generateTotalCasosChart(),0,0);

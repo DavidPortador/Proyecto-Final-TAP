@@ -71,5 +71,6 @@
       <Label layoutX="1088.0" layoutY="487.0" styleClass="label-bright" text="Consultas" />
       <Label layoutX="1223.0" layoutY="577.0" styleClass="label-bright" text="Salir" />
       <Label layoutX="1087.0" layoutY="106.0" styleClass="label-bright" text="Encuestas" />
+      <Button fx:id="btnSolicitud" layoutX="909.0" layoutY="616.0" mnemonicParsing="false" text="Solicitudes" />
    </children>
 </AnchorPane>

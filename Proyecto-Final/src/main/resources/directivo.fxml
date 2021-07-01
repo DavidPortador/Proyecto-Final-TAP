@@ -1,75 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.chart.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="787.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="999.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="547.0" prefWidth="167.0">
+      <VBox alignment="TOP_CENTER" layoutX="11.0" layoutY="29.0" prefHeight="547.0" prefWidth="215.0" spacing="20">
          <children>
             <ImageView fitHeight="152.0" fitWidth="211.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Styles/user2.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="154.0" text="CONFIGURACION">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
+            <Label fx:id="lblUsuario" alignment="CENTER" layoutX="315.0" layoutY="34.0" prefHeight="35.0" prefWidth="167.0" styleClass="label-bright" text="PERSONAL DIRECTIVO" />
+            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="154.0">
+               <graphic>
+                  <ImageView fitHeight="57.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Styles/pdf.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" text="NOTIFICACIONES">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" text="PDF">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="154.0" text="SALIR">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
+            <Button fx:id="btnSalir" mnemonicParsing="false" prefHeight="75.0" prefWidth="154.0">
+               <graphic>
+                  <ImageView fitHeight="106.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Styles/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </VBox>
-      <PieChart layoutX="498.0" layoutY="53.0" prefHeight="182.0" prefWidth="273.0" />
-      <BarChart layoutX="485.0" layoutY="273.0" prefHeight="276.0" prefWidth="288.0">
-         <xAxis>
-            <CategoryAxis side="BOTTOM" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis prefHeight="150.0" prefWidth="17.0" side="LEFT" />
-         </yAxis>
-      </BarChart>
-      <Label layoutX="592.0" layoutY="14.0" prefHeight="30.0" prefWidth="96.0" styleClass="label-bright" text=" Contagios" textAlignment="JUSTIFY" textFill="#53bf5c">
+      <Label layoutX="738.0" layoutY="21.0" prefHeight="30.0" prefWidth="63.0" styleClass="label-bright" text="Graficas" textAlignment="JUSTIFY" textFill="#53bf5c">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="739.0" layoutY="-60.0" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #000000;" text="  Alumnos" textAlignment="JUSTIFY" textFill="#53bf5c">
+      <Label layoutX="357.0" layoutY="88.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #000000;" styleClass="label-bright" text=" Reportes" textAlignment="JUSTIFY" textFill="#53bf5c">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="284.0" layoutY="85.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #000000;" styleClass="label-bright" text=" Reportes" textAlignment="JUSTIFY" textFill="#53bf5c">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TableView layoutX="178.0" layoutY="130.0" prefHeight="394.0" prefWidth="295.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="No. Usuario" />
-            <TableColumn prefWidth="75.0" text="Nombre" />
-         </columns>
-      </TableView>
-      <Label layoutX="601.0" layoutY="242.0" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #000000;" styleClass="label-bright" text="Alumnos" textAlignment="JUSTIFY" textFill="#53bf5c">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblUsuario" alignment="CENTER" layoutX="206.0" layoutY="36.0" prefHeight="35.0" prefWidth="258.0" styleClass="label-bright" text="PERSONAL DIRECTIVO" />
+      <TableView layoutX="234.0" layoutY="132.0" prefHeight="444.0" prefWidth="328.0" />
+      <GridPane fx:id="gpBarras" alignment="CENTER" hgap="1" layoutX="587.0" layoutY="54.0" prefHeight="518.0" prefWidth="394.0" vgap="1" />
    </children>
 </AnchorPane>

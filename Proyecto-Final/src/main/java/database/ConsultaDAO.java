@@ -352,4 +352,17 @@ public class ConsultaDAO {
             return false;
         }
     }
+
+    public boolean setEstadoSolicitud(int noSolicitud) {
+        // Se le asignan sus datos al personal
+        try {
+            String query = "update Solicitud set estado = 'Aceptado' where noSolicitud = " + noSolicitud;
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","setEstadoSolicitud", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
 }

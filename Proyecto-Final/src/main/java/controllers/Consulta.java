@@ -30,10 +30,10 @@ public class Consulta implements Initializable {
     @FXML Label lblUsuario;
     @FXML TextField txtSintomas, txtHora;
     @FXML Button btnCancelar, btnCrear;
-    @FXML ComboBox cbMedicos, cbTipos;
+    @FXML ComboBox cbTipos;
     @FXML DatePicker dpFecha;
     @Override public void initialize(URL location, ResourceBundle resources) {
-
+        lblUsuario.setText(medico.getNombres()+" "+medico.getApellidos());
         llenarTipos();
         initButtons();
     }
@@ -70,9 +70,11 @@ public class Consulta implements Initializable {
                             0, sintomas, fecha, hora, tipo, paciente.getCveAsignacion(),
                             paciente.getNoUsuario(), userDAO.getnoCedula(medico.getNoUsuario()));
                     if(consultaDAO.insertNewConsulta(consulta)){
-                        alertMessage("Exitoso", null, "Consulta agregada", Alert.AlertType.INFORMATION);
-                        Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
-                        stage.close();
+                        if(consultaDAO.setEstadoSolicitud(paciente.getNoSolicitud())){
+                            alertMessage("Exitoso", null, "Consulta agregada", Alert.AlertType.INFORMATION);
+                            Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                            stage.close();
+                        }
                     }
                 }
             }

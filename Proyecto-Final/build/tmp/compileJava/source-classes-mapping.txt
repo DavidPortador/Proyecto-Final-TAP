@@ -7,18 +7,17 @@ usuarios/Estudiantes.java
  usuarios.Estudiantes$5
  usuarios.Estudiantes$6
  usuarios.Estudiantes$7
-<<<<<<< HEAD
-=======
  usuarios.Estudiantes$8
 modelos/modeloPersonal.java
  modelos.modeloPersonal
->>>>>>> refs/remotes/DavidPortador/main
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
-modelos/modeloPersonal.java
- modelos.modeloPersonal
+controllers/Consulta.java
+ controllers.Consulta
+ controllers.Consulta$1
+ controllers.Consulta$2
 modelos/modeloSolicitud.java
  modelos.modeloSolicitud
 usuarios/Administradores.java
@@ -28,10 +27,6 @@ usuarios/Administradores.java
  usuarios.Administradores$3
  usuarios.Administradores$4
  usuarios.Administradores$5
-controllers/Consulta.java
- controllers.Consulta
- controllers.Consulta$1
- controllers.Consulta$2
 modelos/Alerta.java
  modelos.Alerta
 usuarios/Directivos.java
@@ -40,12 +35,12 @@ usuarios/Directivos.java
  usuarios.Directivos$2
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-modelosReportes/listTotalEncuentasDepartamento.java
- modelosReportes.listTotalEncuentasDepartamento
 modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
 medicos/solicitudes.java
  medicos.solicitudes
+modelosReportes/listTotalEncuentasDepartamento.java
+ modelosReportes.listTotalEncuentasDepartamento
 modelos/modeloReceta.java
  modelos.modeloReceta
 modelos/modeloUsers.java
@@ -96,6 +91,9 @@ modelos/Usuario.java
  modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+ usuarios.Monitoreadores$1
 usuarios/Personal.java
  usuarios.Personal
  usuarios.Personal$1
@@ -105,20 +103,18 @@ usuarios/Personal.java
  usuarios.Personal$5
  usuarios.Personal$6
  usuarios.Personal$7
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
- usuarios.Monitoreadores$1
+ usuarios.Personal$8
 controllers/Solicitud.java
  controllers.Solicitud
  controllers.Solicitud$1
  controllers.Solicitud$2
 modelos/modeloAsignacion.java
  modelos.modeloAsignacion
-database/MySQLConnection.java
- database.MySQLConnection
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
+database/MySQLConnection.java
+ database.MySQLConnection

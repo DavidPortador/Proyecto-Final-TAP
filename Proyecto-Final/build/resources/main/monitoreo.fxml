@@ -21,8 +21,8 @@
             <Image url="@Styles/user2.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblMonitoreo" layoutX="82.0" layoutY="150.0" prefHeight="404.0" prefWidth="769.0" />
-      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="957.0" layoutY="584.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Button">
+      <TableView fx:id="tblMonitoreo" layoutX="82.0" layoutY="150.0" prefHeight="424.0" prefWidth="788.0" />
+      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="956.0" layoutY="579.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Button">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="45.0" layoutX="994.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,7 +31,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="918.0" layoutY="440.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="105.0" text="Alerta">
+      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="918.0" layoutY="410.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="105.0" text="Alerta">
          <graphic>
             <ImageView fitHeight="92.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,7 +40,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnOrdenes" contentDisplay="GRAPHIC_ONLY" layoutX="914.0" layoutY="172.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
+      <Button fx:id="btnOrdenes" contentDisplay="GRAPHIC_ONLY" layoutX="914.0" layoutY="233.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
          <graphic>
             <ImageView fitHeight="108.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -49,19 +49,9 @@
             </ImageView>
          </graphic></Button>
       <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="635.0" layoutY="56.0" prefHeight="19.0" prefWidth="172.0" styleClass="label-bright" text="usuario" />
-      <Label layoutX="916.0" layoutY="409.0" styleClass="label-bright" text="Generar Alerta" />
-      <Label layoutX="939.0" layoutY="141.0" styleClass="label-bright" text="Ordenes" />
-      <Button fx:id="btnContactos" contentDisplay="GRAPHIC_ONLY" layoutX="914.0" layoutY="307.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
-         <graphic>
-            <ImageView fitHeight="108.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Styles/user.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label layoutX="933.0" layoutY="273.0" styleClass="label-bright" text="Contactos" />
-      <Label layoutX="991.0" layoutY="558.0" styleClass="label-bright" text="Salir" />
+      <Label layoutX="916.0" layoutY="372.0" styleClass="label-bright" text="Generar Alerta" />
+      <Label layoutX="939.0" layoutY="197.0" styleClass="label-bright" text="Ordenes" />
+      <Label layoutX="996.0" layoutY="545.0" styleClass="label-bright" text="Salir" />
       <Label layoutX="147.0" layoutY="49.0" styleClass="label-header" text="Monitoreador" />
    </children>
 </AnchorPane>

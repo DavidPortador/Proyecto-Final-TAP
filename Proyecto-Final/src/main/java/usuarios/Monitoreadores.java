@@ -18,17 +18,13 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 public class Monitoreadores implements Initializable {
-    /*
-    Puede ver las ordenes y con ello generar alertas monitoreadas
-    Agregar iconos
-     */
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario monitoreo;
     Stage anterior;
     @FXML Label lblUsuario;
     @FXML TableView tblMonitoreo;
-    @FXML Button btnSalir, btnAlerta, btnOrdenes, btnContactos;
+    @FXML Button btnSalir, btnAlerta, btnOrdenes;
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(monitoreo.getNombres()+" "+monitoreo.getApellidos());
         createTableOrdenes();
@@ -36,22 +32,19 @@ public class Monitoreadores implements Initializable {
     }
     private void initButtons() {
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                 stage.close();
                 anterior.show();
             }
         });
         btnOrdenes.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 createTableOrdenes();
             }
         });
         btnAlerta.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 modeloOrden orden = (modeloOrden) tblMonitoreo.getSelectionModel().getSelectedItem();
                 //System.out.println(orden.getNoOrden());
                 if(orden == null){
@@ -93,7 +86,6 @@ public class Monitoreadores implements Initializable {
         ObservableList<modeloOrden> ordenes;
         tblMonitoreo.getItems().clear();
         tblMonitoreo.getColumns().clear();
-
         TableColumn noOrden = new TableColumn("noOrden");
         noOrden.setMinWidth(80);
         TableColumn resultado = new TableColumn("resultado");
@@ -104,14 +96,11 @@ public class Monitoreadores implements Initializable {
         noCedula.setMinWidth(130);
         TableColumn cvePrueba =new TableColumn("cvePrueba");
         cvePrueba.setMinWidth(130);
-
-
         noOrden.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
         resultado.setCellValueFactory(new PropertyValueFactory<>("resultado"));
         noConsulta.setCellValueFactory(new PropertyValueFactory<>("noConsulta"));
         noCedula.setCellValueFactory(new PropertyValueFactory<>("noCedula"));
         cvePrueba.setCellValueFactory(new PropertyValueFactory<>("cvePrueba"));
-
         tblMonitoreo.getColumns()
                 .addAll(noOrden, resultado, noConsulta, noCedula, cvePrueba);
         try {

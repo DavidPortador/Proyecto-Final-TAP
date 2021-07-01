@@ -10,43 +10,33 @@ public class listCasosDelPersonal {
         this.resultado= resultado;
         this.departamento= departamento;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public String getApellido() {
         return apellido;
     }
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
     public String getResultado() {
         return resultado;
     }
-
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
-
     public String getDepartamento() {
         return departamento;
     }
-
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
-
     public Date getFechaDetencion() {
         return fechaDetencion;
     }
-
     public void setFechaDetencion(Date fechaDetencion) {
         this.fechaDetencion = fechaDetencion;
     }

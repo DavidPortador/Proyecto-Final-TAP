@@ -35,10 +35,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelos.*;
-import modelosReportes.listCasosCarrera;
 import org.kordamp.bootstrapfx.BootstrapFX;
-import reports.PDFreports;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -47,14 +44,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import static reports.PDFreports.DEST1;
 public class Estudiantes implements Initializable {
-    /*
-    Estudiante y Personal son lo mismo casi casi xd
-        Los botones son (En ese orden)
-            Encuestas
-            Alertas
-            Ordenes
-            Consultas   (opciones) -> solicitar consulta o imprimir recetas
-    */
     public static final String DEST5 = "contagios/estudiantes/estudiante.pdf";
     public static final String DEST6 = "contagios/estudiantes/receta.pdf";
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
@@ -125,8 +114,7 @@ public class Estudiantes implements Initializable {
             }
         });
         btnPDF2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     recetaPDF();
                 } catch (Exception e) {
@@ -256,7 +244,6 @@ public class Estudiantes implements Initializable {
         encuestas.show();
     }
     private void madePDF(){
-
         File file = new File(DEST5);
         file.getParentFile().mkdirs();
         try {
@@ -266,7 +253,6 @@ public class Estudiantes implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     private void recetaPDF(){
         File file2 = new File(DEST6);
@@ -278,9 +264,7 @@ public class Estudiantes implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
     public void createPdfOrdenes(String dest) throws IOException {
         //Initialize PDF writer
         PdfWriter writer = new PdfWriter(dest);
@@ -299,13 +283,11 @@ public class Estudiantes implements Initializable {
         Table table1 = new Table(UnitValue.createPercentArray(new float[]{5, 4,4,4,4}))
                 .useAllAvailableWidth();
         processPdfOrdenes(table1, null, bold, true);
-        for(modeloOrden e : consultaDAO.getListOrdenes(estudiante.getNoUsuario())) {
+        for(modeloOrden e : consultaDAO.getListOrdenes(estudiante.getNoUsuario()))
             processPdfOrdenes(table1, e, bold, false);
-        }
         document.add(pdfImg);
         document.add(paragraph);
         document.add(table1);
-
         //Close document
         document.close();
     }
@@ -342,9 +324,8 @@ public class Estudiantes implements Initializable {
         Table table1 = new Table(UnitValue.createPercentArray(new float[]{5, 4,4}))
                 .useAllAvailableWidth();
         processPdfReceta(table1, null, bold, true);
-        for(modeloReceta e : consultaDAO.getmodeloReceta(estudiante.getNoUsuario())) {
+        for(modeloReceta e : consultaDAO.getmodeloReceta(estudiante.getNoUsuario()))
             processPdfReceta(table1, e, bold, false);
-        }
         document.add(pdfImg);
         document.add(paragraph);
         document.add(table1);
@@ -360,7 +341,6 @@ public class Estudiantes implements Initializable {
             table.addCell(new com.itextpdf.layout.element.Cell().add(new Paragraph(user.getNoReceta() + "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getIndicaciones()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getNoConsulta()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
-
         }
     }
     private void showSolicitud(ActionEvent event) throws IOException {
@@ -408,5 +388,7 @@ public class Estudiantes implements Initializable {
         if (Desktop.isDesktopSupported()) {
             try { File myFile = new File(filename);
                 Desktop.getDesktop().open(myFile);
-            } catch (IOException ex) { } } }
+            } catch (IOException ex) { }
+        }
+    }
 }

@@ -29,15 +29,13 @@ public class Medicos implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario medico;
     Stage anterior;
-    @FXML Button btnFiltrar, btnPrueba, btnEncuestas, btnSolicitudes, btnConsultas, btnSalir, btnAceptar;
-    @FXML ComboBox cbFiltrar, cbPrueba;
+    @FXML Button btnPrueba, btnEncuestas, btnSolicitudes, btnConsultas, btnSalir, btnAceptar;
+    @FXML ComboBox cbPrueba;
     @FXML TableView tblMedicos;
     @FXML Label lblUsuario;
     @Override public void initialize(URL location, ResourceBundle resources) {
         try {
             lblUsuario.setText(medico.getNombres()+" "+medico.getApellidos());
-            btnFiltrar.setDisable(false);
-            cbFiltrar.setDisable(false);
             btnPrueba.setDisable(true);
             cbPrueba.setDisable(true);
             btnAceptar.setDisable(true);
@@ -52,8 +50,6 @@ public class Medicos implements Initializable {
         btnEncuestas.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event) {
                 createTableEncuestas();
-                btnFiltrar.setDisable(false);
-                cbFiltrar.setDisable(false);
                 btnPrueba.setDisable(true);
                 cbPrueba.setDisable(true);
                 btnAceptar.setDisable(true);
@@ -62,8 +58,6 @@ public class Medicos implements Initializable {
         btnSolicitudes.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event) {
                 createTableSolicitudes();
-                btnFiltrar.setDisable(true);
-                cbFiltrar.setDisable(true);
                 btnPrueba.setDisable(true);
                 cbPrueba.setDisable(true);
                 btnAceptar.setDisable(false);
@@ -72,8 +66,6 @@ public class Medicos implements Initializable {
         btnConsultas.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event) {
                 createTableConsultas();
-                btnFiltrar.setDisable(true);
-                cbFiltrar.setDisable(true);
                 btnPrueba.setDisable(false);
                 cbPrueba.setDisable(false);
                 btnAceptar.setDisable(true);

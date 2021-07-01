@@ -77,7 +77,6 @@ public class UserDAO {
         }
         return cvePrueba;
     }
-
     public String getnoMonitoreo(int noUsuario) throws SQLException {
         String consulta, noMonitoreo = null;
         consulta = "select noMonitoreo from Monitoreo where noUsuario = '" + noUsuario + "'";
@@ -93,7 +92,6 @@ public class UserDAO {
         }
         return noMonitoreo;
     }
-
     public String getCarrera(int noUsuario) throws SQLException {
         String consulta, carrera = null;
         consulta = "select C.nombre from Estudiante E inner join Carrera C on E.cveCarrera = C.cveCarrera " +
@@ -162,7 +160,6 @@ public class UserDAO {
         Usuario user = null;
         consulta = "select * from Usuario where noUsuario = '" + modeloUser.getNoUsuario() +
                 "' and usuario = '" + modeloUser.getUsuario() + "' and contra = '" + modeloUser.getContra() + "'";
-        //System.out.println(consulta);
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(consulta);
         if (rs != null) {
@@ -187,7 +184,6 @@ public class UserDAO {
         String consulta;
         Usuario usuario = null;
         consulta = "select * from Usuario where usuario = '"+user+"' and contra = '"+pass+"'";
-        //System.out.println(consulta);
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(consulta);
         if (rs != null) {

@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
 public class Solicitud implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
-    Stage anterior;
     Usuario user;
     @FXML Button btnCrear, btnCancelar;
     @FXML ComboBox cbTipos, cbMedicos;
@@ -58,7 +57,6 @@ public class Solicitud implements Initializable {
         estado = "Espera";
         tipo = cbTipos.getSelectionModel().getSelectedItem().toString();
         noCedula = cbMedicos.getSelectionModel().getSelectedItem().toString();
-
         if(tipo != null){
             if(noCedula != null){
                 modeloSolicitud solicitud = new modeloSolicitud(

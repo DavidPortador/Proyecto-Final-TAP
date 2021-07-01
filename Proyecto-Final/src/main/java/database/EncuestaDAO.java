@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.Usuario;
 import modelos.modeloEncuesta;
-
 import java.sql.*;
 import java.util.ArrayList;
 public class EncuestaDAO {
@@ -30,11 +29,9 @@ public class EncuestaDAO {
                 ArrayList <String> respuestas = new ArrayList<>();
                 for(int i = 1; i < 14; i++){
                     Nrespuestas.add(rs.getInt("respuesta"+i));
-                    //System.out.println(Nrespuestas.get(i-1));
                 }
                 for(int i = 0; i < 13; i++){
                     respuestas.add(getRespuesta(Nrespuestas.get(i)));
-                    //System.out.println(respuestas.get(i));
                 }
                 encuestas.add(new modeloEncuesta(
                         rs.getInt("noEncuesta"),

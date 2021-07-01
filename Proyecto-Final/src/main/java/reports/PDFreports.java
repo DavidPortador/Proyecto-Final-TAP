@@ -34,7 +34,6 @@ import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDelPersonal;
 import modelosReportes.listCasosDepartamento;
 import modelosReportes.listCasosEstudiantes;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -78,7 +77,6 @@ public class PDFreports implements Initializable {
         reportes.add("Reporte 4");
         cboFiltrar.setItems(reportes);
     }
-
     private void initButtons() {
         btnReporte.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -125,8 +123,6 @@ public class PDFreports implements Initializable {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-
         }}});
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -161,7 +157,6 @@ public class PDFreports implements Initializable {
         document.add(pdfImg);
         document.add(paragraph);
         document.add(table1);
-
         //Close document
         document.close();
     }
@@ -227,9 +222,8 @@ public class PDFreports implements Initializable {
         Table table3 = new Table(UnitValue.createPercentArray(new float[]{5, 4,4,4}))
                 .useAllAvailableWidth();
         processPdfCasosEstudiantes(table3, null, bold, true);
-        for(listCasosEstudiantes e : consultaDAO.getListContagiadosEstudiantes()) {
+        for(listCasosEstudiantes e : consultaDAO.getListContagiadosEstudiantes())
             processPdfCasosEstudiantes(table3, e, bold, false);
-        }
         document.add(pdfImg);
         document.add(paragraph);
         document.add(table3);
@@ -277,24 +271,19 @@ public class PDFreports implements Initializable {
         //Close document
         document.close();
     }
-
     public void processPdfCasosPersonal(Table table, listCasosDelPersonal  user, PdfFont font, boolean isHeader) {
         if (isHeader) {
             table.addHeaderCell(new Cell().add(new Paragraph("NOMBRE COMPLETO").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)).setTextAlignment(TextAlignment.CENTER));
             table.addHeaderCell(new Cell().add(new Paragraph("FECHA DETENCION").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)).setTextAlignment(TextAlignment.CENTER));
             table.addHeaderCell(new Cell().add(new Paragraph("RESULTADO").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)).setTextAlignment(TextAlignment.CENTER));
             table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)).setTextAlignment(TextAlignment.CENTER));
-
         } else {
             table.addCell(new Cell().add(new Paragraph(user.getNombre() + " " + user.getApellido()+"").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getFechaDetencion()+ "").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getResultado()+ "").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getDepartamento()+ "").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
-
         }
     }
-
-
     public void setStageAnterior(Stage stage){
         anterior = stage;
     }
@@ -302,8 +291,10 @@ public class PDFreports implements Initializable {
         if (Desktop.isDesktopSupported()) {
             try { File myFile = new File(filename);
                 Desktop.getDesktop().open(myFile);
-            } catch (IOException ex) { } } }
-
+            } catch (IOException e) {
+            }
+        }
+    }
     private void sendMessage(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

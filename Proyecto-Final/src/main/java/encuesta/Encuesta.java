@@ -20,8 +20,7 @@ public class Encuesta implements Initializable {
     @FXML Label txtPersonal, txtH1, txtH2, txtH3,  txtP1, txtP2, txtP3, txtP4, txtP5, txtP6, txtP7, txtP8,
             txtP9, txtP10, txtP11, txtP12, txtP13, txtP14;
     @FXML TextField tfAbierta;
-    @FXML
-    Button btnCancelar, btnRegistrar;
+    @FXML Button btnCancelar, btnRegistrar;
     @Override public void initialize(URL location, ResourceBundle resources) {
         crearEncuesta();
         initData();
@@ -178,8 +177,6 @@ public class Encuesta implements Initializable {
                 bandera = false;
             }
         otros = tfAbierta.getText();
-        /*for (int i = 0; i < respuestas.length; i++)
-            System.out.println(respuestas[i]);*/
         if(bandera){
             if(encuestaDAO.insertNewEncuesta(usuario, respuestas, otros)){
                 alertMessage("Operacion Exitosa","Encuesta registrada",

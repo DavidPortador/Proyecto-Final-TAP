@@ -36,20 +36,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelos.*;
 import org.kordamp.bootstrapfx.BootstrapFX;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import static reports.PDFreports.DEST1;
-
 public class Personal implements Initializable {
-    /*
-    Cuando se acabe la interfaz de Estudiante se adapa con Personal
-    */
     public static final String DEST5 = "contagios/personal/estudiante.pdf";
     public static final String DEST6 = "contagios/personal/receta.pdf";
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
@@ -102,8 +96,7 @@ public class Personal implements Initializable {
             }
         });
         btnSolicitud.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     showSolicitud(event);
                 } catch (IOException e) {
@@ -112,8 +105,7 @@ public class Personal implements Initializable {
             }
         });
         btnPDF.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     madePDF();
                 } catch (Exception e) {
@@ -123,8 +115,7 @@ public class Personal implements Initializable {
             }
         });
         btnPDF1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     recetaPDF();
                 } catch (Exception e) {
@@ -205,7 +196,6 @@ public class Personal implements Initializable {
         ObservableList <modeloOrden> ordenes;
         tblPersonal.getItems().clear();
         tblPersonal.getColumns().clear();
-
         TableColumn noOrden = new TableColumn("noOrd");
         noOrden.setMinWidth(80);
         TableColumn resultado = new TableColumn("resultado");
@@ -216,7 +206,6 @@ public class Personal implements Initializable {
         noCedula.setMinWidth(120);
         TableColumn cvePrueba = new TableColumn("cvePrueba");
         cvePrueba.setMinWidth(120);
-
         noOrden.setCellValueFactory(new PropertyValueFactory<>("noOrden"));
         resultado.setCellValueFactory(new PropertyValueFactory<>("resultado"));
         noConsulta.setCellValueFactory(new PropertyValueFactory<>("noConsulta"));
@@ -254,7 +243,6 @@ public class Personal implements Initializable {
         encuestas.show();
     }
     private void madePDF(){
-
         File file = new File(DEST5);
         file.getParentFile().mkdirs();
         try {
@@ -275,7 +263,6 @@ public class Personal implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     public void createPdfOrdenes(String dest) throws IOException {
         //Initialize PDF writer
@@ -301,7 +288,6 @@ public class Personal implements Initializable {
         document.add(pdfImg);
         document.add(paragraph);
         document.add(table1);
-
         //Close document
         document.close();
     }
@@ -338,9 +324,8 @@ public class Personal implements Initializable {
         Table table1 = new Table(UnitValue.createPercentArray(new float[]{5, 4,4}))
                 .useAllAvailableWidth();
         processPdfReceta(table1, null, bold, true);
-        for(modeloReceta e : consultaDAO.getmodeloReceta(personal.getNoUsuario())) {
+        for(modeloReceta e : consultaDAO.getmodeloReceta(personal.getNoUsuario()))
             processPdfReceta(table1, e, bold, false);
-        }
         document.add(pdfImg);
         document.add(paragraph);
         document.add(table1);
@@ -356,7 +341,6 @@ public class Personal implements Initializable {
             table.addCell(new com.itextpdf.layout.element.Cell().add(new Paragraph(user.getNoReceta() + "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getIndicaciones()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getNoConsulta()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
-
         }
     }
     private void showSolicitud(ActionEvent event) throws IOException {

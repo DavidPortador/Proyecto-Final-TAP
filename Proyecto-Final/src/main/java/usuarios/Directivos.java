@@ -38,17 +38,12 @@ import javafx.stage.Stage;
 import modelos.Usuario;
 import modelosReportes.*;
 import reports.PDFreports;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Directivos implements Initializable {
-    /*
-    Puede ver los reportes
-    Puede ver la dashboard (graficas)
-     */
     PDFreports pdf=new PDFreports();
     public static final String DEST1 = "contagios/carrera/carrera_report.pdf";
     public static final String DEST2 = "contagios/departamentos/departamentos_report.pdf";
@@ -140,7 +135,6 @@ public class Directivos implements Initializable {
             }
         });
     }
-
     private void initCharts() {
         gpBarras.add(generateTotalCasosChart(),0,0);
         gpBarras.add(generateMedicosPieChart(),1,0);
@@ -171,9 +165,8 @@ public class Directivos implements Initializable {
     }
     private PieChart generateMedicosPieChart() {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        for (listConsultasTotalMedicos listTotalMedicos : consultaDAO.getListConsultasTotalMedicos()) {
+        for (listConsultasTotalMedicos listTotalMedicos : consultaDAO.getListConsultasTotalMedicos())
             pieChartData.add(new PieChart.Data(listTotalMedicos.getCedula(), listTotalMedicos.getTotal()));
-        }
         final PieChart chart = new PieChart(pieChartData);
         chart.setTitle("CONSULTAS DE MEDICOS");
         return chart;

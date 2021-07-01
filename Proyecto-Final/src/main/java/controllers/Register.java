@@ -65,13 +65,11 @@ public class Register implements Initializable {
                             if(userDAO.insertNewUsuario(newUsuario)){
                                 // Se reemplaza el modelo por el usuario creado
                                 newUsuario = userDAO.getUsuarioLogin(txtUsuario.getText(), psfContra.getText());
-                                //System.out.println("-> "+newUsuario.getNoUsuario());
                                 // Se crea la asignacion
                                 modeloAsignacion newAsignacion = new modeloAsignacion(
                                         txtcveAsignacion.getText(),
                                         cbTipoUsuario.getSelectionModel().getSelectedItem().toString()
                                 );
-                                //System.out.println(newAsignacion.getNo() + ", " + newUsuario.getNoUsuario() + ", " + newAsignacion.getCveAsignacion());
                                 if(userDAO.insertNewAsignacion(newUsuario, newAsignacion)){
                                     // Momento en el que se decide si se registra un Estudiante o un personal
                                     if(cbTipoUsuario.getSelectionModel().getSelectedItem().toString().equals("Estudiante")){
@@ -158,7 +156,6 @@ public class Register implements Initializable {
                 try {
                     String tipoUsuario;
                     tipoUsuario = cbTipoUsuario.getValue().toString();
-                    System.out.println("Action Nueva Selección: " + tipoUsuario);
                     if(tipoUsuario.equals("Estudiante")){
                         estudianteMode();
                     }else if(tipoUsuario.equals("Personal")){

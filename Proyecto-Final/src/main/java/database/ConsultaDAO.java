@@ -365,7 +365,6 @@ public class ConsultaDAO {
             return false;
         }
     }
-
     public boolean insertAlertaMonitoreada(modeloAlertaM alertaM) {
         try {
             String query = "insert into AlertaMonitoreada (descripcion, noOrden, noMonitoreo) values" +
@@ -381,7 +380,6 @@ public class ConsultaDAO {
             return false;
         }
     }
-
     // Update
     public boolean setEstadoSolicitud(int noSolicitud) {
         // Se le asignan sus datos al personal

@@ -22,10 +22,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Administradores implements Initializable {
-    /*
-    Agregar un boton de cancelar a la izquierda de reportes
-    Agregar la opcion de cveAsignacion y cambiar noUsuario por cveUsuario (noCont, noPersonal)
-    */
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario administrador;
     Stage anterior;
@@ -48,16 +44,14 @@ public class Administradores implements Initializable {
             @Override public void handle(MouseEvent event) {
                 if(event.getClickCount() == 1){
                     modeloUsers modeloUsers = (modeloUsers) tblFiltrar.getSelectionModel().getSelectedItem();
-                    if (modeloUsers == null) {
+                    if (modeloUsers == null)
                         alertMessage("Error", "Error al cargar usuario",
                                 "No se selecciono ningun Usuario", Alert.AlertType.ERROR);
-                    }else {
+                    else {
                         String asignacion;
                         try {
                             editMode();
                             Usuario usuario = userDAO.getUsuarioAD(modeloUsers);
-                            System.out.println(usuario.getNoUsuario() + " " + usuario.getUsuario() + " " + usuario.getContra());
-                            //txtNoPE.setText(usuario.getNoUsuario() + "");
                             txtUsuario.setText(usuario.getUsuario());
                             txtContra.setText(usuario.getContra());
                             txtNombres.setText(usuario.getNombres());
@@ -90,6 +84,10 @@ public class Administradores implements Initializable {
             public void handle(ActionEvent event) {
                 if(valiVacio()){
                     System.out.println("lleno");
+
+
+
+
                 }
             }
         });

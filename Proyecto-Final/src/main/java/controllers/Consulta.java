@@ -13,8 +13,6 @@ import javafx.stage.Stage;
 import modelos.Usuario;
 import modelos.modeloConsulta;
 import modelos.modeloSolicitud;
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -60,28 +58,25 @@ public class Consulta implements Initializable {
             hora = txtHora.getText();
             fecha = Date.valueOf(dateFormatter.format(dpFecha.getValue()));
             tipo = (String) cbTipos.getSelectionModel().getSelectedItem();
-            if(tipo == null){
+            if(tipo == null)
                 alertMessage("Error", null, "Selecccione el tipo de consulta", Alert.AlertType.ERROR);
-            }else{
-                if(sintomas.isEmpty() || hora.isEmpty()){
+            else
+                if(sintomas.isEmpty() || hora.isEmpty())
                     alertMessage("Error", null, "Campos vacios", Alert.AlertType.ERROR);
-                }else{
+                else{
                     modeloConsulta consulta = new modeloConsulta(
                             0, sintomas, fecha, hora, tipo, paciente.getCveAsignacion(),
                             paciente.getNoUsuario(), userDAO.getnoCedula(medico.getNoUsuario()));
-                    if(consultaDAO.insertNewConsulta(consulta)){
+                    if(consultaDAO.insertNewConsulta(consulta))
                         if(consultaDAO.setEstadoSolicitud(paciente.getNoSolicitud())){
                             alertMessage("Exitoso", null, "Consulta agregada", Alert.AlertType.INFORMATION);
                             Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
                             stage.close();
                         }
-                    }
                 }
-            }
         } catch (NullPointerException | SQLException e){
             alertMessage("Error","createConsulta", e.getMessage(), Alert.AlertType.ERROR);
         }
-
     }
     private void llenarTipos(){
         ObservableList<String> tipos = FXCollections.observableArrayList();

@@ -128,7 +128,6 @@ public class ConsultaDAO {
         }
         return consultas;
     }
-
     public ObservableList<modeloConsulta> getConsultaUsuario(int noUsuario) throws SQLException {
         ObservableList <modeloConsulta> consultas = FXCollections.observableArrayList();
         try {
@@ -172,7 +171,28 @@ public class ConsultaDAO {
         }
         return ordenes;
     }
-
+    public ObservableList<modeloMonitoreo> getMonitoreo() throws SQLException{
+        ObservableList<modeloMonitoreo> monito= FXCollections.observableArrayList();
+        try{
+            String query = "select O.noOrden, O.resultado, U.nombres, P.tipo " +
+                    "from Orden O inner join Consulta C on O.noConsulta = C.noConsulta " +
+                    "inner join Medico M on C.noCedula = M.noCedula " +
+                    "inner join Usuario U on C.noUsuario = U.noUsuario " +
+                    "inner join Prueba P on O.cvePrueba = P.cvePrueba";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                monito.add(new modeloMonitoreo(
+                        rs.getInt("noOrden"),
+                        rs.getString("resultado"),
+                        rs.getString("nombres"),
+                        rs.getString("tipo")
+                ));
+            }
+        }catch (SQLException e){
+        }
+        return monito;
+    }
     // Reportes
     public List<listCasosCarrera> getListContagiadosCarrera() {
         List <listCasosCarrera> listCarrera = FXCollections.observableArrayList();
@@ -244,26 +264,24 @@ public class ConsultaDAO {
         }
         return listPersonal;
     }
-    public ObservableList<modeloMonitoreo> getMonitoreo() throws SQLException{
-        ObservableList<modeloMonitoreo> monito= FXCollections.observableArrayList();
-        try{
-            String query = "select O.noOrden, O.resultado, U.nombres, P.tipo " +
-                    "from Orden O inner join Consulta C on O.noConsulta = C.noConsulta " +
-                    "inner join Medico M on C.noCedula = M.noCedula " +
-                    "inner join Usuario U on C.noUsuario = U.noUsuario " +
-                    "inner join Prueba P on O.cvePrueba = P.cvePrueba";
+    /*public ObservableList<modeloOrden> getConsultasMedico() throws SQLException {
+        ObservableList <modeloOrden> ordenes = FXCollections.observableArrayList();
+        try {
+            String query = "select O.noOrden, O.resultado, O.noConsulta, O.noCedula, O.cvePrueba from Orden O inner join Consulta C on O.noConsulta = C.noConsulta where C.noUsuario = " + noUsuario;
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                monito.add(new modeloMonitoreo(
+                ordenes.add(new modeloOrden(
                         rs.getInt("noOrden"),
                         rs.getString("resultado"),
-                        rs.getString("nombres"),
-                        rs.getString("tipo")
+                        rs.getInt("noConsulta"),
+                        rs.getString("noCedula"),
+                        rs.getString("cvePrueba")
                 ));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            alertMessage("Error","getConsultaUsuario", e.getMessage(), Alert.AlertType.ERROR);
         }
-        return monito;
-    }
+        return ordenes;
+    }*/
 }

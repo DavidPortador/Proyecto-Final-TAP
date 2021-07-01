@@ -486,6 +486,11 @@ create view Reporte4Departamentos(Departamento, Contagiados) as
 			where O.resultado = 'Contagiado' 
 			group by D.nombre;
 
+create view Grafica1(Medico, Consultas) as
+	select M.noCedula, count(C.noConsulta) as consultas 
+		from Consulta C inner join Medico M on C.noCedula = M.noCedula 
+			inner join Usuario U on C.noUsuario = U.noUsuario 
+			group by M.noCedula;
 
 # Crear conexion con el usuario de DataGrip
 

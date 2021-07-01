@@ -66,6 +66,7 @@ public class ConsultaDAO {
         }
         return alertas;
     }
+
     public ObservableList<String> getPruebas() throws SQLException {
         ObservableList <String> pruebas = FXCollections.observableArrayList();
         try {

@@ -57,8 +57,8 @@ public class Estudiantes implements Initializable {
             Ordenes
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
     */
-    public static final String DEST5 = "contagios/personal/estudiante.pdf";
-    public static final String DEST6 = "contagios/personal/receta.pdf";
+    public static final String DEST5 = "contagios/estudiantes/estudiante.pdf";
+    public static final String DEST6 = "contagios/estudiantes/receta.pdf";
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;

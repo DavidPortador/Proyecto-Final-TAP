@@ -295,10 +295,10 @@ public class UserDAO {
             String query = "insert into Personal " +
                     "values (?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, personal.getNoPersonal());
+            ps.setString(1, personal.getNoCont());
             ps.setString(2, personal.getCveAsignacion());
             ps.setInt(3, personal.getNoUsuario());
-            ps.setString(4, personal.getCveDepa());
+            ps.setString(4, personal.getCveCarrera());
             ps.execute();
             return true;
         } catch (SQLException e) {

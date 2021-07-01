@@ -1,37 +1,46 @@
 package modelos;
 public class modeloPersonal {
-    String noPersonal;
+    String noCont;
     String cveAsignacion;
     int noUsuario;
-    String cveDepa;
-    public modeloPersonal(String noPersonal, String cveAsignacion, int noUsuario, String cveDepa) {
-        this.noPersonal = noPersonal;
+    String cveCarrera;
+
+    public modeloPersonal(String noCont, String cveAsignacion, int noUsuario, String cveCarrera) {
+        this.noCont = noCont;
         this.cveAsignacion = cveAsignacion;
         this.noUsuario = noUsuario;
-        this.cveDepa = cveDepa;
+        this.cveCarrera = cveCarrera;
     }
-    public String getNoPersonal() {
-        return noPersonal;
+
+    public String getNoCont() {
+        return noCont;
     }
-    public void setNoPersonal(String noPersonal) {
-        this.noPersonal = noPersonal;
+
+    public void setNoCont(String noCont) {
+        this.noCont = noCont;
     }
+
     public String getCveAsignacion() {
         return cveAsignacion;
     }
+
     public void setCveAsignacion(String cveAsignacion) {
         this.cveAsignacion = cveAsignacion;
     }
+
     public int getNoUsuario() {
         return noUsuario;
     }
+
     public void setNoUsuario(int noUsuario) {
         this.noUsuario = noUsuario;
     }
-    public String getCveDepa() {
-        return cveDepa;
+
+    public String getCveCarrera() {
+        return cveCarrera;
     }
-    public void setCveDepa(String cveDepa) {
-        this.cveDepa = cveDepa;
+
+    public void setCveCarrera(String cveCarrera) {
+        this.cveCarrera = cveCarrera;
     }
 }

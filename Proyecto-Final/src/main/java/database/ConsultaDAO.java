@@ -5,10 +5,7 @@ import javafx.scene.control.Alert;
 import modelos.*;
 import modelosReportes.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 public class ConsultaDAO {
     Connection conn;
@@ -66,7 +63,6 @@ public class ConsultaDAO {
         }
         return alertas;
     }
-
     public ObservableList<String> getPruebas() throws SQLException {
         ObservableList <String> pruebas = FXCollections.observableArrayList();
         try {
@@ -244,7 +240,6 @@ public class ConsultaDAO {
         }
         return listEstudiantes;
     }
-
     public List <listCasosDelPersonal> getListContagiadosPersonal() {
         List <listCasosDelPersonal> listPersonal = FXCollections.observableArrayList();
         try {
@@ -264,7 +259,6 @@ public class ConsultaDAO {
         }
         return listPersonal;
     }
-
     public List <listConsultasTotalMedicos> getListConsultasTotalMedicos() {
             List <listConsultasTotalMedicos> listTotalMedicos = FXCollections.observableArrayList();
             try {
@@ -317,25 +311,45 @@ public class ConsultaDAO {
         }
         return modeloReceta;
     }
-
-    /*public ObservableList<modeloOrden> getConsultasMedico() throws SQLException {
-        ObservableList <modeloOrden> ordenes = FXCollections.observableArrayList();
+    // Operaciones del CRUD
+    // Consultas
+    public boolean insertNewSolicitud(modeloSolicitud solicitud) {
+        // Se le asignan sus datos al personal
         try {
-            String query = "select O.noOrden, O.resultado, O.noConsulta, O.noCedula, O.cvePrueba from Orden O inner join Consulta C on O.noConsulta = C.noConsulta where C.noUsuario = " + noUsuario;
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                ordenes.add(new modeloOrden(
-                        rs.getInt("noOrden"),
-                        rs.getString("resultado"),
-                        rs.getInt("noConsulta"),
-                        rs.getString("noCedula"),
-                        rs.getString("cvePrueba")
-                ));
-            }
+            String query = "insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula)" +
+                    "values (?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, solicitud.getEstado());
+            ps.setString(2, solicitud.getTipo());
+            ps.setString(3, solicitud.getCveAsignacion());
+            ps.setInt(4, solicitud.getNoUsuario());
+            ps.setString(5, solicitud.getNoCedula());
+            ps.execute();
+            return true;
         } catch (SQLException e) {
-            alertMessage("Error","getConsultaUsuario", e.getMessage(), Alert.AlertType.ERROR);
+            alertMessage("Error","insertNewSolicitud", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
         }
-        return ordenes;
-    }*/
+    }
+
+    public boolean insertNewConsulta(modeloConsulta consulta) {
+        // Se le asignan sus datos al personal
+        try {
+            String query = "insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula)" +
+                    "values (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, consulta.getSintomas());
+            ps.setDate(2, consulta.getFecha());
+            ps.setString(3, consulta.getHora());
+            ps.setString(4, consulta.getTipo());
+            ps.setString(5, consulta.getCveAsignacion());
+            ps.setInt(6, consulta.getNoUsuario());
+            ps.setString(7, consulta.getNoCedula());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewConsulta", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
 }

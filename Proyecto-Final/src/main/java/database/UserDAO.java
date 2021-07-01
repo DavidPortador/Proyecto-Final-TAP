@@ -3,13 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.*;
-import modelosReportes.listCasosCarrera;
-import modelosReportes.listCasosDelPersonal;
-import modelosReportes.listCasosDepartamento;
-import modelosReportes.listCasosEstudiantes;
-
 import java.sql.*;
-import java.util.List;
 public class UserDAO {
     Connection conn;
     public UserDAO (Connection conn) {
@@ -38,7 +32,6 @@ public class UserDAO {
         }
         return asignacion;
     }
-
     public String getcveAsignacion(int noUsuario) throws SQLException {
         String consulta, cveasignacion = null;
         consulta = "select cveAsignacion from Asignacion where noUsuario = " + noUsuario;
@@ -54,7 +47,6 @@ public class UserDAO {
         }
         return cveasignacion;
     }
-
     public String getCarrera(int noUsuario) throws SQLException {
         String consulta, carrera = null;
         consulta = "select C.nombre from Estudiante E inner join Carrera C on E.cveCarrera = C.cveCarrera " +
@@ -123,7 +115,7 @@ public class UserDAO {
         Usuario user = null;
         consulta = "select * from Usuario where noUsuario = '" + modeloUser.getNoUsuario() +
                 "' and usuario = '" + modeloUser.getUsuario() + "' and contra = '" + modeloUser.getContra() + "'";
-        System.out.println(consulta);
+        //System.out.println(consulta);
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(consulta);
         if (rs != null) {
@@ -148,7 +140,7 @@ public class UserDAO {
         String consulta;
         Usuario usuario = null;
         consulta = "select * from Usuario where usuario = '"+user+"' and contra = '"+pass+"'";
-        System.out.println(consulta);
+        //System.out.println(consulta);
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(consulta);
         if (rs != null) {
@@ -303,25 +295,6 @@ public class UserDAO {
             return true;
         } catch (SQLException e) {
             alertMessage("Error","insertNewPersonal", e.getMessage(), Alert.AlertType.ERROR);
-            return false;
-        }
-    }
-    // Consultas
-    public boolean insertNewSolicitud(modeloSolicitud solicitud) {
-        // Se le asignan sus datos al personal
-        try {
-            String query = "insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula)" +
-                    "values (?, ?, ?, ?, ?)";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, solicitud.getEstado());
-            ps.setString(2, solicitud.getTipo());
-            ps.setString(3, solicitud.getCveAsignacion());
-            ps.setInt(4, solicitud.getNoUsuario());
-            ps.setString(5, solicitud.getNoCedula());
-            ps.execute();
-            return true;
-        } catch (SQLException e) {
-            alertMessage("Error","insertNewSolicitud", e.getMessage(), Alert.AlertType.ERROR);
             return false;
         }
     }

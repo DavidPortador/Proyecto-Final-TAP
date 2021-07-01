@@ -1,4 +1,5 @@
 package controllers;
+import database.ConsultaDAO;
 import database.MySQLConnection;
 import database.UserDAO;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 public class Solicitud implements Initializable {
     UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
+    ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Stage anterior;
     Usuario user;
     @FXML Button btnCrear, btnCancelar;
@@ -68,7 +70,7 @@ public class Solicitud implements Initializable {
                         noCedula
                         );
                 System.out.println();
-                if(userDAO.insertNewSolicitud(solicitud)){
+                if(consultaDAO.insertNewSolicitud(solicitud)){
                     alertMessage(
                             "Solicitud Exitosa", "Se solicito la consulta de manera exitosa",
                             "Se genero una solicitud de consulta para "+user.getNombres(),

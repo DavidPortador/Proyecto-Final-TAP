@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelos.*;
 import java.net.URL;
@@ -81,12 +80,13 @@ public class Medicos implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 String tipo;
-                tipo = cbPrueba.getSelectionModel().getSelectedItem().toString();
-                if(tipo.equals("")){
+                tipo = (String) cbPrueba.getSelectionModel().getSelectedItem();
+                if(tipo == null){
                     alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
                     System.out.println(tipo);
                 }else{
                     System.out.println(tipo);
+
                 }
             }
         });
@@ -94,11 +94,11 @@ public class Medicos implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 modeloSolicitud solicitud = (modeloSolicitud) tblMedicos.getSelectionModel().getSelectedItem();
-                if(solicitud.equals("")){
+                if(solicitud == null){
                     alertMessage("Error", "No selecciono ninguna solicitud", null, Alert.AlertType.ERROR);
-
                 }else{
-                    System.out.println(solicitud.getTipo());
+                    // Generar consulta
+
                 }
             }
         });

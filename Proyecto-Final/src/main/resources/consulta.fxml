@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="419.0" prefWidth="678.0" style="-fx-background:#2E3436;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="135.0" fitWidth="144.0" layoutX="62.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Styles/user2.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="111.0" fitWidth="88.0" layoutX="14.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/tec-logo1.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="73.0" fitWidth="164.0" layoutX="516.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/tecverde.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="lblUsuario" layoutX="104.0" layoutY="210.0" styleClass="label-bright" text="Usuario" />
+        <Button fx:id="btnCancelar" contentDisplay="GRAPHIC_ONLY" layoutX="221.0" layoutY="333.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="75.0" text="Cancelar">
+            <graphic>
+                <ImageView fitHeight="43.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Styles/delete.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="btnCrear" contentDisplay="GRAPHIC_ONLY" layoutX="385.0" layoutY="333.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="75.0" text="Revisar">
+            <graphic>
+                <ImageView fitHeight="43.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Styles/create.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <ComboBox fx:id="cbMedicos" layoutX="343.0" layoutY="255.0" prefHeight="31.0" prefWidth="219.0" />
+        <Label layoutX="209.0" layoutY="263.0" styleClass="label-bright" text="Tipo de Solicitud" />
+        <Label layoutX="273.0" layoutY="189.0" styleClass="label-bright" text="Medico" />
+      <TextField layoutX="343.0" layoutY="59.0" prefHeight="25.0" prefWidth="219.0" />
+      <TextField layoutX="343.0" layoutY="184.0" prefHeight="25.0" prefWidth="219.0" />
+      <DatePicker layoutX="343.0" layoutY="115.0" prefHeight="25.0" prefWidth="219.0" />
+      <Label layoutX="259.0" layoutY="64.0" text="Sintomas" />
+      <Label layoutX="281.0" layoutY="120.0" text="Fecha" />
+    </children>
+</AnchorPane>

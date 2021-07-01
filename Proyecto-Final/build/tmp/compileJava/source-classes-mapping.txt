@@ -15,13 +15,8 @@ modelos/modeloPersonal.java
  modelos.modeloPersonal
 modelos/modeloSolicitud.java
  modelos.modeloSolicitud
-usuarios/Administradores.java
- usuarios.Administradores
- usuarios.Administradores$1
- usuarios.Administradores$2
- usuarios.Administradores$3
- usuarios.Administradores$4
- usuarios.Administradores$5
+database/MySQLConnection.java
+ database.MySQLConnection
 modelos/Alerta.java
  modelos.Alerta
 usuarios/Directivos.java
@@ -65,10 +60,17 @@ controllers/Register.java
  controllers.Register$4
 medicos/medicos.java
  medicos.medicos
-database/UserDAO.java
- database.UserDAO
-database/MySQLConnection.java
- database.MySQLConnection
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+usuarios/Personal.java
+ usuarios.Personal
+ usuarios.Personal$1
+ usuarios.Personal$2
+ usuarios.Personal$3
+ usuarios.Personal$4
+ usuarios.Personal$5
+ usuarios.Personal$6
+ usuarios.Personal$7
 database/ConsultaDAO.java
  database.ConsultaDAO
 modelos/modeloMonitoreo.java
@@ -81,29 +83,22 @@ modelos/Usuario.java
  modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
-usuarios/Personal.java
- usuarios.Personal
 usuarios/Monitoreadores.java
  usuarios.Monitoreadores
  usuarios.Monitoreadores$1
-<<<<<<< HEAD
-=======
-usuarios/Personal.java
- usuarios.Personal
- usuarios.Personal$1
- usuarios.Personal$2
- usuarios.Personal$3
- usuarios.Personal$4
- usuarios.Personal$5
- usuarios.Personal$6
- usuarios.Personal$7
->>>>>>> 88d182d6b000808de0e67c07b671cc98d62a582a
+usuarios/Administradores.java
+ usuarios.Administradores
+ usuarios.Administradores$1
+ usuarios.Administradores$2
+ usuarios.Administradores$3
+ usuarios.Administradores$4
+ usuarios.Administradores$5
+database/UserDAO.java
+ database.UserDAO
 controllers/Solicitud.java
  controllers.Solicitud
  controllers.Solicitud$1
  controllers.Solicitud$2
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
 usuarios/Medicos.java
  usuarios.Medicos
  usuarios.Medicos$1

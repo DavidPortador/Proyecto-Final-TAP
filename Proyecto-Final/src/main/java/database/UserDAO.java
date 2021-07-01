@@ -64,6 +64,22 @@ public class UserDAO {
         return noCedula;
     }
 
+    public String getcvePrueba(String prueba) throws SQLException {
+        String consulta, cvePrueba = null;
+        consulta = "select cvePrueba from Prueba where tipo = '" + prueba + "'";
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    cvePrueba = rs.getString("cvePrueba");
+            } catch (Exception e) {
+                alertMessage("Error","getcvePrueba", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return cvePrueba;
+    }
+
     public String getCarrera(int noUsuario) throws SQLException {
         String consulta, carrera = null;
         consulta = "select C.nombre from Estudiante E inner join Carrera C on E.cveCarrera = C.cveCarrera " +

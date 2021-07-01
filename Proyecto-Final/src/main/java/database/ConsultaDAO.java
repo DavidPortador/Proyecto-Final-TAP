@@ -312,7 +312,7 @@ public class ConsultaDAO {
         return modeloReceta;
     }
     // Operaciones del CRUD
-    // Consultas
+    // Inserts
     public boolean insertNewSolicitud(modeloSolicitud solicitud) {
         // Se le asignan sus datos al personal
         try {
@@ -331,7 +331,6 @@ public class ConsultaDAO {
             return false;
         }
     }
-
     public boolean insertNewConsulta(modeloConsulta consulta) {
         // Se le asignan sus datos al personal
         try {
@@ -353,6 +352,25 @@ public class ConsultaDAO {
         }
     }
 
+    public boolean insertNewOrden(modeloOrden orden) {
+        // Se le asignan sus datos al personal
+        try {
+            String query = "insert into Orden (resultado, noConsulta, noCedula, cvePrueba) values " +
+                    "(?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, orden.getResultado());
+            ps.setInt(2, orden.getNoConsulta());
+            ps.setString(3, orden.getNoCedula());
+            ps.setString(4, orden.getCvePrueba());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewOrden", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+
+    // Update
     public boolean setEstadoSolicitud(int noSolicitud) {
         // Se le asignan sus datos al personal
         try {

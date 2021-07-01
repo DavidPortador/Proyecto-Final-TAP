@@ -3,6 +3,7 @@ import controllers.Consulta;
 import database.ConsultaDAO;
 import database.EncuestaDAO;
 import database.MySQLConnection;
+import database.UserDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,10 +21,12 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 public class Medicos implements Initializable {
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     EncuestaDAO encuestaDAO = new EncuestaDAO(MySQLConnection.getConnection());
+    UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario medico;
     Stage anterior;
     @FXML Button btnFiltrar, btnPrueba, btnEncuestas, btnSolicitudes, btnConsultas, btnSalir, btnAceptar;
@@ -87,13 +90,49 @@ public class Medicos implements Initializable {
             @Override public void handle(ActionEvent event) {
                 String tipo;
                 tipo = (String) cbPrueba.getSelectionModel().getSelectedItem();
+                modeloConsulta consulta = (modeloConsulta) tblMedicos.getSelectionModel().getSelectedItem();
                 if(tipo == null){
                     alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
-                    System.out.println(tipo);
                 }else{
                     // Se genera una orden
-                    System.out.println(tipo);
-
+                    if(consulta == null){
+                        alertMessage("Error", "No selecciono ninguna consulta", null, Alert.AlertType.ERROR);
+                    }else{
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Resultado de Orden");
+                        alert.setHeaderText("Generando Orden");
+                        alert.setContentText("Aceptar, si el usuario esta contagiado");
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.get() == ButtonType.OK){
+                            try {
+                                modeloOrden orden = new modeloOrden(
+                                        0, "Contagiado",
+                                        consulta.getNoConsulta(),
+                                        userDAO.getnoCedula(medico.getNoUsuario()),
+                                        userDAO.getcvePrueba(tipo)
+                                );
+                                if(consultaDAO.insertNewOrden(orden)){
+                                    alertMessage("Exitoso", null, "Orden agregada", Alert.AlertType.INFORMATION);
+                                }
+                            } catch (SQLException e) {
+                                alertMessage("Error","modeloOrden", e.getMessage(), Alert.AlertType.ERROR);
+                            }
+                        } else {
+                            try {
+                                modeloOrden orden = new modeloOrden(
+                                        0, "Estable",
+                                        consulta.getNoConsulta(),
+                                        userDAO.getnoCedula(medico.getNoUsuario()),
+                                        userDAO.getcvePrueba(tipo)
+                                );
+                                if(consultaDAO.insertNewOrden(orden)){
+                                    alertMessage("Exitoso", null, "Orden agregada", Alert.AlertType.INFORMATION);
+                                }
+                            } catch (SQLException e) {
+                                alertMessage("Error","modeloOrden", e.getMessage(), Alert.AlertType.ERROR);
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -111,7 +150,6 @@ public class Medicos implements Initializable {
                             System.out.println(solicitud.getNoSolicitud());
                             showConsulta(event, solicitud);
                         }
-                        //System.out.println(solicitud.getEstado());
                     } catch (IOException e) {
                         alertMessage("Error", "showConsulta", e.getMessage(), Alert.AlertType.ERROR);
                     }

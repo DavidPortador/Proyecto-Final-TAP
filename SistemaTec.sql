@@ -274,18 +274,18 @@ insert into Prueba values
 # Creacion de los usuarios que no se pueden registar (tres de cada uno)
 
 insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
-	('medico1', 'contraME1', 'Jose', 'Perez', 'M', 'exampleME1@example.com', '1999-08-02'),
-	('medico2', 'contraME2', 'Maria', 'Sanchez', 'F', 'exampleME2@example.com', '1988-09-20'),
-	('medico3', 'contraME3', 'Juan', 'Cruz', 'M', 'exampleME3@example.com', '1997-05-16'),
-	('admin1', 'contraAD1', 'Carlos', 'Perez', 'M', 'exampleAD1@example.com', '1999-08-02'),
-	('admin2', 'contraAD2', 'Sofia', 'Sanchez', 'F', 'exampleAD2@example.com', '1988-09-20'),
-	('admin3', 'contraAD3', 'Juan', 'Cruz', 'M', 'exampleAD3@example.com', '1997-05-16'),
-	('monitoreo1', 'contraMO1', 'Carlos', 'Perez', 'M', 'exampleMO1@example.com', '1999-08-02'),
-	('monitoreo2', 'contraMO2', 'Sofia', 'Sanchez', 'F', 'exampleMO2@example.com', '1988-09-20'),
-	('monitoreo3', 'contraMO3', 'Juan', 'Cruz', 'M', 'exampleMO3@example.com', '1997-05-16'),
-	('directivo1', 'contraDI1', 'Carlos', 'Perez', 'M', 'exampleDI1@example.com', '1999-08-02'),
-	('directivo2', 'contraDI2', 'Sofia', 'Sanchez', 'F', 'exampleDI2@example.com', '1988-09-20'),
-	('directivo3', 'contraDI3', 'Juan', 'Cruz', 'M', 'exampleDI3@example.com', '1997-05-16');
+	('medico1', 'contraME1', 'Aurelio', 'Granjeno Luna', 'M', 'exampleME1@example.com', '1999-08-02'),
+	('medico2', 'contraME2', 'Maria Guadalupe', 'Sanchez Campos', 'F', 'exampleME2@example.com', '1988-09-20'),
+	('medico3', 'contraME3', 'Juan', 'Cruz Coyote', 'M', 'exampleME3@example.com', '1997-05-16'),
+	('admin1', 'contraAD1', 'Carlos Daniel', 'Perez Ruiz', 'M', 'exampleAD1@example.com', '1999-08-02'),
+	('admin2', 'contraAD2', 'Sofia', 'Montoya Zarate', 'F', 'exampleAD2@example.com', '1988-09-20'),
+	('admin3', 'contraAD3', 'Adan', 'Cruz Tovar', 'M', 'exampleAD3@example.com', '1997-05-16'),
+	('monitoreo1', 'contraMO1', 'Pedro', 'Palma Nuñez', 'M', 'exampleMO1@example.com', '1999-08-02'),
+	('monitoreo2', 'contraMO2', 'Jaime', 'Aboytes Pizano', 'M', 'exampleMO2@example.com', '1988-09-20'),
+	('monitoreo3', 'contraMO3', 'Yolanda', 'Banderas Jimenez', 'F', 'exampleMO3@example.com', '1997-05-16'),
+	('directivo1', 'contraDI1', 'Fausto', 'Rocha Peralta', 'M', 'exampleDI1@example.com', '1999-08-02'),
+	('directivo2', 'contraDI2', 'Sarahi', 'Hernandez Centeno', 'F', 'exampleDI2@example.com', '1988-09-20'),
+	('directivo3', 'contraDI3', 'Miguel Rodrigo', 'Alvarez Quesada', 'M', 'exampleDI3@example.com', '1997-05-16');
 
 insert into Asignacion values 
 	('ME001', 1, 'Medico'),
@@ -325,19 +325,39 @@ insert into Directivo values
 
 insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
 	# Estudiantes ###,##,###
-	# 13 - 17
-	('19010111', 'contraES1', 'Miguel', 'Vazquez', 'M', 'exampleES1@example.com', '2000-10-10'),
-	('19010112', 'contraES2', 'Jose', 'Garcia', 'M', 'exampleES2@example.com', '2000-03-08'),
-	('19010113', 'contraES3', 'Ana', 'Castillo', 'F', 'exampleES3@example.com', '2000-04-03'),
-	('19010114', 'contraES4', 'Maria', 'Zavala', 'F', 'exampleES4@example.com', '2000-10-06'),
-	('19010115', 'contraES5', 'Jaime', 'Cardenas', 'M', 'exampleES5@example.com', '2000-02-01'),
+	# 13 - 27
+	('19010111', 'contraES1', 'Enrique', 'Rangel Andrade', 'M', 'exampleES1@example.com', '2001-10-10'),
+	('19010112', 'contraES2', 'Uriel', 'Garcia Almaraz', 'M', 'exampleES2@example.com', '2000-03-08'),
+	('19010113', 'contraES3', 'Ana Paula', 'Castillo Cabrera', 'F', 'exampleES3@example.com', '2002-04-03'),
+	('19010114', 'contraES4', 'Clara', 'Zavala Rodriguez', 'F', 'exampleES4@example.com', '2001-10-06'),
+	('19010115', 'contraES5', 'Oscar', 'Cardenas Rojas', 'M', 'exampleES5@example.com', '2000-02-01'),
+	('19010116', 'contraES6', 'Camilo', 'Cano Vasquez', 'M', 'exampleES6@example.com', '2001-11-10'),
+    ('19010117', 'contraES7', 'Luis Angel', 'Garcia Ramirez', 'M', 'exampleES7@example.com', '2002-04-08'),
+    ('19010118', 'contraES8', 'Fatima', 'Pineda Olivares', 'F', 'exampleES8@example.com', '2002-09-03'),
+    ('19010119', 'contraES9', 'Angelica', 'Godinez Lugo', 'F', 'exampleES9@example.com', '2001-12-06'),
+    ('19010120', 'contraES10', 'Jairo Saul', 'Quintanilla Cornejo', 'M', 'exampleES10@example.com', '2000-09-01'),
+    ('19010121', 'contraES11', 'Moises', 'Ochoa Uribe', 'M', 'exampleES11@example.com', '2001-11-10'),
+    ('19010122', 'contraES12', 'Ramiro', 'Escobar Delgado', 'M', 'exampleES12@example.com', '2000-04-08'),
+    ('19010123', 'contraES13', 'Giselle', 'Montes Galvan', 'F', 'exampleES13@example.com', '2002-05-03'),
+    ('19010124', 'contraES14', 'Gabriela', 'Higareda Guarnizo', 'F', 'exampleES14@example.com', '2001-12-06'),
+    ('19010125', 'contraES15', 'Jesus Noe', 'Contreras Villanuevas', 'M', 'exampleES15@example.com', '2000-01-01'),
 	# Personal ###,##,###
-	# 18 - 22
-	('29050111', 'contraPE1', 'Diana', 'Hernandez', 'F', 'examplePE1@example.com', '2000-12-04'),
-	('29050112', 'contraPE2', 'Pablo', 'Hernandez', 'M', 'examplePE2@example.com', '2000-03-03'),
-	('29050113', 'contraPE3', 'Camila', 'Hernandez', 'F', 'examplePE3@example.com', '2000-12-02'),
-	('29050114', 'contraPE4', 'Arturo', 'Hernandez', 'M', 'examplePE4@example.com', '2000-04-01'),
-	('29050115', 'contraPE5', 'Monica', 'Hernandez', 'F', 'examplePE5@example.com', '2000-12-04');
+	# 28 - 42
+	('29050111', 'contraPE1', 'Diana Camila', 'Banda Gasca', 'F', 'examplePE1@example.com', '1975-12-04'),
+	('29050112', 'contraPE2', 'Ruth', 'Paramo Nieto', 'M', 'examplePE2@example.com', '1980-03-03'),
+	('29050113', 'contraPE3', 'Alma', 'Pantoja Ortiz', 'F', 'examplePE3@example.com', '1972-12-02'),
+	('29050114', 'contraPE4', 'Arturo Gabriel', 'Vargas Mancera', 'M', 'examplePE4@example.com', '1970-04-01'),
+	('29050115', 'contraPE5', 'Tania', 'Escobedo Conejo', 'F', 'examplePE5@example.com', '1968-12-04'),
+	('29050116', 'contraPE6', 'Sandra', 'Moreno Gonzalez', 'F', 'examplePE6@example.com', '1962-11-06'),
+    ('29050117', 'contraPE7', 'Nestor', 'Salinas Najarro', 'M', 'examplePE7@example.com', '1961-04-10'),
+    ('29050118', 'contraPE8', 'Elizabeth', 'Molina Gomez', 'F', 'examplePE8@example.com', '1981-12-09'),
+    ('29050119', 'contraPE9', 'Edgar Ignacio', 'Esquivel', 'M', 'examplePE9@example.com', '1966-01-07'),
+    ('29050120', 'contraPE10', 'Raquel', 'Bravo Noguez', 'F', 'examplePE10@example.com', '1972-11-06'),
+    ('29050121', 'contraPE11', 'Michelle', 'Velazco Espinoza', 'F', 'examplePE11@example.com', '1962-12-04'),
+    ('29050122', 'contraPE12', 'Yahir', 'Romero Venegas', 'M', 'examplePE12@example.com', '1976-01-09'),
+    ('29050123', 'contraPE13', 'Litzy', 'Juarez Arellano', 'F', 'examplePE13@example.com', '1983-11-03'),
+    ('29050124', 'contraPE14', 'Diego Leonardo', 'Valadez Acosta', 'M', 'examplePE14@example.com', '1960-03-09'),
+    ('29050125', 'contraPE15', 'Ximena', 'Flores Estrada', 'F', 'examplePE15@example.com', '1982-11-02');
 
 insert into Asignacion values 
 	# Estudiantes ###,##,###
@@ -346,54 +366,126 @@ insert into Asignacion values
 	('ES003', 15, 'Estudiante'),
 	('ES004', 16, 'Estudiante'),
 	('ES005', 17, 'Estudiante'),
+	('ES006', 18, 'Estudiante'),
+	('ES007', 19, 'Estudiante'),
+	('ES008', 20, 'Estudiante'),
+	('ES009', 21, 'Estudiante'),
+	('ES010', 22, 'Estudiante'),
+	('ES011', 23, 'Estudiante'),
+    ('ES012', 24, 'Estudiante'),
+    ('ES013', 25, 'Estudiante'),
+    ('ES014', 26, 'Estudiante'),
+    ('ES015', 27, 'Estudiante'),
 	# Personal ###,##,###
-	('PE001', 18, 'Personal'),
-	('PE002', 19, 'Personal'),
-	('PE003', 20, 'Personal'),
-	('PE004', 21, 'Personal'),
-	('PE005', 22, 'Personal');
+	('PE001', 28, 'Personal'),
+	('PE002', 29, 'Personal'),
+	('PE003', 30, 'Personal'),
+	('PE004', 31, 'Personal'),
+	('PE005', 32, 'Personal'),
+	('PE006', 33, 'Personal'),
+	('PE007', 34, 'Personal'),
+	('PE008', 35, 'Personal'),
+	('PE009', 36, 'Personal'),
+	('PE010', 37, 'Personal'),
+	('PE011', 38, 'Personal'),
+    ('PE012', 39, 'Personal'),
+    ('PE013', 40, 'Personal'),
+    ('PE014', 41, 'Personal'),
+    ('PE015', 42, 'Personal');
+
 
 insert into Estudiante values 
 	('10111', 'ES001', 13, 'CA001'),
-	('10112', 'ES002', 14, 'CA002'),
-	('10113', 'ES003', 15, 'CA003'),
-	('10114', 'ES004', 16, 'CA004'),
-	('10115', 'ES005', 17, 'CA004');
+	('10112', 'ES002', 14, 'CA010'),
+	('10113', 'ES003', 15, 'CA007'),
+	('10114', 'ES004', 16, 'CA007'),
+	('10115', 'ES005', 17, 'CA008'),
+	('10116', 'ES006', 18, 'CA001'),
+    ('10117', 'ES007', 19, 'CA002'),
+    ('10118', 'ES008', 20, 'CA003'),
+    ('10119', 'ES009', 21, 'CA005'),
+    ('10120', 'ES010', 22, 'CA004'),
+    ('10116', 'ES011', 23, 'CA010'),
+    ('10117', 'ES012', 24, 'CA009'),
+    ('10118', 'ES013', 25, 'CA004'),
+    ('10119', 'ES014', 26, 'CA005'),
+    ('10120', 'ES015', 27, 'CA006');
 
 insert into Personal values 
-	('50111', 'PE001', 18, 'DE001'),
-	('50112', 'PE002', 19, 'DE002'),
-	('50113', 'PE003', 20, 'DE003'),
-	('50114', 'PE004', 21, 'DE004'),
-	('50115', 'PE005', 22, 'DE005');
+	('50111', 'PE001', 28, 'DE001'),
+	('50112', 'PE002', 29, 'DE002'),
+	('50113', 'PE003', 30, 'DE014'),
+	('50114', 'PE004', 31, 'DE014'),
+	('50115', 'PE005', 32, 'DE005'),
+	('50116', 'PE006', 33, 'DE006'),
+    ('50117', 'PE007', 34, 'DE012'),
+    ('50118', 'PE008', 35, 'DE025'),
+    ('50119', 'PE009', 36, 'DE024'),
+    ('50120', 'PE010', 37, 'DE025'),
+    ('50121', 'PE011', 38, 'DE001'),
+    ('50122', 'PE012', 39, 'DE002'),
+    ('50123', 'PE013', 40, 'DE013'),
+    ('50124', 'PE014', 41, 'DE024'),
+    ('50125', 'PE015', 42, 'DE005');
 
 # Se crearan casos de prueba iniciales en el sistema
 
 insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values 
 	# Estudiantes
 	('Rechazado', 'Virtual', 'ES001', 13, 'NME03'),
-	('Aceptado', 'Virtual', 'ES001', 13, 'NME01'),
-	('Aceptado', 'Virtual', 'ES002', 14, 'NME02'),
-	('Aceptado', 'Presencial', 'ES003', 15, 'NME03'),
-	('Espera', 'Virtual', 'ES004', 16, 'NME02'),
-	('Espera', 'Virtual', 'ES005', 17, 'NME01'),
+	('Aceptado', 'Presencial', 'ES002', 14, 'NME02'),
+	('Aceptado', 'Virtual', 'ES003', 15, 'NME02'),
+	('Aceptado', 'Presencial', 'ES004', 16, 'NME01'),
+	('Espera', 'Virtual', 'ES005', 17, 'NME02'),
+	('Espera', 'Virtual', 'ES006', 18, 'NME03'),
+	('Rechazado', 'Presencial', 'ES007', 19, 'NME03'),
+    ('Aceptado', 'Virtual', 'ES008', 20, 'NME02'),
+    ('Aceptado', 'Virtual', 'ES009', 21, 'NME02'),
+    ('Aceptado', 'Presencial', 'ES010', 22, 'NME01'),
+    ('Espera', 'Presencial', 'ES011', 23, 'NME03'),
+    ('Espera', 'Virtual', 'ES012', 24, 'NME01'),
+    ('Rechazado', 'Virtual', 'ES013', 25, 'NME03'),
+    ('Aceptado', 'Presencial', 'ES014', 26, 'NME02'),
+    ('Aceptado', 'Virtual', 'ES015', 27, 'NME02'),
 	# Personal
-	('Rechazado', 'Presencial', 'PE001', 18, 'NME03'),
-	('Aceptado', 'Presencial', 'PE001', 18, 'NME02'),
-	('Aceptado', 'Virtual', 'PE002', 19, 'NME01'),
-	('Rechazado', 'Presencial', 'PE003', 20, 'NME02'),
-	('Aceptado', 'Presencial', 'PE004', 21, 'NME03'),
-	('Espera', 'Virtual', 'PE005', 22, 'NME03');
+	('Rechazado', 'Presencial', 'PE001', 28, 'NME03'),
+	('Aceptado', 'Presencial', 'PE002', 29, 'NME01'),
+	('Aceptado', 'Virtual', 'PE003', 30, 'NME03'),
+	('Rechazado', 'Presencial', 'PE004', 31, 'NME02'),
+	('Aceptado', 'Presencial', 'PE005', 32, 'NME01'),
+	('Espera', 'Virtual', 'PE006', 33, 'NME01'),
+	('Rechazado', 'Presencial', 'PE007', 34, 'NME02'),
+    ('Aceptado', 'Presencial', 'PE008', 35, 'NME01'),
+   	('Aceptado', 'Virtual', 'PE009', 36, 'NME02'),
+   	('Rechazado', 'Presencial', 'PE010', 37, 'NME03'),
+   	('Aceptado', 'Presencial', 'PE011', 38, 'NME01'),
+   	('Espera', 'Virtual', 'PE012', 39, 'NME01'),
+   	('Rechazado', 'Presencial', 'PE013', 40, 'NME03'),
+   	('Aceptado', 'Presencial', 'PE014', 41, 'NME02'),
+    ('Aceptado', 'Virtual', 'PE015', 42, 'NME01');
+    
 
 insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula) values
 	# Estudiantes
 	('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES001', 13, 'NME01'),
 	('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES002', 14, 'NME02'),
 	('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES003', 15, 'NME03'),
+	('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES004', 16, 'NME01'),
+    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES005', 17, 'NME02'),
+    ('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES006', 18, 'NME03'),
+    ('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES007', 19, 'NME01'),
+    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES008', 20, 'NME02'),
+    ('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES009', 21, 'NME03'),
+    ('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES010', 22, 'NME01'),
+    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES011', 23, 'NME02'),
+    ('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES012', 24, 'NME01'),
+    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES013', 25, 'NME02'),
+    ('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES014', 26, 'NME03'),
+    ('Fiebre', '2021-12-05', '16:00', 'Presencial', 'ES015', 27, 'NME02'),
 	# Personal
-	('Nauseas', '2021-11-12', '16:00', 'Presencial', 'PE001', 18, 'NME02'),
-	('Migraña', '2021-11-12', '18:00', 'Virtual', 'PE002', 19, 'NME01'),
-	('Fiebre y vomito', '2021-11-12', '20:00', 'Presencial', 'PE004', 21, 'NME03');
+	('Nauseas', '2021-11-12', '16:00', 'Presencial', 'PE001', 28, 'NME02'),
+	('Migraña', '2021-11-12', '18:00', 'Virtual', 'PE002', 29, 'NME01'),
+	('Fiebre y vomito', '2021-11-12', '20:00', 'Presencial', 'PE003', 30, 'NME03');
 
 insert into Receta (indicaciones, noConsulta) values
 	# Estudiantes
@@ -444,7 +536,7 @@ insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5
 	(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, null, 16),
 	(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, null, 17);
 
-# Se usara una vista para generar reportes 
+# Se usara una vista para generar reportes
 
 create view Reporte1Estudiantes(Nombres, Apellidos, Fecha, Resultado, Carrera) as 
 	select U.nombres, U.apellidos, C.fecha, O.resultado, C2.nombre 

@@ -35,8 +35,8 @@ public class Directivos implements Initializable {
     @FXML ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     @Override public void initialize(URL location, ResourceBundle resources) {
         lblUsuario.setText(directivo.getNombres()+" "+directivo.getApellidos());
-       initCharts();
-       initButtons();
+        initCharts();
+        initButtons();
     }
     private void initButtons() {
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {

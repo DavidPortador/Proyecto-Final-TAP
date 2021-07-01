@@ -38,6 +38,23 @@ public class UserDAO {
         }
         return asignacion;
     }
+
+    public String getcveAsignacion(int noUsuario) throws SQLException {
+        String consulta, cveasignacion = null;
+        consulta = "select cveAsignacion from Asignacion where noUsuario = " + noUsuario;
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    cveasignacion = rs.getString("cveAsignacion");
+            } catch (Exception e) {
+                alertMessage("Error","getcveAsignacion", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return cveasignacion;
+    }
+
     public String getCarrera(int noUsuario) throws SQLException {
         String consulta, carrera = null;
         consulta = "select C.nombre from Estudiante E inner join Carrera C on E.cveCarrera = C.cveCarrera " +
@@ -203,7 +220,22 @@ public class UserDAO {
         }
         return listDepas;
     }
+    public ObservableList <String> getMedicos() throws SQLException {
+        ObservableList <String> medicos = FXCollections.observableArrayList();
+        try {
+            String query = "select noCedula from Medico";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                medicos.add(rs.getString("noCedula"));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","getMedicos", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return medicos;
+    }
     // Operaciones del CRUD
+    // Estudiantes / Personal
     public boolean insertNewUsuario(Usuario usuario) {
         // Primero se agrega el usuario y luego se hace la relacion con asignacion y carrera
         try {
@@ -271,6 +303,25 @@ public class UserDAO {
             return true;
         } catch (SQLException e) {
             alertMessage("Error","insertNewPersonal", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+    // Consultas
+    public boolean insertNewSolicitud(modeloSolicitud solicitud) {
+        // Se le asignan sus datos al personal
+        try {
+            String query = "insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula)" +
+                    "values (?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, solicitud.getEstado());
+            ps.setString(2, solicitud.getTipo());
+            ps.setString(3, solicitud.getCveAsignacion());
+            ps.setInt(4, solicitud.getNoUsuario());
+            ps.setString(5, solicitud.getNoCedula());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertNewSolicitud", e.getMessage(), Alert.AlertType.ERROR);
             return false;
         }
     }

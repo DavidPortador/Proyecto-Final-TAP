@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import modelos.Usuario;
 import modelos.modeloUsers;
 import reports.PDFreports;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

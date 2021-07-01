@@ -189,7 +189,7 @@ public class Directivos implements Initializable {
         reportes.add("Reporte 1");
         reportes.add("Reporte 2");
         reportes.add("Reporte 3");
-        reportes.add("Reporte 3");
+        reportes.add("Reporte 4");
         cboReportes.setItems(reportes);
     }
     public void createPdfCasosCarrera(String dest) throws IOException {

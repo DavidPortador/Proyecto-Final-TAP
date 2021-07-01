@@ -2,18 +2,19 @@ package usuarios;
 import database.ConsultaDAO;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import modelos.Usuario;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDepartamento;
+import modelosReportes.listConsultasTotalMedicos;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Directivos implements Initializable {
@@ -21,7 +22,6 @@ public class Directivos implements Initializable {
     Puede ver los reportes
     Puede ver la dashboard (graficas)
      */
-    UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     Usuario directivo;
     Stage anterior;
     @FXML Label lblUsuario;
@@ -31,9 +31,12 @@ public class Directivos implements Initializable {
         lblUsuario.setText(directivo.getNombres()+" "+directivo.getApellidos());
        initCharts();
     }
+
     private void initCharts() {
         gpBarras.add(generateTotalCasosChart(),0,0);
+        gpBarras.add(generateMedicosPieChart(),0,1);
     }
+
     private BarChart generateTotalCasosChart() {
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -57,6 +60,15 @@ public class Directivos implements Initializable {
         }
         bc.getData().addAll(series1,series2);
         return bc;
+    }
+    private PieChart generateMedicosPieChart() {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (listConsultasTotalMedicos listTotalMedicos : consultaDAO.getListConsultasTotalMedicos()) {
+            pieChartData.add(new PieChart.Data(listTotalMedicos.getCedula(), listTotalMedicos.getTotal()));
+        }
+        final PieChart chart = new PieChart(pieChartData);
+        chart.setTitle("CONSULTAS DE MEDICOS");
+        return chart;
     }
     public void setStageAnterior(Stage stage){
         anterior = stage;

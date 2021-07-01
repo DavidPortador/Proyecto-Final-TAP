@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="999.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="999.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="11.0" layoutY="29.0" prefHeight="547.0" prefWidth="215.0" spacing="20">
          <children>
@@ -13,15 +15,23 @@
                </image>
             </ImageView>
             <Label fx:id="lblUsuario" alignment="CENTER" layoutX="315.0" layoutY="34.0" prefHeight="35.0" prefWidth="167.0" styleClass="label-bright" text="PERSONAL DIRECTIVO" />
-            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" text="Reportes">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
+            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="154.0">
+               <graphic>
+                  <ImageView fitHeight="57.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Styles/pdf.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="154.0" text="Salir">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
+            <Button fx:id="btnSalir" mnemonicParsing="false" prefHeight="75.0" prefWidth="154.0">
+               <graphic>
+                  <ImageView fitHeight="106.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Styles/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </VBox>
@@ -35,7 +45,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="234.0" layoutY="132.0" prefHeight="444.0" prefWidth="328.0"/>
+      <TableView layoutX="234.0" layoutY="132.0" prefHeight="444.0" prefWidth="328.0" />
       <GridPane fx:id="gpBarras" alignment="CENTER" hgap="1" layoutX="587.0" layoutY="54.0" prefHeight="518.0" prefWidth="394.0" vgap="1" />
    </children>
 </AnchorPane>

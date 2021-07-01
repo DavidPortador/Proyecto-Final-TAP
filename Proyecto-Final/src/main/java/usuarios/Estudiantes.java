@@ -74,6 +74,16 @@ public class Estudiantes implements Initializable {
                 anterior.show();
             }
         });
+        btnSolicitud.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showSolicitud(event);
+                } catch (IOException e) {
+                    alertMessage("Error","btnSolicitud", e.getMessage(), Alert.AlertType.ERROR);
+                }
+            }
+        });
     }
     private void createTableAlertas() {
         ObservableList <Alerta> alertas = FXCollections.observableArrayList();

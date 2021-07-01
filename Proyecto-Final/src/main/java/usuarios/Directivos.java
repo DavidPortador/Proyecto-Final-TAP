@@ -1,8 +1,6 @@
 package usuarios;
 import database.ConsultaDAO;
 import database.MySQLConnection;
-import database.UserDAO;
-<<<<<<< HEAD
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,13 +10,9 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-=======
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
->>>>>>> refs/remotes/DavidPortador/main
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -26,7 +20,6 @@ import modelos.Usuario;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDepartamento;
 import modelosReportes.listConsultasTotalMedicos;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 public class Directivos implements Initializable {

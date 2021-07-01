@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 public class Solicitud implements Initializable {
     Stage anterior;
     Usuario user;
-
     @Override public void initialize(URL location, ResourceBundle resources) {
         /*btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event) {

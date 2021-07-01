@@ -1,24 +1,13 @@
-<<<<<<< HEAD
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
-database/MySQLConnection.java
- database.MySQLConnection
-modelos/modeloPersonal.java
- modelos.modeloPersonal
-=======
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
+database/MySQLConnection.java
+ database.MySQLConnection
 modelos/modeloPersonal.java
  modelos.modeloPersonal
-encuesta/Encuesta.java
- encuesta.Encuesta
- encuesta.Encuesta$1
- encuesta.Encuesta$2
->>>>>>> refs/remotes/DavidPortador/main
 modelos/modeloSolicitud.java
  modelos.modeloSolicitud
 usuarios/Administradores.java
@@ -30,29 +19,17 @@ usuarios/Administradores.java
  usuarios.Administradores$5
 modelos/Alerta.java
  modelos.Alerta
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
+usuarios/Directivos.java
+ usuarios.Directivos
+ usuarios.Directivos$1
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-<<<<<<< HEAD
 modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
 modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
-graphics/Graphics.java
- graphics.Graphics
 medicos/solicitudes.java
  medicos.solicitudes
-=======
-database/MySQLConnection.java
- database.MySQLConnection
-medicos/solicitudes.java
- medicos.solicitudes
-modelos/Usuario.java
- modelos.Usuario
-modelosReportes/listTotalEncuentasDepartamento.java
- modelosReportes.listTotalEncuentasDepartamento
->>>>>>> refs/remotes/DavidPortador/main
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -73,39 +50,39 @@ modelosReportes/listCasosEstudiantes.java
  modelosReportes.listCasosEstudiantes
 modelos/modeloOrden.java
  modelos.modeloOrden
-usuarios/Personal.java
- usuarios.Personal
+usuarios/Medicos.java
+ usuarios.Medicos
+ usuarios.Medicos$1
+ usuarios.Medicos$2
+ usuarios.Medicos$3
+ usuarios.Medicos$4
 medicos/medicos.java
  medicos.medicos
-<<<<<<< HEAD
 database/UserDAO.java
  database.UserDAO
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
- usuarios.Monitoreadores$1
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
 database/ConsultaDAO.java
  database.ConsultaDAO
-=======
-modelosReportes/listConsultasTotalMedicos.java
- modelosReportes.listConsultasTotalMedicos
-database/UserDAO.java
- database.UserDAO
-modelos/modeloEncuesta.java
- modelos.modeloEncuesta
->>>>>>> refs/remotes/DavidPortador/main
 modelos/modeloMonitoreo.java
  modelos.modeloMonitoreo
 reports/PDFreports.java
  reports.PDFreports
  reports.PDFreports$1
  reports.PDFreports$2
-<<<<<<< HEAD
 modelos/Usuario.java
  modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
-=======
->>>>>>> refs/remotes/DavidPortador/main
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+ usuarios.Monitoreadores$1
+controllers/Solicitud.java
+ controllers.Solicitud
 usuarios/Estudiantes.java
  usuarios.Estudiantes
  usuarios.Estudiantes$1
@@ -113,40 +90,10 @@ usuarios/Estudiantes.java
  usuarios.Estudiantes$3
  usuarios.Estudiantes$4
  usuarios.Estudiantes$5
-<<<<<<< HEAD
+ usuarios.Estudiantes$6
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
 usuarios/Personal.java
  usuarios.Personal
-=======
-usuarios/Monitoreadores.java
- usuarios.Monitoreadores
- usuarios.Monitoreadores$1
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
- usuarios.Medicos$2
- usuarios.Medicos$3
- usuarios.Medicos$4
-usuarios/Directivos.java
- usuarios.Directivos
->>>>>>> refs/remotes/DavidPortador/main
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
-<<<<<<< HEAD
-controllers/Solicitud.java
- controllers.Solicitud
-controllers/Register.java
- controllers.Register
- controllers.Register$1
- controllers.Register$2
- controllers.Register$3
- controllers.Register$4
-=======
-database/ConsultaDAO.java
- database.ConsultaDAO
->>>>>>> refs/remotes/DavidPortador/main

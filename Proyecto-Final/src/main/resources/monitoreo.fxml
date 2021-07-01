@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="631.0" prefWidth="1082.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="644.0" prefWidth="1082.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,16 +23,8 @@
          </image>
       </ImageView>
       <TableView fx:id="tblMonitoreo" layoutX="82.0" layoutY="150.0" prefHeight="404.0" prefWidth="769.0" />
-      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="961.0" layoutY="540.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Button">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Styles/exit.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="150.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Alerta">
+      <Button fx:id="btnSalir" contentDisplay="GRAPHIC_ONLY" layoutX="956.0" layoutY="561.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Button" />
+      <Button fx:id="btnAlerta" contentDisplay="GRAPHIC_ONLY" layoutX="759.0" layoutY="565.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="91.0" text="Alerta">
          <graphic>
             <ImageView fitHeight="92.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,7 +32,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnConsulta" contentDisplay="GRAPHIC_ONLY" layoutX="902.0" layoutY="282.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Historial">
+      <Button fx:id="btnConsulta" contentDisplay="GRAPHIC_ONLY" layoutX="914.0" layoutY="220.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Historial">
          <graphic>
             <ImageView fitHeight="50.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +40,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="899.0" layoutY="417.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="914.0" layoutY="395.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Trazabilidad">
          <graphic>
             <ImageView fitHeight="108.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,5 +49,13 @@
             </ImageView>
          </graphic></Button>
       <Label fx:id="lblUsuario" alignment="CENTER_RIGHT" layoutX="635.0" layoutY="56.0" prefHeight="19.0" prefWidth="172.0" styleClass="label-bright" text="usuario" />
+      <Label layoutX="635.0" layoutY="585.0" styleClass="label-bright" text="Generar Alerta" />
+      <Label layoutX="934.0" layoutY="186.0" styleClass="label-bright" text="Consultas" />
+      <ImageView fitHeight="40.0" fitWidth="45.0" layoutX="994.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Styles/exit.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="958.0" layoutY="360.0" text="Label" />
    </children>
 </AnchorPane>

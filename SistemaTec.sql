@@ -221,7 +221,7 @@ create table AlertaMonitoreada(noAlertaMonitoreo int not null auto_increment,
 
 # Creacion de los registros de la tablas independientes
 
-insert into Carrera values 
+insert into Carrera values
 			('CA001', 'Lic. Administracion'),
 			('CA002', 'Ing. Ambiental'),
 			('CA003', 'Ing. Bioquimica'),
@@ -233,7 +233,7 @@ insert into Carrera values
 			('CA009', 'Ing. Quimica'),
 			('CA010', 'Ing. Sistemas computacionales');
 
-insert into Departamento values 
+insert into Departamento values
 			('DE001', 'Actividades Extraescolares'),
 			('DE002', 'Calidad'),
 			('DE003', 'Centro de computo'),
@@ -266,14 +266,14 @@ insert into Departamento values
 			('DE031', 'Subdireccion de Planeacion y Vinculacion'),
 			('DE032', 'Subdireccion de Servicios Administrativos');
 
-insert into Prueba values 
+insert into Prueba values
 			('PR001', 'Prueba rapida de sangre'),
 			('PR002', 'Prueba rapida de antigeno'),
 			('PR003', 'Prueba PCR (Reaccion en cadena de la polimerasa)');
 
 # Creacion de los usuarios que no se pueden registar (tres de cada uno)
 
-insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
+insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values
 	('medico1', 'contraME1', 'Aurelio', 'Granjeno Luna', 'M', 'exampleME1@example.com', '1999-08-02'),
 	('medico2', 'contraME2', 'Maria Guadalupe', 'Sanchez Campos', 'F', 'exampleME2@example.com', '1988-09-20'),
 	('medico3', 'contraME3', 'Juan', 'Cruz Coyote', 'M', 'exampleME3@example.com', '1997-05-16'),
@@ -287,7 +287,7 @@ insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaN
 	('directivo2', 'contraDI2', 'Sarahi', 'Hernandez Centeno', 'F', 'exampleDI2@example.com', '1988-09-20'),
 	('directivo3', 'contraDI3', 'Miguel Rodrigo', 'Alvarez Quesada', 'M', 'exampleDI3@example.com', '1997-05-16');
 
-insert into Asignacion values 
+insert into Asignacion values
 	('ME001', 1, 'Medico'),
 	('ME002', 2, 'Medico'),
 	('ME003', 3, 'Medico'),
@@ -306,7 +306,7 @@ insert into Medico values
 	('NME02', 'ME002', 2),
 	('NME03', 'ME003', 3);
 
-insert into Administrador values 
+insert into Administrador values
 	('NAD01', 'AD001', 4),
 	('NAD02', 'AD002', 5),
 	('NAD03', 'AD003', 6);
@@ -323,7 +323,7 @@ insert into Directivo values
 
 # Se crearan algunos pacientes iniciales a manera de prueba en el sistema
 
-insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values 
+insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaNac) values
 	# Estudiantes ###,##,###
 	# 13 - 27
 	('19010111', 'contraES1', 'Enrique', 'Rangel Andrade', 'M', 'exampleES1@example.com', '2001-10-10'),
@@ -359,7 +359,7 @@ insert into Usuario (usuario, contra, nombres, apellidos, genero, correo, fechaN
     ('29050124', 'contraPE14', 'Diego Leonardo', 'Valadez Acosta', 'M', 'examplePE14@example.com', '1960-03-09'),
     ('29050125', 'contraPE15', 'Ximena', 'Flores Estrada', 'F', 'examplePE15@example.com', '1982-11-02');
 
-insert into Asignacion values 
+insert into Asignacion values
 	# Estudiantes ###,##,###
 	('ES001', 13, 'Estudiante'),
 	('ES002', 14, 'Estudiante'),
@@ -393,8 +393,7 @@ insert into Asignacion values
     ('PE014', 41, 'Personal'),
     ('PE015', 42, 'Personal');
 
-
-insert into Estudiante values 
+insert into Estudiante values
 	('10111', 'ES001', 13, 'CA001'),
 	('10112', 'ES002', 14, 'CA010'),
 	('10113', 'ES003', 15, 'CA007'),
@@ -411,7 +410,7 @@ insert into Estudiante values
     ('10119', 'ES014', 26, 'CA005'),
     ('10120', 'ES015', 27, 'CA006');
 
-insert into Personal values 
+insert into Personal values
 	('50111', 'PE001', 28, 'DE001'),
 	('50112', 'PE002', 29, 'DE002'),
 	('50113', 'PE003', 30, 'DE014'),
@@ -430,7 +429,7 @@ insert into Personal values
 
 # Se crearan casos de prueba iniciales en el sistema
 
-insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values 
+insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values
 	# Estudiantes
 	('Rechazado', 'Virtual', 'ES001', 13, 'NME03'),
 	('Aceptado', 'Presencial', 'ES002', 14, 'NME02'),
@@ -466,25 +465,37 @@ insert into Solicitud (estado, tipo, cveAsignacion, noUsuario, noCedula) values
 
 insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noCedula) values
 	# Estudiantes
-	('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES001', 13, 'NME01'),
-	('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES002', 14, 'NME02'),
-	('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES003', 15, 'NME03'),
-	('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES004', 16, 'NME01'),
-    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES005', 17, 'NME02'),
-    ('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES006', 18, 'NME03'),
-    ('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES007', 19, 'NME01'),
-    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES008', 20, 'NME02'),
-    ('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES009', 21, 'NME03'),
-    ('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES010', 22, 'NME01'),
-    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES011', 23, 'NME02'),
-    ('Dolor de Cabeza', '2021-10-01', '10:00', 'Virtual', 'ES012', 24, 'NME01'),
-    ('Fiebre y dolor', '2021-12-05', '12:00', 'Virtual', 'ES013', 25, 'NME02'),
-    ('Fiebre', '2021-12-05', '14:00', 'Presencial', 'ES014', 26, 'NME03'),
-    ('Fiebre', '2021-12-05', '16:00', 'Presencial', 'ES015', 27, 'NME02'),
+	('Dolor de Cabeza', '2021-10-01', '7:00', 'Virtual', 'ES001', 13, 'NME01'),
+	('Fiebre y dolor', '2021-10-01', '7:30', 'Virtual', 'ES002', 14, 'NME02'),
+	('Fiebre', '2021-10-01', '8:00', 'Presencial', 'ES003', 15, 'NME03'),
+	('Dolor de Cabeza', '2021-10-01', '8:30', 'Virtual', 'ES004', 16, 'NME01'),
+    ('Fiebre y dolor', '2021-10-01', '9:00', 'Virtual', 'ES005', 17, 'NME02'),
+    ('Fiebre', '2021-10-01', '9:30', 'Presencial', 'ES006', 18, 'NME03'),
+    ('Dolor de Cabeza y Migraña', '2021-10-01', '10:00', 'Virtual', 'ES007', 19, 'NME01'),
+    ('Fiebre y dolor', '2021-10-01', '10:30', 'Virtual', 'ES008', 20, 'NME02'),
+    ('Fiebre', '2021-10-01', '11:00', 'Presencial', 'ES009', 21, 'NME03'),
+    ('Dolor de Cabeza', '2021-10-01', '11:30', 'Virtual', 'ES010', 22, 'NME01'),
+    ('Fiebre y dolor', '2021-10-01', '12:00', 'Virtual', 'ES011', 23, 'NME02'),
+    ('Dolor de Cabeza', '2021-10-01', '12:30', 'Virtual', 'ES012', 24, 'NME01'),
+    ('Fiebre, dolor y Migraña', '2021-10-01', '13:00', 'Virtual', 'ES013', 25, 'NME02'),
+    ('Fiebre y Migraña', '2021-10-01', '13:30', 'Presencial', 'ES014', 26, 'NME03'),
+    ('Fiebre', '2021-10-01', '14:00', 'Presencial', 'ES015', 27, 'NME02'),
 	# Personal
-	('Nauseas', '2021-11-12', '16:00', 'Presencial', 'PE001', 28, 'NME02'),
-	('Migraña', '2021-11-12', '18:00', 'Virtual', 'PE002', 29, 'NME01'),
-	('Fiebre y vomito', '2021-11-12', '20:00', 'Presencial', 'PE003', 30, 'NME03');
+	('Nauseas', '2021-10-01', '14:30', 'Presencial', 'PE001', 28, 'NME02'),
+	('Migraña', '2021-10-01', '15:00', 'Virtual', 'PE002', 29, 'NME01'),
+	('Fiebre y vomito', '2021-10-01', '15:30', 'Presencial', 'PE003', 30, 'NME03'),
+	('Nauseas y Dolor de Cabeza', '2021-10-01', '16:00', 'Presencial', 'PE004', 31, 'NME02'),
+    ('Migraña y Fiebre', '2021-10-01', '16:30', 'Virtual', 'PE005', 32, 'NME01'),
+    ('Nauseas', '2021-10-01', '17:00', 'Presencial', 'PE006', 33, 'NME02'),
+    ('Migraña y Fiebre', '2021-10-01', '17:30', 'Virtual', 'PE007', 34, 'NME01'),
+    ('Fiebre y vomito', '2021-10-01', '18:00', 'Presencial', 'PE008', 35, 'NME03'),
+    ('Nauseas', '2021-10-01', '18:30', 'Presencial', 'PE009', 36, 'NME02'),
+    ('Migraña', '2021-10-01', '19:00', 'Virtual', 'PE010', 37, 'NME01'),
+    ('Nauseas y Fiebre', '2021-10-01', '19:30', 'Presencial', 'PE011', 38, 'NME02'),
+    ('Migraña', '2021-10-01', '20:00', 'Virtual', 'PE012', 39, 'NME01'),
+    ('Fiebre y vomito', '2021-10-01', '20:30', 'Presencial', 'PE013', 40, 'NME03'),
+    ('Nauseas y Dolor de Cabeza', '2021-10-01', '21:00', 'Presencial', 'PE014', 41, 'NME02'),
+    ('Migraña', '2021-10-01', '21:30', 'Virtual', 'PE015', 42, 'NME01');
 
 insert into Receta (indicaciones, noConsulta) values
 	# Estudiantes
@@ -506,34 +517,142 @@ insert into Medicamento (cveMedicamento, nombre, cantidad, noReceta) values
 	('00005', 'Paracetamol', 24, 5),
 	('00006', 'Paracetamol', 12, 6);
 
-insert into Orden (resultado, noConsulta, noCedula,	cvePrueba) values 
+insert into Orden (resultado, noConsulta, noCedula,	cvePrueba) values
 	('Contagiado', 1, 'NME01', 'PR001'),
 	('Contagiado', 2, 'NME02', 'PR002'),
-	('Contagiado', 3, 'NME03', 'PR003'),
-	('Contagiado', 4, 'NME02', 'PR003'),
-	('Contagiado', 5, 'NME01', 'PR002'),
-	('Contagiado', 6, 'NME03', 'PR001');
+    ('Estable', 3, 'NME03', 'PR003'),
+    ('Contagiado', 4, 'NME02', 'PR003'),
+    ('Estable', 5, 'NME01', 'PR002'),
+    ('Contagiado', 6, 'NME03', 'PR001'),
+    ('Estable', 7, 'NME01', 'PR001'),
+    ('Contagiado', 8, 'NME02', 'PR002'),
+    ('Contagiado', 9, 'NME03', 'PR003'),
+    ('Estable', 10, 'NME02', 'PR003'),
+    ('Estable', 11, 'NME01', 'PR002'),
+    ('Contagiado', 12, 'NME03', 'PR001'),
+ 	('Contagiado', 13, 'NME01', 'PR001'),
+    ('Contagiado', 14, 'NME02', 'PR002'),
+    ('Estable', 15, 'NME03', 'PR003'),
+    ('Contagiado', 16, 'NME02', 'PR003'),
+    ('Contagiado', 17, 'NME01', 'PR002'),
+    ('Contagiado', 18, 'NME03', 'PR001'),
+    ('Estable', 19, 'NME01', 'PR001'),
+    ('Estable', 20, 'NME02', 'PR002'),
+    ('Contagiado', 21, 'NME03', 'PR003'),
+    ('Contagiado', 22, 'NME02', 'PR003'),
+    ('Contagiado', 23, 'NME01', 'PR002'),
+    ('Estable', 24, 'NME03', 'PR001'),
+    ('Contagiado', 25, 'NME01', 'PR001'),
+    ('Contagiado', 26, 'NME02', 'PR002'),
+    ('Contagiado', 27, 'NME03', 'PR003'),
+    ('Estable', 28, 'NME02', 'PR003'),
+    ('Estable', 29, 'NME01', 'PR002'),
+    ('Contagiado', 30, 'NME03', 'PR001');
 
-insert into Alerta (descripcion, noOrden) values 
+insert into Alerta (descripcion, noOrden) values
 	('Contagiado de Covid-19', 1),
 	('Tiene todos los sintomas', 2),
-	('Contagiado de Covid-19', 3),
+	('Pocos Sintomas', 3),
 	('Contagiado de Covid-19', 4),
-	('Tiene todos los sintomas', 5),
-	('Contagiado de Covid-19', 6);
+	('Pocos Sintomas', 5),
+	('Contagiado de Covid-19', 6),
+	('Ningun sintoma', 7),
+    ('Tiene todos los sintomas', 8),
+    ('Contagiado de Covid-19', 9),
+    ('Ningun sintoma', 10),
+    ('Pocos Sintomas', 11),
+    ('Contagiado de Covid-19', 12),
+    ('Contagiado de Covid-19', 13),
+    ('Tiene todos los sintomas', 14),
+    ('Pocos Sintomas', 15),
+    ('Contagiado de Covid-19', 16),
+    ('Tiene todos los sintomas', 17),
+    ('Contagiado de Covid-19', 18),
+    ('Ningun sintoma', 19),
+    ('Ningun sintoma', 20),
+    ('Contagiado de Covid-19', 21),
+    ('Contagiado de Covid-19', 22),
+    ('Tiene todos los sintomas', 23),
+    ('Pocos Sintomas', 24),
+    ('Contagiado de Covid-19', 25),
+    ('Tiene todos los sintomas', 26),
+    ('Pocos Sintomas', 27),
+    ('Pocos Sintomas', 28),
+    ('Tiene todos los sintomas', 29),
+    ('Contagiado de Covid-19', 30);
 
 insert into AlertaMonitoreada (descripcion, noOrden, noMonitoreo) values
 	('Estado de salud delicado', 1, 'NMO01'),
-	('Sintomas contagiosos', 1, 'NMO01');
+	('Estado de salud delicado', 2, 'NMO02'),
+	('Sintomas contagiosos', 3, 'NMO03'),
+	('Sintomas contagiosos', 4, 'NMO01'),
+	('Estado de salud delicado', 5, 'NMO02'),
+	('Estado de salud delicado', 6, 'NMO03'),
+	('Estado de salud delicado', 7, 'NMO01'),
+    ('Sintomas contagiosos',8 , 'NMO01'),
+    ('Estado de salud delicado', 9, 'NMO03'),
+    ('Sintomas contagiosos', 10, 'NMO01'),
+    ('Estado de salud delicado', 11, 'NMO03'),
+    ('Estado de salud delicado', 12, 'NMO01'),
+    ('Estado de salud delicado', 13, 'NMO02'),
+    ('Sintomas contagiosos', 14, 'NMO02'),
+    ('Estado de salud delicado', 15, 'NMO03'),
+    ('Estado de salud delicado', 16, 'NMO02'),
+    ('Estado de salud delicado', 17, 'NMO01'),
+    ('Sintomas contagiosos', 18, 'NMO03'),
+    ('Estado de salud delicado', 19, 'NMO02'),
+    ('Sintomas contagiosos', 20, 'NMO02'),
+    ('Estado de salud delicado', 21, 'NMO03'),
+    ('Sintomas contagiosos', 22, 'NMO01'),
+    ('Estado de salud delicado', 23, 'NMO02'),
+    ('Estado de salud delicado', 24, 'NMO03'),
+    ('Sintomas contagiosos', 25, 'NMO02'),
+    ('Estado de salud delicado', 26, 'NMO03'),
+    ('Sintomas contagiosos', 27, 'NMO01'),
+    ('Estado de salud delicado', 28, 'NMO02'),
+    ('Estado de salud delicado', 29, 'NMO03'),
+	('Sintomas contagiosos', 30, 'NMO01');
 
-insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5, 
+insert into Encuesta (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5,
 			respuesta6, respuesta7, respuesta8, respuesta9, respuesta10, respuesta11,
 			respuesta12, respuesta13, otrosSintomas, noUsuario) values
-	(0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 13),
+	(1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 13),
 	(0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 'Fiebre y dolor', 14),
-	(0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 15),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, null, 16),
-	(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, null, 17);
+	(1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 15),
+	(0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, null, 16),
+	(0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, null, 17),
+	(0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0,'Dolor de Cabeza', 18),
+    (1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 'Fiebre y dolor', 19),
+    (1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 13),
+    (1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 'Fiebre y dolor', 14),
+    (0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 15),
+    (0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, null, 16),
+    (1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, null, 17),
+    (0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 18),
+    (0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0,'Dolor de Cabeza', 19),
+    (1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 'Fiebre y dolor', 20),
+    (0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 21),
+    (1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, null, 22),
+    (1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, null, 23),
+    (1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 24),
+    (1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1,'Dolor de Cabeza', 25),
+    (1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 'Fiebre y dolor', 26),
+    (0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 27),
+    (0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, null, 28),
+    (1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, null, 29),
+    (0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 30),
+    (0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,'Dolor de Cabeza', 31),
+    (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'Fiebre y dolor', 32),
+    (0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 33),
+    (1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, null, 34),
+    (0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, null, 35),
+    (0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 36),
+    (1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,'Dolor de Cabeza', 37),
+    (0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 'Fiebre y dolor', 38),
+    (1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 'Fiebre', 39),
+    (1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, null, 40),
+    (0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, null, 41),
+    (1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0,'Dolor de Cabeza', 42);
 
 # Se usara una vista para generar reportes
 

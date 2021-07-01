@@ -78,20 +78,20 @@ public class UserDAO {
         return cvePrueba;
     }
 
-    public String getnoMonitoreo(String prueba) throws SQLException {
-        String consulta, cvePrueba = null;
-        consulta = "select cvePrueba from Prueba where tipo = '" + prueba + "'";
+    public String getnoMonitoreo(int noUsuario) throws SQLException {
+        String consulta, noMonitoreo = null;
+        consulta = "select noMonitoreo from Monitoreo where noUsuario = '" + noUsuario + "'";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(consulta);
         if (rs != null) {
             try {
                 while (rs.next())
-                    cvePrueba = rs.getString("cvePrueba");
+                    noMonitoreo = rs.getString("noMonitoreo");
             } catch (Exception e) {
                 alertMessage("Error","getcvePrueba", e.getMessage(), Alert.AlertType.ERROR);
             }
         }
-        return cvePrueba;
+        return noMonitoreo;
     }
 
     public String getCarrera(int noUsuario) throws SQLException {

@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.*;
 import modelosReportes.*;
-
 import java.sql.*;
 import java.util.List;
 public class ConsultaDAO {
@@ -166,27 +165,25 @@ public class ConsultaDAO {
         }
         return ordenes;
     }
-    public ObservableList<modeloMonitoreo> getMonitoreo() throws SQLException{
-        ObservableList<modeloMonitoreo> monito= FXCollections.observableArrayList();
-        try{
-            String query = "select O.noOrden, O.resultado, U.nombres, P.tipo " +
-                    "from Orden O inner join Consulta C on O.noConsulta = C.noConsulta " +
-                    "inner join Medico M on C.noCedula = M.noCedula " +
-                    "inner join Usuario U on C.noUsuario = U.noUsuario " +
-                    "inner join Prueba P on O.cvePrueba = P.cvePrueba";
+    public ObservableList<modeloOrden> getOrdenes() throws SQLException {
+        ObservableList <modeloOrden> ordenes = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Orden";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                monito.add(new modeloMonitoreo(
+                ordenes.add(new modeloOrden(
                         rs.getInt("noOrden"),
                         rs.getString("resultado"),
-                        rs.getString("nombres"),
-                        rs.getString("tipo")
+                        rs.getInt("noConsulta"),
+                        rs.getString("noCedula"),
+                        rs.getString("cvePrueba")
                 ));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            alertMessage("Error","getConsultaUsuario", e.getMessage(), Alert.AlertType.ERROR);
         }
-        return monito;
+        return ordenes;
     }
     // Reportes
     public List<listCasosCarrera> getListContagiadosCarrera() {
@@ -368,6 +365,23 @@ public class ConsultaDAO {
             return false;
         }
     }
+
+    public boolean insertAlertaMonitoreada(modeloAlertaM alertaM) {
+        try {
+            String query = "insert into AlertaMonitoreada (descripcion, noOrden, noMonitoreo) values" +
+                    "(?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, alertaM.getDescripcion());
+            ps.setInt(2, alertaM.getNoOrden());
+            ps.setString(3, alertaM.getNoMonitoreo());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            alertMessage("Error","insertAlertaMonitoreada", e.getMessage(), Alert.AlertType.ERROR);
+            return false;
+        }
+    }
+
     // Update
     public boolean setEstadoSolicitud(int noSolicitud) {
         // Se le asignan sus datos al personal

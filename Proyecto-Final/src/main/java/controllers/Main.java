@@ -41,6 +41,7 @@ public class Main implements Initializable {
             @Override public void handle(ActionEvent event) {
                 try {
                     showRegistro(event);
+                    vaciar();
                 } catch (IOException e) {
                     alertMessage("Error","crear cuenta", e.getMessage(), Alert.AlertType.ERROR);
                 }

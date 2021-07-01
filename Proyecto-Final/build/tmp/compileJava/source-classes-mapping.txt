@@ -1,28 +1,40 @@
-modelos/modeloEncuesta.java
- modelos.modeloEncuesta
-database/MySQLConnection.java
- database.MySQLConnection
+usuarios/Estudiantes.java
+ usuarios.Estudiantes
+ usuarios.Estudiantes$1
+ usuarios.Estudiantes$2
+ usuarios.Estudiantes$3
+ usuarios.Estudiantes$4
+ usuarios.Estudiantes$5
+ usuarios.Estudiantes$6
+ usuarios.Estudiantes$7
 modelos/modeloPersonal.java
  modelos.modeloPersonal
-modelos/modeloSolicitud.java
- modelos.modeloSolicitud
-usuarios/Directivos.java
- usuarios.Directivos
- usuarios.Directivos$1
-modelos/Alerta.java
- modelos.Alerta
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
+modelos/modeloSolicitud.java
+ modelos.modeloSolicitud
+usuarios/Administradores.java
+ usuarios.Administradores
+ usuarios.Administradores$1
+ usuarios.Administradores$2
+ usuarios.Administradores$3
+ usuarios.Administradores$4
+ usuarios.Administradores$5
+modelos/Alerta.java
+ modelos.Alerta
+usuarios/Directivos.java
+ usuarios.Directivos
+ usuarios.Directivos$1
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
-modelosReportes/listTotalEncuentasDepartamento.java
- modelosReportes.listTotalEncuentasDepartamento
 modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
 medicos/solicitudes.java
  medicos.solicitudes
+modelosReportes/listTotalEncuentasDepartamento.java
+ modelosReportes.listTotalEncuentasDepartamento
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -49,10 +61,12 @@ controllers/Solicitud.java
  controllers.Solicitud$2
 medicos/medicos.java
  medicos.medicos
-modelos/modeloAsignacion.java
- modelos.modeloAsignacion
-usuarios/Personal.java
- usuarios.Personal
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2
+database/UserDAO.java
+ database.UserDAO
 database/ConsultaDAO.java
  database.ConsultaDAO
 modelos/modeloMonitoreo.java
@@ -63,6 +77,7 @@ reports/PDFreports.java
  reports.PDFreports$2
 modelos/Usuario.java
  modelos.Usuario
+<<<<<<< HEAD
 controllers/Register.java
  controllers.Register
  controllers.Register$1
@@ -99,3 +114,26 @@ controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
+=======
+modelos/modeloEncuesta.java
+ modelos.modeloEncuesta
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+ usuarios.Monitoreadores$1
+usuarios/Personal.java
+ usuarios.Personal
+controllers/Solicitud.java
+ controllers.Solicitud
+ controllers.Solicitud$1
+ controllers.Solicitud$2
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+ controllers.Register$2
+ controllers.Register$3
+ controllers.Register$4
+database/MySQLConnection.java
+ database.MySQLConnection
+>>>>>>> 95cb155dae64d45f481a26d647c77a333b88fe1f

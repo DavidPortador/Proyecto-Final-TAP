@@ -265,20 +265,39 @@ public class ConsultaDAO {
     }
 
     public List <listConsultasTotalMedicos> getListConsultasTotalMedicos() {
-        List <listConsultasTotalMedicos> listTotalMedicos = FXCollections.observableArrayList();
+            List <listConsultasTotalMedicos> listTotalMedicos = FXCollections.observableArrayList();
+            try {
+                String query = "select * from Grafica1";
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    listTotalMedicos.add(new listConsultasTotalMedicos(
+                            rs.getString("Medico"),
+                            rs.getInt("Consultas")));
+                }
+            } catch (SQLException e) {
+                alertMessage("Error","listMedicos", e.getMessage(), Alert.AlertType.ERROR);
+            }
+            return listTotalMedicos;
+    }
+    public List <modeloOrden> getListOrdenes(int usuario) {
+        List <modeloOrden> modeloOrdenes = FXCollections.observableArrayList();
         try {
-            String query = "select * from Grafica1";
+            String query = "select O.noOrden, O.resultado, O.noConsulta, O.noCedula, O.cvePrueba from Orden O inner join Consulta C on O.noConsulta = C.noConsulta where noUsuario ="+usuario;
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                listTotalMedicos.add(new listConsultasTotalMedicos(
-                        rs.getString("Medico"),
-                        rs.getInt("Consultas")));
+                modeloOrdenes.add(new modeloOrden(
+                        rs.getInt("noOrden"),
+                        rs.getString("resultado"),
+                        rs.getInt("noConsulta"),
+                        rs.getString("noCedula"),
+                        rs.getString("cvePrueba")));
             }
         } catch (SQLException e) {
             alertMessage("Error","listMedicos", e.getMessage(), Alert.AlertType.ERROR);
         }
-        return listTotalMedicos;
+        return modeloOrdenes;
     }
 
     /*public ObservableList<modeloOrden> getConsultasMedico() throws SQLException {

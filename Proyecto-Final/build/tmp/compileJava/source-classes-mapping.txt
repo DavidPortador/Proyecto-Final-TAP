@@ -5,12 +5,20 @@ usuarios/Estudiantes.java
  usuarios.Estudiantes$3
  usuarios.Estudiantes$4
  usuarios.Estudiantes$5
+<<<<<<< HEAD
+=======
+modelos/modeloPersonal.java
+ modelos.modeloPersonal
+>>>>>>> refs/remotes/DavidPortador/main
 encuesta/Encuesta.java
  encuesta.Encuesta
  encuesta.Encuesta$1
  encuesta.Encuesta$2
+<<<<<<< HEAD
 modelos/modeloPersonal.java
  modelos.modeloPersonal
+=======
+>>>>>>> refs/remotes/DavidPortador/main
 modelos/modeloSolicitud.java
  modelos.modeloSolicitud
 usuarios/Administradores.java
@@ -26,14 +34,21 @@ usuarios/Directivos.java
  usuarios.Directivos
 modelosReportes/listTotalEncuentasCarrera.java
  modelosReportes.listTotalEncuentasCarrera
+<<<<<<< HEAD
 modelosReportes/listTotalEncuentasDepartamento.java
  modelosReportes.listTotalEncuentasDepartamento
 modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
+=======
+>>>>>>> refs/remotes/DavidPortador/main
 graphics/Graphics.java
  graphics.Graphics
 medicos/solicitudes.java
  medicos.solicitudes
+modelosReportes/listConsultasTotalMedicos.java
+ modelosReportes.listConsultasTotalMedicos
+modelosReportes/listTotalEncuentasDepartamento.java
+ modelosReportes.listTotalEncuentasDepartamento
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -62,12 +77,20 @@ usuarios/Medicos.java
  usuarios.Medicos$4
 medicos/medicos.java
  medicos.medicos
+<<<<<<< HEAD
 database/UserDAO.java
  database.UserDAO
+=======
+>>>>>>> refs/remotes/DavidPortador/main
 controllers/Main.java
  controllers.Main
  controllers.Main$1
  controllers.Main$2
+<<<<<<< HEAD
+=======
+database/UserDAO.java
+ database.UserDAO
+>>>>>>> refs/remotes/DavidPortador/main
 database/ConsultaDAO.java
  database.ConsultaDAO
 modelos/modeloMonitoreo.java
@@ -80,6 +103,7 @@ modelos/Usuario.java
  modelos.Usuario
 modelos/modeloEncuesta.java
  modelos.modeloEncuesta
+<<<<<<< HEAD
 usuarios/Personal.java
  usuarios.Personal
 usuarios/Monitoreadores.java
@@ -89,9 +113,20 @@ modelos/modeloAsignacion.java
  modelos.modeloAsignacion
 database/MySQLConnection.java
  database.MySQLConnection
+=======
+usuarios/Monitoreadores.java
+ usuarios.Monitoreadores
+ usuarios.Monitoreadores$1
+usuarios/Personal.java
+ usuarios.Personal
+modelos/modeloAsignacion.java
+ modelos.modeloAsignacion
+>>>>>>> refs/remotes/DavidPortador/main
 controllers/Register.java
  controllers.Register
  controllers.Register$1
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
+database/MySQLConnection.java
+ database.MySQLConnection

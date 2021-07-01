@@ -83,11 +83,7 @@ public class Administradores implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if(valiVacio()){
-                    System.out.println("lleno");
-
-
-
-
+                    defaultMode();
                 }
             }
         });

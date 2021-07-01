@@ -66,6 +66,7 @@ public class ConsultaDAO {
         }
         return alertas;
     }
+
     public ObservableList<String> getPruebas() throws SQLException {
         ObservableList <String> pruebas = FXCollections.observableArrayList();
         try {
@@ -298,6 +299,23 @@ public class ConsultaDAO {
             alertMessage("Error","listMedicos", e.getMessage(), Alert.AlertType.ERROR);
         }
         return modeloOrdenes;
+    }
+    public List <modeloReceta> getmodeloReceta(int usuario) {
+        List <modeloReceta> modeloReceta = FXCollections.observableArrayList();
+        try {
+            String query = "select R.noReceta, R.indicaciones, R.noConsulta from Receta R inner join Consulta C on R.noConsulta = C.noConsulta where C.noUsuario = "+usuario;
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                modeloReceta.add(new modeloReceta(
+                        rs.getInt("noReceta"),
+                        rs.getString("indicaciones"),
+                        rs.getString("noConsulta")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listMedicos", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return modeloReceta;
     }
 
     /*public ObservableList<modeloOrden> getConsultasMedico() throws SQLException {

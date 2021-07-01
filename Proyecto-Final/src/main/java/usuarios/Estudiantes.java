@@ -57,14 +57,16 @@ public class Estudiantes implements Initializable {
             Ordenes
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
     */
-    public static final String DEST5 = "contagios/personal/estudiante.pdf";
-    public static final String DEST6 = "contagios/personal/estudiante.pdf";
+    public static final String DEST5 = "contagios/estudiantes/estudiante.pdf";
+    public static final String DEST6 = "contagios/estudiantes/receta.pdf";
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;
     Color v_font = new DeviceRgb(0, 0, 0);
     Color v_header = new DeviceRgb(196, 49, 0);
     Color v_background= new DeviceRgb(255, 125, 82);
+    Color v_header2=new DeviceRgb(95, 179, 84);
+    Color v_background2=new DeviceRgb(133, 255, 117);
     @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes, btnSolicitud,btnPDF;
     @FXML TableView tblEstudiante;
     @FXML Label lblUsuario;
@@ -259,9 +261,9 @@ public class Estudiantes implements Initializable {
             e.printStackTrace();
         }
         File file2 = new File(DEST6);
-        file.getParentFile().mkdirs();
+        file2.getParentFile().mkdirs();
         try {
-            //createPdfReceta(DEST6);
+            createPdfReceta(DEST6);
             sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
             openPdfFile(DEST6);
         } catch (Exception e) {
@@ -310,6 +312,45 @@ public class Estudiantes implements Initializable {
             table.addCell(new Cell().add(new Paragraph(user.getNoConsulta()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getNoCedula()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
             table.addCell(new Cell().add(new Paragraph(user.getCvePrueba()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+        }
+    }
+    public void createPdfReceta(String dest) throws IOException {
+        //Initialize PDF writer
+        PdfWriter writer = new PdfWriter(dest);
+        //Initialize PDF document
+        PdfDocument pdf = new PdfDocument(writer);
+        // Initialize document
+        Document document = new Document(pdf, PageSize.A4.rotate());
+        ImageData imageData = ImageDataFactory.create("src/main/resources/img/header.png");
+        com.itextpdf.layout.element.Image pdfImg= new com.itextpdf.layout.element.Image(imageData);
+        Paragraph paragraph=new Paragraph("Receta");
+        paragraph.setFontSize(25);
+        paragraph.setTextAlignment(TextAlignment.CENTER);
+        document.setMargins(20, 20, 20, 20);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        Table table1 = new Table(UnitValue.createPercentArray(new float[]{5, 4,4}))
+                .useAllAvailableWidth();
+        processPdfReceta(table1, null, bold, true);
+        for(modeloReceta e : consultaDAO.getmodeloReceta(estudiante.getNoUsuario())) {
+            processPdfReceta(table1, e, bold, false);
+        }
+        document.add(pdfImg);
+        document.add(paragraph);
+        document.add(table1);
+        //Close document
+        document.close();
+    }
+    public void processPdfReceta(Table table, modeloReceta user, PdfFont font, boolean isHeader) {
+        if (isHeader) {
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("No.Receta").setFont(font).setBackgroundColor(v_header2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("Indicaciones").setFont(font).setBackgroundColor(v_header2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addHeaderCell(new com.itextpdf.layout.element.Cell().add(new Paragraph("No.Consulta").setFont(font).setBackgroundColor(v_header2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+        } else {
+            table.addCell(new com.itextpdf.layout.element.Cell().add(new Paragraph(user.getNoReceta() + "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(user.getIndicaciones()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+            table.addCell(new Cell().add(new Paragraph(user.getNoConsulta()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)).setTextAlignment(TextAlignment.CENTER));
+
         }
     }
     private void showSolicitud(ActionEvent event) throws IOException {

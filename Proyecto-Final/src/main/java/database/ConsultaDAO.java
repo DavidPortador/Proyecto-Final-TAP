@@ -3,10 +3,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import modelos.*;
-import modelosReportes.listCasosCarrera;
-import modelosReportes.listCasosDelPersonal;
-import modelosReportes.listCasosDepartamento;
-import modelosReportes.listCasosEstudiantes;
+import modelosReportes.*;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -245,6 +243,7 @@ public class ConsultaDAO {
         }
         return listEstudiantes;
     }
+
     public List <listCasosDelPersonal> getListContagiadosPersonal() {
         List <listCasosDelPersonal> listPersonal = FXCollections.observableArrayList();
         try {
@@ -264,6 +263,24 @@ public class ConsultaDAO {
         }
         return listPersonal;
     }
+
+    public List <listConsultasTotalMedicos> getListConsultasTotalMedicos() {
+        List <listConsultasTotalMedicos> listTotalMedicos = FXCollections.observableArrayList();
+        try {
+            String query = "select * from Grafica1";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                listTotalMedicos.add(new listConsultasTotalMedicos(
+                        rs.getString("Medico"),
+                        rs.getInt("Consultas")));
+            }
+        } catch (SQLException e) {
+            alertMessage("Error","listMedicos", e.getMessage(), Alert.AlertType.ERROR);
+        }
+        return listTotalMedicos;
+    }
+
     /*public ObservableList<modeloOrden> getConsultasMedico() throws SQLException {
         ObservableList <modeloOrden> ordenes = FXCollections.observableArrayList();
         try {

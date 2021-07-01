@@ -47,12 +47,10 @@ public class Directivos implements Initializable {
             }
         });
     }
-
     private void initCharts() {
         gpBarras.add(generateTotalCasosChart(),0,0);
-        gpBarras.add(generateMedicosPieChart(),0,1);
+        gpBarras.add(generateMedicosPieChart(),1,0);
     }
-
     private BarChart generateTotalCasosChart() {
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();

@@ -1,16 +1,25 @@
 package usuarios;
+import controllers.Consulta;
 import database.ConsultaDAO;
 import database.EncuestaDAO;
 import database.MySQLConnection;
+import encuesta.Encuesta;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelos.*;
+import org.kordamp.bootstrapfx.BootstrapFX;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -77,28 +86,32 @@ public class Medicos implements Initializable {
             }
         });
         btnPrueba.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 String tipo;
                 tipo = (String) cbPrueba.getSelectionModel().getSelectedItem();
                 if(tipo == null){
                     alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
                     System.out.println(tipo);
                 }else{
+                    // Se genera una orden
                     System.out.println(tipo);
 
                 }
             }
         });
         btnAceptar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 modeloSolicitud solicitud = (modeloSolicitud) tblMedicos.getSelectionModel().getSelectedItem();
                 if(solicitud == null){
-                    alertMessage("Error", "No selecciono ninguna solicitud", null, Alert.AlertType.ERROR);
+                    alertMessage("Error", null, "No selecciono ninguna solicitud", Alert.AlertType.ERROR);
                 }else{
-                    // Generar consulta
-
+                    try {
+                        showConsulta(event, solicitud);
+                        // Generar consulta
+                        System.out.println(solicitud.getEstado());
+                    } catch (IOException e) {
+                        alertMessage("Error", "showConsulta", e.getMessage(), Alert.AlertType.ERROR);
+                    }
                 }
             }
         });
@@ -236,6 +249,29 @@ public class Medicos implements Initializable {
         } catch (SQLException e) {
             alertMessage("Error", "createTableConsultas", e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+    private void showConsulta(ActionEvent event, modeloSolicitud solicitud) throws IOException {
+        Stage consulta = new Stage();
+        consulta.setTitle("Consulta");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/consulta.fxml"));
+        Consulta consu = new Consulta();
+        consu.setMedico(medico);
+        consu.setSolicitud(solicitud);
+        loader.setController(consu);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        consulta.setResizable(false);
+        // Le pasa como parametro el stage actual y nueva
+        Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+        //encuesta.setStageAnterior(actual);
+        //actual.close();
+        // Muestra el nuevo stage
+        consulta.setScene(scene);
+        //primaryStage.show();
+        consulta.initOwner(actual);
+        consulta.initModality(Modality.WINDOW_MODAL);
+        consulta.show();
     }
     private void alertMessage(String title, String Header, String message, Alert.AlertType type){
         Alert alert = new Alert(type);

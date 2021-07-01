@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="999.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="1248.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="11.0" layoutY="29.0" prefHeight="547.0" prefWidth="215.0" spacing="20">
          <children>
@@ -35,17 +36,17 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="738.0" layoutY="21.0" prefHeight="30.0" prefWidth="63.0" styleClass="label-bright" text="Graficas" textAlignment="JUSTIFY" textFill="#53bf5c">
+      <Label layoutX="632.0" layoutY="100.0" prefHeight="30.0" prefWidth="63.0" styleClass="label-bright" text="Graficas" textAlignment="JUSTIFY" textFill="#53bf5c">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="357.0" layoutY="88.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #000000;" styleClass="label-bright" text=" Reportes" textAlignment="JUSTIFY" textFill="#53bf5c">
+      <Label layoutX="623.0" layoutY="14.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #000000;" styleClass="label-bright" text=" Reportes" textAlignment="JUSTIFY" textFill="#53bf5c">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="234.0" layoutY="132.0" prefHeight="444.0" prefWidth="328.0" />
-      <GridPane fx:id="gpBarras" alignment="CENTER" hgap="1" layoutX="587.0" layoutY="54.0" prefHeight="518.0" prefWidth="394.0" vgap="1" />
+      <GridPane fx:id="gpBarras" alignment="CENTER" hgap="1" layoutX="229.0" layoutY="138.0" prefHeight="487.0" prefWidth="979.0" vgap="1" />
+      <ComboBox layoutX="544.0" layoutY="60.0" prefHeight="31.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

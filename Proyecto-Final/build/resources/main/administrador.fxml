@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane prefHeight="790.0" prefWidth="1251.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="790.0" prefWidth="1315.0" styleClass="background" stylesheets="@Styles/Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="23.0" layoutY="115.0" prefHeight="551.0" prefWidth="419.0">
          <children>
@@ -79,7 +82,7 @@
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="tblFiltrar" layoutX="463.0" layoutY="115.0" prefHeight="441.0" prefWidth="765.0" />
+      <TableView fx:id="tblFiltrar" layoutX="463.0" layoutY="115.0" prefHeight="441.0" prefWidth="819.0" />
       <Button fx:id="btnReportes" contentDisplay="GRAPHIC_ONLY" layoutX="712.0" layoutY="575.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="129.0">
          <graphic>
             <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="753.0" layoutY="585.0" pickOnBounds="true" preserveRatio="true">

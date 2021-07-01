@@ -45,9 +45,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import static reports.PDFreports.DEST1;
-
 public class Estudiantes implements Initializable {
     /*
     Estudiante y Personal son lo mismo casi casi xd
@@ -108,8 +106,7 @@ public class Estudiantes implements Initializable {
             }
         });
         btnSolicitud.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     showSolicitud(event);
                 } catch (IOException e) {
@@ -118,8 +115,7 @@ public class Estudiantes implements Initializable {
             }
         });
         btnPDF.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            @Override public void handle(ActionEvent event) {
                 try {
                     madePDF();
                 } catch (Exception e) {

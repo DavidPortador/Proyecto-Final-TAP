@@ -60,7 +60,7 @@ public class Personal implements Initializable {
     com.itextpdf.kernel.colors.Color v_background= new DeviceRgb(255, 125, 82);
     com.itextpdf.kernel.colors.Color v_header2=new DeviceRgb(95, 179, 84);
     Color v_background2=new DeviceRgb(133, 255, 117);
-    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes, btnSolicitud,btnPDF;
+    @FXML Button btnEncuestas, btnSalir, btnAlerta, btnConsulta, btnOrdenes, btnSolicitud,btnPDF,btnPDF1;
     @FXML
     TableView tblPersonal;
     @FXML Label lblUsuario;
@@ -120,6 +120,16 @@ public class Personal implements Initializable {
                     alertMessage("Error","btnPDF", e.getMessage(), Alert.AlertType.ERROR);
                 }
 
+            }
+        });
+        btnPDF1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    recetaPDF();
+                } catch (Exception e) {
+                    alertMessage("Error","btnPDF", e.getMessage(), Alert.AlertType.ERROR);
+                }
             }
         });
     }
@@ -254,6 +264,8 @@ public class Personal implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void recetaPDF(){
         File file2 = new File(DEST6);
         file2.getParentFile().mkdirs();
         try {
@@ -263,6 +275,7 @@ public class Personal implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     public void createPdfOrdenes(String dest) throws IOException {
         //Initialize PDF writer

@@ -127,7 +127,6 @@ public class Administradores implements Initializable {
         loader.setController(pdFreports);
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        directivo.setMaximized(true);
         directivo.setScene(scene);
         Stage actual = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
         // Le pasa como parametro el stage actual y nueva

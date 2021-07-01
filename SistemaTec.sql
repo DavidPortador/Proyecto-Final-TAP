@@ -500,14 +500,37 @@ insert into Consulta (sintomas, fecha, hora, tipo, cveAsignacion, noUsuario, noC
 insert into Receta (indicaciones, noConsulta) values
 	# Estudiantes
 	('Una pastilla cada 8 hrs', 1),
-	('Tomar cuando haya dolor intenso', 1),
-	('Dividir la pastilla en dos', 2),
-	('Tomar en ayunas', 3),
+	('Tomar cuando haya dolor intenso', 2),
+	('Dividir la pastilla en dos', 3),
+	('Tomar en ayunas', 4),
+	('Tomar cuando haya dolor intenso', 5),
+    ('Dividir la pastilla en dos', 6),
+    ('Tomar en ayunas', 7),
+    ('Tomar cuando haya dolor intenso', 8),
+    ('Dividir la pastilla en dos', 9),
+    ('Tomar en ayunas', 10),
+    ('Tomar cuando haya dolor intenso', 11),
+    ('Dividir la pastilla en dos', 12),
+    ('Tomar en ayunas', 13),
+    ('Tomar cuando haya dolor intenso', 14),
+    ('Dividir la pastilla en dos', 15),
 	# Personal
-	('Una pastilla cada 8 hrs', 4),
-	('Tomar cuando siga el dolor', 5),
-	('No tomar refrescos', 5),
-	('Tomar en ayunas', 6);
+	('Una pastilla cada 8 hrs', 16),
+	('Tomar cuando siga el dolor', 17),
+	('No tomar refrescos', 18),
+	('Una pastilla cada 8 hrs', 19),
+    ('Tomar cuando siga el dolor', 20),
+    ('No tomar refrescos', 21),
+    ('Una pastilla cada 8 hrs', 22),
+    ('Tomar cuando siga el dolor', 23),
+    ('No tomar refrescos', 24),
+    ('Una pastilla cada 8 hrs', 25),
+    ('Tomar cuando siga el dolor', 26),
+    ('No tomar refrescos', 27),
+    ('Una pastilla cada 8 hrs', 28),
+    ('Tomar cuando siga el dolor', 29),
+    ('No tomar refrescos', 30);
+
 
 insert into Medicamento (cveMedicamento, nombre, cantidad, noReceta) values
 	('00001', 'Paracetamol', 24, 1),

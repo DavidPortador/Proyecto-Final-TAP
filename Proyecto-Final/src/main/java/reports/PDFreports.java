@@ -20,12 +20,15 @@ import com.itextpdf.layout.property.UnitValue;
 import database.ConsultaDAO;
 import database.MySQLConnection;
 import database.UserDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import modelosReportes.listCasosCarrera;
 import modelosReportes.listCasosDelPersonal;
@@ -60,54 +63,71 @@ public class PDFreports implements Initializable {
     public static final String DEST2 = "contagios/departamentos/departamentos_report.pdf";
     public static final String DEST3 = "contagios/estudiantes/estudiantes_report.pdf";
     public static final String DEST4 = "contagios/personal/personal_report.pdf";
-
+    @FXML ComboBox cboFiltrar;
     @FXML Button btnReporte,btnSalir;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        llenarCombo();
         initButtons();
     }
+    private void llenarCombo() {
+        ObservableList<String> reportes = FXCollections.observableArrayList();
+        reportes.add("Reporte 1");
+        reportes.add("Reporte 2");
+        reportes.add("Reporte 3");
+        reportes.add("Reporte 4");
+        cboFiltrar.setItems(reportes);
+    }
+
     private void initButtons() {
         btnReporte.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                File file = new File(DEST1);
-                file.getParentFile().mkdirs();
-                try {
-                    new PDFreports().createPdfCasosCarrera(DEST1);
-                    sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
-                    openPdfFile(DEST1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                File file2 = new File(DEST2);
-                file2.getParentFile().mkdirs();
-                try {
-                    new PDFreports().createPdfCasosDepartamento(DEST2);
-                    sendMessage("Reported succesfull", "File: " + DEST2 + "generated...");
-                    openPdfFile(DEST2);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                File file3 = new File(DEST3);
-                file3.getParentFile().mkdirs();
-                try {
-                    new PDFreports().createPdfCasosEstudiantes(DEST3);
-                    sendMessage("Reported succesfull", "File: " + DEST3 + "generated...");
-                    openPdfFile(DEST3);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                File file4 = new File(DEST4);
-                file4.getParentFile().mkdirs();
-                try {
-                    new PDFreports().createPdfCasosPersonal(DEST4);
-                    sendMessage("Reported succesfull", "File: " + DEST4 + "generated...");
-                    openPdfFile(DEST4);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+                cboFiltrar.getSelectionModel().getSelectedItem();
+                System.out.println(cboFiltrar.getSelectionModel().getSelectedItem());
+                if(cboFiltrar.getSelectionModel().getSelectedItem().equals("Reporte 1")){
+                    File file = new File(DEST1);
+                    file.getParentFile().mkdirs();
+                    try {
+                        createPdfCasosCarrera(DEST1);
+                        sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
+                        openPdfFile(DEST1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else if(cboFiltrar.getSelectionModel().getSelectedItem().equals("Reporte 2")){
+                    File file2 = new File(DEST2);
+                    file2.getParentFile().mkdirs();
+                    try {
+                        createPdfCasosDepartamento(DEST2);
+                        sendMessage("Reported succesfull", "File: " + DEST2 + "generated...");
+                        openPdfFile(DEST2);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else if(cboFiltrar.getSelectionModel().getSelectedItem().equals("Reporte 3")){
+                    File file3 = new File(DEST3);
+                    file3.getParentFile().mkdirs();
+                    try {
+                        createPdfCasosEstudiantes(DEST3);
+                        sendMessage("Reported succesfull", "File: " + DEST3 + "generated...");
+                        openPdfFile(DEST3);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    }else if(cboFiltrar.getSelectionModel().getSelectedItem().equals("Reporte 4")) {
+                    File file4 = new File(DEST4);
+                    file4.getParentFile().mkdirs();
+                    try {
+                        createPdfCasosPersonal(DEST4);
+                        sendMessage("Reported succesfull", "File: " + DEST4 + "generated...");
+                        openPdfFile(DEST4);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+        }}});
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -290,4 +310,5 @@ public class PDFreports implements Initializable {
         alert.setContentText(message);
         alert.show();
     }
+
 }

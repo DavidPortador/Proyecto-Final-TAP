@@ -80,7 +80,7 @@ public class Medicos implements Initializable {
                 String tipo;
                 tipo = cbPrueba.getSelectionModel().getSelectedItem().toString();
                 if(tipo != null){
-                    
+
                 }else{
                     alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
                 }

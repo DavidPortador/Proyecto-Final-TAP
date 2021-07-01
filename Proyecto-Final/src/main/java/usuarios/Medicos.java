@@ -2,7 +2,6 @@ package usuarios;
 import database.ConsultaDAO;
 import database.EncuestaDAO;
 import database.MySQLConnection;
-import database.UserDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,9 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelos.*;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -21,7 +20,7 @@ public class Medicos implements Initializable {
     EncuestaDAO encuestaDAO = new EncuestaDAO(MySQLConnection.getConnection());
     Usuario medico;
     Stage anterior;
-    @FXML Button btnFiltrar, btnPrueba, btnEncuestas, btnSolicitudes, btnConsultas, btnSalir;
+    @FXML Button btnFiltrar, btnPrueba, btnEncuestas, btnSolicitudes, btnConsultas, btnSalir, btnAceptar;
     @FXML ComboBox cbFiltrar, cbPrueba;
     @FXML TableView tblMedicos;
     @FXML Label lblUsuario;
@@ -32,6 +31,7 @@ public class Medicos implements Initializable {
             cbFiltrar.setDisable(false);
             btnPrueba.setDisable(true);
             cbPrueba.setDisable(true);
+            btnAceptar.setDisable(true);
             initButtons();
             createTableEncuestas();
             llenarPruebas();
@@ -47,6 +47,7 @@ public class Medicos implements Initializable {
                 cbFiltrar.setDisable(false);
                 btnPrueba.setDisable(true);
                 cbPrueba.setDisable(true);
+                btnAceptar.setDisable(true);
             }
         });
         btnSolicitudes.setOnAction(new EventHandler<ActionEvent>() {
@@ -56,6 +57,7 @@ public class Medicos implements Initializable {
                 cbFiltrar.setDisable(true);
                 btnPrueba.setDisable(true);
                 cbPrueba.setDisable(true);
+                btnAceptar.setDisable(false);
             }
         });
         btnConsultas.setOnAction(new EventHandler<ActionEvent>() {
@@ -65,6 +67,7 @@ public class Medicos implements Initializable {
                 cbFiltrar.setDisable(true);
                 btnPrueba.setDisable(false);
                 cbPrueba.setDisable(false);
+                btnAceptar.setDisable(true);
             }
         });
         btnSalir.setOnAction(new EventHandler<ActionEvent>() {
@@ -79,10 +82,23 @@ public class Medicos implements Initializable {
             public void handle(ActionEvent event) {
                 String tipo;
                 tipo = cbPrueba.getSelectionModel().getSelectedItem().toString();
-                if(tipo != null){
+                if(tipo.equals("")){
+                    alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
+                    System.out.println(tipo);
+                }else{
+                    System.out.println(tipo);
+                }
+            }
+        });
+        btnAceptar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                modeloSolicitud solicitud = (modeloSolicitud) tblMedicos.getSelectionModel().getSelectedItem();
+                if(solicitud.equals("")){
+                    alertMessage("Error", "No selecciono ninguna solicitud", null, Alert.AlertType.ERROR);
 
                 }else{
-                    alertMessage("Error", "No selecciono ningun tipo de prueba", null, Alert.AlertType.ERROR);
+                    System.out.println(solicitud.getTipo());
                 }
             }
         });
@@ -179,6 +195,7 @@ public class Medicos implements Initializable {
         try {
             solicitudes = consultaDAO.getSolicitudes();
             tblMedicos.setItems(solicitudes);
+
         } catch (SQLException e) {
             alertMessage("Error", "createTableSolicitudes", e.getMessage(), Alert.AlertType.ERROR);
         }

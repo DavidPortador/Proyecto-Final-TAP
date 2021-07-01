@@ -35,13 +35,8 @@ modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
 medicos/solicitudes.java
  medicos.solicitudes
-<<<<<<< HEAD
-=======
-modelosReportes/listTotalEncuentasDepartamento.java
- modelosReportes.listTotalEncuentasDepartamento
 modelos/modeloReceta.java
  modelos.modeloReceta
->>>>>>> refs/remotes/DavidPortador/main
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -62,21 +57,18 @@ modelosReportes/listCasosEstudiantes.java
  modelosReportes.listCasosEstudiantes
 modelos/modeloOrden.java
  modelos.modeloOrden
-usuarios/Medicos.java
- usuarios.Medicos
- usuarios.Medicos$1
- usuarios.Medicos$2
- usuarios.Medicos$3
- usuarios.Medicos$4
- usuarios.Medicos$5
+controllers/Register.java
+ controllers.Register
+ controllers.Register$1
+ controllers.Register$2
+ controllers.Register$3
+ controllers.Register$4
 medicos/medicos.java
  medicos.medicos
 database/UserDAO.java
  database.UserDAO
-controllers/Main.java
- controllers.Main
- controllers.Main$1
- controllers.Main$2
+database/MySQLConnection.java
+ database.MySQLConnection
 database/ConsultaDAO.java
  database.ConsultaDAO
 modelos/modeloMonitoreo.java
@@ -100,16 +92,15 @@ controllers/Solicitud.java
  controllers.Solicitud$2
 modelos/modeloAsignacion.java
  modelos.modeloAsignacion
-database/MySQLConnection.java
- database.MySQLConnection
-controllers/Register.java
- controllers.Register
- controllers.Register$1
- controllers.Register$2
- controllers.Register$3
- controllers.Register$4
-<<<<<<< HEAD
-=======
-database/MySQLConnection.java
- database.MySQLConnection
->>>>>>> refs/remotes/DavidPortador/main
+usuarios/Medicos.java
+ usuarios.Medicos
+ usuarios.Medicos$1
+ usuarios.Medicos$2
+ usuarios.Medicos$3
+ usuarios.Medicos$4
+ usuarios.Medicos$5
+ usuarios.Medicos$6
+controllers/Main.java
+ controllers.Main
+ controllers.Main$1
+ controllers.Main$2

@@ -7,6 +7,7 @@ usuarios/Estudiantes.java
  usuarios.Estudiantes$5
  usuarios.Estudiantes$6
  usuarios.Estudiantes$7
+ usuarios.Estudiantes$8
 modelos/modeloPersonal.java
  modelos.modeloPersonal
 encuesta/Encuesta.java

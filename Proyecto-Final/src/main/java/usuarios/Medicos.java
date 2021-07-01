@@ -3,7 +3,6 @@ import controllers.Consulta;
 import database.ConsultaDAO;
 import database.EncuestaDAO;
 import database.MySQLConnection;
-import encuesta.Encuesta;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,7 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelos.*;
 import org.kordamp.bootstrapfx.BootstrapFX;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -106,9 +104,14 @@ public class Medicos implements Initializable {
                     alertMessage("Error", null, "No selecciono ninguna solicitud", Alert.AlertType.ERROR);
                 }else{
                     try {
-                        showConsulta(event, solicitud);
                         // Generar consulta
-                        System.out.println(solicitud.getEstado());
+                        if(solicitud.getEstado().equals("Aceptado")){
+                            alertMessage("Error", null, "La consulta ya fue aceptada", Alert.AlertType.ERROR);
+                        }else{
+                            System.out.println(solicitud.getNoSolicitud());
+                            showConsulta(event, solicitud);
+                        }
+                        //System.out.println(solicitud.getEstado());
                     } catch (IOException e) {
                         alertMessage("Error", "showConsulta", e.getMessage(), Alert.AlertType.ERROR);
                     }

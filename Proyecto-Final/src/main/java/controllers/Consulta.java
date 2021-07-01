@@ -1,4 +1,7 @@
 package controllers;
+import database.ConsultaDAO;
+import database.MySQLConnection;
+import database.UserDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import modelos.Usuario;
+import modelos.modeloConsulta;
 import modelos.modeloSolicitud;
 
 import java.io.IOException;
@@ -17,18 +21,21 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 public class Consulta implements Initializable {
+    ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
+    UserDAO userDAO = new UserDAO(MySQLConnection.getConnection());
     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     Stage anterior;
     Usuario medico;
     modeloSolicitud paciente;
     @FXML Label lblUsuario;
-    @FXML TextField txtSintomas;
+    @FXML TextField txtSintomas, txtHora;
     @FXML Button btnCancelar, btnCrear;
     @FXML ComboBox cbMedicos, cbTipos;
     @FXML DatePicker dpFecha;
     @Override public void initialize(URL location, ResourceBundle resources) {
-            llenarTipos();
-            initButtons();
+
+        llenarTipos();
+        initButtons();
     }
     private void initButtons() {
         btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
@@ -41,25 +48,36 @@ public class Consulta implements Initializable {
         btnCrear.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                valiVacio();
+                valiVacio(event);
             }
         });
     }
-    private void valiVacio(){
+    private void valiVacio(ActionEvent event){
         try{
-            String tipo, sintomas;
+            String tipo, sintomas ,hora;
             Date fecha;
             sintomas = txtSintomas.getText();
+            hora = txtHora.getText();
             fecha = Date.valueOf(dateFormatter.format(dpFecha.getValue()));
             tipo = (String) cbTipos.getSelectionModel().getSelectedItem();
             if(tipo == null){
                 alertMessage("Error", null, "Selecccione el tipo de consulta", Alert.AlertType.ERROR);
             }else{
-                System.out.println(sintomas);
-                System.out.println();
+                if(sintomas.isEmpty() || hora.isEmpty()){
+                    alertMessage("Error", null, "Campos vacios", Alert.AlertType.ERROR);
+                }else{
+                    modeloConsulta consulta = new modeloConsulta(
+                            0, sintomas, fecha, hora, tipo, paciente.getCveAsignacion(),
+                            paciente.getNoUsuario(), userDAO.getnoCedula(medico.getNoUsuario()));
+                    if(consultaDAO.insertNewConsulta(consulta)){
+                        alertMessage("Exitoso", null, "Consulta agregada", Alert.AlertType.INFORMATION);
+                        Stage stage = ((Stage)(((Button)event.getSource()).getScene().getWindow()));
+                        stage.close();
+                    }
+                }
             }
-        } catch (NullPointerException e){
-        alertMessage("Error","createConsulta", e.getMessage(), Alert.AlertType.ERROR);
+        } catch (NullPointerException | SQLException e){
+            alertMessage("Error","createConsulta", e.getMessage(), Alert.AlertType.ERROR);
         }
 
     }

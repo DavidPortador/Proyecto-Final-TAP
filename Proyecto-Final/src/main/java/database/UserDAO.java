@@ -47,6 +47,23 @@ public class UserDAO {
         }
         return cveasignacion;
     }
+
+    public String getnoCedula(int noUsuario) throws SQLException {
+        String consulta, noCedula = null;
+        consulta = "select noCedula from Medico where noUsuario = " + noUsuario;
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(consulta);
+        if (rs != null) {
+            try {
+                while (rs.next())
+                    noCedula = rs.getString("noCedula");
+            } catch (Exception e) {
+                alertMessage("Error","getnoCedula", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
+        return noCedula;
+    }
+
     public String getCarrera(int noUsuario) throws SQLException {
         String consulta, carrera = null;
         consulta = "select C.nombre from Estudiante E inner join Carrera C on E.cveCarrera = C.cveCarrera " +

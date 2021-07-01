@@ -35,9 +35,22 @@ import java.util.ResourceBundle;
 public class PDFreports implements Initializable {
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Stage anterior;
-    Color v_backG = new DeviceRgb(0, 142, 0);
+    //
     Color v_font = new DeviceRgb(0, 0, 0);
-    Color v_backG2= new DeviceRgb(251,113,112);
+    Color v_header = new DeviceRgb(34, 219, 240);
+    Color v_background= new DeviceRgb(175, 242, 250);
+    //
+    Color v_font2=new DeviceRgb(0,0,0);
+    Color v_fontwhite=new DeviceRgb(255, 255, 255);
+    Color v_header2=new DeviceRgb(163, 162, 162);
+    Color v_background2=new DeviceRgb(247, 247, 247);
+    //
+    Color font3=new DeviceRgb();
+    Color header3=new DeviceRgb(77, 0, 110);
+    Color Background3= new DeviceRgb(152, 0, 217);
+    //
+    Color header4= new DeviceRgb(255, 255, 255);
+    Color background4=new DeviceRgb(0,0,0);
     public static final String DEST1 = "contagios/carrera/carrera_report.pdf";
     public static final String DEST2 = "contagios/departamentos/departamentos_report.pdf";
     public static final String DEST3 = "contagios/estudiantes/estudiantes_report.pdf";
@@ -121,11 +134,11 @@ public class PDFreports implements Initializable {
     }
     public void processPdfCarrera(Table table, listCasosCarrera user, PdfFont font, boolean isHeader) {
         if (isHeader) {
-            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("TOTAL CASOS").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("TOTAL CASOS").setFont(font).setBackgroundColor(v_header).setFontColor(v_font)));
         } else {
-            table.addCell(new Cell().add(new Paragraph(user.getCarrera() + "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getContagiados()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getCarrera() + "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getContagiados()+ "").setFont(font).setBackgroundColor(v_background).setFontColor(v_font)));
         }
     }
     public void createPdfCasosDepartamento(String dest) throws IOException {
@@ -151,11 +164,11 @@ public class PDFreports implements Initializable {
     }
     public void processPdfDepartamento(Table table, listCasosDepartamento  user, PdfFont font, boolean isHeader) {
         if (isHeader) {
-            table.addHeaderCell(new Cell().add(new Paragraph("DEPARTAMENTO").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("TOTAL CASOS").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("DEPARTAMENTO").setFont(font).setBackgroundColor(v_header2).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("TOTAL CASOS").setFont(font).setBackgroundColor(v_header2).setFontColor(v_font)));
         } else {
-            table.addCell(new Cell().add(new Paragraph(user.getDepartamentos() + "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getContagiados()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getDepartamentos() + "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getContagiados()+ "").setFont(font).setBackgroundColor(v_background2).setFontColor(v_font)));
         }
     }
 
@@ -183,16 +196,16 @@ public class PDFreports implements Initializable {
 
     public void processPdfCasosEstudiantes(Table table, listCasosEstudiantes  user, PdfFont font, boolean isHeader) {
         if (isHeader) {
-            table.addHeaderCell(new Cell().add(new Paragraph("NOMBRE COMPLETO").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("FECHA DETENCION").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("RESULTADO").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("NOMBRE COMPLETO").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)));
+            table.addHeaderCell(new Cell().add(new Paragraph("FECHA DETENCION").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)));
+            table.addHeaderCell(new Cell().add(new Paragraph("RESULTADO").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)));
+            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(header3).setFontColor(v_fontwhite)));
 
         } else {
-            table.addCell(new Cell().add(new Paragraph(user.getNombre() + " " + user.getApellido()+"").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getFechaDetencion()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getResultado()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getCarrera()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getNombre() + " " + user.getApellido()+"").setFont(font).setBackgroundColor(background4).setFontColor(v_fontwhite)));
+            table.addCell(new Cell().add(new Paragraph(user.getFechaDetencion()+ "").setFont(font).setBackgroundColor(background4).setFontColor(v_fontwhite)));
+            table.addCell(new Cell().add(new Paragraph(user.getResultado()+ "").setFont(font).setBackgroundColor(background4).setFontColor(v_fontwhite)));
+            table.addCell(new Cell().add(new Paragraph(user.getCarrera()+ "").setFont(font).setBackgroundColor(background4).setFontColor(v_fontwhite)));
 
         }
     }
@@ -220,16 +233,16 @@ public class PDFreports implements Initializable {
 
     public void processPdfCasosPersonal(Table table, listCasosDelPersonal  user, PdfFont font, boolean isHeader) {
         if (isHeader) {
-            table.addHeaderCell(new Cell().add(new Paragraph("NOMBRE COMPLETO").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("FECHA DETENCION").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("RESULTADO").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
-            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(v_backG).setFontColor(v_font)));
+            table.addHeaderCell(new Cell().add(new Paragraph("NOMBRE COMPLETO").setFont(font).setBackgroundColor(header4).setFontColor(v_fontwhite)));
+            table.addHeaderCell(new Cell().add(new Paragraph("FECHA DETENCION").setFont(font).setBackgroundColor(header4).setFontColor(v_fontwhite)));
+            table.addHeaderCell(new Cell().add(new Paragraph("RESULTADO").setFont(font).setBackgroundColor(header4).setFontColor(v_fontwhite)));
+            table.addHeaderCell(new Cell().add(new Paragraph("CARRERA").setFont(font).setBackgroundColor(header4).setFontColor(v_fontwhite)));
 
         } else {
-            table.addCell(new Cell().add(new Paragraph(user.getNombre() + " " + user.getApellido()+"").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getFechaDetencion()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getResultado()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
-            table.addCell(new Cell().add(new Paragraph(user.getDepartamento()+ "").setFont(font).setBackgroundColor(v_backG2).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getNombre() + " " + user.getApellido()+"").setFont(font).setBackgroundColor(background4).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getFechaDetencion()+ "").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getResultado()+ "").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)));
+            table.addCell(new Cell().add(new Paragraph(user.getDepartamento()+ "").setFont(font).setBackgroundColor(Background3).setFontColor(v_font)));
 
         }
     }
@@ -251,4 +264,3 @@ public class PDFreports implements Initializable {
         alert.show();
     }
 }
-

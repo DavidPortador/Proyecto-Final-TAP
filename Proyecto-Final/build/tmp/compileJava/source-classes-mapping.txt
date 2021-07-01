@@ -35,6 +35,13 @@ modelosReportes/listConsultasTotalMedicos.java
  modelosReportes.listConsultasTotalMedicos
 medicos/solicitudes.java
  medicos.solicitudes
+<<<<<<< HEAD
+=======
+modelosReportes/listTotalEncuentasDepartamento.java
+ modelosReportes.listTotalEncuentasDepartamento
+modelos/modeloReceta.java
+ modelos.modeloReceta
+>>>>>>> refs/remotes/DavidPortador/main
 modelos/modeloUsers.java
  modelos.modeloUsers
 modelos/modeloEstudiante.java
@@ -101,3 +108,8 @@ controllers/Register.java
  controllers.Register$2
  controllers.Register$3
  controllers.Register$4
+<<<<<<< HEAD
+=======
+database/MySQLConnection.java
+ database.MySQLConnection
+>>>>>>> refs/remotes/DavidPortador/main

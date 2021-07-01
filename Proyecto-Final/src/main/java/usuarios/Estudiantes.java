@@ -58,6 +58,7 @@ public class Estudiantes implements Initializable {
             Consultas   (opciones) -> solicitar consulta o imprimir recetas
     */
     public static final String DEST5 = "contagios/personal/estudiante.pdf";
+    public static final String DEST6 = "contagios/personal/estudiante.pdf";
     ConsultaDAO consultaDAO = new ConsultaDAO(MySQLConnection.getConnection());
     Usuario estudiante;
     Stage anterior;
@@ -255,6 +256,15 @@ public class Estudiantes implements Initializable {
             sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
             openPdfFile(DEST5);
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File file2 = new File(DEST6);
+        file.getParentFile().mkdirs();
+        try {
+            //createPdfReceta(DEST6);
+            sendMessage("Reported succesfull", "File: " + DEST1 + "generated...");
+            openPdfFile(DEST6);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

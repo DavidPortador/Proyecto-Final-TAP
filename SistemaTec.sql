@@ -531,7 +531,6 @@ insert into Receta (indicaciones, noConsulta) values
     ('Tomar cuando siga el dolor', 29),
     ('No tomar refrescos', 30);
 
-
 insert into Medicamento (cveMedicamento, nombre, cantidad, noReceta) values
 	('00001', 'Paracetamol', 24, 1),
 	('00002', 'Paracetamol', 12, 2),
